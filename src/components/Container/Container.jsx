@@ -1,5 +1,5 @@
-import css from "./Container.module.css";
-import React, { useEffect, useState } from "react";
+import css from './Container.module.css';
+import React from 'react';
 
 const Container = ({ children }) => {
   // const [isNarrowScreen, setIsNarrowScreen] = useState(false);
@@ -20,17 +20,17 @@ const Container = ({ children }) => {
   //   };
   // }, []);
 
-  const tablet = window.matchMedia("(min-width:834px)").matches;
-  const desktop = window.matchMedia("(min-width:1440px)").matches;
-  console.log("tablet", tablet, desktop);
+  const tablet = window.matchMedia('(min-width:834px)').matches;
+  const desktop = window.matchMedia('(min-width:1440px)').matches;
+  console.log('tablet', tablet, desktop);
   if (desktop) {
     return (
       <div
         style={{
           width: 1440,
           outline: 1,
-          outlineColor: "tomato",
-          outlineStyle: "solid",
+          outlineColor: 'tomato',
+          outlineStyle: 'solid',
         }}
         className={css.Container}
       >
@@ -44,8 +44,8 @@ const Container = ({ children }) => {
           style={{
             width: 834,
             outline: 1,
-            outlineColor: "tomato",
-            outlineStyle: "solid",
+            outlineColor: 'tomato',
+            outlineStyle: 'solid',
           }}
           className={css.Container}
         >
@@ -58,8 +58,8 @@ const Container = ({ children }) => {
           style={{
             width: 320,
             outline: 1,
-            outlineColor: "tomato",
-            outlineStyle: "solid",
+            outlineColor: 'tomato',
+            outlineStyle: 'solid',
           }}
           className={css.Container}
         >
