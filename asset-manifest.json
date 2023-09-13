@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/healthyHub-frontend/static/css/main.e64a0a9f.css",
-    "main.js": "/healthyHub-frontend/static/js/main.20806f42.js",
+    "main.js": "/healthyHub-frontend/static/js/main.7b6db03c.js",
     "static/js/787.545f56ba.chunk.js": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js",
     "index.html": "/healthyHub-frontend/index.html",
     "main.e64a0a9f.css.map": "/healthyHub-frontend/static/css/main.e64a0a9f.css.map",
-    "main.20806f42.js.map": "/healthyHub-frontend/static/js/main.20806f42.js.map",
+    "main.7b6db03c.js.map": "/healthyHub-frontend/static/js/main.7b6db03c.js.map",
     "787.545f56ba.chunk.js.map": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e64a0a9f.css",
-    "static/js/main.20806f42.js"
+    "static/js/main.7b6db03c.js"
   ]
 }
