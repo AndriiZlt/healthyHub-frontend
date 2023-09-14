@@ -35,6 +35,7 @@ const Container = ({ children }) => {
         marginRight: 'auto',
         paddingLeft: padding,
         paddingRight: padding,
+        boxSizing: 'border-box',
       }}
       className={css.Container}
     >
