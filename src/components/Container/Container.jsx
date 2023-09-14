@@ -6,19 +6,19 @@ const Container = ({ children }) => {
   const isDesktop = useMediaQuery('(min-width:1440px)');
   const isTablet = useMediaQuery('(min-width:834px)');
 
-  const [width, setWidth] = useState(320);
+  const [width, setWidth] = useState(300);
   const [padding, setPadding] = useState(10);
 
   useEffect(() => {
     if (isDesktop) {
-      setWidth(1440);
+      setWidth(1372);
       setPadding(34);
     } else {
       if (isTablet) {
-        setWidth(834);
+        setWidth(780);
         setPadding(27);
       } else {
-        setWidth(320);
+        setWidth(300);
         setPadding(10);
       }
     }
