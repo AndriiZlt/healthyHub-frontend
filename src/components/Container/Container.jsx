@@ -32,6 +32,8 @@ const Container = ({ children }) => {
           outlineStyle: 'solid',
           marginLeft: 'auto',
           marginRight: 'auto',
+          paddingLeft: 34,
+          paddingRight: 34,
         }}
         className={css.Container}
       >
@@ -49,6 +51,8 @@ const Container = ({ children }) => {
             outlineStyle: 'solid',
             marginLeft: 'auto',
             marginRight: 'auto',
+            paddingLeft: 27,
+            paddingRight: 27,
           }}
           className={css.Container}
         >
@@ -65,6 +69,8 @@ const Container = ({ children }) => {
             outlineStyle: 'solid',
             marginLeft: 'auto',
             marginRight: 'auto',
+            paddingLeft: 10,
+            paddingRight: 10,
           }}
           className={css.Container}
         >
