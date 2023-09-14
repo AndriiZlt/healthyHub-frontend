@@ -1,3 +1,43 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 60px;
+}
+
+.logo {
+  width: 102px;
+  height: 22px;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 200px;
+  height: 26px;
+}
+
+.sign {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+a {
+  color: white;
+  outline: none;
+  text-decoration: none;
+  margin-left: 3px;
+  margin-right: 3px;
+  font-size: 12px;
+  line-height: 16px;
+}
+p {
+  margin: 0;
+}
+
+.profile {
+  width: 26px;
+  height: 26px;
 }
