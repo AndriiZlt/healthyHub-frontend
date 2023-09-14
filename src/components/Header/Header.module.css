@@ -5,11 +5,6 @@
   height: 60px;
 }
 
-.logo {
-  width: 102px;
-  height: 22px;
-}
-
 .auth {
   display: flex;
   align-items: center;
