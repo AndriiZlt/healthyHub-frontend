@@ -22,7 +22,6 @@ const Container = ({ children }) => {
 
   const tablet = window.matchMedia('(min-width:834px)').matches;
   const desktop = window.matchMedia('(min-width:1440px)').matches;
-  console.log('tablet', tablet, desktop);
   if (desktop) {
     return (
       <div
@@ -31,10 +30,12 @@ const Container = ({ children }) => {
           outline: 1,
           outlineColor: 'tomato',
           outlineStyle: 'solid',
+          marginLeft: 'auto',
+          marginRight: 'auto',
         }}
         className={css.Container}
       >
-        desktop {children}
+        {children}
       </div>
     );
   } else {
@@ -46,10 +47,12 @@ const Container = ({ children }) => {
             outline: 1,
             outlineColor: 'tomato',
             outlineStyle: 'solid',
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
           className={css.Container}
         >
-          Tablet{children}
+          {children}
         </div>
       );
     } else {
@@ -60,10 +63,12 @@ const Container = ({ children }) => {
             outline: 1,
             outlineColor: 'tomato',
             outlineStyle: 'solid',
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
           className={css.Container}
         >
-          Mobile{children}
+          {children}
         </div>
       );
     }
