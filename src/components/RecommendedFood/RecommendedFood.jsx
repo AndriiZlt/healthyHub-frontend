@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const RecommendedFood = () => {
   return (
     <div>
-      <p>RecommendedFood</p>
+      <p>RecommendedFood page</p>
     </div>
   );
 };
