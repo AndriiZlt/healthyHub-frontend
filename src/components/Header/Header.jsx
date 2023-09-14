@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
+import css from './Header.module.css';
 
 const Header = () => {
   return (
-    <div>
+    <div className={css.header}>
       <p>Header Healthy Hub</p>
     </div>
   );
