@@ -1,84 +1,46 @@
 import css from './Container.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useMediaQuery from 'hooks/useMediaQuery';
 
 const Container = ({ children }) => {
-  // const [isNarrowScreen, setIsNarrowScreen] = useState(false);
-  // useEffect(() => {
-  //   // set initial value
-  //   const mediaWatcher = window.matchMedia("(max-width: 500px)");
-  //   setIsNarrowScreen(mediaWatcher.matches);
+  const isDesktop = useMediaQuery('(min-width:1440px)');
+  const isTablet = useMediaQuery('(min-width:834px)');
 
-  //   //watch for updates
-  //   function updateIsNarrowScreen(e) {
-  //     setIsNarrowScreen(e.matches);
-  //   }
-  //   mediaWatcher.addEventListener("change", updateIsNarrowScreen);
+  const [width, setWidth] = useState(320);
+  const [padding, setPadding] = useState(10);
 
-  //   // clean up after ourselves
-  //   return function cleanup() {
-  //     mediaWatcher.removeEventListener("change", updateIsNarrowScreen);
-  //   };
-  // }, []);
-
-  const tablet = window.matchMedia('(min-width:834px)').matches;
-  const desktop = window.matchMedia('(min-width:1440px)').matches;
-  if (desktop) {
-    return (
-      <div
-        style={{
-          width: 1440,
-          outline: 1,
-          outlineColor: 'tomato',
-          outlineStyle: 'solid',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          paddingLeft: 34,
-          paddingRight: 34,
-        }}
-        className={css.Container}
-      >
-        {children}
-      </div>
-    );
-  } else {
-    if (tablet) {
-      return (
-        <div
-          style={{
-            width: 834,
-            outline: 1,
-            outlineColor: 'tomato',
-            outlineStyle: 'solid',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            paddingLeft: 27,
-            paddingRight: 27,
-          }}
-          className={css.Container}
-        >
-          {children}
-        </div>
-      );
+  useEffect(() => {
+    if (isDesktop) {
+      setWidth(1440);
+      setPadding(34);
     } else {
-      return (
-        <div
-          style={{
-            width: 320,
-            outline: 1,
-            outlineColor: 'tomato',
-            outlineStyle: 'solid',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            paddingLeft: 10,
-            paddingRight: 10,
-          }}
-          className={css.Container}
-        >
-          {children}
-        </div>
-      );
+      if (isTablet) {
+        setWidth(834);
+        setPadding(27);
+      } else {
+        setWidth(320);
+        setPadding(10);
+      }
     }
-  }
+  }, [isDesktop, isTablet]);
+
+  return (
+    <div
+      style={{
+        width: width,
+        outline: 1,
+        outlineColor: 'grey',
+        outlineStyle: 'solid',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        paddingLeft: padding,
+        paddingRight: padding,
+      }}
+      className={css.Container}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Container;

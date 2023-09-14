@@ -6,16 +6,9 @@ import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
 import RecommendedFood from './components/RecommendedFood/RecommendedFood';
+import Settings from './components/Settings/Settings';
 
 function App() {
-  const [data, setData] = useState('');
-
-  useEffect(() => {
-    fetch('/api')
-      .then(res => res.json())
-      .then(res => setData(res.message));
-  }, []);
-
   return (
     <>
       <Routes>
@@ -25,9 +18,9 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="diary" element={<Diary />} />
           <Route path="recommended" element={<RecommendedFood />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
-      <p>{data}</p>
     </>
   );
 }
