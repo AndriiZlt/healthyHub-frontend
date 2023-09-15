@@ -4,6 +4,6 @@
 
 export default function PrivateRoute({ children, ...routeProps }) {
   //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  //   return isLoggedIn ? children : <Navigate to="/main" />;
+  //   return isLoggedIn ? children : <Navigate to="/" />;
   return <div>{children}</div>;
 }
