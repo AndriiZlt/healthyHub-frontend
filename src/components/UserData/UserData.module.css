@@ -1,0 +1,76 @@
+.goalContainer {
+  width: 320px;
+  padding: 24px 10px 60px;
+  border: solid white;
+  box-sizing: border-box;
+}
+
+.goal-img {
+  width: 300px;
+}
+.goalTitle {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.goalText {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 24px;
+}
+
+.goalForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.goalFormText {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42;
+}
+.goalFormRadio:checked,
+.goalFormRadio:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  border: 1px solid #b6b6b6;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.goalFormRadio:checked + .customCheked {
+  border: 0;
+  background-color: #e3ffa8;
+  background: url(./radioCheked.svg);
+}
+
+.goalButton {
+  color: var(--color-primary-black-2, #0f0f0f);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  cursor: pointer;
+  width: 280;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #e3ffa8;
+}

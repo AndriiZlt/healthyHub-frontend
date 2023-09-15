@@ -9,6 +9,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
 import RecommendedFood from './components/RecommendedFood/RecommendedFood';
 import Settings from './components/Settings/Settings';
+import UserGoal from 'components/UserData/UserGoal';
+import UserGender from 'components/UserData/UserGender';
+import UserBody from 'components/UserData/UserBody';
 
 function App() {
   return (
@@ -69,6 +72,43 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          exact
+          path="usergoal"
+          element={
+            <PublicRoute>
+              <UserGoal />
+            </PublicRoute>
+          }
+        >
+          <Route
+            exact
+            path="usergoal"
+            element={
+              <PublicRoute>
+                <UserGoal />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="usergender"
+            element={
+              <PublicRoute>
+                <UserGender />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="userbody"
+            element={
+              <PublicRoute>
+                <UserBody />
+              </PublicRoute>
+            }
+          />
+        </Route>
       </Route>
     </Routes>
   );
