@@ -12,72 +12,65 @@ import Settings from './components/Settings/Settings';
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            exact
-            index
-            restricted
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            exact
-            path="main"
-            restricted
-            element={
-              <PrivateRoute>
-                <Main />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            exact
-            path="dashboard"
-            restricted
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            exact
-            path="diary"
-            restricted
-            element={
-              <PrivateRoute>
-                <Diary />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            exact
-            path="recommended"
-            restricted
-            element={
-              <PrivateRoute>
-                <RecommendedFood />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            exact
-            path="settings"
-            restricted
-            element={
-              <PrivateRoute>
-                <Settings />
-              </PrivateRoute>
-            }
-          />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          exact
+          index
+          restricted
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="main"
+          element={
+            <PrivateRoute>
+              <Main />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="diary"
+          element={
+            <PrivateRoute>
+              <Diary />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="recommended"
+          element={
+            <PrivateRoute>
+              <RecommendedFood />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="settings"
+          element={
+            <PrivateRoute>
+              <Settings />
+            </PrivateRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }
 

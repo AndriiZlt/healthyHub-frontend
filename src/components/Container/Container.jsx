@@ -11,35 +11,37 @@ const Container = ({ children }) => {
 
   useEffect(() => {
     if (isDesktop) {
-      setWidth(1372);
+      setWidth(1440);
       setPadding(34);
     } else {
       if (isTablet) {
-        setWidth(780);
+        setWidth(834);
         setPadding(27);
       } else {
-        setWidth(300);
+        setWidth(320);
         setPadding(10);
       }
     }
   }, [isDesktop, isTablet]);
 
   return (
-    <div
-      style={{
-        width: width,
-        outline: 1,
-        outlineColor: 'grey',
-        outlineStyle: 'solid',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingLeft: padding,
-        paddingRight: padding,
-        boxSizing: 'border-box',
-      }}
-      className={css.Container}
-    >
-      {children}
+    <div style={{}}>
+      <div
+        style={{
+          width: width,
+          outline: 1,
+          outlineColor: 'grey',
+          outlineStyle: 'solid',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: padding,
+          paddingRight: padding,
+          boxSizing: 'border-box',
+        }}
+        className={css.Container}
+      >
+        {children}
+      </div>
     </div>
   );
 };
