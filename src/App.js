@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 import Layout from './components/Layout/Layout';
 import Login from './components/Login/Login';
 import Main from './components/Main/Main';
@@ -13,12 +15,66 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Login />} />
-          <Route path="home" element={<Main />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="diary" element={<Diary />} />
-          <Route path="recommended" element={<RecommendedFood />} />
-          <Route path="settings" element={<Settings />} />
+          <Route
+            exact
+            index
+            restricted
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="main"
+            restricted
+            element={
+              <PrivateRoute>
+                <Main />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="dashboard"
+            restricted
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="diary"
+            restricted
+            element={
+              <PrivateRoute>
+                <Diary />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="recommended"
+            restricted
+            element={
+              <PrivateRoute>
+                <RecommendedFood />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="settings"
+            restricted
+            element={
+              <PrivateRoute>
+                <Settings />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </>
