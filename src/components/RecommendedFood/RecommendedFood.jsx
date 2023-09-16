@@ -332,7 +332,7 @@ const products = [
     <ul>
       {products.map(product => (
         <li key={product.name}>
-       <img src={product.img} alt="product"/>
+       <img src={product.img} alt="product" />
         amount={product.amount}
         calories={product.calories}
         </li>
