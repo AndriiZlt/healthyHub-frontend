@@ -333,13 +333,11 @@ const products = [
     alt="recommended food illustration"
     ></img>
      <ul>
-      {products.map((product)=>(
-        <li>
-          img = {product.img}
-          name = {product.name}
-          amount = {product.amount}
-          calories = {product.calories} 
-         </li>
+      {products.map(product => (
+        <li key={product.name}></li>
+       <img src={product.img} alt="product"/>
+      <li amount={product.amount}></li>
+       <li calories={product.calories}></li>
        ))}
      </ul> 
     </div>
