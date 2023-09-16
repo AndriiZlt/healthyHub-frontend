@@ -12,6 +12,10 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
 import RecommendedFood from './components/RecommendedFood/RecommendedFood';
 import Settings from './components/Settings/Settings';
+import UserGoal from 'components/UserData/UserGoal';
+import UserGender from 'components/UserData/UserGender';
+import UserBody from 'components/UserData/UserBody';
+import UserActivity from 'components/UserData/UserActivity';
 
 function App() {
   return (
@@ -33,6 +37,42 @@ function App() {
           element={
             <PublicRoute>
               <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="usergoal"
+          element={
+            <PublicRoute>
+              <UserGoal />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="usergender"
+          element={
+            <PublicRoute>
+              <UserGender />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="userbody"
+          element={
+            <PublicRoute>
+              <UserBody />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="useractivity"
+          element={
+            <PublicRoute>
+              <UserActivity />
             </PublicRoute>
           }
         />
