@@ -12,6 +12,9 @@ import lunchIcon from 'assets/lunch.svg';
 import dinnerIcon from 'assets/dinner.svg';
 import snackIcon from 'assets/snack.svg';
 import fruit1 from 'assets/fruit1.png';
+import fruit2 from 'assets/fruit2.png';
+import fruit3 from 'assets/fruit3.png';
+import fruit4 from 'assets/fruit4.png';
 
 const Home = () => {
   const breakfast = false;
@@ -649,7 +652,7 @@ const Home = () => {
             </div>
           </div>
           <div className={css.greyBlock2}>
-            <img src={fruit1} alt="fruit" />
+            <img src={fruit2} alt="fruit" />
             <div
               style={{
                 display: 'flex',
@@ -658,7 +661,7 @@ const Home = () => {
                 justifyContent: 'center',
               }}
             >
-              <p className={css.statsTitle3}>Avocado</p>
+              <p className={css.statsTitle3}>Beans</p>
               <div style={{ display: 'flex' }}>
                 <p className={css.fruitStats}>
                   100 g
@@ -678,7 +681,7 @@ const Home = () => {
             </div>
           </div>
           <div className={css.greyBlock2}>
-            <img src={fruit1} alt="fruit" />
+            <img src={fruit3} alt="fruit" />
             <div
               style={{
                 display: 'flex',
@@ -687,7 +690,7 @@ const Home = () => {
                 justifyContent: 'center',
               }}
             >
-              <p className={css.statsTitle3}>Avocado</p>
+              <p className={css.statsTitle3}>Nuts</p>
               <div style={{ display: 'flex' }}>
                 <p className={css.fruitStats}>
                   100 g
@@ -707,7 +710,7 @@ const Home = () => {
             </div>
           </div>
           <div className={css.greyBlock2}>
-            <img src={fruit1} alt="fruit" />
+            <img src={fruit4} alt="fruit" />
             <div
               style={{
                 display: 'flex',
@@ -716,7 +719,7 @@ const Home = () => {
                 justifyContent: 'center',
               }}
             >
-              <p className={css.statsTitle3}>Avocado</p>
+              <p className={css.statsTitle3}>Broccoli</p>
               <div style={{ display: 'flex' }}>
                 <p className={css.fruitStats}>
                   100 g

@@ -13,7 +13,6 @@
   height: 30px;
   width: 100%;
   margin-bottom: 20px;
-  outline: 1px solid grey;
 }
 
 .title1 {
@@ -43,14 +42,6 @@
 }
 
 /* Daily goal block */
-
-.block {
-  outline: 1px solid grey;
-}
-
-.blockDailyGoal {
-  outline: 1px solid grey;
-}
 
 .title2 {
   font-size: 18px;
@@ -114,10 +105,6 @@
 .water {
   display: flex;
   align-items: center;
-}
-
-.blockWater {
-  outline: 1px solid grey;
 }
 
 .greyBlockWater {
@@ -220,7 +207,6 @@
   justify-content: flex-start;
   width: 100%;
   margin-bottom: 16px;
-  outline: 1px solid grey;
 }
 
 .title3 {
@@ -279,7 +265,6 @@
 .recommendedBlock {
   display: none;
   width: 780px;
-  outline: 1px solid grey;
   flex-wrap: wrap;
 }
 
@@ -453,7 +438,6 @@
   .diaryBlock {
     width: 518px;
     margin-bottom: 20px;
-    outline: 1px solid grey;
   }
 
   .mealTitle {
