@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../assets/userGender.svg';
 import css from './UserGender.module.css';
 
 const UserGender = () => {
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   const Gender = {
     MALE: 'male',

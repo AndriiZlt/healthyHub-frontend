@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from '../../assets/userGoal.svg';
 import css from './UserGoal.module.css';
 
 const UserGoal = () => {
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   //   handleChange = evt => {
   //     const { name, value, type, checked } = evt.target;
