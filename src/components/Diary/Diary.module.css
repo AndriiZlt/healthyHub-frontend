@@ -1,0 +1,90 @@
+ul,
+li,
+h2,
+h3 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 320px) {
+    .section {
+        padding-top: 16px;
+        padding-bottom: 40px;
+    }
+
+    .dairy_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-family: inherit;
+        font-weight: 500;
+    }
+
+    .arrow_rigth {
+        margin-right: 4px;
+        height: 14px;
+        width: 14px;
+    }
+
+    .dairy_wrapper_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .icon_first_dish {
+        margin-right: 16px;
+    }
+
+    .dairy_breakfast_list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 178px;
+    }
+
+    .dairy_breakfast_item:not(last-child) {
+        margin-bottom: 12px;
+    }
+
+    .dairy_breakfast_item:last-child {
+        margin-left: 20px;
+    }
+
+    .dairy_english_breakfast_list {
+        border-radius: 5px;
+        border: 1px solid;
+        padding: 12px 16px;
+        background-color: #0f0f0f;
+    }
+
+    .dairy_english_breakfast_item:not(last-child) {
+        margin-bottom: 40px;
+    }
+
+    span {
+        margin-right: 16px;
+      
+    }
+
+    .edit_pen{
+        margin-right: 6px;
+    }
+}
+
+@media (min-width: 864px) {
+    .section {
+        padding-top: 24px;
+        padding-bottom: 40px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .section {
+        padding-top: 20px;
+        padding-bottom: 52px;
+    }
+}
