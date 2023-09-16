@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from './userGoal.svg';
+import Image from '../../assets/userGoal.svg';
 import css from './UserGoal.module.css';
 
 const UserGoal = () => {

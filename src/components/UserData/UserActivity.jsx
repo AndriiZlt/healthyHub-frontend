@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Image from './UserActivity.svg';
+import Image from '../../assets/userActivity.svg';
 import css from './UserActivity.module.css';
 
 const UserActivity = () => {

@@ -42,6 +42,42 @@ function App() {
         />
         <Route
           exact
+          path="usergoal"
+          element={
+            <PublicRoute>
+              <UserGoal />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="usergender"
+          element={
+            <PublicRoute>
+              <UserGender />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="userbody"
+          element={
+            <PublicRoute>
+              <UserBody />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="useractivity"
+          element={
+            <PublicRoute>
+              <UserActivity />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
           path="signin"
           element={
             <PublicRoute>
@@ -101,42 +137,6 @@ function App() {
             <PrivateRoute>
               <Settings />
             </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path="usergoal"
-          element={
-            <PublicRoute>
-              <UserGoal />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="usergender"
-          element={
-            <PublicRoute>
-              <UserGender />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="userbody"
-          element={
-            <PublicRoute>
-              <UserBody />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="useractivity"
-          element={
-            <PublicRoute>
-              <UserActivity />
-            </PublicRoute>
           }
         />
       </Route>

@@ -71,7 +71,7 @@
 .genderFormRadio:checked + .customCheked {
   border: 0;
   background-color: #e3ffa8;
-  background: url(./radioCheked.svg);
+  background: url(../../assets/userRadioCheked.svg);
 }
 
 .genderFormAge {

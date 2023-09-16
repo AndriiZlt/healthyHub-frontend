@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Image from './userGender.svg';
 import { Link } from 'react-router-dom';
+import Image from '../../assets/userGender.svg';
 import css from './UserGender.module.css';
 
 const UserGender = () => {

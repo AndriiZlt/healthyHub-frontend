@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Image from './userBody.svg';
 import { Link } from 'react-router-dom';
+import Image from '../../assets/userBody.svg';
 import css from './UserBody.module.css';
 
 const UserBody = () => {
