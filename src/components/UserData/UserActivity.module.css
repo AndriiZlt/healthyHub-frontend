@@ -1,0 +1,168 @@
+.activityContainer {
+  padding: 24px 10px 60px;
+  border: solid white;
+  box-sizing: border-box;
+}
+
+.activityImg {
+  width: 300px;
+  height: 290px;
+}
+.activityTitle {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.activityText {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 24px;
+}
+
+.activityForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-bottom: 16px;
+}
+
+.activityFormText {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42;
+}
+.activityFormRadio:checked,
+.activityFormRadio:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  border: 1px solid #b6b6b6;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.activityFormRadio:checked + .customCheked {
+  border: 0;
+  background-color: #e3ffa8;
+  background: url(./radioCheked.svg);
+}
+
+.activityButton {
+  color: var(--color-primary-black-2, #0f0f0f);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  cursor: pointer;
+  width: 280px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--color-primary-green-lite, #e3ffa8);
+}
+
+.activityLinkBack {
+  color: var(--color-primary-grey, #b6b6b6);
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+@media screen and (min-width: 768px) {
+  .activityContainer {
+    padding: 40px 10px 60px;
+    text-align: center;
+  }
+
+  .activityImg {
+    width: 380px;
+    height: 368px;
+  }
+
+  .activityTitle {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-top: 60px;
+  }
+
+  .activityText {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .activityForm {
+    width: 444px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 24px;
+  }
+
+  .activityFormText {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42;
+  }
+
+  .activityButton {
+    color: var(--color-primary-black-2, #0f0f0f);
+    text-align: center;
+    line-height: 1.42;
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .activityContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 104px;
+    margin: 0 auto;
+    padding: 40px 10px 60px;
+  }
+
+  .activityImg {
+    width: 600px;
+    height: 574px;
+  }
+
+  .activityInfoContainer {
+    text-align: left;
+    margin-top: 120px;
+  }
+
+  .activityTitle {
+    margin-top: 0;
+  }
+
+  .activityForm {
+    width: 444px;
+    flex-direction: column;
+    margin: 0;
+    row-gap: 16px;
+  }
+
+  .activityButton {
+    width: 192px;
+    margin-top: 8px;
+  }
+}

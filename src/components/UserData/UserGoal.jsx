@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Image from './userGoal-mobile.svg';
-import radioCheked from './radioCheked.svg';
-import css from './UserData.module.css';
+import Image from './userGoal.svg';
+import css from './UserGoal.module.css';
 
 const UserGoal = () => {
   const [value, setValue] = useState();

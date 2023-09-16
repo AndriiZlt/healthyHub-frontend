@@ -1,44 +1,44 @@
 import React, { useState } from 'react';
-import Image from './userGender-mobile.png';
+import Image from './userBody.svg';
 import { Link } from 'react-router-dom';
+import css from './UserBody.module.css';
 
 const UserBody = () => {
-  const [value, setValue] = useState();
-
-  const Gender = {
-    MALE: 'male',
-    FEMALE: 'female',
-  };
-
   return (
-    <div>
-      <img alt="Summer hiking" src={Image} width="200" />
-      <h2>Select gender, Age</h2>
-      <p>Choose a goal so that we can help you effectively</p>
-      <form>
-        <p>Gender</p>
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value={Gender.MALE}
-            defaultChecked
-          />
-          Lose Fat
+    <div className={css.bodyContainer}>
+      <img alt="Body parameters" src={Image} className={css.bodyImg} />
+      <h2 className={css.bodyTitle}>Body parameters</h2>
+      <p className={css.bodyText}>
+        Enter your parameters for correct performance tracking
+      </p>
+      <form className={css.bodyForm}>
+        <label for="user_height" className={css.bodyFormText}>
+          Height
         </label>
-        <label>
-          <input type="radio" name="gender" value={Gender.FEMALE} />
-          Maintain
+        <input
+          id="user_height"
+          type="number"
+          placeholder="Enter your height"
+          className={css.bodyFormInput}
+        ></input>
+        <label for="user_weight" className={css.bodyFormText}>
+          Weight
         </label>
-        <label>
-          Your age
-          <input type="number" placeholder="Enter your age" />
-        </label>
+        <input
+          id="user_weight"
+          type="number"
+          placeholder="Enter your weight"
+          className={css.bodyFormInput}
+        ></input>
 
-        <button>Next</button>
+        <button className={css.bodyButton} type="submit">
+          Next
+        </button>
       </form>
 
-      <Link to="usergoal">Back</Link>
+      <Link to="/usergender" className={css.bodyLinkBack}>
+        Back
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Image from './userGender-mobile.png';
+import Image from './userGender.svg';
 import { Link } from 'react-router-dom';
+import css from './UserGender.module.css';
 
 const UserGender = () => {
   const [value, setValue] = useState();
@@ -11,34 +12,55 @@ const UserGender = () => {
   };
 
   return (
-    <div>
-      <img alt="Summer hiking" src={Image} width="200" />
-      <h2>Select gender, Age</h2>
-      <p>Choose a goal so that we can help you effectively</p>
-      <form>
-        <p>Gender</p>
-        <label>
+    <div className={css.genderContainer}>
+      <img alt="Summer hiking" src={Image} className={css.genderImg} />
+      <h2 className={css.genderTitle}>Select gender, Age</h2>
+      <p className={css.genderText}>
+        Choose a goal so that we can help you effectively
+      </p>
+      <form className={css.genderForm}>
+        <p className={css.genderFormName}>Gender</p>
+
+        <label className={css.genderFormText}>
           <input
+            className={css.genderFormRadio}
             type="radio"
             name="gender"
             value={Gender.MALE}
             defaultChecked
           />
-          Lose Fat
+          <span className={css.customCheked}></span>
+          Male
         </label>
-        <label>
-          <input type="radio" name="gender" value={Gender.FEMALE} />
-          Maintain
-        </label>
-        <label>
-          Your age
-          <input type="number" placeholder="Enter your age" />
+        <label className={css.genderFormText}>
+          <input
+            className={css.genderFormRadio}
+            type="radio"
+            name="gender"
+            value={Gender.FEMALE}
+          />
+          <span className={css.customCheked}></span>
+          Female
         </label>
 
-        <button>Next</button>
+        <label for="user_age" className={css.genderFormAge}>
+          Your age
+        </label>
+        <input
+          className={css.genderFormAgeInput}
+          id="user_age"
+          type="number"
+          placeholder="Enter your age"
+        />
+
+        <button className={css.genderButton} type="submit">
+          Next
+        </button>
       </form>
 
-      <Link to="/usergoal">Back</Link>
+      <Link to="/usergoal" className={css.genderLinkBack}>
+        Back
+      </Link>
     </div>
   );
 };
