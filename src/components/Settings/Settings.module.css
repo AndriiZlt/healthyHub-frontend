@@ -1,212 +1,208 @@
 .form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-top: 16px;
+  margin-left: 10px;
+  margin-bottom: 16px;
+}
+
+.photo a {
+  margin-bottom: 40px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.download {
+  fill: #e3ffa8;
+}
+
+.label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.input {
+  width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 40px;
+  border: 1px solid #b6b6b6;
+  border-radius: 12px;
+  background-color: #0f0f0f;
+}
+
+input {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.photo {
+  margin-bottom: 40px;
+}
+
+.input_gender {
+  margin-bottom: 40px;
+}
+
+.label_gender {
+  margin-right: 16px;
+}
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.label_activity {
+  margin-bottom: 24px;
+}
+
+button {
+  width: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #b6b6b6;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #0f0f0f;
+}
+
+.button_save {
+  background-color: #e3ffa8;
+  color: #0f0f0f;
+  margin-bottom: 12px;
+  margin-top: 16px;
+}
+@media screen and (max-width: 833px) {
+  .buttons_tablet {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 834px) {
+  .conteiner {
+    width: 834px;
+  }
+  .title {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+  }
+  .buttons_tablet {
+    margin-top: 24px;
+    margin-right: 27px;
+    margin-bottom: 20px;
+  }
+  .button_save {
+    width: 212px;
+    font-size: 14px;
+  }
+  .button_cancel {
+    width: 192px;
+    font-size: 14px;
+  }
+
+  .main_image {
+    display: block;
+    min-height: 374px;
+    min-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .buttons {
+    display: none;
+  }
+  h1 {
+    font-size: 30px;
+    margin-top: 24px;
+    margin-left: 27px;
+    margin-bottom: 20px;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 491px;
+    column-gap: 60px;
     margin-top: 24px;
     margin-left: auto;
     margin-right: auto;
   }
-
-  h1 {
-    font-size: 24px;
-    margin-top: 16px;
-    margin-left: 10px;
-    margin-bottom: 16px;
-  }
-
-  a {
-    margin-bottom: 40px;
-    font-size: 14px;
-      color: #FFFFFF;
-  }
-
-  .download {
-    fill: #E3FFA8;
-  }
-  
-    .label {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-    
-    .input {
-      width: 300px;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-bottom: 40px;
-      border: 1px solid #B6B6B6;
-      border-radius: 12px;
-      background-color: #0F0F0F;
-    }
-
-    input {
-        font-size: 14px;
-        color: #FFFFFF;
-    }
-
-    .photo {
-        margin-bottom: 40px;
-    }
-
-    .input_gender {
-        margin-bottom: 40px;
-    }
-
-    .label_gender {
-        margin-right: 16px;
-    }
-
-
-    .activity {
-        display: flex;
-     align-items: flex-start;
-    flex-direction: column;
-    }
-
-    .label_activity {
-        margin-bottom: 24px;
-    }
-
-    button {
-        width: 300px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-      color:#B6B6B6;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 14px;
-      background-color: #0F0F0F;
-    }
-
-    .button_save {
-        background-color: #E3FFA8;
-        color: #0F0F0F;
-        margin-bottom: 12px;
-        margin-top: 16px;
-    }
-    @media screen and (max-width: 833px){
-
-    .buttons_tablet{
-        display: none;
-    }
-    }
-
-    @media screen and (min-width: 834px) {
-        .conteiner {
-            width: 834px;
-        }
-        .title {
-            display: flex;
-            justify-content: space-between;
-        }
-        .buttons_tablet {
-            margin-top: 24px;
-            margin-right: 27px;
-            margin-bottom: 20px;
-        }
-        .button_save {
-            width: 212px;
-            font-size: 14px;
-        }
-        .button_cancel{
-            width: 192px;
-            font-size: 14px;
-        }
-     
-        .main_image {
-            display: block;
-            min-height: 374px;
-            min-width: 380px;
-            margin-left: auto;
-            margin-right: auto;
-    }
-   .buttons {
-    display: none;
-   }
-    h1 {
-        font-size: 30px;
-    margin-top: 24px;
-        margin-left: 27px;
-        margin-bottom: 20px;
-    }
-    .form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 491px;
-        column-gap: 60px;
-        margin-top: 24px;
-        margin-left: auto;
-        margin-right: auto;
-}
-.label {
+  .label {
     display: block;
     width: 212px;
     margin-bottom: 12px;
     font-size: 14px;
-    color: #FFFFFF;
-    }
-    .input {
-        width: 212px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 40px;
-        border: 1px solid #B6B6B6;
-        border-radius: 12px;
-        background-color: #0F0F0F;
-      }
-      .activity {
-        display: flex;
-     align-items: flex-start;
+    color: #ffffff;
+  }
+  .input {
+    width: 212px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 40px;
+    border: 1px solid #b6b6b6;
+    border-radius: 12px;
+    background-color: #0f0f0f;
+  }
+  .activity {
+    display: flex;
+    align-items: flex-start;
     flex-direction: column;
     width: 491px;
     margin-right: auto;
     margin-left: auto;
-    }
+  }
 }
 
-    @media screen and (min-width: 1440px)  {
-        .conteiner {
-            width: 1440px;
-            }
-         h1 {
-            font-size: 30px;
-            margin-top: 20px;
-            margin-left: 34px;
-            margin-bottom: 24px;
-            }
-            .buttons_tablet {
-                margin-top: 20px;
-                margin-right: 32px;
-                margin-bottom: 16px;
-            }
-            .main_image {
-                display: block;
-                min-height: 528px;
-                min-width: 536px;
-                margin-left: auto;
-                margin-right: auto;
-    }
-            .form {
-                margin-top: 0px;
-
-    }
-            .desktop {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                width: 1187px;
-                column-gap: 160px;
-                margin-left: auto;
-                margin-right: auto;
-    }
-    }
-    
+@media screen and (min-width: 1440px) {
+  .conteiner {
+    width: 1440px;
+  }
+  h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 34px;
+    margin-bottom: 24px;
+  }
+  .buttons_tablet {
+    margin-top: 20px;
+    margin-right: 32px;
+    margin-bottom: 16px;
+  }
+  .main_image {
+    display: block;
+    min-height: 528px;
+    min-width: 536px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form {
+    margin-top: 0px;
+  }
+  .desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 1187px;
+    column-gap: 160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
