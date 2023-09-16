@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/healthyHub-frontend/static/css/main.11b5328f.css",
-    "main.js": "/healthyHub-frontend/static/js/main.780f72f0.js",
+    "main.css": "/healthyHub-frontend/static/css/main.21a15025.css",
+    "main.js": "/healthyHub-frontend/static/js/main.99f4bb74.js",
     "static/js/787.545f56ba.chunk.js": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js",
     "static/media/breakfast.svg": "/healthyHub-frontend/static/media/breakfast.4efccecbf15da4ee3fe1c33dc07056d4.svg",
     "static/media/snack.svg": "/healthyHub-frontend/static/media/snack.ab1ecdcc3d6f3609639a77576cf8628d.svg",
+    "static/media/SettingsIllustration.svg": "/healthyHub-frontend/static/media/SettingsIllustration.812d4481c0c2b8ddd0d6d3662c95b1e9.svg",
     "static/media/dinner.svg": "/healthyHub-frontend/static/media/dinner.548e66b9d3a3ed31fbeb5279ee2dd299.svg",
+    "static/media/RecommendedFood.svg": "/healthyHub-frontend/static/media/RecommendedFood.debb10dd916efb540c4b66b494f0e114.svg",
     "static/media/lunch.svg": "/healthyHub-frontend/static/media/lunch.30f0a0599d84d0a170fe6c53fbe282f5.svg",
     "static/media/userBody.svg": "/healthyHub-frontend/static/media/userBody.b53321adaa45bd19e9afc54a6922d643.svg",
     "static/media/userActivity.svg": "/healthyHub-frontend/static/media/userActivity.d2dfbacac3ab6c3427e42119f7e2e39a.svg",
@@ -21,16 +23,17 @@
     "static/media/milk.svg": "/healthyHub-frontend/static/media/milk.a0eacd57b86b0ba2f6c6a392b77da7f8.svg",
     "static/media/profile-circle.svg": "/healthyHub-frontend/static/media/profile-circle.69c6a84a9d9497084d3e5977a96a06b5.svg",
     "index.html": "/healthyHub-frontend/index.html",
+    "static/media/direct-inbox.svg": "/healthyHub-frontend/static/media/direct-inbox.9ca8a34221a8f13c50c4d1a19f3a88fa.svg",
     "static/media/bubble.svg": "/healthyHub-frontend/static/media/bubble.3b2e6986df7fcf539bc5e73bed7ca1ce.svg",
     "static/media/edit_pen.svg": "/healthyHub-frontend/static/media/edit_pen.81ed5086df9b97456afbc22559356907.svg",
     "static/media/arrow-right.svg": "/healthyHub-frontend/static/media/arrow-right.d0c0c26f156afde714dd6305bb874a9a.svg",
     "static/media/userRadioCheked.svg": "/healthyHub-frontend/static/media/userRadioCheked.c972043ff8b81b0a8bc9.svg",
-    "main.11b5328f.css.map": "/healthyHub-frontend/static/css/main.11b5328f.css.map",
-    "main.780f72f0.js.map": "/healthyHub-frontend/static/js/main.780f72f0.js.map",
+    "main.21a15025.css.map": "/healthyHub-frontend/static/css/main.21a15025.css.map",
+    "main.99f4bb74.js.map": "/healthyHub-frontend/static/js/main.99f4bb74.js.map",
     "787.545f56ba.chunk.js.map": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.11b5328f.css",
-    "static/js/main.780f72f0.js"
+    "static/css/main.21a15025.css",
+    "static/js/main.99f4bb74.js"
   ]
 }
