@@ -2,15 +2,18 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Header from '../Header/Header';
 import Container from '../Container/Container';
+import css from './Layout.module.css';
 
 
 const Layout = () => {
   return (
     <>
       <header>
-        <Container>
-          <Header />
-        </Container>
+        <div className={css.background}>
+          <Container>
+            <Header />
+          </Container>
+        </div>
       </header>
       <main>
         <Container>
