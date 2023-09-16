@@ -12,7 +12,6 @@ const Header = () => {
   const [logoWidth, setLogoWidth] = useState(102);
 
   console.log('desktop:' + isDesktop, 'isTablet:' + isTablet);
-
   useEffect(() => {
     if (isDesktop) {
       setLogoHeight(32);
