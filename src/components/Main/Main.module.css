@@ -27,10 +27,10 @@
 .toGoal {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 210px;
   height: 20px;
-  text-align: end;
+  text-align: flex-end;
 }
 
 .toGoal a {
