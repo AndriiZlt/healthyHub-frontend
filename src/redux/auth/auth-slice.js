@@ -5,11 +5,18 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  temporaryCredentials: { name: null, email: null, password: null },
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setTemporaryCredentials(state, action) {
+      console.log('setTemporaryCredentials action.payload', action.payload);
+      state.temporaryCredentials = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(authOperations.register.fulfilled, (state, action) => {
@@ -32,3 +39,5 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const { setTemporaryCredentials } = authSlice.actions;
