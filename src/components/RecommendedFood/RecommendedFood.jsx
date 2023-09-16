@@ -328,18 +328,16 @@ const products = [
   return (
     <div>
     <p>RecommendedFood page</p>
-    <img 
-    src={illustration}
-    alt="recommended food illustration"
-    ></img>
-     <ul>
+    <img src={illustration} alt="recommended food illustration"></img>
+    <ul>
       {products.map(product => (
-        <li key={product.name}></li>
+        <li key={product.name}>
        <img src={product.img} alt="product"/>
-      <li amount={product.amount}></li>
-       <li calories={product.calories}></li>
+        amount={product.amount}
+        calories={product.calories}
+        </li>
        ))}
-     </ul> 
+       </ul>
     </div>
   );
 };
