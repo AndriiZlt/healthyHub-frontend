@@ -1,12 +1,16 @@
 import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import wellcomeImage from "../../assets/welcomeImage.png"
-import css from './Login.module.css';
+import css from './Register.module.css';
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   }
@@ -18,28 +22,25 @@ const Login = () => {
   }
   const navigate = useNavigate();
 
-  return <div className={css.login}>
+  return <div className={css.register}>
     <img src={wellcomeImage} alt="wellcomeImage" className={css.image} />
     <div>
-      <div className={css.signIn}>
-        <p className={css.title}>Sign in</p>
-        <p className={css.subTitle}>You need to login to use the service</p>
-        <div>
-          <form className={css.form} onSubmit={formSubmitHandler}>
+      <div className={css.signUp}>
+        <p className={css.title}>Sign up</p>
+        <p className={css.subTitle}>You need to register to use the service</p>
+        <form className={css.form} onSubmit={formSubmitHandler}>
+          <input value={name} placeholder='Name' onChange={handleNameChange} className={css.input}></input>
           <input value={email} placeholder='E-mail' onChange={handleEmailChange} className={css.input}></input>
           <input value={password} placeholder='Password' onChange={handlePasswordChange} className={css.input}></input>
-          <button type="submit" className={css.btn}>Sign In</button>
+          <button type="submit" className={css.btn}>Sign Up</button>
         </form>
-        <p className={css.forgot} onClick={() => { navigate('/forgot-password') }}>Forgot your password?</p>
-        </div>
-        
       </div>
       <div className={css.footerText}>
-        <p className={css.text}>If you don't have an account yet</p>
-        <p className={css.signUpBtn} onClick={() => { navigate('/signup') }}>Sign Up</p>
+        <p className={css.text}>Do you already have an account?</p>
+        <p className={css.signInBtn} onClick={() => { navigate('/signin') }}>Sign In</p>
       </div>
     </div>
   </div>;
 };
 
-export default Login;
+export default Register;

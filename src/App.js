@@ -3,7 +3,10 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import Layout from './components/Layout/Layout';
+import Wellcome from 'components/Wellcome/Wellcome';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import ForgotPassword from 'components/ForgotPassword/ForgotPassword';
 import Main from './components/Main/Main';
 import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
@@ -20,7 +23,34 @@ function App() {
           restricted
           element={
             <PublicRoute>
+              <Wellcome />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="signup"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="signin"
+          element={
+            <PublicRoute>
               <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          exact
+          path="forgot-password"
+          element={
+            <PublicRoute>
+              <ForgotPassword />
             </PublicRoute>
           }
         />
