@@ -25,13 +25,10 @@ const Container = ({ children }) => {
   }, [isDesktop, isTablet]);
 
   return (
-    <div style={{}}>
+    <div>
       <div
         style={{
           width: width,
-          outline: 1,
-          outlineColor: 'grey',
-          outlineStyle: 'solid',
           marginLeft: 'auto',
           marginRight: 'auto',
           paddingLeft: padding,
