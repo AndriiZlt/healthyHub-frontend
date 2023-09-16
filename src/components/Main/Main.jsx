@@ -121,7 +121,7 @@ const Home = () => {
         {/* Food Chart */}
         <div className={css.block}>
           <h2 className={css.title2}>Food</h2>
-          <div className={css.greyBlock}>
+          <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
               <img
                 className={css.icon3}
@@ -318,14 +318,8 @@ const Home = () => {
 
                 {breakfast ? (
                   <div className={css.mealStats}>
-                    <ul
-                      style={{
-                        listStyle: 'none',
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
-                      <li style={{ marginBottom: 20 }}>
+                    <ul>
+                      <li>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -342,7 +336,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 20 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -359,7 +353,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 0 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -399,14 +393,8 @@ const Home = () => {
                 </div>
                 {lunch ? (
                   <div className={css.mealStats}>
-                    <ul
-                      style={{
-                        listStyle: 'none',
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
-                      <li style={{ marginBottom: 20 }}>
+                    <ul>
+                      <li>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -423,7 +411,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 20 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -440,7 +428,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 0 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -480,14 +468,8 @@ const Home = () => {
                 </div>
                 {dinner ? (
                   <div className={css.mealStats}>
-                    <ul
-                      style={{
-                        listStyle: 'none',
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
-                      <li style={{ marginBottom: 20 }}>
+                    <ul>
+                      <li>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -504,7 +486,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 20 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -521,7 +503,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 0 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -561,14 +543,8 @@ const Home = () => {
                 </div>
                 {snack ? (
                   <div className={css.mealStats}>
-                    <ul
-                      style={{
-                        listStyle: 'none',
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
-                      <li style={{ marginBottom: 20 }}>
+                    <ul>
+                      <li>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -585,7 +561,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 20 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -602,7 +578,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li style={{ marginBottom: 0 }}>
+                      <li>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
