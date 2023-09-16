@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import css from './Header.module.css';
 import logo from '../../assets/HealthyHub.svg';
 import profile from '../../assets/profile-circle.svg';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import useMediaQuery from 'hooks/useMediaQuery';
 
 const Header = () => {
   const isDesktop = useMediaQuery('(min-width:1440px)');
@@ -11,7 +11,6 @@ const Header = () => {
   const [logoHeight, setLogoHeight] = useState(22);
   const [logoWidth, setLogoWidth] = useState(102);
 
-  console.log('desktop:' + isDesktop, 'isTablet:' + isTablet);
   useEffect(() => {
     if (isDesktop) {
       setLogoHeight(32);

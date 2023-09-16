@@ -6,7 +6,7 @@ const Container = ({ children }) => {
   const isDesktop = useMediaQuery('(min-width:1440px)');
   const isTablet = useMediaQuery('(min-width:834px)');
 
-  const [width, setWidth] = useState(320);
+  const [width, setWidth] = useState(300);
   const [padding, setPadding] = useState(10);
 
   useEffect(() => {
@@ -25,20 +25,23 @@ const Container = ({ children }) => {
   }, [isDesktop, isTablet]);
 
   return (
-    <div
-      style={{
-        width: width,
-        outline: 1,
-        outlineColor: 'grey',
-        outlineStyle: 'solid',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingLeft: padding,
-        paddingRight: padding,
-      }}
-      className={css.Container}
-    >
-      {children}
+    <div style={{}}>
+      <div
+        style={{
+          width: width,
+          outline: 1,
+          outlineColor: 'grey',
+          outlineStyle: 'solid',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: padding,
+          paddingRight: padding,
+          boxSizing: 'border-box',
+        }}
+        className={css.Container}
+      >
+        {children}
+      </div>
     </div>
   );
 };
