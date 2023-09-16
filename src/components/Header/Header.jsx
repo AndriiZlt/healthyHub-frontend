@@ -9,7 +9,7 @@ import useMediaQuery from 'hooks/useMediaQuery';
 
 const Header = () => {
   const isMobile = useMediaQuery('(max-width:833px)');
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <div className={css.header}>
