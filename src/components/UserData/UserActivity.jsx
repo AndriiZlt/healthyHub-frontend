@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from '../../assets/userActivity.svg';
 import css from './UserActivity.module.css';
 
 const UserActivity = () => {
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
 
   //   handleChange = evt => {
   //     const { name, value, type, checked } = evt.target;
