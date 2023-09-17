@@ -31,3 +31,18 @@ a {
 p {
   margin: 0;
 }
+.button {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 16px;
+  height: 48px;
+  width: auto;
+  padding: 0;
+}
+.button:hover{
+  background-color: transparent;
+  
+}
+.button::after {
+  display: none;
+}
