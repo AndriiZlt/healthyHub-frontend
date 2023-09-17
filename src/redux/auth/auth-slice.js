@@ -6,7 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   regData: { name: null, email: null, password: null },
-  regDetails: {
+  details: {
     goal: null,
     gender: null,
     age: null,
@@ -22,7 +22,10 @@ export const authSlice = createSlice({
   reducers: {
     setRegData(state, action) {
       console.log('setting RegData:', action.payload);
-      state.temporaryCredentials = action.payload;
+      state.regData = action.payload;
+    },
+    setDetails(state, action) {
+      console.log('setting details:', action.payload);
     },
   },
   extraReducers: builder => {
@@ -48,4 +51,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setRegData } = authSlice.actions;
+export const { setRegData, setDetails } = authSlice.actions;
