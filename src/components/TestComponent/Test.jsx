@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setDetails } from 'redux/auth/auth-slice';
+import { setUserData } from 'redux/auth/auth-slice';
 import css from './Test.module.css';
 
 const Test = () => {
@@ -12,7 +12,7 @@ const Test = () => {
   const dispatch = useDispatch();
 
   const submitHandler = () => {
-    dispatch(setDetails({ age }));
+    dispatch(setUserData({ age }));
   };
 
   return (
