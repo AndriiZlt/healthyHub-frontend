@@ -5,8 +5,10 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  regData: { name: null, email: null, password: null },
-  details: {
+  regData: {
+    name: null,
+    email: null,
+    password: null,
     goal: null,
     gender: null,
     age: null,
