@@ -263,37 +263,32 @@ const Diary = () => {
             <div className={css.wrapper_dishes_block}>
               <ul className={css.dairy_dish_list}>
                 <li className={css.dairy_add_dish_item}>
-                  <li className={css.dairy_add_dish_item_wrapper}>
-                    <span>1</span>
-                    <a href="">
-                      <img
-                        src={plus}
-                        alt="plus"
-                        style={{ height: 16, width: 16 }}
-                      />
-                      <span className={css.dairy_add_dish}>Record your meal</span>
-                    </a>
+                  <li>
+                    
                   </li>
-                 
+                  <span>1</span>
+                  <a href="">
+                    <img
+                      src={plus}
+                      alt="plus"
+                      style={{ height: 16, width: 16 }}
+                    />
+                    <span className={css.dairy_add_dish}>Record your meal</span>
+                  </a>
                 </li>
 
                 {/* Item 2 */}
                 <li className={css.dairy_add_dish_item}>
-                  <li className={css.dairy_add_dish_item_wrapper}>
-                    <span>2</span>
-                  </li>
+                  <span>2</span>
                 </li>
+
                 {/* Item 3 */}
                 <li className={css.dairy_add_dish_item}>
-                  <li className={css.dairy_add_dish_item_wrapper}>
-                    <span>3</span>
-                  </li>
+                  <span>3</span>
                 </li>
                 {/* Item 4 */}
                 <li className={css.dairy_add_dish_item}>
-                  <li className={css.dairy_add_dish_item_wrapper}>
-                    <span>4</span>
-                  </li>
+                  <span>4</span>
                 </li>
               </ul>
             </div>

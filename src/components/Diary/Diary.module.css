@@ -376,6 +376,7 @@ a {
   }
   .dairy_dish_list {
     padding: 32px 14px;
+    border: 0;
   }
 
   .dairy_elem_breakfast_list {
@@ -391,4 +392,7 @@ a {
     display: flex;
     /* align-items: center; */
   }
+  /* .wrapper_dishes_block{
+    height: 240px;
+  } */
 }
