@@ -11,5 +11,3 @@ const authSelectors = {
 };
 
 export default authSelectors;
-
-useSelector(authSelectors.getUserData);

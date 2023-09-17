@@ -1,8 +1,8 @@
 import React from 'react';
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 
 const WeightDashboard = () => {
-	return <div></div>;
+  return <div></div>;
 };
 
 export default WeightDashboard;
