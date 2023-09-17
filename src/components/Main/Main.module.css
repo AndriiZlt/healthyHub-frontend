@@ -1,3 +1,23 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(5, 5, 5, 0.8);
+  z-index: 99999;
+}
+
+.modal {
+  width: 300px;
+  height: 558px;
+  border-radius: 12px;
+  background-color: var(--primary-black-second-color);
+}
+
 .mainSection {
   padding-top: 16px;
   /* box-sizing: border-box; */
@@ -319,6 +339,11 @@
 /* -----------MEDIA TABLET----------------- */
 
 @media (min-width: 834px) {
+  .modal {
+    width: 676px;
+    height: 408px;
+  }
+
   .mainSection {
     padding-top: 24px;
   }
@@ -461,6 +486,11 @@
 /* --------MEDIA DESKTOP--------- */
 
 @media (min-width: 1440px) {
+  .modal {
+    width: 676px;
+    height: 408px;
+  }
+
   .mainSection {
     padding-top: 20px;
   }

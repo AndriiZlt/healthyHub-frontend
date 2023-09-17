@@ -1,16 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userActivity.svg';
 import css from './UserActivity.module.css';
 
 const UserActivity = () => {
-  // const [value, setValue] = useState();
+  const [value, setValue] = useState({ activity: 'first' });
 
-  //   handleChange = evt => {
-  //     const { name, value, type, checked } = evt.target;
-  //     // Якщо тип елемента – checkbox, беремо значення checked,
-  //     // в іншому випадку – value
-  //     this.setState({ [name]: type === 'checkbox' ? checked : value });
+  const navigate = useNavigate();
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setValue({ [name]: value });
+    // setValue(value);
+  };
+
+  const formSubmit = e => {
+    e.preventDefault();
+    console.log(value);
+    navigate('/main');
+  };
 
   const Activity = {
     FIRST: 'first',
@@ -28,10 +36,11 @@ const UserActivity = () => {
         <p className={css.activityText}>
           To correctly calculate calorie and water intake
         </p>
-        <form className={css.activityForm}>
+        <form className={css.activityForm} onSubmit={formSubmit}>
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FIRST}
@@ -43,6 +52,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.SECOND}
@@ -53,6 +63,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.THIRD}
@@ -63,6 +74,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FOURTH}
@@ -73,6 +85,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FIFTH}
@@ -82,7 +95,7 @@ const UserActivity = () => {
             day and include strength exercises in your training program
           </label>
 
-          <button type="button" className={css.activityButton}>
+          <button type="submit" className={css.activityButton}>
             Next
           </button>
         </form>
