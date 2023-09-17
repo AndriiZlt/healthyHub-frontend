@@ -5,8 +5,8 @@ import { Navigate } from 'react-router-dom';
 function PublicRoute({ children, restricted = false, ...routeProps }) {
   const isLoggedIn = true;
   //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-    return !isLoggedIn ? children : <Navigate to="/main" />;
-  return <div>{children}</div>;
+  return !isLoggedIn ? children : <Navigate to="/main" />;
+  // return <div>{children}</div>;
 }
 
 export default PublicRoute;
