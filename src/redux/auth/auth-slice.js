@@ -9,7 +9,8 @@ const initialState = {
   regDetails: {
     goal: null,
     gender: null,
-    heigh: null,
+    age: null,
+    height: null,
     weight: null,
     activity: null,
   },
