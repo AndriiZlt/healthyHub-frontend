@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'hhttps://healthhub.onrender.com/';
+axios.defaults.baseURL = 'https://healthhub.onrender.com/api';
 
 export const token = {
   set(token) {
@@ -13,22 +13,28 @@ export const token = {
 };
 
 const register = createAsyncThunk('auth/register', async credentials => {
+  console.log('register', credentials);
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/users/register', credentials);
+    console.log('token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
     console.log('Error in Register', error.response.data);
+    throw error();
   }
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
+  console.log('login', credentials);
   try {
     const { data } = await axios.post('/users/login', credentials);
+    console.log('token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
     console.log('Error in Login', error.response.data);
+    throw error();
   }
 });
 

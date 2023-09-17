@@ -1,6 +1,7 @@
 .mainSection {
-  padding: 16px 0 60px;
-  box-sizing: border-box;
+  padding-top: 16px;
+  /* box-sizing: border-box; */
+  /* height: 1215px; */
 }
 
 /* Title */
@@ -12,7 +13,6 @@
   height: 30px;
   width: 100%;
   margin-bottom: 20px;
-  outline: 1px solid grey;
 }
 
 .title1 {
@@ -21,7 +21,7 @@
   font-weight: 500;
   padding: 0;
   margin: 0;
-  color: #ffffff;
+  color: var(--primary-white-color);
 }
 
 .toGoal {
@@ -38,31 +38,23 @@
   line-height: 20px;
   margin-right: 6px;
   margin-left: 0;
-  color: #b6b6b6;
+  color: var(--primary-grey-color);
 }
 
 /* Daily goal block */
-
-.block {
-  outline: 1px solid grey;
-}
-
-.blockDailyGoal {
-  outline: 1px solid grey;
-}
 
 .title2 {
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-top: 0;
   margin-bottom: 6px;
 }
 
 .greyBlock {
   box-sizing: border-box;
-  background-color: #0f0f0f;
+  background-color: var(--primary-black-second-color);
   border-radius: 12px;
   padding: 12px 16px;
   margin-bottom: 20px;
@@ -77,12 +69,6 @@
 .icon1 {
   width: 80px;
   height: 80px;
-  margin-right: 20px;
-}
-
-.icon2 {
-  width: 80px;
-  height: 192px;
   margin-right: 20px;
 }
 
@@ -102,7 +88,7 @@
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  color: #b6b6b6;
+  color: var(--primary-grey-color);
   margin-bottom: 4px;
 }
 
@@ -110,7 +96,7 @@
   font-size: 34px;
   line-height: 38px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-right: 4px;
 }
 
@@ -121,23 +107,39 @@
   align-items: center;
 }
 
-.blockWater {
-  outline: 1px solid grey;
+.greyBlockWater {
+  box-sizing: border-box;
+  background-color: var(--primary-black-second-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.chartWater {
+  width: 80px;
+  height: 192px;
+  margin-right: 20px;
 }
 
 .statsTitle2 {
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-bottom: 12px;
+}
+
+.statsWater {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .statsWaterConsumption {
   font-size: 28px;
   line-height: 34px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-right: 8px;
 }
 
@@ -145,25 +147,29 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-bottom: 16px;
 }
 
 /* Food chart */
 
+.blockFood {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .greyBlockFood {
   box-sizing: border-box;
-  background-color: #0f0f0f;
+  background-color: var(--primary-black-second-color);
   border-radius: 12px;
   padding: 12px 16px;
-  margin-bottom: 20px;
 }
 
 .statsTitle3 {
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-bottom: 2px;
 }
 
@@ -181,7 +187,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-bottom: 16px;
   margin-bottom: 0;
 }
@@ -190,7 +196,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
 }
 
 /* Diary block */
@@ -199,17 +205,15 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 30px;
   width: 100%;
   margin-bottom: 16px;
-  outline: 1px solid grey;
 }
 
 .title3 {
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 16px;
@@ -219,7 +223,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  color: #b6b6b6;
+  color: var(--primary-grey-color);
 }
 
 .mealBlock li:not(:last-child) {
@@ -237,7 +241,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary-white-color);
   margin-bottom: 0;
   margin-bottom: 0;
 }
@@ -256,10 +260,76 @@
   margin-bottom: 20px;
 }
 
+/* Recommended food block */
+
+.recommendedBlock {
+  display: none;
+  width: 780px;
+  flex-wrap: wrap;
+}
+
+.greyBlock2 {
+  display: flex;
+  width: 380px;
+  height: 86px;
+  background-color: var(--primary-black-second-color);
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.greyBlock2:nth-child(2n) {
+  margin-right: 20px;
+}
+
+.greyBlock2:nth-child(-n + 3) {
+  margin-bottom: 20px;
+}
+
+.greyBlock2 img {
+  margin-right: 20px;
+}
+
+.fruitStats {
+  /* width: 78px; */
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--primary-white-color);
+  margin-bottom: 16px;
+  margin-bottom: 0;
+}
+
+.seeMore2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.seeMore2 a {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  margin-left: 0;
+  margin-right: 6px;
+  color: var(--primary-grey-color);
+}
+
+/* -----------MEDIA TABLET----------------- */
+
 @media (min-width: 834px) {
+  .mainSection {
+    padding-top: 24px;
+  }
+
   .media1 {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .titleDiv {
+    margin-bottom: 24px;
   }
 
   .blockDailyGoal {
@@ -278,9 +348,17 @@
 
   .greyBlock {
     box-sizing: border-box;
-    width: 380px;
+    width: 100%;
     height: 240px;
     padding: 24px 40px;
+    margin-bottom: 0px;
+  }
+
+  .greyBlockWater {
+    box-sizing: border-box;
+    width: 100%;
+    height: 240px;
+    padding: 24px 22px;
     margin-bottom: 0px;
   }
 
@@ -298,6 +376,24 @@
     margin-bottom: 20px;
   }
 
+  .chartWater {
+    margin-right: 48px;
+  }
+  .media2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .statsWater {
+    margin-bottom: 0px;
+    margin-right: 40px;
+  }
+
+  .left {
+    margin-bottom: 0px;
+  }
+
   .greyBlockFood {
     width: 100%;
     padding: 36px 40px;
@@ -310,6 +406,7 @@
 
   .icon3 {
     margin-right: 40px;
+    margin-bottom: 0px;
   }
 
   .title3 {
@@ -340,6 +437,7 @@
 
   .diaryBlock {
     width: 518px;
+    margin-bottom: 20px;
   }
 
   .mealTitle {
@@ -353,5 +451,92 @@
 
   .mealStats li:not(:last-child) {
     margin-bottom: 0px;
+  }
+
+  .recommendedBlock {
+    display: flex;
+  }
+}
+
+/* --------MEDIA DESKTOP--------- */
+
+@media (min-width: 1440px) {
+  .mainSection {
+    padding-top: 20px;
+  }
+
+  .title1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .toGoal a {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .titleDiv {
+    margin-bottom: 16px;
+  }
+
+  .blockDailyGoal {
+    width: 328px;
+  }
+
+  .blockWater {
+    width: 444px;
+    margin-right: 20px;
+  }
+
+  .chartWater {
+    margin-right: 40px;
+  }
+
+  .greyBlockWater {
+    padding: 24px 40px;
+  }
+
+  .media2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .statsWater {
+    margin-bottom: 0px;
+    margin-right: 40px;
+  }
+
+  .left {
+    margin-bottom: 0px;
+  }
+
+  .statsWaterConsumption {
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .statsTitle2 {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .blockFood {
+    width: 560px;
+    height: 278px;
+  }
+
+  .diaryBlock {
+    margin-right: 178px;
+  }
+
+  .recommendedBlock {
+    width: 676px;
+  }
+
+  .greyBlock2 {
+    width: 328px;
   }
 }

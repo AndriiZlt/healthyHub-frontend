@@ -4,12 +4,27 @@ import authOperations from './auth-operations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
+  regData: { name: null, email: null, password: null },
+  regDetails: {
+    goal: null,
+    gender: null,
+    age: null,
+    height: null,
+    weight: null,
+    activity: null,
+  },
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setRegData(state, action) {
+      console.log('setting RegData:', action.payload);
+      state.temporaryCredentials = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(authOperations.register.fulfilled, (state, action) => {
@@ -32,3 +47,5 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const { setRegData } = authSlice.actions;
