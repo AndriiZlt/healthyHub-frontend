@@ -1,6 +1,6 @@
 import React from 'react';
 import illustration from '../../assets/RecommendedFood.svg';
-// import css from './RecommendedFood.module.css';
+import css from './RecommendedFood.module.css';
 
 const RecommendedFood = () => {
   const products = [
@@ -324,19 +324,36 @@ const RecommendedFood = () => {
       },
     },
   ];
+  // const [data, setData] = useState([]);
+  //  useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch({products});
+  //     const {results} = await res.ison();
+  //     setData(results);
+  //   };
+  //   fetchData();
+  //  }, [])
+
   return (
     <div>
-      <p>RecommendedFood page</p>
-      <img src={illustration} alt="recommended food illustration"></img>
-      <ul>
+      <h1 className={css.title}>Recommented food</h1>
+      <div className={css.wrapperDesktop}>
+      <img src={illustration} alt="recommended food illustration" className={css.picture}></img>
+      <div className={css.wrapperTablet}>
         {products.map(product => (
-          <li key={product.name}>
-            <img src={product.img} alt="product" />
-            amount={product.amount}
-            calories={product.calories}
-          </li>
+          <div className={css.thumb}>
+            <img src={product.img} alt="product" className={css.icon} width={46} height={46}/>
+            <div>
+            <li className={css.name}> {product.name}</li>
+            <div className={css.description}>
+            <li className={css.amount}> {product.amount}</li>
+            <li className={css.calories}> {product.calories} calories</li>
+            </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+      </div>
     </div>
   );
 };
