@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
@@ -23,17 +23,20 @@ const Header = () => {
           <Logo />
           <div className={css.header_action}>
             {isMobile ? (
-              <Action isMobile={true} child={
-                <>
-                <Action type="Goal" image={loseFat} text="Lose fat" />
-                <Action
-                  type="Weight"
-                  image={waight}
-                  text="65 kg"
-                  editIcon={true}
-                />
-              </>
-              }/>
+              <Action
+                isMobile={true}
+                child={
+                  <>
+                    <Action type="Goal" image={loseFat} text="Lose fat" />
+                    <Action
+                      type="Weight"
+                      image={waight}
+                      text="65 kg"
+                      editIcon={true}
+                    />
+                  </>
+                }
+              />
             ) : (
               <>
                 <Action type="Goal" image={loseFat} text="Lose fat" />

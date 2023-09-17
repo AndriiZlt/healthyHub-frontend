@@ -773,36 +773,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// const jj = {
-//   userId: sdsadsadsad,
-//   date: 1 / 09 / 2023,
-//   water: [100, 100, 50],
-//   weight: 75,
-//   meals: [
-//     {
-//       breakfast: [
-//         { dish: 'fish', carb: 300, protein: 50, fat: 20, calories: 700 },
-//         { dish: 'bread', carb: 100, protein: 50, fat: 20, calories: 300 },
-//       ],
-//     },
-//     {
-//       lunch: [
-//         { dish: 'fish', carb: 300, protein: 50, fat: 20, calories: 700 },
-//         { dish: 'bread', carb: 100, protein: 50, fat: 20, calories: 300 },
-//       ],
-//     },
-//     {
-//       dinner: [
-//         { dish: 'fish', carb: 300, protein: 50, fat: 20, calories: 700 },
-//         { dish: 'bread', carb: 100, protein: 50, fat: 20, calories: 300 },
-//       ],
-//     },
-//     {
-//       lunch: [
-//         { dish: 'fish', carb: 300, protein: 50, fat: 20, calories: 700 },
-//         { dish: 'bread', carb: 100, protein: 50, fat: 20, calories: 300 },
-//       ],
-//     },
-//   ],
-// };
