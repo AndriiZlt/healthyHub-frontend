@@ -23,7 +23,17 @@ const Header = () => {
           <Logo />
           <div className={css.header_action}>
             {isMobile ? (
-              <Action isMobile={true}/>
+              <Action isMobile={true} child={
+                <>
+                <Action type="Goal" image={loseFat} text="Lose fat" />
+                <Action
+                  type="Weight"
+                  image={waight}
+                  text="65 kg"
+                  editIcon={true}
+                />
+              </>
+              }/>
             ) : (
               <>
                 <Action type="Goal" image={loseFat} text="Lose fat" />
@@ -37,7 +47,7 @@ const Header = () => {
             )}
 
             <Action
-              text="Konstantinasdasdasdsadasdasdsad"
+              text="Konstantin"
               userAction={true}
               image="https://i.ibb.co/Qj72cs1/among-us.png"
             />

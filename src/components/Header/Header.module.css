@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   height: 60px;
+  position: relative;
 }
 .header_action{
   display: flex;
@@ -10,9 +11,12 @@
   align-items: center;
   width: 100%;
   margin-left: 8px;
-  @media screen and (min-width: 834px) {
-    gap: 80px;
+  @media screen and (min-width: 834px){
+    gap: 40px;
     width: auto;
+  }
+  @media screen and (min-width: 1440px){
+    gap: 80px;
   }
 }
 a {
