@@ -120,9 +120,9 @@ h3 {
 /* .dairy_add_dish_item_wrapper:nthlast-child(-n+3){
   margin-bottom: 40px;
 } */
-.dairy_add_dish_item_wrapper{
+.dairy_add_dish_item_wrapper {
   display: flex;
-  align-items: center; 
+  align-items: center;
   margin-bottom: 0;
 }
 span {

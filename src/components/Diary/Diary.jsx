@@ -263,9 +263,7 @@ const Diary = () => {
             <div className={css.wrapper_dishes_block}>
               <ul className={css.dairy_dish_list}>
                 <li className={css.dairy_add_dish_item}>
-                  <li>
-                    
-                  </li>
+                  <li></li>
                   <span>1</span>
                   <a href="">
                     <img
