@@ -55,3 +55,5 @@ export const authSlice = createSlice({
 });
 
 export const { setRegData, setDetails } = authSlice.actions;
+
+//VolodymyrZelenskyi@gmail.com

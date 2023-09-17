@@ -1,17 +1,20 @@
 //import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
-// import Action from './Action/Action';
-// import loseFat from '../../assets/Lose_fat.png';
-// import waight from '../../assets/Waight_image.png';
 import useMediaQuery from 'hooks/useMediaQuery';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
 import menu from '../../assets/menu.svg';
+import authSelectors from 'redux/auth/auth-selectors'
+
+
 
 const Header = () => {
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // console.log("qwe",isLoggedIn)
   const isMobile = useMediaQuery('(max-width:833px)');
   const isLoggedIn = true;
 
@@ -72,39 +75,6 @@ const Header = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
             </Dropdown>
-
-            {/* {isMobile ? (
-              <Action
-                isMobile={true}
-                child={
-                  <>
-                    <Action type="Goal" image={loseFat} text="Lose fat" />
-                    <Action
-                      type="Weight"
-                      image={waight}
-                      text="65 kg"
-                      editIcon={true}
-                    />
-                  </>
-                }
-              />
-            ) : (
-              <>
-                <Action type="Goal" image={loseFat} text="Lose fat" />
-                <Action
-                  type="Weight"
-                  image={waight}
-                  text="65 kg"
-                  editIcon={true}
-                />
-              </>
-            )} */}
-
-            {/* <Action
-              text="Konstantin"
-              userAction={true}
-              image="https://i.ibb.co/Qj72cs1/among-us.png"
-            /> */}
           </div>
         </>
       )}
