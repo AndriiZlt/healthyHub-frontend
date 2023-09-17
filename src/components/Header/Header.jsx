@@ -32,7 +32,7 @@ const Header = () => {
                   <Dropdown.Toggle className={css.button}>
                     <img src={menu} alt="menu" />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
                 </Dropdown>
               </>
             ) : (
@@ -45,7 +45,7 @@ const Header = () => {
                       text="Lose fat"
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
                   <Dropdown.Toggle className={css.button}>
@@ -57,7 +57,7 @@ const Header = () => {
                       editIcon={true}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
                 </Dropdown>
               </>
             )}
@@ -70,7 +70,7 @@ const Header = () => {
                   userAction={true}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu>TADAM</Dropdown.Menu>
+              <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
             </Dropdown>
 
             {/* {isMobile ? (
