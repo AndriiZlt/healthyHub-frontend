@@ -29,7 +29,6 @@
 .bodyFormText {
   display: inline-block;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.42;
   margin-bottom: 12px;
@@ -68,6 +67,10 @@
   padding: 8px 10px;
   border-radius: 12px;
   background: var(--primary-green-lite-color);
+}
+
+.bodyButton:disabled {
+  background: var(--primary-grey-color);
 }
 
 .bodyLinkBack {

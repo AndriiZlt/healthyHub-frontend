@@ -20,9 +20,7 @@ const UserBody = () => {
   const formSubmit = e => {
     e.preventDefault();
     console.log(`Height: ${height}, Weight: ${weight}`);
-    if (!height || !weight) {
-      return alert('Error');
-    }
+
     navigate('/useractivity');
   };
 
@@ -60,7 +58,11 @@ const UserBody = () => {
             placeholder="Enter your weight"
           ></input>
 
-          <button className={css.bodyButton} type="submit">
+          <button
+            className={css.bodyButton}
+            type="submit"
+            disabled={!height || !weight}
+          >
             Next
           </button>
         </form>
