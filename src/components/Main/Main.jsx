@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
@@ -15,12 +15,33 @@ import fruit1 from 'assets/fruit1.png';
 import fruit2 from 'assets/fruit2.png';
 import fruit3 from 'assets/fruit3.png';
 import fruit4 from 'assets/fruit4.png';
+import ModalAddMeal from './ModalAddMeal';
 
 const Home = () => {
+  const [modalOn, setModalOn] = useState(false);
   const breakfast = false;
   const lunch = true;
   const dinner = false;
   const snack = false;
+
+  const escHandler = e => {
+    if (e.target.id === 'overlay') {
+      setModalOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+    if (e.code === 'Escape') {
+      setModalOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+  };
+
+  const modalHandler = () => {
+    setModalOn(true);
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
 
   return (
     <div className={css.mainSection}>
@@ -31,6 +52,8 @@ const Home = () => {
           <img src={arrowRight} alt="arrow-right" />
         </div>
       </div>
+
+      {modalOn && <ModalAddMeal />}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -385,6 +408,7 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
