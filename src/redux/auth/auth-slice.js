@@ -6,7 +6,13 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   regData: { name: null, email: null, password: null },
-  regDetails: { goal: null, gender: null, heigh: null, weight: null },
+  regDetails: {
+    goal: null,
+    gender: null,
+    heigh: null,
+    weight: null,
+    activity: null,
+  },
 };
 
 export const authSlice = createSlice({
