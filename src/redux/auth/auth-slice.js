@@ -5,16 +5,27 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  temporaryCredentials: { name: null, email: null, password: null },
+  regData: { name: null, email: null, password: null },
+  details: {
+    goal: null,
+    gender: null,
+    age: null,
+    height: null,
+    weight: null,
+    activity: null,
+  },
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setTemporaryCredentials(state, action) {
-      console.log('setTemporaryCredentials action.payload', action.payload);
-      state.temporaryCredentials = action.payload;
+    setRegData(state, action) {
+      console.log('setting RegData:', action.payload);
+      state.regData = action.payload;
+    },
+    setDetails(state, action) {
+      console.log('setting details:', action.payload);
     },
   },
   extraReducers: builder => {
@@ -40,4 +51,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setTemporaryCredentials } = authSlice.actions;
+export const { setRegData, setDetails } = authSlice.actions;
