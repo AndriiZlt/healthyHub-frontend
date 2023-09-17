@@ -1,38 +1,34 @@
 .bodyContainer {
-  padding: 24px 10px 24px;
-  border: solid white;
-  box-sizing: border-box;
+  padding: 24px 0 24px;
 }
 
 .bodyImg {
   width: 300px;
   height: 302px;
 }
+
+.BodyInfoContainer {
+  margin-top: 24px;
+}
+
 .bodyTitle {
-  color: #fff;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  margin-top: 24px;
   margin-bottom: 16px;
 }
 
 .bodyText {
+  color: var(--primary-grey-color);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
 }
 
-.bodyForm {
-  margin: 0 auto;
-}
-
 .bodyFormText {
   display: inline-block;
-  color: #fff;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.42;
   margin-bottom: 12px;
@@ -40,122 +36,143 @@
 
 .bodyFormInput {
   display: block;
-  color: var(--color-primary-white, #fff);
-  width: 280px;
+  width: 300px;
   padding: 8px 10px 8px;
   border-radius: 12px;
   margin-bottom: 24px;
-  border: 1px solid var(--color-primary-green-lite, #e3ffa8);
-  background: var(--color-primary-black-2, #0f0f0f);
+  border: 1px solid var(--primary-green-lite-color);
+  background: var(--primary-black-second-color);
 }
 
-.bodyFormAgeInput::placeholder {
+.bodyFormInput::placeholder {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
 }
 
+.bodyFormInput::-webkit-outer-spin-button,
+.bodyFormInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .bodyButton {
-  color: var(--color-primary-black-2, #0f0f0f);
+  color: var(--primary-black-second-color);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
   cursor: pointer;
-  width: 280px;
+  width: 300px;
   padding: 8px 10px;
-  margin-bottom: 16px;
   border-radius: 12px;
-  background: var(--color-primary-green-lite, #e3ffa8);
+  background: var(--primary-green-lite-color);
+}
+
+.bodyButton:disabled {
+  background: var(--primary-grey-color);
 }
 
 .bodyLinkBack {
-  color: var(--color-primary-grey, #b6b6b6);
-  display: block;
+  color: var(--primary-grey-color);
+  display: inline-block;
   cursor: pointer;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
+  margin-top: 16px;
 }
 
-@media screen and (min-width: 768px) {
-  .goalContainer {
-    padding: 40px 10px 60px;
+@media screen and (min-width: 834px) {
+  .bodyContainer {
+    padding: 40px 0 60px;
     text-align: center;
   }
 
-  .BodyImg {
+  .bodyImg {
+    display: block;
+    margin: 0 auto;
     width: 380px;
     height: 382px;
   }
 
-  .goalTitle {
-    font-size: 30px;
-    line-height: 1.2;
+  .BodyInfoContainer {
     margin-top: 60px;
   }
 
-  .goalText {
+  .bodyTitle {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .bodyText {
+    width: 380px;
+    margin: 0 auto 16px;
     font-size: 22px;
     line-height: 1.45;
   }
 
-  .goalForm {
-    width: 444px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 24px;
+  .bodyForm {
+    width: 380px;
+    text-align: left;
+    margin: 0 auto;
   }
 
-  .goalFormText {
+  .bodyFormText {
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 1.42;
   }
 
-  .goalButton {
-    color: var(--color-primary-black-2, #0f0f0f);
-    text-align: center;
-    line-height: 1.42;
-    width: 360px;
+  .bodyFormInput {
+    width: 380px;
+  }
+
+  .bodyButton {
+    width: 380px;
+  }
+
+  .bodyLinkBack {
+    margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .goalContainer {
+  .bodyContainer {
     display: flex;
-    justify-content: center;
     column-gap: 104px;
     margin: 0 auto;
-    padding: 40px 10px 60px;
+    padding: 40px 0 60px;
   }
 
-  .genderImg {
+  .bodyImg {
     width: 692px;
     height: 570px;
-  }
-
-  .goalInfoContainer {
-    text-align: left;
-    margin-top: 120px;
-  }
-
-  .goalTitle {
-    margin-top: 0;
-  }
-
-  .goalForm {
-    width: 444px;
-    flex-direction: column;
     margin: 0;
-    row-gap: 16px;
   }
 
-  .goalButton {
-    width: 192px;
-    margin-top: 8px;
+  .bodyInfoContainer {
+    margin-top: 80px;
+  }
+
+  .bodyTitle {
+    text-align: left;
+  }
+  .bodyText {
+    text-align: left;
+  }
+
+  .bodyFormInput {
+    width: 212px;
+  }
+
+  .bodyButton {
+    width: 212px;
+  }
+
+  .bodyLinkBack {
+    width: 212px;
+    text-align: left;
   }
 }
