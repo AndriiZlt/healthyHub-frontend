@@ -8,28 +8,26 @@
     margin-right: auto;
   }
 
-  h1 {
+  .title {
     font-size: 24px;
     margin-top: 16px;
     margin-left: 10px;
     margin-bottom: 16px;
   }
 
-  a {
+  .link {
     margin-bottom: 40px;
     font-size: 14px;
-      color: #FFFFFF;
   }
 
   .download {
-    fill: #E3FFA8;
+    fill: var(--primary-green-lite-color);
   }
   
     .label {
       display: block;
       margin-bottom: 12px;
       font-size: 14px;
-      color: #FFFFFF;
     }
     
     .input {
@@ -39,25 +37,22 @@
       padding-left: 10px;
       padding-right: 10px;
       margin-bottom: 40px;
-      border: 1px solid #B6B6B6;
+      border: 1px solid var(--primary-grey-color);
       border-radius: 12px;
-      background-color: #0F0F0F;
-    }
-
-    input {
-        font-size: 14px;
-        color: #FFFFFF;
+      background-color: var(--primary-black-second-color);
+      font-size: 14px;
     }
 
     .photo {
         margin-bottom: 40px;
     }
 
-    .input_gender {
+    .inputGender {
         margin-bottom: 40px;
+        font-size: 14px;
     }
 
-    .label_gender {
+    .labelGender {
         margin-right: 16px;
     }
 
@@ -68,33 +63,43 @@
     flex-direction: column;
     }
 
-    .label_activity {
+    .labelActivity {
         margin-bottom: 24px;
     }
 
-    button {
+    .buttonSave {
         width: 300px;
+        height: 36px;
         padding-top: 8px;
         padding-bottom: 8px;
         padding-left: 10px;
         padding-right: 10px;
-      color:#B6B6B6;
+        background-color: var(--primary-green-lite-color);
+      color:var(--primary-black-second-color);
       border: none;
       border-radius: 12px;
       cursor: pointer;
       font-size: 14px;
-      background-color: #0F0F0F;
+        margin-top: 16px;
     }
 
-    .button_save {
-        background-color: #E3FFA8;
-        color: #0F0F0F;
-        margin-bottom: 12px;
-        margin-top: 16px;
+    .buttonCancel {
+        width: 300px;
+        height: 36px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: var(--primary-black-color);
+      color:var(--primary-grey-color);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
     }
     @media screen and (max-width: 833px){
 
-    .buttons_tablet{
+    .buttonsTablet{
         display: none;
     }
     }
@@ -103,40 +108,47 @@
         .conteiner {
             width: 834px;
         }
+
         .title {
             display: flex;
             justify-content: space-between;
         }
-        .buttons_tablet {
+
+        .buttonsTablet {
             margin-top: 24px;
             margin-right: 27px;
             margin-bottom: 20px;
         }
-        .button_save {
+        .buttonSave {
             width: 212px;
-            font-size: 14px;
+            height: 36px;
         }
-        .button_cancel{
-            width: 192px;
-            font-size: 14px;
+
+        .buttonCancel{
+            width: 212px;
+            height: 36px;
+            margin-right: 12px;
         }
      
-        .main_image {
+        .mainImage {
             display: block;
             min-height: 374px;
             min-width: 380px;
             margin-left: auto;
             margin-right: auto;
     }
+
    .buttons {
     display: none;
    }
-    h1 {
+
+   .title {
         font-size: 30px;
     margin-top: 24px;
         margin-left: 27px;
         margin-bottom: 20px;
     }
+
     .form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -146,13 +158,14 @@
         margin-left: auto;
         margin-right: auto;
 }
+
 .label {
     display: block;
     width: 212px;
     margin-bottom: 12px;
     font-size: 14px;
-    color: #FFFFFF;
     }
+
     .input {
         width: 212px;
         padding-top: 8px;
@@ -160,10 +173,11 @@
         padding-left: 10px;
         padding-right: 10px;
         margin-bottom: 40px;
-        border: 1px solid #B6B6B6;
+        border: 1px solid var(--primary-grey-color);
         border-radius: 12px;
-        background-color: #0F0F0F;
+        background-color: var(--primary-black-second-color);
       }
+
       .activity {
         display: flex;
      align-items: flex-start;
@@ -178,28 +192,44 @@
         .conteiner {
             width: 1440px;
             }
-         h1 {
+
+            .title {
             font-size: 30px;
             margin-top: 20px;
             margin-left: 34px;
             margin-bottom: 24px;
             }
-            .buttons_tablet {
+
+            .buttonsTablet {
                 margin-top: 20px;
                 margin-right: 32px;
                 margin-bottom: 16px;
             }
-            .main_image {
+
+            .buttonSave {
+                width: 212px;
+                height: 36px;
+            }
+
+            .buttonCancel{
+                width: 212px;
+                height: 36px;
+                margin-right: 12px;
+            }
+
+            .mainImage {
                 display: block;
                 min-height: 528px;
                 min-width: 536px;
                 margin-left: auto;
                 margin-right: auto;
     }
+
             .form {
                 margin-top: 0px;
 
     }
+
             .desktop {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
