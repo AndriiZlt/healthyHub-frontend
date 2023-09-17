@@ -28,6 +28,7 @@ export const authSlice = createSlice({
     },
     setDetails(state, action) {
       console.log('setting details:', action.payload);
+      state.userData = action.payload;
     },
   },
   extraReducers: builder => {

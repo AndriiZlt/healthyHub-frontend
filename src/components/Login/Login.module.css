@@ -1,6 +1,9 @@
+.login {
+    padding-top: 24px;
+}
+
 .image {
     width: 300px;
-    margin-top: 24px;
     margin-bottom: 0;
     display: block;
 }
@@ -72,8 +75,10 @@
 }
 
 @media (min-width: 834px) {
+    .login {
+        padding-top: 40px;
+    }
     .image {
-        margin-top: 40px;
         width: 380px;
         margin-left: auto;
         margin-right: auto;
@@ -140,7 +145,7 @@
     }
 
     .signIn {
-        margin-top: 120px;
+        margin-top: 80px;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;

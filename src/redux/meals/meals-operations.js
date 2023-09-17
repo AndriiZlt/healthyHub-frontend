@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const orderMeals = meals => {};
+// const orderMeals = meals => {};
 
 const fetchMeals = createAsyncThunk('meals/getMeals', async userId => {
   try {
