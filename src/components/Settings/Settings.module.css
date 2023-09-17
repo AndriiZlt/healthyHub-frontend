@@ -126,83 +126,240 @@ button {
     margin-left: auto;
     margin-right: auto;
   }
-  .buttons {
+
+  .title {
+    font-size: 24px;
+    margin-top: 16px;
+    margin-left: 10px;
+    margin-bottom: 16px;
+  }
+
+  .link {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  .download {
+    fill: var(--primary-green-lite-color);
+  }
+  
+    .label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    
+    .input {
+      width: 300px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 40px;
+      border: 1px solid var(--primary-grey-color);
+      border-radius: 12px;
+      background-color: var(--primary-black-second-color);
+      font-size: 14px;
+      color: var(--primary-white-color);
+    }
+
+    .photo {
+        margin-bottom: 40px;
+    }
+
+    .inputGender {
+        margin-bottom: 40px;
+        font-size: 14px;
+    }
+
+    .labelGender {
+        margin-right: 16px;
+    }
+
+
+    .activity {
+        display: flex;
+     align-items: flex-start;
+    flex-direction: column;
+    }
+
+    .labelActivity {
+        margin-bottom: 24px;
+    }
+
+    .buttonSave {
+        width: 300px;
+        height: 36px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: var(--primary-green-lite-color);
+      color:var(--primary-black-second-color);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+        margin-top: 16px;
+    }
+
+    .buttonCancel {
+        width: 300px;
+        height: 36px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: var(--primary-black-color);
+      color:var(--primary-grey-color);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    @media screen and (max-width: 833px){
+
+    .buttonsTablet{
+        display: none;
+    }
+    }
+
+    @media screen and (min-width: 834px) {
+        .conteiner {
+            width: 834px;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .buttonsTablet {
+            margin-top: 24px;
+            margin-right: 27px;
+            margin-bottom: 20px;
+        }
+        .buttonSave {
+            width: 212px;
+            height: 36px;
+        }
+
+        .buttonCancel{
+            width: 212px;
+            height: 36px;
+            margin-right: 12px;
+        }
+     
+        .mainImage {
+            display: block;
+            min-height: 374px;
+            min-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+    }
+
+   .buttons {
     display: none;
-  }
-  h1 {
-    font-size: 30px;
+   }
+
+   .title {
+        font-size: 30px;
     margin-top: 24px;
-    margin-left: 27px;
-    margin-bottom: 20px;
-  }
-  .form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 491px;
-    column-gap: 60px;
-    margin-top: 24px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .label {
+        margin-left: 27px;
+        margin-bottom: 20px;
+    }
+
+    .form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 491px;
+        column-gap: 60px;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.label {
+
     display: block;
     width: 212px;
     margin-bottom: 12px;
     font-size: 14px;
-    color: #ffffff;
-  }
-  .input {
-    width: 212px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 40px;
-    border: 1px solid #b6b6b6;
-    border-radius: 12px;
-    background-color: #0f0f0f;
-  }
-  .activity {
-    display: flex;
-    align-items: flex-start;
+
+    }
+
+    .input {
+        width: 212px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 40px;
+        border: 1px solid var(--primary-grey-color);
+        border-radius: 12px;
+        background-color: var(--primary-black-second-color);
+      }
+
+      .activity {
+        display: flex;
+     align-items: flex-start;
     flex-direction: column;
     width: 491px;
     margin-right: auto;
     margin-left: auto;
-  }
+    }
 }
 
-@media screen and (min-width: 1440px) {
-  .conteiner {
-    width: 1440px;
-  }
-  h1 {
-    font-size: 30px;
-    margin-top: 20px;
-    margin-left: 34px;
-    margin-bottom: 24px;
-  }
-  .buttons_tablet {
-    margin-top: 20px;
-    margin-right: 32px;
-    margin-bottom: 16px;
-  }
-  .main_image {
-    display: block;
-    min-height: 528px;
-    min-width: 536px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .form {
-    margin-top: 0px;
-  }
-  .desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 1187px;
-    column-gap: 160px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+    @media screen and (min-width: 1440px)  {
+        .conteiner {
+            width: 1440px;
+            }
+
+            .title {
+            font-size: 30px;
+            margin-top: 20px;
+            margin-left: 34px;
+            margin-bottom: 24px;
+            }
+
+            .buttonsTablet {
+                margin-top: 20px;
+                margin-right: 32px;
+                margin-bottom: 16px;
+            }
+
+            .buttonSave {
+                width: 212px;
+                height: 36px;
+            }
+
+            .buttonCancel{
+                width: 212px;
+                height: 36px;
+                margin-right: 12px;
+            }
+
+            .mainImage {
+                display: block;
+                min-height: 528px;
+                min-width: 536px;
+                margin-left: auto;
+                margin-right: auto;
+    }
+
+            .form {
+                margin-top: 0px;
+
+    }
+
+            .desktop {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 1187px;
+                column-gap: 160px;
+                margin-left: auto;
+                margin-right: auto;
+    }
+    }
+    
+
