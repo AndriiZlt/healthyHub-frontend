@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
@@ -6,6 +6,8 @@ import Action from './Action/Action';
 import loseFat from '../../assets/Lose_fat.png';
 import waight from '../../assets/Waight_image.png';
 import useMediaQuery from 'hooks/useMediaQuery';
+
+
 
 const Header = () => {
   const isMobile = useMediaQuery('(max-width:833px)');
