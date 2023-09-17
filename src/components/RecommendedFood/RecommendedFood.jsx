@@ -324,6 +324,16 @@ const RecommendedFood = () => {
       },
     },
   ];
+  // const [data, setData] = useState([]);
+  //  useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch({products});
+  //     const {results} = await res.ison();
+  //     setData(results);
+  //   };
+  //   fetchData();
+  //  }, [])
+
   return (
     <div>
       <h1 className={css.title}>Recommented food</h1>
