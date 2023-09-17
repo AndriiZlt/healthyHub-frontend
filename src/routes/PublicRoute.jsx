@@ -3,8 +3,9 @@
 // import { useSelector } from 'react-redux';
 
 function PublicRoute({ children, restricted = false, ...routeProps }) {
+  // const isLoggedIn = true;
   //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  //   return !isLoggedIn ? children : <Navigate to="/main" />;
+  // return !isLoggedIn ? children : <Navigate to="/main" />;
   return <div>{children}</div>;
 }
 

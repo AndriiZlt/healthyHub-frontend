@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
@@ -11,12 +11,37 @@ import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
 import dinnerIcon from 'assets/dinner.svg';
 import snackIcon from 'assets/snack.svg';
+import fruit1 from 'assets/fruit1.png';
+import fruit2 from 'assets/fruit2.png';
+import fruit3 from 'assets/fruit3.png';
+import fruit4 from 'assets/fruit4.png';
+import ModalAddMeal from './ModalAddMeal';
 
 const Home = () => {
+  const [modalOn, setModalOn] = useState(false);
   const breakfast = false;
   const lunch = true;
   const dinner = false;
   const snack = false;
+
+  const escHandler = e => {
+    if (e.target.id === 'overlay') {
+      setModalOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+    if (e.code === 'Escape') {
+      setModalOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+  };
+
+  const modalHandler = () => {
+    setModalOn(true);
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
 
   return (
     <div className={css.mainSection}>
@@ -27,6 +52,8 @@ const Home = () => {
           <img src={arrowRight} alt="arrow-right" />
         </div>
       </div>
+
+      {modalOn && <ModalAddMeal />}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -64,54 +91,58 @@ const Home = () => {
         {/* Water block */}
         <div className={css.blockWater}>
           <h2 className={css.title2}>Water</h2>
-          <div className={css.greyBlock}>
+          <div className={css.greyBlockWater}>
             <div className={css.water}>
-              <img className={css.icon2} src={waterChart} alt="bubble" />
+              <div className={css.chartWater}>
+                <img
+                  style={{ width: '100%', height: '100%' }}
+                  src={waterChart}
+                  alt="bubble"
+                />
+              </div>
+
               <div className={css.stats}>
                 <p className={css.statsTitle2}>Water consumption</p>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: 8,
-                  }}
-                >
-                  <p className={css.statsWaterConsumption}>1050</p>
-                  <p
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 400,
-                    }}
-                  >
-                    ml
+                <div className={css.media2}>
+                  <div className={css.statsWater}>
+                    <p className={css.statsWaterConsumption}>1050</p>
+                    <p
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 400,
+                        color: '#B6B6B6 ',
+                      }}
+                    >
+                      ml
+                    </p>
+                  </div>
+                  <p className={css.left}>
+                    left:
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 500,
+                        color: '#B6B6B6',
+                        marginRight: 4,
+                        marginLeft: 4,
+                      }}
+                    >
+                      450
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 500,
+                        color: '#B6B6B6',
+                      }}
+                    >
+                      ml
+                    </span>
                   </p>
                 </div>
-                <p className={css.left}>
-                  left:
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginRight: 4,
-                      marginLeft: 4,
-                    }}
-                  >
-                    450
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                    }}
-                  >
-                    ml
-                  </span>
-                </p>
                 <img src={addWaterIntake} alt="add-water-intake" />
               </div>
             </div>
@@ -119,7 +150,7 @@ const Home = () => {
         </div>
 
         {/* Food Chart */}
-        <div className={css.block}>
+        <div className={css.blockFood}>
           <h2 className={css.title2}>Food</h2>
           <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
@@ -377,6 +408,7 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
@@ -606,6 +638,133 @@ const Home = () => {
                 )}
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Recommended food block */}
+        <div className={css.recommendedBlock}>
+          <div className={css.titleDiv2}>
+            <h2 className={css.title3}>Recommended food</h2>
+          </div>
+          <div className={css.greyBlock2}>
+            <img src={fruit1} alt="fruit" />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+              }}
+            >
+              <p className={css.statsTitle3}>Avocado</p>
+              <div style={{ display: 'flex' }}>
+                <p className={css.fruitStats}>
+                  100 g
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      fontWeight: 500,
+                      color: '#B6B6B6',
+                      marginLeft: 6,
+                    }}
+                  >
+                    200 calories
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={css.greyBlock2}>
+            <img src={fruit2} alt="fruit" />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+              }}
+            >
+              <p className={css.statsTitle3}>Beans</p>
+              <div style={{ display: 'flex' }}>
+                <p className={css.fruitStats}>
+                  100 g
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      fontWeight: 500,
+                      color: '#B6B6B6',
+                      marginLeft: 6,
+                    }}
+                  >
+                    200 calories
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={css.greyBlock2}>
+            <img src={fruit3} alt="fruit" />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+              }}
+            >
+              <p className={css.statsTitle3}>Nuts</p>
+              <div style={{ display: 'flex' }}>
+                <p className={css.fruitStats}>
+                  100 g
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      fontWeight: 500,
+                      color: '#B6B6B6',
+                      marginLeft: 6,
+                    }}
+                  >
+                    200 calories
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={css.greyBlock2}>
+            <img src={fruit4} alt="fruit" />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+              }}
+            >
+              <p className={css.statsTitle3}>Broccoli</p>
+              <div style={{ display: 'flex' }}>
+                <p className={css.fruitStats}>
+                  100 g
+                  <span
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: '20px',
+                      fontWeight: 500,
+                      color: '#B6B6B6',
+                      marginLeft: 6,
+                    }}
+                  >
+                    200 calories
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className={css.seeMore2}>
+            <a href="d">See more</a>
+            <img src={arrowRight} alt="arrow-right" />
           </div>
         </div>
       </div>

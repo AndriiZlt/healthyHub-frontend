@@ -16,6 +16,8 @@ import UserGoal from 'components/UserData/UserGoal';
 import UserGender from 'components/UserData/UserGender';
 import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
+import { Navigate } from 'react-router-dom';
+import Test from 'components/TestComponent/Test';
 
 function App() {
   return (
@@ -140,6 +142,8 @@ function App() {
           }
         />
       </Route>
+      <Route exact path="/*" element={<Navigate to="/" />} />
+      <Route exact path="/test" element={<Test />} />
     </Routes>
   );
 }

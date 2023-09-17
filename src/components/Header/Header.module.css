@@ -3,22 +3,22 @@
   align-items: center;
   justify-content: space-between;
   height: 60px;
+  position: relative;
 }
-
-.auth {
+.header_action{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
-  width: 200px;
-  height: 26px;
+  width: 100%;
+  margin-left: 8px;
+  @media screen and (min-width: 834px){
+    gap: 40px;
+    width: auto;
+  }
+  @media screen and (min-width: 1440px){
+    gap: 80px;
+  }
 }
-
-.sign {
-  display: flex;
-  align-items: center;
-  margin-right: 6px;
-}
-
 a {
   color: white;
   outline: none;
@@ -30,9 +30,4 @@ a {
 }
 p {
   margin: 0;
-}
-
-.profile {
-  width: 26px;
-  height: 26px;
 }

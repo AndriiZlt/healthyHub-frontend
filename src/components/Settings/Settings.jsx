@@ -1,6 +1,6 @@
 import React from 'react';
 import illustration from '../../assets/SettingsIllustration.svg';
-import download from '../../assets/direct-inbox.svg'
+import download from '../../assets/direct-inbox.svg';
 import css from './Settings.module.css';
 
 const Settings = () => {
@@ -118,7 +118,9 @@ const Settings = () => {
       <button className={css.buttonCancel} type="submit">Cancel</button>
       </div>
       </div>
+
       </div>
+    </div>
   );
-  }
+};
 export default Settings;
