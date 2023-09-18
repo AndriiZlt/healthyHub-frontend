@@ -38,6 +38,14 @@
     margin-bottom: 16px;
 }
 
+.notValid {
+    color: #E74A3B;
+}
+
+.valid {
+    color: #3CBC81;
+}
+
 .btn {
     width: 300px;
     height: 36px;

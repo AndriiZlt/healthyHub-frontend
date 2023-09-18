@@ -12,7 +12,7 @@ export const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
+const register = createAsyncThunk('auth/check-email', async credentials => {
   try {
     const { data } = await axios.post('/user/register', credentials);
     token.set(data.token);
@@ -72,11 +72,21 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+const checkEmail = createAsyncThunk('auth/register', async credentials => {
+  try {
+    const response = await axios.post('/user/check-email', credentials);
+    return response;
+  } catch (error) {
+    console.log('Error in register', error.message);
+  }
+});
+
 const authOperations = {
   register,
   logIn,
   logOut,
   fetchCurrentUser,
+  checkEmail,
 };
 
 export default authOperations;
