@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
+import { useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const data = [
   {
@@ -32,6 +34,9 @@ const data = [
 console.log(ChartJS);
 
 const Test = () => {
+  const IsLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  console.log('is logged in', IsLoggedIn);
+
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
