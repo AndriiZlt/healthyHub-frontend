@@ -23,7 +23,6 @@ function ButtonDropDown({ image, title, text, editIcon, userAction, subtext }) {
                 {text}
                 <span className={css.subtext}>{subtext}</span>
               </span>
-
               <img src={editIcon ? edit : arrowDown} alt="arrowDown" />
             </p>
           </div>
