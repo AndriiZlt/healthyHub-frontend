@@ -6,7 +6,7 @@ const ModalAddMeal = () => {
     <div className={css.overlay} id="overlay">
       <div className={css.modal}>
         <div className={css.divPadding}>
-          <h2 className={css.sizeH2}>Add water intake</h2>
+          <h2 className={css.sizeH2}>Add Meal</h2>
           <div className={css.divForm}>
             <h3 className={css.sizeH3}>How much water</h3>
           </div>

@@ -104,11 +104,11 @@ const Home = () => {
                 <img
                   style={{ width: '100%', height: '100%' }}
                   src={waterChart}
-                  alt="bubble"
+                  alt="water-chart"
                 />
               </div>
 
-              <div className={css.stats}>
+              <div className={css.stats2}>
                 <p className={css.statsTitle2}>Water consumption</p>
                 <div className={css.media2}>
                   <div className={css.statsWater}>
