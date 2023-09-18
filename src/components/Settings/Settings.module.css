@@ -8,28 +8,26 @@
   margin-right: auto;
 }
 
-h1 {
+.title {
   font-size: 24px;
   margin-top: 16px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-bottom: 16px;
 }
 
-.photo a {
-  margin-bottom: 40px;
+.link {
   font-size: 14px;
-  color: #ffffff;
 }
 
 .download {
-  fill: #e3ffa8;
+  fill: var(--primary-green-lite-color);
+  margin-right: 6px;
 }
 
 .label {
-  display: block;
+  display: block; 
   margin-bottom: 12px;
   font-size: 14px;
-  color: #ffffff;
 }
 
 .input {
@@ -39,26 +37,26 @@ h1 {
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 40px;
-  border: 1px solid #b6b6b6;
+  border: 1px solid var(--primary-grey-color);
   border-radius: 12px;
-  background-color: #0f0f0f;
-}
-
-input {
+  background-color: var(--primary-black-second-color);
   font-size: 14px;
-  color: #ffffff;
+  color: var(--primary-white-color);
 }
 
 .photo {
-  margin-bottom: 40px;
+   display: flex; 
+   margin-bottom: 40px; 
 }
 
-.input_gender {
+.inputGender {
   margin-bottom: 40px;
+  font-size: 14px;
 }
 
-.label_gender {
+.labelGender {
   margin-right: 16px;
+  font-size: 14px;
 }
 
 .activity {
@@ -67,157 +65,40 @@ input {
   flex-direction: column;
 }
 
-.label_activity {
+.labelActivity {
   margin-bottom: 24px;
 }
 
-button {
+.buttonSave {
   width: 300px;
+  height: 36px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #b6b6b6;
+  background-color: var(--primary-green-lite-color);
+  color: var(--primary-black-second-color);
   border: none;
   border-radius: 12px;
   cursor: pointer;
   font-size: 14px;
-  background-color: #0f0f0f;
-}
-
-.button_save {
-  background-color: #e3ffa8;
-  color: #0f0f0f;
-  margin-bottom: 12px;
   margin-top: 16px;
 }
-@media screen and (max-width: 833px) {
-  .buttons_tablet {
-    display: none;
-  }
+
+.buttonCancel {
+  width: 300px;
+  height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: var(--primary-black-color);
+  color: var(--primary-grey-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
 }
-
-@media screen and (min-width: 834px) {
-  .conteiner {
-    width: 834px;
-  }
-  .title {
-    display: flex;
-    justify-content: space-between;
-  }
-  .buttons_tablet {
-    margin-top: 24px;
-    margin-right: 27px;
-    margin-bottom: 20px;
-  }
-  .button_save {
-    width: 212px;
-    font-size: 14px;
-  }
-  .button_cancel {
-    width: 192px;
-    font-size: 14px;
-  }
-
-  .main_image {
-    display: block;
-    min-height: 374px;
-    min-width: 380px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .title {
-    font-size: 24px;
-    margin-top: 16px;
-    margin-left: 10px;
-    margin-bottom: 16px;
-  }
-
-  .link {
-    margin-bottom: 40px;
-    font-size: 14px;
-  }
-
-  .download {
-    fill: var(--primary-green-lite-color);
-  }
-
-  .label {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 14px;
-  }
-
-  .input {
-    width: 300px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 40px;
-    border: 1px solid var(--primary-grey-color);
-    border-radius: 12px;
-    background-color: var(--primary-black-second-color);
-    font-size: 14px;
-    color: var(--primary-white-color);
-  }
-
-  .photo {
-    margin-bottom: 40px;
-  }
-
-  .inputGender {
-    margin-bottom: 40px;
-    font-size: 14px;
-  }
-
-  .labelGender {
-    margin-right: 16px;
-  }
-
-  .activity {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .labelActivity {
-    margin-bottom: 24px;
-  }
-
-  .buttonSave {
-    width: 300px;
-    height: 36px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: var(--primary-green-lite-color);
-    color: var(--primary-black-second-color);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 16px;
-  }
-
-  .buttonCancel {
-    width: 300px;
-    height: 36px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: var(--primary-black-color);
-    color: var(--primary-grey-color);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-}
-
 @media screen and (max-width: 833px) {
   .buttonsTablet {
     display: none;
@@ -228,22 +109,22 @@ button {
   .conteiner {
     width: 834px;
   }
-
-  .title {
+  .wrapper{
     display: flex;
     justify-content: space-between;
   }
-
+  .buttons {
+    display: none;
+  }
   .buttonsTablet {
     margin-top: 24px;
-    margin-right: 27px;
+    margin-right: 27px; 
     margin-bottom: 20px;
   }
   .buttonSave {
     width: 212px;
     height: 36px;
   }
-
   .buttonCancel {
     width: 212px;
     height: 36px;
@@ -258,14 +139,10 @@ button {
     margin-right: auto;
   }
 
-  .buttons {
-    display: none;
-  }
-
   .title {
     font-size: 30px;
     margin-top: 24px;
-    margin-left: 27px;
+    /* margin-left: 27px; */
     margin-bottom: 20px;
   }
 
@@ -306,7 +183,7 @@ button {
     margin-right: auto;
     margin-left: auto;
   }
-}
+  }
 
 @media screen and (min-width: 1440px) {
   .conteiner {
@@ -316,13 +193,13 @@ button {
   .title {
     font-size: 30px;
     margin-top: 20px;
-    margin-left: 34px;
+    /* margin-left: 34px; */
     margin-bottom: 24px;
   }
 
   .buttonsTablet {
     margin-top: 20px;
-    margin-right: 32px;
+    margin-right: 32px; 
     margin-bottom: 16px;
   }
 
