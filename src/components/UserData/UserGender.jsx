@@ -2,35 +2,33 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userGender.svg';
 import css from './UserGender.module.css';
+import { useDispatch } from 'react-redux';
+import { setRegData } from 'redux/auth/auth-slice';
 
 const UserGender = () => {
-  const [gender, setGender] = useState({ gender: 'male' });
+  const [gender, setGender] = useState('Male');
   const [age, setAge] = useState('');
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChangeGender = evt => {
-    const { name, value } = evt.target;
-
-    setGender({ [name]: value });
-    // setValue(value);
+    setGender(evt.target.value);
   };
 
   const handleChangeAge = evt => {
-    const { value } = evt.target;
-    setAge(value);
+    setAge(evt.target.value);
   };
 
   const formSubmit = e => {
     e.preventDefault();
     navigate('/userbody');
-    console.log(gender);
-    console.log(age);
+    dispatch(setRegData({ gender, age }));
   };
 
   const Gender = {
-    MALE: 'male',
-    FEMALE: 'female',
+    MALE: 'Male',
+    FEMALE: 'Female',
   };
 
   return (

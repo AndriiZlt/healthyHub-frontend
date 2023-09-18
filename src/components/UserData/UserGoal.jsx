@@ -2,29 +2,28 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Image from '../../assets/userGoal.svg';
 import css from './UserGoal.module.css';
+import { useDispatch } from 'react-redux';
+import { setRegData } from 'redux/auth/auth-slice';
 
 const UserGoal = () => {
-  const [value, setValue] = useState({ goal: 'first' });
-
+  const [goal, setGoal] = useState('Lose Fat');
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleChange = evt => {
-    const { name, value } = evt.target;
-
-    setValue({ [name]: value });
-    // setValue(value);
+  const handleChange = e => {
+    setGoal(e.target.value);
   };
 
   const formSubmit = e => {
     e.preventDefault();
+    dispatch(setRegData({ goal }));
     navigate('/usergender');
-    console.log(value);
   };
 
   const Goal = {
-    FIRST: 'first',
-    SECOND: 'second',
-    THIRD: 'third',
+    FIRST: 'Lose Fat',
+    SECOND: 'Maintain',
+    THIRD: 'Gain Muscle',
   };
 
   return (

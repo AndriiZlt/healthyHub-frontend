@@ -1,41 +1,64 @@
-import React from 'react';
-import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setDetails } from 'redux/auth/auth-slice';
-import css from './Test.module.css';
+// import React, { useState } from 'react';
+// import { Line } from 'react-chartjs-2';
+// import { Chart as ChartJS } from 'chart.js/auto';
+// import { useSelector } from 'react-redux';
+// import authSelectors from 'redux/auth/auth-selectors';
+
+// const data = [
+//   {
+//     id: 1,
+//     year: 2016,
+//     userGain: 80000,
+//     userLost: 823,
+//   },
+//   {
+//     id: 2,
+//     year: 2017,
+//     userGain: 50000,
+//     userLost: 900,
+//   },
+//   {
+//     id: 3,
+//     year: 2018,
+//     userGain: 4000,
+//     userLost: 900,
+//   },
+//   {
+//     id: 4,
+//     year: 2019,
+//     userGain: 30000,
+//     userLost: 823,
+//   },
+// ];
+
+// console.log(ChartJS);
 
 const Test = () => {
-  const [age, setAge] = useState('');
-  //   const [password, setPassword] = useState('');
-  //   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const IsLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // console.log('is logged in', IsLoggedIn);
 
-  const submitHandler = () => {
-    dispatch(setDetails({ age }));
-  };
-
+  // const [chartData] = useState({
+  //   labels: data.map(item => item.year),
+  //   datasets: [
+  //     {
+  //       label: 'users gained',
+  //       data: data.map(item => item.userGain),
+  //       backgroundColor: [
+  //         'rgb(255, 99, 132)',
+  //         'rgb(54, 162, 235)',
+  //         'rgb(255, 205, 86)',
+  //       ],
+  //       borderColor: 'black',
+  //       borderWidth: 1,
+  //       hoverOffset: 1,
+  //       tension: 0.5,
+  //     },
+  //   ],
+  // });
   return (
-    <div>
-      <div>
-        <form className={css.form} onSubmit={submitHandler}>
-          <input
-            value={age}
-            placeholder="age"
-            onChange={e => setAge(e.target.value)}
-            className={css.input}
-          ></input>
-          {/* <input
-            value={password}
-            placeholder="Password"
-            onChange={handlePasswordChange}
-            className={css.input}
-          ></input> */}
-          <button type="submit" className={css.btn} onSubmit={submitHandler}>
-            Send
-          </button>
-        </form>
-      </div>
+    <div style={{ width: 700, backgroundColor: 'white' }}>
+      {/* <Line data={chartData} />
+      <Pie data={chartData} /> */}
     </div>
   );
 };

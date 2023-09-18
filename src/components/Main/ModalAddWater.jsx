@@ -1,12 +1,12 @@
 import React from 'react';
 import css from './modals.module.css';
 
-const ModalAddMeal = () => {
+const ModalAddWater = () => {
   return (
     <div className={css.overlay} id="overlay">
       <div className={css.modal}>
         <div className={css.divPadding}>
-          <h2 className={css.sizeH2}>Add Meal</h2>
+          <h2 className={css.sizeH2}>Add water intake</h2>
           <div className={css.divForm}>
             <h3 className={css.sizeH3}>How much water</h3>
           </div>
@@ -38,4 +38,4 @@ const ModalAddMeal = () => {
   );
 };
 
-export default ModalAddMeal;
+export default ModalAddWater;

@@ -1,31 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userActivity.svg';
 import css from './UserActivity.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRegData } from 'redux/auth/auth-slice';
+import authOperations from 'redux/auth/auth-operations';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const UserActivity = () => {
-  const [value, setValue] = useState({ activity: 'first' });
-
   const navigate = useNavigate();
+  const [activity, setActivity] = useState('1.2');
+  const [submited, setSubmited] = useState(false);
+  const credentials = useSelector(authSelectors.getRegData);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (submited) {
+      dispatch(authOperations.register(credentials));
+      setSubmited(false);
+      navigate('/main');
+    }
+  }, [credentials, dispatch, navigate, submited]);
 
   const handleChange = e => {
-    const { name, value } = e.target;
-    setValue({ [name]: value });
-    // setValue(value);
+    setActivity(e.target.value);
   };
 
-  const formSubmit = e => {
+  const formSubmit = async e => {
     e.preventDefault();
-    console.log(value);
-    navigate('/main');
+    dispatch(setRegData({ activity }));
+    setSubmited(true);
   };
 
   const Activity = {
-    FIRST: 'first',
-    SECOND: 'second',
-    THIRD: 'third',
-    FOURTH: 'fourth',
-    FIFTH: 'fifth',
+    FIRST: 1.2,
+    SECOND: 1.375,
+    THIRD: 1.55,
+    FOURTH: 1.725,
+    FIFTH: 1.9,
   };
 
   return (
