@@ -7,19 +7,19 @@ const Settings = () => {
   return (
     <div className={css.conteiner}>
       <div className={css.title}>
-        <h1>Profile setting</h1>
-        <div className={css.buttons_tablet}>
-          <button className={css.button_cancel} type="submit">
+        <h1 className={css.title}>Profile setting</h1>
+        <div className={css.buttonsTablet}>
+          <button className={css.buttonCancel} type="submit">
             Cancel
           </button>
-          <button className={css.button_save} type="submit">
+          <button className={css.buttonSave} type="submit">
             Save
           </button>
         </div>
       </div>
       <div className={css.desktop}>
         <img
-          className={css.main_image}
+          className={css.mainImage}
           src={illustration}
           alt="settings illustration"
         ></img>
@@ -49,7 +49,9 @@ const Settings = () => {
                   src={download}
                   alt="download illustration"
                 ></img>
-                <a href=" ">Download new photo</a>
+                <a href=" " className={css.link}>
+                  Download new photo
+                </a>
               </div>
             </div>
             <div>
@@ -68,12 +70,12 @@ const Settings = () => {
               <label htmlFor="gender" className={css.label}>
                 Gender
               </label>
-              <label className={css.label_gender}>
+              <label className={css.labelGender}>
                 <input
                   type="radio"
                   name="gender"
                   variant="male"
-                  className={css.input_gender}
+                  className={css.inputGender}
                 />
                 Male
               </label>
@@ -82,7 +84,7 @@ const Settings = () => {
                   type="radio"
                   name="gender"
                   variant="female"
-                  className={css.input_gender}
+                  className={css.inputGender}
                 />
                 Female
               </label>
@@ -114,23 +116,23 @@ const Settings = () => {
             <label htmlFor="activity" className={css.label}>
               Your activity
             </label>
-            <label className={css.label_activity}>
+            <label className={css.labelActivity}>
               <input type="radio" name="activity" value="1.2" />
               1.2 - if you do not have physical activity and sedentary work
             </label>
-            <label className={css.label_activity}>
+            <label className={css.labelActivity}>
               <input type="radio" name="activity" value="1.375" />
               1.375 - if you do short runs or light gymnastics 1-3 times a week
             </label>
-            <label className={css.label_activity}>
+            <label className={css.labelActivity}>
               <input type="radio" name="activity" value="1.55" />
               1.55 - if you play sports with average loads 3-5 times a week
             </label>
-            <label className={css.label_activity}>
+            <label className={css.labelActivity}>
               <input type="radio" name="activity" value="1.725" />
               1.725 ​​- if you train fully 6-7 times a week
             </label>
-            <label className={css.label_activity}>
+            <label className={css.labelActivity}>
               <input type="radio" name="activity" value="1.9" />
               1.9 - if your work is related to physical labor, you train 2 times
               a day and include strength exercises in your training program
@@ -138,10 +140,10 @@ const Settings = () => {
           </div>
         </div>
         <div className={css.buttons}>
-          <button className={css.button_save} type="submit">
+          <button className={css.buttonSave} type="submit">
             Save
           </button>
-          <button className={css.button_cancel} type="submit">
+          <button className={css.buttonCancel} type="submit">
             Cancel
           </button>
         </div>
