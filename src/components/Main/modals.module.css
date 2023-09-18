@@ -65,14 +65,17 @@
   font-weight: bold;
 } */
 
-input[type='text'],
+.formGroup input[type='text'],
 input[type='number'] {
-  padding: 5px;
+  padding: 8px 10px;
   border: 1px solid #e3ffa8;
   border-radius: 12px;
   background-color: #0f0f0f;
   width: 212px;
   height: 36px;
+  color: #b6b6b6;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .formGroup button {
