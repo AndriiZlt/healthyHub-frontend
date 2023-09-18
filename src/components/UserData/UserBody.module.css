@@ -42,6 +42,7 @@
   margin-bottom: 24px;
   border: 1px solid var(--primary-green-lite-color);
   background: var(--primary-black-second-color);
+  color: white;
 }
 
 .bodyFormInput::placeholder {

@@ -12,24 +12,22 @@ const data = [
   {
     id: 2,
     year: 2017,
-    userGain: 60000,
-    userLost: 700,
+    userGain: 50000,
+    userLost: 900,
   },
   {
     id: 3,
     year: 2018,
-    userGain: 5000,
+    userGain: 4000,
     userLost: 900,
   },
   {
     id: 4,
     year: 2019,
-    userGain: 90000,
+    userGain: 30000,
     userLost: 823,
   },
 ];
-
-console.log(ChartJS);
 
 const Test = () => {
   const [chartData] = useState({
