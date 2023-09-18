@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userBody.svg';
 import css from './UserBody.module.css';
+import { useDispatch } from 'react-redux';
+import { setRegData } from 'redux/auth/auth-slice';
 
 const UserBody = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChangeHeight = evt => {
     setHeight(evt.target.value);
@@ -19,7 +22,7 @@ const UserBody = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    console.log(`Height: ${height}, Weight: ${weight}`);
+    dispatch(setRegData({ height, weight }));
 
     navigate('/useractivity');
   };

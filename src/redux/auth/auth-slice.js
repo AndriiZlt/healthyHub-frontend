@@ -2,10 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    name: null,
+    email: null,
+    goal: null,
+    gender: null,
+    age: null,
+    height: null,
+    weight: null,
+    activity: null,
+  },
   token: null,
   isLoggedIn: false,
-  userData: {
+  regData: {
     name: null,
     email: null,
     password: null,
@@ -23,12 +32,9 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setRegData(state, action) {
-      console.log('setting RegData:', action.payload);
-      state.regData = action.payload;
-    },
-    setDetails(state, action) {
-      console.log('setting details:', action.payload);
-      state.userData = action.payload;
+      for (const item in action.payload) {
+        state.regData[item] = action.payload[item];
+      }
     },
   },
   extraReducers: builder => {
@@ -37,6 +43,7 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -54,6 +61,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setRegData, setDetails } = authSlice.actions;
+export const { setRegData, setUserData } = authSlice.actions;
 
-//VolodymyrZelenskyi@gmail.com
