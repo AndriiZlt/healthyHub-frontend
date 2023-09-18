@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './modals.module.css';
 
 const AddWaterIntakeModal = () => {
+  const [water, setWater] = useState('');
   return (
     <div className={css.divPadding}>
       <h2 className={css.sizeH2}>Add water intake</h2>
@@ -12,6 +13,7 @@ const AddWaterIntakeModal = () => {
       <form id="meal-form">
         <div className={css.formGroup}>
           <input
+            value={water}
             type="number"
             id="carbohydrates"
             name="carbohydrates"
