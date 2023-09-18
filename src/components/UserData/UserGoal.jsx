@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 
 const UserGoal = () => {
-  const [goal, setGoal] = useState('Lose fat');
+  const [goal, setGoal] = useState('Lose Fat');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,9 +21,9 @@ const UserGoal = () => {
   };
 
   const Goal = {
-    FIRST: 'first',
-    SECOND: 'second',
-    THIRD: 'third',
+    FIRST: 'Lose Fat',
+    SECOND: 'Maintain',
+    THIRD: 'Gain Muscle',
   };
 
   return (
