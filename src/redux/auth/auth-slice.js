@@ -62,3 +62,4 @@ export const authSlice = createSlice({
 });
 
 export const { setRegData, setUserData } = authSlice.actions;
+

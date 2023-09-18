@@ -31,3 +31,24 @@ a {
 p {
   margin: 0;
 }
+.button {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 16px;
+  height: 48px;
+  width: auto;
+  padding: 0;
+}
+.button:hover{
+  background-color: transparent;
+  
+}
+.button::after {
+  display: none;
+}
+.modal {
+  border-radius: 12px;
+  background-color: #0F0F0F;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+  padding: 16px;
+}

@@ -6,7 +6,7 @@ import css from './Settings.module.css';
 const Settings = () => {
   return (
     <div className={css.conteiner}>
-      <div className={css.title}>
+      <div className={css.wrapper}>
         <h1 className={css.title}>Profile setting</h1>
         <div className={css.buttonsTablet}>
           <button className={css.buttonCancel} type="submit">
