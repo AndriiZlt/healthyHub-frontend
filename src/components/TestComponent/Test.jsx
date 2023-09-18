@@ -4,32 +4,32 @@
 // import { useSelector } from 'react-redux';
 // import authSelectors from 'redux/auth/auth-selectors';
 
-const data = [
-  {
-    id: 1,
-    year: 2016,
-    userGain: 80000,
-    userLost: 823,
-  },
-  {
-    id: 2,
-    year: 2017,
-    userGain: 50000,
-    userLost: 900,
-  },
-  {
-    id: 3,
-    year: 2018,
-    userGain: 4000,
-    userLost: 900,
-  },
-  {
-    id: 4,
-    year: 2019,
-    userGain: 30000,
-    userLost: 823,
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     year: 2016,
+//     userGain: 80000,
+//     userLost: 823,
+//   },
+//   {
+//     id: 2,
+//     year: 2017,
+//     userGain: 50000,
+//     userLost: 900,
+//   },
+//   {
+//     id: 3,
+//     year: 2018,
+//     userGain: 4000,
+//     userLost: 900,
+//   },
+//   {
+//     id: 4,
+//     year: 2019,
+//     userGain: 30000,
+//     userLost: 823,
+//   },
+// ];
 
 // console.log(ChartJS);
 
