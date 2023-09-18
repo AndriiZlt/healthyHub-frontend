@@ -13,7 +13,7 @@ const Diary = () => {
   return (
     <section className={css.section}>
       <div className={css.dairy_title}>
-        <a href="">
+        <a href="a">
           <img
             src={arrow_rigth}
             alt="arrow-rigth"
@@ -265,7 +265,7 @@ const Diary = () => {
                 <li className={css.dairy_add_dish_item}>
                   <li></li>
                   <span>1</span>
-                  <a href="">
+                  <a href="a">
                     <img
                       src={plus}
                       alt="plus"
@@ -322,7 +322,7 @@ const Diary = () => {
             <ul className={css.dairy_dish_list}>
               <li className={css.dairy_add_dish_item}>
                 <span>1</span>
-                <a href="">
+                <a href="a">
                   <img
                     src={plus}
                     alt="plus"

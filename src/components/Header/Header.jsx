@@ -1,5 +1,5 @@
 //import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
@@ -8,9 +8,7 @@ import useMediaQuery from 'hooks/useMediaQuery';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
 import menu from '../../assets/menu.svg';
-import authSelectors from 'redux/auth/auth-selectors'
-
-
+// import authSelectors from 'redux/auth/auth-selectors'
 
 const Header = () => {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
