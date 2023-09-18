@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import wellcomeImage from '../../assets/welcomeImage.png';
 import css from './Register.module.css';
 import { useDispatch } from 'react-redux';
-import { setUserData } from 'redux/auth/auth-slice';
+import { setRegData } from 'redux/auth/auth-slice';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -25,7 +25,7 @@ const Register = () => {
   const formSubmitHandler = e => {
     e.preventDefault();
 
-    dispatch(setUserData({ name, email, password }));
+    dispatch(setRegData({ name, email, password }));
 
     navigate('/usergoal');
   };

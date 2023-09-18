@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './modals.module.css';
 
-const ModalAddMeal = () => {
+const ModalAddWater = () => {
   return (
     <div className={css.overlay} id="overlay">
       <div className={css.modal}>
@@ -38,4 +38,4 @@ const ModalAddMeal = () => {
   );
 };
 
-export default ModalAddMeal;
+export default ModalAddWater;

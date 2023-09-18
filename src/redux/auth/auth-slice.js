@@ -32,8 +32,9 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setRegData(state, action) {
-      console.log('setting details:', action.payload);
-      state.regData = { ...state.userData, ...action.payload };
+      for (const item in action.payload) {
+        state.regData[item] = action.payload[item];
+      }
     },
   },
   extraReducers: builder => {
@@ -42,6 +43,7 @@ export const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;

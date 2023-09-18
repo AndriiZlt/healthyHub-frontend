@@ -13,9 +13,10 @@ export const token = {
 };
 
 const register = createAsyncThunk('auth/register', async credentials => {
-  console.log('register', credentials);
+  console.log('inside register', JSON.stringify(credentials));
   try {
     const { data } = await axios.post('/users/register', credentials);
+    console.log(data);
     console.log('token=>' + data.token);
     token.set(data.token);
     return data;
@@ -26,7 +27,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
-  console.log('login', credentials);
+  console.log('login', JSON.stringify(credentials));
   try {
     const { data } = await axios.post('/users/login', credentials);
     console.log('token=>' + data.token);
