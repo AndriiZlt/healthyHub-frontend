@@ -13,23 +13,26 @@ export const token = {
 };
 
 const register = createAsyncThunk('auth/register', async credentials => {
-  console.log('inside register', JSON.stringify(credentials));
   try {
     const { data } = await axios.post('/user/register', credentials);
-    console.log('token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
     console.log('Error in Register', error.response.data);
     throw error();
+  } finally {
+    console.log('Succesfull registration, login in...');
+    const { email, password } = credentials;
+    const { data } = await axios.post('/user/login', { email, password });
+    token.set(data.token);
   }
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   console.log('login', JSON.stringify(credentials));
   try {
-    const { data } = await axios.post('/users/login', credentials);
-    console.log('token=>' + data.token);
+    const { data } = await axios.post('/user/login', credentials);
+    console.log('login token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -38,9 +41,9 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
-const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
+const logOut = createAsyncThunk('/user/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/user/logout');
     token.unset();
   } catch (error) {
     console.log('error in loging out', error.message);
@@ -60,7 +63,8 @@ const fetchCurrentUser = createAsyncThunk(
     }
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get('/user/current');
+      console.log('inside fetch current user', data);
       return data;
     } catch (error) {
       console.log('error in fetching current user', error.message);

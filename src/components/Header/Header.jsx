@@ -4,7 +4,7 @@ import React from 'react';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
-import useMediaQuery from 'hooks/useMediaQuery';
+import useMediaQuery from 'helpers/useMediaQuery';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
 import menu from '../../assets/menu.svg';

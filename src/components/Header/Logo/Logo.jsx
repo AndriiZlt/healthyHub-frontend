@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/HealthyHub.svg';
-import useMediaQuery from 'hooks/useMediaQuery';
-import css from './Logo.module.css'
+import useMediaQuery from 'helpers/useMediaQuery';
+import css from './Logo.module.css';
 
 function Logo() {
   const isDesktop = useMediaQuery('(min-width:1440px)');
