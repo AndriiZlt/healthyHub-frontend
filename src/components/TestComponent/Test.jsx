@@ -29,8 +29,10 @@ const data = [
   },
 ];
 
+console.log(ChartJS);
+
 const Test = () => {
-  const [chartData, setChartData] = useState({
+  const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
       {
