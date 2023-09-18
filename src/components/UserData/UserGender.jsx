@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 
 const UserGender = () => {
-  const [gender, setGender] = useState('mail');
+  const [gender, setGender] = useState('Male');
   const [age, setAge] = useState('');
 
   const dispatch = useDispatch();
@@ -27,8 +27,8 @@ const UserGender = () => {
   };
 
   const Gender = {
-    MALE: 'male',
-    FEMALE: 'female',
+    MALE: 'Male',
+    FEMALE: 'Female',
   };
 
   return (
