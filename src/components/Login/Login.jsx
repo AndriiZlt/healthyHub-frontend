@@ -76,14 +76,19 @@ const Login = () => {
     }
 
     const response = await dispatch(authOperations.logIn({ email, password }));
-    if (response.payload.token) {
+    if (response.payload) {
       navigate('/main');
     } else {
-      const message = response.payload.data.message;
-      Notify.failure(message);
-    }
+      // const message = response.payload.data.message;
+      Notify.failure('Email or password is wrong');
 
-    navigate('/main');
+      setEmail('');
+      setPassword('');
+      setIsBlurredEmail(false);
+      setIsBlurredPassword(false);
+      handlePasswordValid();
+      handleEmailValid();
+    }
   };
 
   return (

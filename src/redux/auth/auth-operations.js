@@ -32,7 +32,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
     return data;
   } catch (error) {
     console.log('Error in Register', error.response.data);
-    throw error();
+    throw new Error('Error in Register');
   } finally {
     console.log('Succesfull registration, login in...');
     const { email, password } = credentials;
