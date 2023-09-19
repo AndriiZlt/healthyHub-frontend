@@ -1,15 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import useLogin from 'helpers/useLogin';
-import { useDispatch } from 'react-redux';
-import { setToken } from './auth-slice';
-
-function useSetToken(token) {
-  console.log('yse');
-  const dispatch = useDispatch();
-
-  dispatch(setToken(token));
-}
 
 axios.defaults.baseURL = 'https://healthy-hub.onrender.com/api';
 

@@ -36,10 +36,6 @@ export const authSlice = createSlice({
         state.regData[item] = action.payload[item];
       }
     },
-    setToken(state, action) {
-      console.log('setting token');
-      state.token = action.payload;
-    },
   },
   extraReducers: builder => {
     builder
