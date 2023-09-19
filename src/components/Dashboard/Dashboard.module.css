@@ -1,5 +1,5 @@
 .dashboardSection {
-	margin: 16px 0px 60px;
+	padding: 16px 0px 0px;
 	background-color: var(--primary-black-color)
 }
 
@@ -8,7 +8,13 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 8px;
-	margin: 16px 0px;
+	margin-bottom: 16px;
+}
+
+.dashboardDateQuery {
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 
 .arrowDown {
@@ -17,7 +23,6 @@
 
 .dateQueryContainer {
 	position: relative;
-	overflow: visible;
 }
 
 .dateQuery {
@@ -30,11 +35,6 @@
 	transition: ;
 } */
 
-.arrowDownRotated {
-	transform: rotate(180deg);
-}
-
-.arrowBack,
 .arrowDown {
 	width: 16px;
 	height: 16px;
@@ -77,6 +77,11 @@
 	display: flex;
 }
 
+.dateQueryButton {
+	width: 16px;
+	height: 16px;
+}
+
 .dateQueryButton,
 .goBackButton {
 	padding: 0;
@@ -86,6 +91,11 @@
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+}
+
+.goBackButton {
+	width: 16px;
+	height: 16px;
 }
 
 .goBackButtonLink {
@@ -129,6 +139,10 @@
 	color: var(--primary-grey-color);
 }
 
+.dashboardContainer {
+	overflow-x: auto;
+}
+
 .caloriesBlock,
 .waterBlock {
 	margin-bottom: 27px;
@@ -147,22 +161,52 @@
 	width: 676px;
 	height: 382px;
 	background-color: var(--primary-black-second-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 8px;
 	border-radius: 12px;
 	padding: 25px 31px 24px 14px;
 }
 
-.weightDashboard {
-	width: 1372px;
-	height: 110px;
-	background-color: var(--primary-black-second-color);
-	margin-bottom: 8px;
-	border-radius: 12px;
-	padding: 24px 20px 44px 22px;
+/* TODO */
+
+.dashboardContent canvas {
+	width: 600px;
+	background-color: #0f0f0f;
+	margin: 0 auto;
 }
 
-.dashboardContainer {
+.weightDashboardList {
+	display: flex;
+	justify-content: space-between;
+	gap: 23px;
+	background-color: var(--primary-black-second-color);
+	padding: 24px 21px 36px 21px;
 	overflow-x: auto;
+	border-radius: 12px;
+}
+
+.weightDashboardKg {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42;
+	letter-spacing: 0em;
+}
+
+.weightDashboardDate {
+	color: var(--primary-grey-color);
+}
+
+.weightDashboardList li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1.40;
+	letter-spacing: 0em;
 }
 
 
@@ -170,11 +214,16 @@
 
 @media (min-width: 834px) {
 
-	.dashboardHeading {
-		margin-top: 24px;
+	.dashboardSection {
+		padding-top: 24px;
+	}
+
+	.dashboardHeading,
+	.dashboardDateQuery {
 		gap: 12px;
 	}
 
+	.goBackButton,
 	.arrowBack {
 		width: 24px;
 		height: 24px;
@@ -201,8 +250,7 @@
 	}
 
 	.caloriesBlock,
-	.waterBlock,
-	.weightBlock {
+	.waterBlock {
 		margin-bottom: 40px;
 	}
 
@@ -210,6 +258,10 @@
 	.waterDashboard {
 		width: 780px;
 		margin-bottom: 0px;
+	}
+
+	.weightDashboardList {
+		gap: 6px;
 	}
 
 	.weightDashboard {
@@ -223,19 +275,19 @@
 
 @media (min-width: 1440px) {
 
-	.dashboardHeading {
-		margin-top: 20px;
+	.dashboardSection {
+		padding-top: 20px;
 	}
 
-	.dashboardContent {
+	.dashboardBlockContent {
 		display: flex;
 		gap: 20px;
+		margin-bottom: 20px;
 	}
 
 	.caloriesBlock,
-	.waterBlock,
-	.weightBlock {
-		margin-bottom: 20px;
+	.waterBlock {
+		margin-bottom: 0px;
 	}
 
 	.caloriesDashboard,
@@ -243,7 +295,12 @@
 		width: 676px;
 	}
 
+	.weightDashboardList {
+		gap: 23px;
+	}
+
 	.weightDashboard {
 		width: 1372px;
+		padding-bottom: 36px;
 	}
 }
