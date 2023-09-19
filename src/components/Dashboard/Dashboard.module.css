@@ -1,1 +1,249 @@
+.dashboardSection {
+	margin: 16px 0px 60px;
+	background-color: var(--primary-black-color)
+}
 
+.dashboardHeading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin: 16px 0px;
+}
+
+.arrowDown {
+	transform: rotate(180deg);
+}
+
+.dateQueryContainer {
+	position: relative;
+	overflow: visible;
+}
+
+.dateQuery {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* .dateQueryButton {
+	transition: ;
+} */
+
+.arrowDownRotated {
+	transform: rotate(180deg);
+}
+
+.arrowBack,
+.arrowDown {
+	width: 16px;
+	height: 16px;
+}
+
+.dateQueryText {
+	font-family: inherit;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 1.25;
+	letter-spacing: 0em;
+	color: var(--primary-white-color);
+}
+
+.dateQuerySecondaryButton {
+	position: absolute;
+	display: flex;
+	justify-content: flex-start;
+	top: 40px;
+	left: 0px;
+	z-index: 5;
+	background-color: var(--primary-black-second-color);
+	width: 180px;
+	height: 64px;
+	padding: 16px 0px 16px 12px;
+	border: none;
+	border-radius: 12px;
+	outline: none;
+	color: var(--primary-white-color);
+	font-family: inherit;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 1.45;
+	letter-spacing: 0em;
+	box-shadow: 0px 4px 14px 0px #E3FFA833;
+	cursor: pointer;
+}
+
+.arrowDownRotated .dateQuerySecondaryButton {
+	display: flex;
+}
+
+.dateQueryButton,
+.goBackButton {
+	padding: 0;
+	background-color: var(--primary-black-color);
+	border: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.goBackButtonLink {
+	display: flex;
+	align-items: center;
+	margin: 0;
+}
+
+.dashboardMonth {
+	color: var(--primary-white-color);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.37;
+	letter-spacing: 0em;
+}
+
+.blockHeading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blockHeadingText {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.44;
+	letter-spacing: 0em;
+	color: var(--primary-white-color);
+}
+
+.blockAverageValue {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42;
+	letter-spacing: 0em;
+	color: var(--primary-white-color);
+}
+
+.blockAverageValueSpan {
+	margin: 0;
+	color: var(--primary-grey-color);
+}
+
+.caloriesBlock,
+.waterBlock {
+	margin-bottom: 27px;
+}
+
+.caloriesBlock,
+.waterBlock,
+.weightBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.caloriesDashboard,
+.waterDashboard {
+	width: 676px;
+	height: 382px;
+	background-color: var(--primary-black-second-color);
+	margin-bottom: 8px;
+	border-radius: 12px;
+	padding: 25px 31px 24px 14px;
+}
+
+.weightDashboard {
+	width: 1372px;
+	height: 110px;
+	background-color: var(--primary-black-second-color);
+	margin-bottom: 8px;
+	border-radius: 12px;
+	padding: 24px 20px 44px 22px;
+}
+
+.dashboardContainer {
+	overflow-x: auto;
+}
+
+
+/* TABLET */
+
+@media (min-width: 834px) {
+
+	.dashboardHeading {
+		margin-top: 24px;
+		gap: 12px;
+	}
+
+	.arrowBack {
+		width: 24px;
+		height: 24px;
+	}
+
+	.dateQueryText {
+		gap: 12px;
+		font-size: 30px;
+		line-height: 1.20;
+	}
+
+	.dateQuerySecondaryButton {
+		width: 212px;
+	}
+
+	.dashboardMonth {
+		font-size: 18px;
+		line-height: 1.33;
+	}
+
+	.blockHeadingText {
+		font-size: 22px;
+		line-height: 1.45;
+	}
+
+	.caloriesBlock,
+	.waterBlock,
+	.weightBlock {
+		margin-bottom: 40px;
+	}
+
+	.caloriesDashboard,
+	.waterDashboard {
+		width: 780px;
+		margin-bottom: 0px;
+	}
+
+	.weightDashboard {
+		width: 780px;
+		margin-bottom: 0px;
+	}
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 1440px) {
+
+	.dashboardHeading {
+		margin-top: 20px;
+	}
+
+	.dashboardContent {
+		display: flex;
+		gap: 20px;
+	}
+
+	.caloriesBlock,
+	.waterBlock,
+	.weightBlock {
+		margin-bottom: 20px;
+	}
+
+	.caloriesDashboard,
+	.waterDashboard {
+		width: 676px;
+	}
+
+	.weightDashboard {
+		width: 1372px;
+	}
+}

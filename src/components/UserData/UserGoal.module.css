@@ -1,0 +1,156 @@
+.goalContainer {
+  padding: 24px 0 60px;
+}
+
+.goalImg {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 290px;
+}
+.goalTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.goalText {
+  color: var(--primary-grey-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 24px;
+}
+
+.goalForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin: 0 auto;
+}
+
+.goalFormText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+.goalFormRadio:checked,
+.goalFormRadio:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  border: 1px solid var(--primary-grey-color);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.goalFormRadio:checked + .customCheked {
+  border: 0;
+  background-color: #e3ffa8;
+  background: url(../../assets/userRadioCheked.svg);
+}
+
+.goalButton {
+  color: var(--primary-black-second-color);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  cursor: pointer;
+  width: 300px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--primary-green-lite-color);
+}
+
+@media screen and (min-width: 834px) {
+  .goalContainer {
+    padding: 40px 0 60px;
+    text-align: center;
+  }
+
+  .goalImg {
+    width: 380px;
+    height: 368px;
+  }
+
+  .goalTitle {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-top: 60px;
+  }
+
+  .goalText {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .goalForm {
+    width: 380px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .goalFormText {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42;
+  }
+
+  .goalButton {
+    color: var(--primary-black-second-color);
+    text-align: center;
+    line-height: 1.42;
+    width: 380px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .goalContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 104px;
+    margin: 0 auto;
+  }
+
+  .goalImg {
+    width: 600px;
+    height: 574px;
+    margin: 0;
+  }
+
+  .goalInfoContainer {
+    width: 444px;
+    text-align: left;
+    margin-top: 80px;
+  }
+
+  .goalTitle {
+    margin-top: 0;
+  }
+
+  .goalForm {
+    width: 444px;
+    flex-direction: column;
+    margin: 0;
+    row-gap: 16px;
+  }
+
+  .goalButton {
+    width: 212px;
+    margin-top: 8px;
+  }
+}

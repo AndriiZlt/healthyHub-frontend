@@ -1,0 +1,17 @@
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 200px;
+    height: 26px;
+  }
+  .sign {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+  }
+
+  .profile {
+    width: 26px;
+    height: 26px;
+  }

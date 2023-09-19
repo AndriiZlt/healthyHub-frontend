@@ -1,0 +1,220 @@
+.genderContainer {
+  padding: 24px 0px 24px;
+}
+
+.genderImg {
+  width: 300px;
+  height: 288px;
+}
+.genderTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 24px 0 16px 10px;
+}
+
+.genderText {
+  color: var(--primary-grey-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-left: 10px;
+  margin-bottom: 24px;
+}
+
+.genderFormName {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  margin-bottom: 12px;
+}
+
+.genderLabelMale {
+  font-size: 14px;
+  line-height: 1.42;
+  margin-right: 100px;
+}
+.genderLabelFemale {
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.genderFormRadio:checked,
+.genderFormRadio:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-grey-color);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.genderFormRadio:checked + .customCheked {
+  border: 0;
+  background-color: var(--primary-green-lite-color);
+  background: url(../../assets/userRadioCheked.svg);
+}
+
+.genderLabelAge {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  margin: 24px 0 12px;
+}
+
+.genderInputAge {
+  width: 300px;
+  padding: 8px 10px 8px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  color: var(--primary-white-color);
+  border: 1px solid var(--primary-green-lite-color);
+  background: var(--primary-black-second-color);
+}
+
+.genderInputAge::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+.genderInputAge::-webkit-outer-spin-button,
+.genderInputAge::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.genderButton {
+  color: var(--color-primary-black-2, #0f0f0f);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  cursor: pointer;
+  width: 300px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--primary-green-lite-color);
+}
+
+.genderButton:disabled {
+  background: var(--primary-grey-color);
+}
+
+.genderLinkBack {
+  display: inline-block;
+  color: var(--primary-grey-color);
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 834px) {
+  .genderContainer {
+    padding: 40px 0 60px;
+  }
+
+  .genderImg {
+    display: block;
+    margin: 0 auto;
+    width: 380px;
+    height: 366px;
+  }
+
+  .genderInfoContainer {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .genderTitle {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+
+  .genderText {
+    font-size: 22px;
+    line-height: 1.45;
+    width: 380px;
+    margin: 0 auto 24px;
+  }
+
+  .genderForm {
+    width: 380px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .goalFormText {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.42;
+  }
+
+  .genderInputAge {
+    width: 380px;
+  }
+
+  .genderButton {
+    width: 380px;
+  }
+
+  .genderLinkBack {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .genderContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 104px;
+    margin: 0 auto;
+  }
+
+  .genderImg {
+    width: 692px;
+    height: 570px;
+    margin: 0;
+  }
+
+  .genderInfoContainer {
+    text-align: left;
+    margin-top: 80px;
+  }
+
+  .genderText {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .genderLabelMale {
+    margin-bottom: 16px;
+  }
+
+  .genderInputAge {
+    width: 212px;
+  }
+
+  .genderButton {
+    width: 212px;
+  }
+
+  .genderLinkBack {
+    width: 212px;
+    margin-top: 20px;
+  }
+}

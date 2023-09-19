@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import style from './target.module.css';
@@ -47,11 +48,13 @@ function Target() {
       <ul style={{ listStyle: 'none' }}>
         <li>
           <img src={Losefat} alt="Lose fat img" />
+
           <button onClick={selectedLoseFat}>Lose fat</button>
         </li>
         <li>
           <img src={Maintake} alt="Maintake img" />
           <button onClick={selectedMaintain}>Maintain</button>
+
         </li>
         <li>
           <img src={Gainmuscle} alt="Gainmuscle img" />

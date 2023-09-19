@@ -3,22 +3,22 @@
   align-items: center;
   justify-content: space-between;
   height: 60px;
+  position: relative;
 }
-
-.auth {
+.header_action{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
-  width: 200px;
-  height: 26px;
+  width: 100%;
+  margin-left: 8px;
+  @media screen and (min-width: 834px){
+    gap: 40px;
+    width: auto;
+  }
+  @media screen and (min-width: 1440px){
+    gap: 80px;
+  }
 }
-
-.sign {
-  display: flex;
-  align-items: center;
-  margin-right: 6px;
-}
-
 a {
   color: white;
   outline: none;
@@ -31,8 +31,33 @@ a {
 p {
   margin: 0;
 }
-
-.profile {
-  width: 26px;
-  height: 26px;
+.button {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 16px;
+  height: 48px;
+  width: auto;
+  padding: 0;
+}
+.button:hover{
+  background-color: transparent;
+  border: none;
+}
+.button::after {
+  display: none;
+}
+.button:focus-visible {
+ box-shadow: none;
+ color: rgba(227, 255, 168, 1);
+}
+.modal {
+  position: relative;
+  border-radius: 12px;
+  background-color: #0F0F0F;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+  padding: 24px;
+}
+.mobile_modal{
+  left: -88px !important;
+  width: 302px;
 }

@@ -24,12 +24,12 @@ const ForgotPassword = () => {
         <p className={css.subTitle}>We will send you an email with recovery instructions</p>
         <form className={css.form} onSubmit={formSubmitHandler}>
           <input value={email} placeholder='E-mail' onChange={handleEmailChange} className={css.input}></input>
-          <button type="submit" className={css.btn}>Sign In</button>
+          <button type="submit" className={css.btn}>Send</button>
         </form>
       </div>
       <div className={css.footerText}>
-        <p className={css.text}>If you don't have an account yet</p>
-        <p className={css.signUpBtn} onClick={() => { navigate('/signup') }}>Sign Up</p>
+        <p className={css.text}>Do you already have an account?</p>
+        <p className={css.signUpBtn} onClick={() => { navigate('/signin') }}>Sign In</p>
       </div>
     </div>
   </div>;

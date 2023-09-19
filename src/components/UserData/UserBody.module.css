@@ -1,0 +1,179 @@
+.bodyContainer {
+  padding: 24px 0 24px;
+}
+
+.bodyImg {
+  width: 300px;
+  height: 302px;
+}
+
+.BodyInfoContainer {
+  margin-top: 24px;
+}
+
+.bodyTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.bodyText {
+  color: var(--primary-grey-color);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 24px;
+}
+
+.bodyFormText {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  margin-bottom: 12px;
+}
+
+.bodyFormInput {
+  display: block;
+  width: 300px;
+  padding: 8px 10px 8px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border: 1px solid var(--primary-green-lite-color);
+  background: var(--primary-black-second-color);
+  color: white;
+}
+
+.bodyFormInput::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+.bodyFormInput::-webkit-outer-spin-button,
+.bodyFormInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bodyButton {
+  color: var(--primary-black-second-color);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  cursor: pointer;
+  width: 300px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--primary-green-lite-color);
+}
+
+.bodyButton:disabled {
+  background: var(--primary-grey-color);
+}
+
+.bodyLinkBack {
+  color: var(--primary-grey-color);
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 834px) {
+  .bodyContainer {
+    padding: 40px 0 60px;
+    text-align: center;
+  }
+
+  .bodyImg {
+    display: block;
+    margin: 0 auto;
+    width: 380px;
+    height: 382px;
+  }
+
+  .BodyInfoContainer {
+    margin-top: 60px;
+  }
+
+  .bodyTitle {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .bodyText {
+    width: 380px;
+    margin: 0 auto 16px;
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  .bodyForm {
+    width: 380px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .bodyFormText {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42;
+  }
+
+  .bodyFormInput {
+    width: 380px;
+  }
+
+  .bodyButton {
+    width: 380px;
+  }
+
+  .bodyLinkBack {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .bodyContainer {
+    display: flex;
+    column-gap: 104px;
+    margin: 0 auto;
+    padding: 40px 0 60px;
+  }
+
+  .bodyImg {
+    width: 692px;
+    height: 570px;
+    margin: 0;
+  }
+
+  .bodyInfoContainer {
+    margin-top: 80px;
+  }
+
+  .bodyTitle {
+    text-align: left;
+  }
+  .bodyText {
+    text-align: left;
+  }
+
+  .bodyFormInput {
+    width: 212px;
+  }
+
+  .bodyButton {
+    width: 212px;
+  }
+
+  .bodyLinkBack {
+    width: 212px;
+    text-align: left;
+  }
+}
