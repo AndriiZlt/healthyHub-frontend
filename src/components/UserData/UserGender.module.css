@@ -1,7 +1,5 @@
 .genderContainer {
-  padding: 24px 10px 24px;
-  border: solid white;
-  box-sizing: border-box;
+  padding: 24px 0px 24px;
 }
 
 .genderImg {
@@ -9,43 +7,35 @@
   height: 288px;
 }
 .genderTitle {
-  color: #fff;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  margin-top: 24px;
-  margin-bottom: 16px;
+  margin: 24px 0 16px 10px;
 }
 
 .genderText {
+  color: var(--primary-grey-color);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
+  margin-left: 10px;
   margin-bottom: 24px;
 }
 
-.genderForm {
-  /* display: flex; */
-  /* flex-direction: column; */
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
 .genderFormName {
-  color: var(--color-primary-white, #fff);
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.42;
   margin-bottom: 12px;
 }
 
-.genderFormText {
-  display: inline-block;
-  color: #fff;
+.genderLabelMale {
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  line-height: 1.42;
+  margin-right: 100px;
+}
+.genderLabelFemale {
+  font-size: 14px;
   line-height: 1.42;
 }
 
@@ -58,46 +48,48 @@
 .customCheked {
   display: inline-block;
   margin-right: 8px;
-
   width: 12px;
   height: 12px;
-
   border-radius: 50%;
-  border: 1px solid #b6b6b6;
+  border: 1px solid var(--primary-grey-color);
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .genderFormRadio:checked + .customCheked {
   border: 0;
-  background-color: #e3ffa8;
+  background-color: var(--primary-green-lite-color);
   background: url(../../assets/userRadioCheked.svg);
 }
 
-.genderFormAge {
+.genderLabelAge {
   display: block;
-  color: var(--color-primary-white, #fff);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
-  margin-top: 24px;
-  margin-bottom: 12px;
+  margin: 24px 0 12px;
 }
 
-.genderFormAgeInput {
-  color: var(--color-primary-white, #fff);
-  width: 280px;
+.genderInputAge {
+  width: 300px;
   padding: 8px 10px 8px;
-  border-radius: 12px;
   margin-bottom: 24px;
-  border: 1px solid var(--color-primary-green-lite, #e3ffa8);
-  background: var(--color-primary-black-2, #0f0f0f);
+  border-radius: 12px;
+  color: var(--primary-white-color);
+  border: 1px solid var(--primary-green-lite-color);
+  background: var(--primary-black-second-color);
 }
 
-.genderFormAgeInput::placeholder {
+.genderInputAge::placeholder {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
+}
+
+.genderInputAge::-webkit-outer-spin-button,
+.genderInputAge::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .genderButton {
@@ -107,51 +99,62 @@
   font-weight: 500;
   line-height: 1.42;
   cursor: pointer;
-  width: 280px;
+  width: 300px;
   padding: 8px 10px;
-  margin-bottom: 16px;
   border-radius: 12px;
-  background: var(--color-primary-green-lite, #e3ffa8);
+  background: var(--primary-green-lite-color);
+}
+
+.genderButton:disabled {
+  background: var(--primary-grey-color);
 }
 
 .genderLinkBack {
-  color: var(--color-primary-grey, #b6b6b6);
+  display: inline-block;
+  color: var(--primary-grey-color);
   display: block;
   cursor: pointer;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
+  margin-top: 16px;
 }
 
-@media screen and (min-width: 768px) {
-  .goalContainer {
-    padding: 40px 10px 60px;
-    text-align: center;
+@media screen and (min-width: 834px) {
+  .genderContainer {
+    padding: 40px 0 60px;
   }
 
   .genderImg {
+    display: block;
+    margin: 0 auto;
     width: 380px;
     height: 366px;
   }
 
-  .goalTitle {
-    font-size: 30px;
-    line-height: 1.2;
+  .genderInfoContainer {
+    text-align: center;
     margin-top: 60px;
   }
 
-  .goalText {
-    font-size: 22px;
-    line-height: 1.45;
+  .genderTitle {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 0 0 16px;
   }
 
-  .goalForm {
-    width: 444px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 24px;
+  .genderText {
+    font-size: 22px;
+    line-height: 1.45;
+    width: 380px;
+    margin: 0 auto 24px;
+  }
+
+  .genderForm {
+    width: 380px;
+    text-align: left;
+    margin: 0 auto;
   }
 
   .goalFormText {
@@ -161,46 +164,57 @@
     line-height: 1.42;
   }
 
-  .goalButton {
-    color: var(--color-primary-black-2, #0f0f0f);
-    text-align: center;
-    line-height: 1.42;
-    width: 360px;
+  .genderInputAge {
+    width: 380px;
+  }
+
+  .genderButton {
+    width: 380px;
+  }
+
+  .genderLinkBack {
+    margin-top: 20px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .goalContainer {
+  .genderContainer {
     display: flex;
     justify-content: center;
     column-gap: 104px;
     margin: 0 auto;
-    padding: 40px 10px 60px;
   }
 
   .genderImg {
     width: 692px;
     height: 570px;
-  }
-
-  .goalInfoContainer {
-    text-align: left;
-    margin-top: 120px;
-  }
-
-  .goalTitle {
-    margin-top: 0;
-  }
-
-  .goalForm {
-    width: 444px;
-    flex-direction: column;
     margin: 0;
-    row-gap: 16px;
   }
 
-  .goalButton {
-    width: 192px;
-    margin-top: 8px;
+  .genderInfoContainer {
+    text-align: left;
+    margin-top: 80px;
+  }
+
+  .genderText {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .genderLabelMale {
+    margin-bottom: 16px;
+  }
+
+  .genderInputAge {
+    width: 212px;
+  }
+
+  .genderButton {
+    width: 212px;
+  }
+
+  .genderLinkBack {
+    width: 212px;
+    margin-top: 20px;
   }
 }

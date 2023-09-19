@@ -1,23 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userActivity.svg';
 import css from './UserActivity.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRegData } from 'redux/auth/auth-slice';
+import authOperations from 'redux/auth/auth-operations';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const UserActivity = () => {
-  // const [value, setValue] = useState();
+  const navigate = useNavigate();
+  const [activity, setActivity] = useState('1.2');
+  const [submited, setSubmited] = useState(false);
+  const credentials = useSelector(authSelectors.getRegData);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (submited) {
+      dispatch(authOperations.register(credentials));
+      setSubmited(false);
+      navigate('/main');
+    }
+  }, [credentials, dispatch, navigate, submited]);
 
-  //   handleChange = evt => {
-  //     const { name, value, type, checked } = evt.target;
-  //     // Якщо тип елемента – checkbox, беремо значення checked,
-  //     // в іншому випадку – value
-  //     this.setState({ [name]: type === 'checkbox' ? checked : value });
+  const handleChange = e => {
+    setActivity(e.target.value);
+  };
+
+  const formSubmit = async e => {
+    e.preventDefault();
+    dispatch(setRegData({ activity }));
+    setSubmited(true);
+  };
 
   const Activity = {
-    FIRST: 'first',
-    SECOND: 'second',
-    THIRD: 'third',
-    FOURTH: 'fourth',
-    FIFTH: 'fifth',
+    FIRST: 1.2,
+    SECOND: 1.375,
+    THIRD: 1.55,
+    FOURTH: 1.725,
+    FIFTH: 1.9,
   };
 
   return (
@@ -28,10 +47,11 @@ const UserActivity = () => {
         <p className={css.activityText}>
           To correctly calculate calorie and water intake
         </p>
-        <form className={css.activityForm}>
+        <form className={css.activityForm} onSubmit={formSubmit}>
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FIRST}
@@ -43,6 +63,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.SECOND}
@@ -53,6 +74,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.THIRD}
@@ -63,6 +85,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FOURTH}
@@ -73,6 +96,7 @@ const UserActivity = () => {
           <label className={css.activityFormText}>
             <input
               className={css.activityFormRadio}
+              onChange={handleChange}
               type="radio"
               name="activity"
               value={Activity.FIFTH}
@@ -82,7 +106,7 @@ const UserActivity = () => {
             day and include strength exercises in your training program
           </label>
 
-          <button type="button" className={css.activityButton}>
+          <button type="submit" className={css.activityButton}>
             Next
           </button>
         </form>

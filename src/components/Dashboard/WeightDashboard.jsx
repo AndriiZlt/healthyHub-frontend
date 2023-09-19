@@ -1,4 +1,5 @@
 import React from 'react';
+
 import css from "./Dashboard.module.css";
 
 const WeightDashboard = (props) => {
@@ -73,6 +74,7 @@ const WeightDashboard = (props) => {
 			</ul>
 		</div>;
 	}
+
 };
 
 export default WeightDashboard;

@@ -2,11 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
+  user: {
+    name: null,
+    email: null,
+    goal: null,
+    gender: null,
+    age: null,
+    height: null,
+    weight: null,
+    activity: null,
+    token: null,
+  },
   isLoggedIn: false,
-  regData: { name: null, email: null, password: null },
-  regDetails: {
+  regData: {
+    name: null,
+    email: null,
+    password: null,
     goal: null,
     gender: null,
     age: null,
@@ -21,31 +32,40 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setRegData(state, action) {
-      console.log('setting RegData:', action.payload);
-      state.temporaryCredentials = action.payload;
+      for (const item in action.payload) {
+        state.regData[item] = action.payload[item];
+      }
     },
   },
   extraReducers: builder => {
     builder
       .addCase(authOperations.register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload;
         state.isLoggedIn = true;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload;
         state.isLoggedIn = true;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
-        state.user = { name: null, email: null };
-        state.token = null;
+        state.user = initialState.user;
         state.isLoggedIn = false;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        state = action.payload;
+        if (action.payload.email) {
+          console.log('Current user:', action.payload);
+        } else {
+          state.user = initialState.user;
+          state.isLoggedIn = false;
+          state.regData = initialState.regData;
+        }
+      })
+      .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
+        console.log(action.payload.data.message);
       });
   },
 });
 
-export const { setRegData } = authSlice.actions;
+export const { setRegData, setUserData } = authSlice.actions;

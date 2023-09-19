@@ -1,42 +1,37 @@
 .activityContainer {
-  padding: 24px 10px 60px;
-  border: solid white;
-  box-sizing: border-box;
+  padding: 24px 0px 24px;
 }
 
 .activityImg {
   width: 300px;
-  height: 290px;
+  height: 304px;
+}
+
+.activityInfoContainer {
+  margin-top: 24px;
+  text-align: left;
 }
 .activityTitle {
-  color: #fff;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  margin-top: 24px;
   margin-bottom: 16px;
 }
 
 .activityText {
+  color: var(--primary-grey-color);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
 }
 
-.activityForm {
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
-  margin-bottom: 16px;
-}
-
 .activityFormText {
-  color: #fff;
+  display: block;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.42;
+  margin-bottom: 16px;
 }
 .activityFormRadio:checked,
 .activityFormRadio:not(checked) {
@@ -47,60 +42,64 @@
 .customCheked {
   display: inline-block;
   margin-right: 8px;
-
   width: 12px;
   height: 12px;
-
   border-radius: 50%;
-  border: 1px solid #b6b6b6;
+  border: 1px solid var(--primary-grey-color);
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .activityFormRadio:checked + .customCheked {
   border: 0;
-  background-color: #e3ffa8;
+  background-color: var(--primary-green-lite-color);
   background: url(../../assets/userRadioCheked.svg);
 }
 
 .activityButton {
-  color: var(--color-primary-black-2, #0f0f0f);
+  color: var(--primary-black-second-color);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
   cursor: pointer;
-  width: 280px;
+  width: 300px;
   padding: 8px 10px;
+  margin-top: 8px;
   border-radius: 12px;
-  background: var(--color-primary-green-lite, #e3ffa8);
+  background: var(--primary-green-lite-color);
 }
 
 .activityLinkBack {
-  color: var(--color-primary-grey, #b6b6b6);
-  display: block;
+  color: var(--primary-grey-color);
+  display: inline-block;
   cursor: pointer;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
+  margin-top: 16px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .activityContainer {
-    padding: 40px 10px 60px;
     text-align: center;
+    padding: 40px 0 60px;
   }
 
   .activityImg {
     width: 380px;
-    height: 368px;
+    height: 384px;
+  }
+
+  .activityInfoContainer {
+    margin-top: 60px;
+    text-align: center;
   }
 
   .activityTitle {
     font-size: 30px;
     line-height: 1.2;
-    margin-top: 60px;
   }
 
   .activityText {
@@ -109,25 +108,25 @@
   }
 
   .activityForm {
-    width: 444px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 24px;
+    width: 460px;
+    margin: 0 auto;
+    text-align: left;
   }
 
   .activityFormText {
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 1.42;
   }
 
   .activityButton {
-    color: var(--color-primary-black-2, #0f0f0f);
-    text-align: center;
     line-height: 1.42;
-    width: 360px;
+    width: 380px;
+    margin-left: 39px;
+  }
+
+  .activityLinkBack {
+    margin-top: 20px;
   }
 }
 
@@ -136,22 +135,16 @@
     display: flex;
     justify-content: center;
     column-gap: 104px;
-    margin: 0 auto;
-    padding: 40px 10px 60px;
   }
 
   .activityImg {
-    width: 600px;
-    height: 574px;
+    width: 592px;
+    height: 598px;
   }
 
   .activityInfoContainer {
     text-align: left;
-    margin-top: 120px;
-  }
-
-  .activityTitle {
-    margin-top: 0;
+    margin-top: 80px;
   }
 
   .activityForm {
@@ -162,7 +155,12 @@
   }
 
   .activityButton {
-    width: 192px;
+    width: 212px;
+    margin-left: 0;
     margin-top: 8px;
+  }
+
+  .activityLinkBack {
+    margin-left: 90px;
   }
 }
