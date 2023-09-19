@@ -41,14 +41,23 @@ p {
 }
 .button:hover{
   background-color: transparent;
-  
+  border: none;
 }
 .button::after {
   display: none;
 }
+.button:focus-visible {
+ box-shadow: none;
+ color: rgba(227, 255, 168, 1);
+}
 .modal {
+  position: relative;
   border-radius: 12px;
   background-color: #0F0F0F;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
-  padding: 16px;
+  padding: 24px;
+}
+.mobile_modal{
+  left: -88px !important;
+  width: 302px;
 }

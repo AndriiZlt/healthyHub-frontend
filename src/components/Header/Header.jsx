@@ -1,6 +1,5 @@
-//import React, { useEffect, useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import css from './Header.module.css';
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
@@ -8,14 +7,20 @@ import useMediaQuery from 'helpers/useMediaQuery';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
 import menu from '../../assets/menu.svg';
-// import authSelectors from 'redux/auth/auth-selectors'
+import authSelectors from 'redux/auth/auth-selectors';
+import MobileAction from './MobileAction/MobileAction';
+import LogoutModal from './LogoutModal/LogoutModal'
 
 const Header = () => {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // console.log("qwe",isLoggedIn)
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const data = useSelector(authSelectors.getRegData);
+  // console.log(data);
   const isMobile = useMediaQuery('(max-width:833px)');
-  const isLoggedIn = true;
 
+  const [showDropdown, setShowDropdown] = useState(false);
+  function closeButton() {
+    setShowDropdown(false);
+  }
   return (
     <div className={css.header}>
       {!isLoggedIn ? (
@@ -29,11 +34,16 @@ const Header = () => {
           <div className={css.header_action}>
             {isMobile ? (
               <>
-                <Dropdown>
+                <Dropdown
+                  show={showDropdown}
+                  onToggle={e => setShowDropdown(e)}
+                >
                   <Dropdown.Toggle className={css.button}>
                     <img src={menu} alt="menu" />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={`${css.modal} ${css.mobile_modal}`}>
+                    <MobileAction closeButton={closeButton} />
+                  </Dropdown.Menu>
                 </Dropdown>
               </>
             ) : (
@@ -71,7 +81,7 @@ const Header = () => {
                   userAction={true}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
+              <Dropdown.Menu className={css.modal}><LogoutModal/></Dropdown.Menu>
             </Dropdown>
           </div>
         </>
