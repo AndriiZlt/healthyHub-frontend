@@ -16,7 +16,7 @@ function Tooltip({ text, children }) {
   };
     
   return (
-      <div className={css.tooltipContainer} onMouseEnter={toggleTooltip} onMouseLeave={toggleTooltip} onClick={toggleTooltip}>
+      <div className={css.tooltipContainer} onClick={toggleTooltip}>
       {children}
       {isVisible && <div className={css.tooltip}>{text}</div>}
     </div>
