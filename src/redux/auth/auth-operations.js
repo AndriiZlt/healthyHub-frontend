@@ -40,7 +40,6 @@ const register = createAsyncThunk('auth/register', async credentials => {
     const { data } = await axios.post('/user/login', { email, password });
     console.log('login token=>' + data.token);
     token.set(data.token);
-    useSetToken(data.token);
   }
 });
 
