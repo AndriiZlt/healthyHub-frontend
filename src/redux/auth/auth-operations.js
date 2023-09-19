@@ -1,5 +1,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import useLogin from 'helpers/useLogin';
+import { useDispatch } from 'react-redux';
+import { setToken } from './auth-slice';
+
+function useSetToken(token) {
+  console.log('yse');
+  const dispatch = useDispatch();
+
+  dispatch(setToken(token));
+}
 
 axios.defaults.baseURL = 'https://healthy-hub.onrender.com/api';
 
@@ -12,22 +22,6 @@ export const token = {
   },
 };
 
-const register = createAsyncThunk('auth/check-email', async credentials => {
-  try {
-    const { data } = await axios.post('/user/register', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log('Error in Register', error.response.data);
-    throw error();
-  } finally {
-    console.log('Succesfull registration, login in...');
-    const { email, password } = credentials;
-    const { data } = await axios.post('/user/login', { email, password });
-    token.set(data.token);
-  }
-});
-
 const logIn = createAsyncThunk('auth/login', async credentials => {
   console.log('login', JSON.stringify(credentials));
   try {
@@ -38,6 +32,25 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   } catch (error) {
     console.log('Error in Login', error.response.data);
     throw error();
+  }
+});
+
+const register = createAsyncThunk('auth/register', async credentials => {
+  try {
+    const { data } = await axios.post('/user/register', credentials);
+    console.log(data.mail);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    console.log('Error in Register', error.response.data);
+    throw error();
+  } finally {
+    console.log('Succesfull registration, login in...');
+    const { email, password } = credentials;
+    const { data } = await axios.post('/user/login', { email, password });
+    console.log('login token=>' + data.token);
+    token.set(data.token);
+    useSetToken(data.token);
   }
 });
 
@@ -72,7 +85,7 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const checkEmail = createAsyncThunk('auth/register', async credentials => {
+const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
   try {
     const response = await axios.post('/user/check-email', credentials);
     return response;

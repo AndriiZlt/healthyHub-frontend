@@ -36,6 +36,10 @@ export const authSlice = createSlice({
         state.regData[item] = action.payload[item];
       }
     },
+    setToken(state, action) {
+      console.log('setting token');
+      state.token = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -46,6 +50,7 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
+        console.log('login fulfilled', action.payload);
         state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
@@ -56,9 +61,12 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        // state.user = action.payload;
+      })
+      .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
+        console.log(action.payload.data.message);
       });
   },
 });
 
-export const { setRegData, setUserData } = authSlice.actions;
+export const { setRegData, setUserData, setToken } = authSlice.actions;
