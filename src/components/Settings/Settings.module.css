@@ -58,6 +58,10 @@
   font-size: 14px;
 }
 
+.labelGender input{
+  margin-right: 8px;
+}
+
 .activity {
   display: flex;
   align-items: flex-start;
@@ -68,7 +72,12 @@
   margin-bottom: 24px;
 }
 
-.buttonSave {
+.labelActivity input{
+  margin-right: 8px;
+}
+
+
+.btnActive {
   width: 300px;
   height: 36px;
   padding-top: 8px;
@@ -84,20 +93,21 @@
   margin-top: 16px;
 }
 
-.buttonCancel {
+.btn {
   width: 300px;
   height: 36px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: var(--primary-black-color);
+  background-color: transparent;
   color: var(--primary-grey-color);
   border: none;
   border-radius: 12px;
   cursor: pointer;
   font-size: 14px;
-}
+}  
+
 @media screen and (max-width: 833px) {
   .buttonsTablet {
     display: none;
@@ -106,7 +116,7 @@
 
 @media screen and (min-width: 834px) {
   .conteiner {
-    width: 834px;
+    width: 100%;
   }
   .wrapper{
     display: flex;
@@ -117,14 +127,14 @@
   }
   .buttonsTablet {
     margin-top: 24px;
-    margin-right: 27px; 
+    /* margin-right: 27px;  */
     margin-bottom: 20px;
   }
-  .buttonSave {
+  .btnActive {
     width: 212px;
     height: 36px;
   }
-  .buttonCancel {
+  .btn {
     width: 212px;
     height: 36px;
     margin-right: 12px;
@@ -185,7 +195,7 @@
 
 @media screen and (min-width: 1440px) {
   .conteiner {
-    width: 1440px;
+    width: 100%;
   }
 
   .title {
@@ -196,16 +206,16 @@
 
   .buttonsTablet {
     margin-top: 20px;
-    margin-right: 32px; 
+    /* margin-right: 32px;  */
     margin-bottom: 16px;
   }
 
-  .buttonSave {
+  .btnActive {
     width: 212px;
     height: 36px;
   }
 
-  .buttonCancel {
+  .btn {
     width: 212px;
     height: 36px;
     margin-right: 12px;
