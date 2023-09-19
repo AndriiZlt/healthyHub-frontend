@@ -24,7 +24,7 @@ const Register = () => {
   const [isValidPassword, setIsValidPassword] = useState(false);
   const [isBlurredPassword, setIsBlurredPassword] = useState(false);
   const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
-    const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -89,7 +89,9 @@ const Register = () => {
     //   return Notify.failure('Password must be a minimum of 6 characters, a maximum of 16 characters, including at least 1 uppercase letter, 1 lowercase letter, and 1 number');
     // }
 
-    const response = await dispatch(authOperations.checkEmail({ email2 }));
+    const response = await dispatch(
+      authOperations.checkEmail({ email: email2 })
+    );
 
     if (response.payload.status === 200) {
       dispatch(setRegData({ name: name2, email: email2, password: password2 }));
@@ -133,19 +135,15 @@ const Register = () => {
                 className={css.input}
                 style={{ borderColor: emailBorder }}
               ></input>
-              {isBlurredEmail && !isValidEmail && (<img
-                  className={css.error}
-                  src={error}
-                  alt="Error"
-                />)}
+              {isBlurredEmail && !isValidEmail && (
+                <img className={css.error} src={error} alt="Error" />
+              )}
               {isBlurredEmail && !isValidEmail && (
                 <p className={css.notValid}>Enter a valid Email</p>
               )}
-              {isBlurredEmail && isValidEmail && (<img
-                  className={css.correct}
-                  src={correct}
-                  alt="Correct"
-                />)}
+              {isBlurredEmail && isValidEmail && (
+                <img className={css.correct} src={correct} alt="Correct" />
+              )}
               {isBlurredEmail && isValidEmail && (
                 <p className={css.valid}>Email is valid</p>
               )}
@@ -162,28 +160,38 @@ const Register = () => {
                 className={css.input}
                 style={{ borderColor: passwordBorder }}
               ></input>
-              {!isBlurredPassword && (<img
-                className={css.showPasswordBtn}
-                src={showPassword ? eye : eyeOff}
-                alt="Show password"
-                onMouseEnter={togglePasswordVisibility}
-                onMouseLeave={togglePasswordVisibility}
-              />)}
-              {isBlurredPassword && !isValidPassword && (<img
-                className={css.error}
-                src={error}
-                alt="Error"
-                onClick={togglePasswordVisibility}
-              />)}
-              {isBlurredPassword && !isValidPassword && (
-                <p className={css.notValid}><Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">Enter a valid Password *</Tooltip></p>
+              {!isBlurredPassword && (
+                <img
+                  className={css.showPasswordBtn}
+                  src={showPassword ? eye : eyeOff}
+                  alt="Show password"
+                  onMouseEnter={togglePasswordVisibility}
+                  onMouseLeave={togglePasswordVisibility}
+                />
               )}
-              {isBlurredPassword && isValidPassword && (<img
-                className={css.correct}
-                src={correct}
-                alt="Correct"
-                onClick={togglePasswordVisibility}
-              />)}
+              {isBlurredPassword && !isValidPassword && (
+                <img
+                  className={css.error}
+                  src={error}
+                  alt="Error"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+              {isBlurredPassword && !isValidPassword && (
+                <p className={css.notValid}>
+                  <Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">
+                    Enter a valid Password *
+                  </Tooltip>
+                </p>
+              )}
+              {isBlurredPassword && isValidPassword && (
+                <img
+                  className={css.correct}
+                  src={correct}
+                  alt="Correct"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
               {isBlurredPassword && isValidPassword && (
                 <p className={css.valid}>Password is secure</p>
               )}
