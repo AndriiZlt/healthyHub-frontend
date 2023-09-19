@@ -88,6 +88,8 @@ const Login = () => {
       setIsBlurredPassword(false);
       handlePasswordValid();
       handleEmailValid();
+      setEmailBorder('#e3ffa8');
+      setPaswordBorder('#e3ffa8');
     }
   };
 
