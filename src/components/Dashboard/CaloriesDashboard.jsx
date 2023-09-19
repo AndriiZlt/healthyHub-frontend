@@ -7,7 +7,7 @@ import css from "./Dashboard.module.css";
 
 const CaloriesDashboard = (props) => {
 
-	const time = props.time === 'month' ? 'month' : 'year'
+	// const time = props.time === 'month' ? 'month' : 'year'
 
 	const data = [
 		{
