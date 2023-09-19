@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import wellcomeImage from '../../assets/welcomeImage.png';
 import css from './Register.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 import authOperations from 'redux/auth/auth-operations';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { name, email, password } = useSelector(authSelectors.getRegData);
+  const [name2, setName2] = useState(name || '');
+  const [email2, setEmail2] = useState(email || '');
+  const [password2, setPassword2] = useState(password || '');
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(false);
@@ -21,17 +23,17 @@ const Register = () => {
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
 
   const handleNameChange = e => {
-    setName(e.target.value);
+    setName2(e.target.value);
   };
 
   const handleEmailChange = e => {
-    setEmail(e.target.value);
+    setEmail2(e.target.value);
   };
   const handleEmailValid = () => {
     const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    setIsValidEmail(emailPattern.test(email));
+    setIsValidEmail(emailPattern.test(email2));
 
-    if (emailPattern.test(email)) {
+    if (emailPattern.test(email2)) {
       setEmailBorder('#3CBC81');
     } else {
       setEmailBorder('#E74A3B');
@@ -43,11 +45,11 @@ const Register = () => {
   };
 
   const handlePasswordChange = e => {
-    setPassword(e.target.value);
+    setPassword2(e.target.value);
   };
   const handlePasswordValid = () => {
     const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
-    setIsValidPassword(passwordPattern.test(password));
+    setIsValidPassword(passwordPattern.test(password2));
   };
   const handlePasswordBlur = () => {
     setIsBlurredPassword(true);
@@ -57,7 +59,7 @@ const Register = () => {
   const formSubmitHandler = async e => {
     e.preventDefault();
 
-    if (name === '' || email === '' || password === '') {
+    if (name2 === '' || email2 === '' || password2 === '') {
       Notify.failure('Please fill in all fields!');
       return;
     }
@@ -78,7 +80,7 @@ const Register = () => {
     const response = await dispatch(authOperations.checkEmail({ email }));
 
     if (response.payload.status === 200) {
-      dispatch(setRegData({ name, email, password }));
+      dispatch(setRegData({ name: name2, email: email2, password: password2 }));
       navigate('/usergoal');
     } else {
       const message = response.payload.data.message;
@@ -104,7 +106,7 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                value={name}
+                value={name2}
                 placeholder="Name"
                 onChange={handleNameChange}
                 className={css.input}
@@ -115,7 +117,7 @@ const Register = () => {
               <input
                 type="text"
                 name="email"
-                value={email}
+                value={email2}
                 placeholder="E-mail"
                 onChange={handleEmailChange}
                 onBlur={handleEmailBlur}
@@ -133,7 +135,7 @@ const Register = () => {
               <input
                 type="password"
                 name="password"
-                value={password}
+                value={password2}
                 placeholder="Password"
                 onChange={handlePasswordChange}
                 onBlur={handlePasswordBlur}
