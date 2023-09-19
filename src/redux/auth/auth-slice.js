@@ -45,14 +45,13 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        console.log('login fulfilled', action.payload);
         state.user = action.payload;
         state.isLoggedIn = true;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
         state.user = initialState.user;
-        state.token = null;
         state.isLoggedIn = false;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         // state.user = action.payload;
