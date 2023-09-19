@@ -12,22 +12,6 @@ export const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/user/register', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log('Error in Register', error.response.data);
-    throw error();
-  } finally {
-    console.log('Succesfull registration, login in...');
-    const { email, password } = credentials;
-    const { data } = await axios.post('/user/login', { email, password });
-    token.set(data.token);
-  }
-});
-
 const logIn = createAsyncThunk('auth/login', async credentials => {
   console.log('login', JSON.stringify(credentials));
   try {
@@ -41,7 +25,24 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
+const register = createAsyncThunk('auth/register', async credentials => {
+  try {
+    const { data } = await axios.post('/user/register', credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    console.log('Error in Register', error.response.data);
+    throw new Error('Error in Register');
+  } finally {
+    console.log('Succesfull registration, login in...');
+    const { email, password } = credentials;
+    const { data } = await axios.post('/user/login', { email, password });
+    data && console.log('Login success');
+  }
+});
+
 const logOut = createAsyncThunk('/user/logout', async (_, thunkAPI) => {
+  console.log('Login out');
   try {
     await axios.post('/user/logout');
     token.unset();
@@ -72,11 +73,21 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
+  try {
+    const response = await axios.post('/user/check-email', credentials);
+    return response;
+  } catch (error) {
+    console.log('Error in register', error.message);
+  }
+});
+
 const authOperations = {
   register,
   logIn,
   logOut,
   fetchCurrentUser,
+  checkEmail,
 };
 
 export default authOperations;

@@ -11,8 +11,8 @@ const initialState = {
     height: null,
     weight: null,
     activity: null,
+    token: null,
   },
-  token: null,
   isLoggedIn: false,
   regData: {
     name: null,
@@ -41,22 +41,23 @@ export const authSlice = createSlice({
     builder
       .addCase(authOperations.register.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.regData = initialState.regData;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
         state.user = initialState.user;
-        state.token = null;
         state.isLoggedIn = false;
+        state.regData = initialState.regData;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        // state.user = action.payload;
+      })
+      .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
+        console.log(action.payload.data.message);
       });
   },
 });

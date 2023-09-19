@@ -2,32 +2,104 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import wellcomeImage from '../../assets/welcomeImage.png';
 import css from './Register.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
+import authOperations from 'redux/auth/auth-operations';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import authSelectors from 'redux/auth/auth-selectors';
+import error from '../../assets/error.svg';
+import correct from '../../assets/correct.svg';
+import eye from '../../assets/eye.svg';
+import eyeOff from '../../assets/eye-off.svg';
+import Tooltip from 'components/Tooltip/Tooltip';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { name, email, password } = useSelector(authSelectors.getRegData);
+  const [name2, setName2] = useState(name || '');
+  const [email2, setEmail2] = useState(email || '');
+  const [password2, setPassword2] = useState(password || '');
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isBlurredEmail, setIsBlurredEmail] = useState(false);
+  const [emailBorder, setEmailBorder] = useState('#e3ffa8');
+  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isBlurredPassword, setIsBlurredPassword] = useState(false);
+  const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleNameChange = e => {
-    setName(e.target.value);
-  };
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
-  };
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
+    setName2(e.target.value);
   };
 
-  const formSubmitHandler = e => {
+  const handleEmailChange = e => {
+    setEmail2(e.target.value);
+  };
+
+  const handleEmailValid = () => {
+    const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    setIsValidEmail(emailPattern.test(email2));
+
+    if (emailPattern.test(email2)) {
+      setEmailBorder('#3CBC81');
+    } else {
+      setEmailBorder('#E74A3B');
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setIsBlurredEmail(true);
+    handleEmailValid();
+  };
+
+  const handlePasswordChange = e => {
+    setPassword2(e.target.value);
+  };
+
+  const handlePasswordValid = () => {
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+    setIsValidPassword(passwordPattern.test(password2));
+
+    if (passwordPattern.test(password2)) {
+      setPaswordBorder('#3CBC81');
+    } else {
+      setPaswordBorder('#E74A3B');
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    setIsBlurredPassword(true);
+    handlePasswordValid();
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const formSubmitHandler = async e => {
     e.preventDefault();
 
-    dispatch(setRegData({ name, email, password }));
+    if (name2 === '' || email2 === '' || password2 === '') {
+      Notify.failure('Please fill in all fields!');
+      return;
+    }
 
-    navigate('/usergoal');
+    // const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+    // if (passwordPattern.test(password) === false) {
+    //   return Notify.failure('Password must be a minimum of 6 characters, a maximum of 16 characters, including at least 1 uppercase letter, 1 lowercase letter, and 1 number');
+    // }
+
+    const response = await dispatch(
+      authOperations.checkEmail({ email: email2 })
+    );
+
+    if (response.payload.status === 200) {
+      dispatch(setRegData({ name: name2, email: email2, password: password2 }));
+      navigate('/usergoal');
+    } else {
+      const message = response.payload.data.message;
+      Notify.failure(message);
+    }
   };
 
   return (
@@ -39,25 +111,92 @@ const Register = () => {
           <p className={css.subTitle}>
             You need to register to use the service
           </p>
-          <form className={css.form} onSubmit={formSubmitHandler}>
-            <input
-              value={name}
-              placeholder="Name"
-              onChange={handleNameChange}
-              className={css.input}
-            ></input>
-            <input
-              value={email}
-              placeholder="E-mail"
-              onChange={handleEmailChange}
-              className={css.input}
-            ></input>
-            <input
-              value={password}
-              placeholder="Password"
-              onChange={handlePasswordChange}
-              className={css.input}
-            ></input>
+
+          <form className={css.form} onSubmit={formSubmitHandler} noValidate>
+            <div className={css.inputDiv}>
+              <input
+                type="text"
+                name="name"
+                value={name2}
+                placeholder="Name"
+                onChange={handleNameChange}
+                className={css.input}
+              ></input>
+            </div>
+
+            <div className={css.inputDiv}>
+              <input
+                type="text"
+                name="email"
+                value={email2}
+                placeholder="E-mail"
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                className={css.input}
+                style={{ borderColor: emailBorder }}
+              ></input>
+              {isBlurredEmail && !isValidEmail && (
+                <img className={css.error} src={error} alt="Error" />
+              )}
+              {isBlurredEmail && !isValidEmail && (
+                <p className={css.notValid}>Enter a valid Email</p>
+              )}
+              {isBlurredEmail && isValidEmail && (
+                <img className={css.correct} src={correct} alt="Correct" />
+              )}
+              {isBlurredEmail && isValidEmail && (
+                <p className={css.valid}>Email is valid</p>
+              )}
+            </div>
+
+            <div className={css.inputDiv}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={password2}
+                placeholder="Password"
+                onChange={handlePasswordChange}
+                onBlur={handlePasswordBlur}
+                className={css.input}
+                style={{ borderColor: passwordBorder }}
+              ></input>
+              {!isBlurredPassword && (
+                <img
+                  className={css.showPasswordBtn}
+                  src={showPassword ? eye : eyeOff}
+                  alt="Show password"
+                  onMouseEnter={togglePasswordVisibility}
+                  onMouseLeave={togglePasswordVisibility}
+                />
+              )}
+              {isBlurredPassword && !isValidPassword && (
+                <img
+                  className={css.error}
+                  src={error}
+                  alt="Error"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+              {isBlurredPassword && !isValidPassword && (
+                <p className={css.notValid}>
+                  <Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">
+                    Enter a valid Password *
+                  </Tooltip>
+                </p>
+              )}
+              {isBlurredPassword && isValidPassword && (
+                <img
+                  className={css.correct}
+                  src={correct}
+                  alt="Correct"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+              {isBlurredPassword && isValidPassword && (
+                <p className={css.valid}>Password is secure</p>
+              )}
+            </div>
+
             <button
               type="submit"
               className={css.btn}

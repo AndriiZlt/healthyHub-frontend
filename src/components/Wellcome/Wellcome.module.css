@@ -1,6 +1,9 @@
+.wellcome {
+    padding-top: 24px;
+}
+
 .image {
     width: 300px;
-    margin-top: 24px;
     margin-bottom: 0;
     display: block;
 }
@@ -74,11 +77,13 @@
 }
 
 @media (min-width: 834px) {
+    .wellcome {
+        padding-top: 40px;
+    }
     .image {
         width: 380px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 40px;
         display: flex;
     }
     .info {
@@ -124,7 +129,7 @@
         height: 588px;
     }
     .info {
-        margin-top: 120px;
+        margin-top: 80px;
         margin-left: 0;
         justify-content: flex-start;
         align-items: flex-start;
