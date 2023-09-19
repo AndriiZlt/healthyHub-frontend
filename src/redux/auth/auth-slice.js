@@ -54,7 +54,13 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        // state.user = action.payload;
+        if (action.payload.email) {
+          console.log('Current user:', action.payload);
+        } else {
+          state.user = initialState.user;
+          state.isLoggedIn = false;
+          state.regData = initialState.regData;
+        }
       })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
         console.log(action.payload.data.message);
