@@ -1,0 +1,32 @@
+.tooltipContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: var(--primary-white-color);
+    color: var(--primary-black-color);
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    /* top: -30px; */
+
+    /* left: 50%; */
+    /* transform: translateX(-30%); */
+    z-index: 1;
+    width: 280px;
+    /* height: 100%; */
+    /* white-space: wrap; */
+    display: none;
+}
+    
+.tooltipContainer:hover .tooltip {
+    display: block;
+}
+
+/* @media (min-width: 834px) {
+    .tooltip {
+        width: 280px;
+    }
+} */
