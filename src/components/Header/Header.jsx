@@ -9,17 +9,22 @@ import ButtonDropDown from './ButtonDropDown/ButtonDropDown';
 import menu from '../../assets/menu.svg';
 import authSelectors from 'redux/auth/auth-selectors';
 import MobileAction from './MobileAction/MobileAction';
-import LogoutModal from './LogoutModal/LogoutModal'
+import LogoutModal from './LogoutModal/LogoutModal';
+import Target from 'components/Target/SelectTarget';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // const data = useSelector(authSelectors.getRegData);
-  // console.log(data);
+
+  const data = useSelector(authSelectors.getRegData);
+  console.log(data);
   const isMobile = useMediaQuery('(max-width:833px)');
 
   const [showDropdown, setShowDropdown] = useState(false);
   function closeButton() {
     setShowDropdown(false);
+  }
+  function openButton() {
+    setShowDropdown(true);
   }
   return (
     <div className={css.header}>
@@ -30,21 +35,19 @@ const Header = () => {
         </>
       ) : (
         <>
+          <Dropdown show={showDropdown} onToggle={e => setShowDropdown(e)}>
+            <Dropdown.Toggle className={css.button} />
+            <Dropdown.Menu className={`${css.modal} ${css.mobile_modal}`}>
+              <MobileAction closeButton={closeButton} />
+            </Dropdown.Menu>
+          </Dropdown>
           <Logo />
           <div className={css.header_action}>
             {isMobile ? (
               <>
-                <Dropdown
-                  show={showDropdown}
-                  onToggle={e => setShowDropdown(e)}
-                >
-                  <Dropdown.Toggle className={css.button}>
-                    <img src={menu} alt="menu" />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className={`${css.modal} ${css.mobile_modal}`}>
-                    <MobileAction closeButton={closeButton} />
-                  </Dropdown.Menu>
-                </Dropdown>
+                <button className={css.button} onClick={openButton}>
+                  <img src={menu} alt="menu" />
+                </button>
               </>
             ) : (
               <>
@@ -56,7 +59,9 @@ const Header = () => {
                       text="Lose fat"
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={css.modal}>
+                    <Target />
+                  </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
                   <Dropdown.Toggle className={css.button}>
@@ -81,7 +86,9 @@ const Header = () => {
                   userAction={true}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu className={css.modal}><LogoutModal/></Dropdown.Menu>
+              <Dropdown.Menu className={css.modal}>
+                <LogoutModal />
+              </Dropdown.Menu>
             </Dropdown>
           </div>
         </>
