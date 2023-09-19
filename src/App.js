@@ -18,14 +18,14 @@ import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
 import Test from 'components/TestComponent/Test';
-import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/auth-operations';
+// import { useDispatch } from 'react-redux';
+// import authOperations from 'redux/auth/auth-operations';
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    // dispatch(authOperations.fetchCurrentUser());
+  }, []);
 
   return (
     <Routes>

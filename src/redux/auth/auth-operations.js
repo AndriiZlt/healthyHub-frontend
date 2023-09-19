@@ -1,15 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import useLogin from 'helpers/useLogin';
-import { useDispatch } from 'react-redux';
-import { setToken } from './auth-slice';
-
-function useSetToken(token) {
-  console.log('yse');
-  const dispatch = useDispatch();
-
-  dispatch(setToken(token));
-}
 
 axios.defaults.baseURL = 'https://healthy-hub.onrender.com/api';
 
@@ -48,9 +38,8 @@ const register = createAsyncThunk('auth/register', async credentials => {
     console.log('Succesfull registration, login in...');
     const { email, password } = credentials;
     const { data } = await axios.post('/user/login', { email, password });
-    console.log('login token=>' + data.token);
+    console.log('Login success token=>' + data.token);
     token.set(data.token);
-    useSetToken(data.token);
   }
 });
 
@@ -69,9 +58,7 @@ const fetchCurrentUser = createAsyncThunk(
     const persistedToken = thunkAPI.getState().auth.token;
     if (!persistedToken) {
       return {
-        user: { name: null, email: null },
-        token: null,
-        isLoggedIn: false,
+        email: null,
       };
     }
     token.set(persistedToken);
@@ -91,6 +78,7 @@ const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
     return response;
   } catch (error) {
     console.log('Error in register', error.message);
+    throw error;
   }
 });
 
