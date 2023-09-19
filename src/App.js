@@ -25,7 +25,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>
