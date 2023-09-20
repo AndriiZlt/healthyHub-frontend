@@ -75,6 +75,9 @@ export const authSlice = createSlice({
       })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
         console.log(action.payload.data.message);
+      })
+      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        state.isLoading = false;
       });
   },
 });
