@@ -51,13 +51,15 @@ p {
   color: rgba(227, 255, 168, 1);
 }
 .modal {
-  width: 392px;
   position: relative;
   border-radius: 12px;
   background-color: #0f0f0f;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   padding: 20px 24px;
   transform: translate(0px, 50px) !important;
+}
+.width_modal {
+  width: 392px;
 }
 .mobile_modal {
   width: 302px;
