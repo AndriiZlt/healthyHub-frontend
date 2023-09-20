@@ -30,6 +30,7 @@ function App() {
   const isLoading = useSelector(authSelectors.getIsLoading);
 
   useEffect(() => {
+    console.log('Fetching current user...');
     dispatch(setLoadingTrue());
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
