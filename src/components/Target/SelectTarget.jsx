@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import style from './target.module.css';
@@ -12,18 +11,21 @@ function Target() {
   const sendPatchRequest = async () => {
     try {
       const requestData = { goal: selected };
-      const response = await axios.patch('https://healthy-hub.onrender.com/api/user/change-goal', requestData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      console.log('Патч-запит успішно відправлено');
+      const response = await axios.patch(
+        'https://healthy-hub.onrender.com/api/user/change-goal',
+        requestData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      console.log('Патч-запит успішно відправлено', response);
     } catch (error) {
       console.error('Помилка при відправленні патч-запиту', error);
     }
   };
-  
 
   const confirmSelection = () => {
     sendPatchRequest();
@@ -54,7 +56,6 @@ function Target() {
         <li>
           <img src={Maintake} alt="Maintake img" />
           <button onClick={selectedMaintain}>Maintain</button>
-
         </li>
         <li>
           <img src={Gainmuscle} alt="Gainmuscle img" />

@@ -21,7 +21,7 @@ import { NavLink } from 'react-router-dom';
 import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoadingg] = useState(false);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
