@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/healthyHub-frontend/static/css/main.97a2287c.css",
+    "main.css": "/healthyHub-frontend/static/css/main.1c1ec5ef.css",
     "main.js": "/healthyHub-frontend/static/js/main.e00f3694.js",
     "static/js/787.545f56ba.chunk.js": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js",
     "static/media/breakfast.svg": "/healthyHub-frontend/static/media/breakfast.f1ff39ce6a18fb4d909722e48c944518.svg",
@@ -42,12 +42,12 @@
     "static/media/plus.svg": "/healthyHub-frontend/static/media/plus.3549f83e53c7836e8602dd5b93eb076d.svg",
     "static/media/arrow-down.svg": "/healthyHub-frontend/static/media/arrow-down.3a308cfe3e9d8b460168c1d365733906.svg",
     "static/media/userRadioCheked.svg": "/healthyHub-frontend/static/media/userRadioCheked.c972043ff8b81b0a8bc9.svg",
-    "main.97a2287c.css.map": "/healthyHub-frontend/static/css/main.97a2287c.css.map",
+    "main.1c1ec5ef.css.map": "/healthyHub-frontend/static/css/main.1c1ec5ef.css.map",
     "main.e00f3694.js.map": "/healthyHub-frontend/static/js/main.e00f3694.js.map",
     "787.545f56ba.chunk.js.map": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.97a2287c.css",
+    "static/css/main.1c1ec5ef.css",
     "static/js/main.e00f3694.js"
   ]
 }
