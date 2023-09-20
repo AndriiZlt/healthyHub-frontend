@@ -17,10 +17,11 @@ import fruit3 from 'assets/fruit3.png';
 import fruit4 from 'assets/fruit4.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const [isLoadingg] = useState(false);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
@@ -63,6 +64,7 @@ const Home = () => {
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
+      {isLoading && <LoaderModal />}
 
       <div className={css.media1}>
         {/* Daily goal block */}

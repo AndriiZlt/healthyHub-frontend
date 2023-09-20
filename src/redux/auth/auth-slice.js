@@ -25,6 +25,7 @@ const initialState = {
     weight: null,
     activity: null,
   },
+  isLoading: false,
 };
 
 export const authSlice = createSlice({

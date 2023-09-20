@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -18,140 +18,146 @@ import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
 import Test from 'components/TestComponent/Test';
-import { useDispatch } from 'react-redux';
+import LoaderModal from 'components/LoaderModal/LoaderModal';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import authSelectors from 'redux/auth/auth-selectors';
 
 function App() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(authSelectors.getIsLoading);
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+  }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route
-          exact
-          index
-          restricted
-          element={
-            <PublicRoute>
-              <Wellcome />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="signup"
-          element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="usergoal"
-          element={
-            <PublicRoute>
-              <UserGoal />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="usergender"
-          element={
-            <PublicRoute>
-              <UserGender />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="userbody"
-          element={
-            <PublicRoute>
-              <UserBody />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="useractivity"
-          element={
-            <PublicRoute>
-              <UserActivity />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="signin"
-          element={
-            <PublicRoute>
-              <Login />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="forgot-password"
-          element={
-            <PublicRoute>
-              <ForgotPassword />
-            </PublicRoute>
-          }
-        />
-        <Route
-          exact
-          path="main"
-          element={
-            <PrivateRoute>
-              <Main />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path="dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path="diary"
-          element={
-            <PrivateRoute>
-              <Diary />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path="recommended"
-          element={
-            <PrivateRoute>
-              <RecommendedFood />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          exact
-          path="settings"
-          element={
-            <PrivateRoute>
-              <Settings />
-            </PrivateRoute>
-          }
-        />
-      </Route>
-      <Route exact path="/*" element={<Navigate to="/" />} />
-      <Route exact path="/test" element={<Test />} />
-    </Routes>
+    <>
+      {isLoading && <LoaderModal />}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            exact
+            index
+            restricted
+            element={
+              <PublicRoute>
+                <Wellcome />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="signup"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="usergoal"
+            element={
+              <PublicRoute>
+                <UserGoal />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="usergender"
+            element={
+              <PublicRoute>
+                <UserGender />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="userbody"
+            element={
+              <PublicRoute>
+                <UserBody />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="useractivity"
+            element={
+              <PublicRoute>
+                <UserActivity />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="signin"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="forgot-password"
+            element={
+              <PublicRoute>
+                <ForgotPassword />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="main"
+            element={
+              <PrivateRoute>
+                <Main />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="diary"
+            element={
+              <PrivateRoute>
+                <Diary />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="recommended"
+            element={
+              <PrivateRoute>
+                <RecommendedFood />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path="settings"
+            element={
+              <PrivateRoute>
+                <Settings />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+        <Route exact path="/*" element={<Navigate to="/" />} />
+        <Route exact path="/test" element={<Test />} />
+      </Routes>
+    </>
   );
 }
 
