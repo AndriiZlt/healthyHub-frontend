@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -28,7 +28,7 @@ function App() {
   const isLoading = useSelector(authSelectors.getIsLoading);
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
