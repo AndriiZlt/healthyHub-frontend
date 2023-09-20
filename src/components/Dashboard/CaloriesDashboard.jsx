@@ -7,85 +7,44 @@ import css from "./Dashboard.module.css";
 
 const CaloriesDashboard = (props) => {
 
-	// const time = props.time === 'month' ? 'month' : 'year'
-
 	const data = [
-		{
-			id: 1,
-			month: "Jan",
-			userGain: 80,
-		},
-		{
-			id: 2,
-			month: "Feb",
-			userGain: 69,
-		},
-		{
-			id: 3,
-			month: "Mar",
-			userGain: 59,
-		},
-		{
-			id: 4,
-			month: "Apr",
-			userGain: 65,
-		},
-		{
-			id: 5,
-			month: "May",
-			userGain: 80,
-		},
-		{
-			id: 6,
-			month: "June",
-			userGain: 69,
-		},
-		{
-			id: 7,
-			month: "July",
-			userGain: 59,
-		},
-		{
-			id: 8,
-			month: "Aug",
-			userGain: 65,
-		},
-		{
-			id: 9,
-			month: "Sep",
-			userGain: 80,
-		},
-		{
-			id: 10,
-			month: "Oct",
-			userGain: 69,
-		},
-		{
-			id: 11,
-			month: "Nov",
-			userGain: 59,
-		},
-		{
-			id: 12,
-			month: "Dec",
-			userGain: 65,
-		},
+		// {
+		// 	id: 1,
+		// 	month: "Jan",
+		// 	userGain: 80,
+		// }
 	];
 
-	// for (let i = 0; i < props.numberOfDaysInMonth; i++) {
-	// 	data.push({
-	// 		id: i,
-	// 		month: "Dec",
-	// 		userGain: 65,
-	// 	});
-	// }
+	const monthNames = [
+		"Jan", "Feb", "Mar", "Apr", "May", "June",
+		"July", "Aug", "Sep", "Oct", "Nov", "Dec"
+	];
+
+	if (props.time === 'month') {
+		for (let i = 0; i < props.numberOfDaysInMonth; i++) {
+			data.push({
+				id: i,
+				time: i,
+				kcal: 65,
+			},);
+		}
+	} if (props.time === 'year') {
+		for (let i = 0; i < monthNames.length; i++) {
+			data.push({
+				id: i,
+				time: monthNames[i],
+				kcal: 65,
+			},);
+		}
+	}
+
 
 	const [chartData] = useState({
-		labels: data.map(item => item.month),
+		labels: data.map(item => item.time),
 		datasets: [
 			{
 				label: 'Your Calories',
-				data: data.map(item => item.userGain),
+				data: data.map(item => item.kcal),
 				backgroundColor: '#ff0d00',
 				borderColor: '#E3FFA8',
 				borderWidth: 1,
