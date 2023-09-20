@@ -25,6 +25,7 @@ const Register = () => {
   const [isBlurredPassword, setIsBlurredPassword] = useState(false);
   const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
   const [showPassword, setShowPassword] = useState(false);
+  const [isShowPasswordBtn, setIsShowPasswordBtn] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -54,6 +55,10 @@ const Register = () => {
 
   const handlePasswordChange = e => {
     setPassword2(e.target.value);
+
+    if (password2.length >= 0) {
+      setIsShowPasswordBtn(true);
+    }
   };
 
   const handlePasswordValid = () => {
@@ -84,10 +89,10 @@ const Register = () => {
       return;
     }
 
-    // const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
-    // if (passwordPattern.test(password) === false) {
-    //   return Notify.failure('Password must be a minimum of 6 characters, a maximum of 16 characters, including at least 1 uppercase letter, 1 lowercase letter, and 1 number');
-    // }
+    if (isValidEmail === false || isValidPassword === false) {
+      Notify.failure('Please enter valid data!');
+      return;
+    }
 
     const response = await dispatch(
       authOperations.checkEmail({ email: email2 })
@@ -160,7 +165,7 @@ const Register = () => {
                 className={css.input}
                 style={{ borderColor: passwordBorder }}
               ></input>
-              {!isBlurredPassword && (
+              {!isBlurredPassword && isShowPasswordBtn && (
                 <img
                   className={css.showPasswordBtn}
                   src={showPassword ? eye : eyeOff}
@@ -178,11 +183,11 @@ const Register = () => {
                 />
               )}
               {isBlurredPassword && !isValidPassword && (
-                <p className={css.notValid}>
+                <div className={css.notValid} >
                   <Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">
                     Enter a valid Password *
                   </Tooltip>
-                </p>
+                </div>
               )}
               {isBlurredPassword && isValidPassword && (
                 <img
