@@ -13,7 +13,7 @@ export const token = {
 };
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
-  console.log('login', JSON.stringify(credentials));
+  console.log('Login in with', credentials);
   try {
     const { data } = await axios.post('/user/login', credentials);
     console.log('login token=>' + data.token);
@@ -28,16 +28,17 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/user/register', credentials);
-    token.set(data.token);
-    return data;
+    if (data) {
+      console.log('Succesfull registration, login in...');
+      const { email, password } = credentials;
+      const { data } = await axios.post('/user/login', { email, password });
+      token.set(data.token);
+      console.log('token=>', data.token);
+      return data;
+    }
   } catch (error) {
     console.log('Error in Register', error.response.data);
     throw new Error('Error in Register');
-  } finally {
-    console.log('Succesfull registration, login in...');
-    const { email, password } = credentials;
-    const { data } = await axios.post('/user/login', { email, password });
-    data && console.log('Login success');
   }
 });
 
@@ -54,18 +55,18 @@ const logOut = createAsyncThunk('/user/logout', async (_, thunkAPI) => {
 const fetchCurrentUser = createAsyncThunk(
   '/user/refresh',
   async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
+    const persistedToken = thunkAPI.getState().auth.user.token;
+    console.log('Persisted token->', persistedToken);
     if (!persistedToken) {
+      console.log('No user');
       return {
-        user: { name: null, email: null },
-        token: null,
-        isLoggedIn: false,
+        email: null,
+        name: null,
       };
     }
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/user/current');
-      console.log('inside fetch current user', data);
       return data;
     } catch (error) {
       console.log('error in fetching current user', error.message);
@@ -79,6 +80,7 @@ const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
     return response;
   } catch (error) {
     console.log('Error in register', error.message);
+    throw error;
   }
 });
 

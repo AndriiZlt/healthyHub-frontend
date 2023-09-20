@@ -17,8 +17,11 @@ import fruit3 from 'assets/fruit3.png';
 import fruit4 from 'assets/fruit4.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
+import { NavLink } from 'react-router-dom';
+// import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const Home = () => {
+  // const [isLoading] = useState(false);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
@@ -54,13 +57,14 @@ const Home = () => {
       <div className={css.titleDiv}>
         <h1 className={css.title1}>Today</h1>
         <div className={css.toGoal}>
-          <a href="d">On the way to the goal</a>
+          <NavLink to="/dashboard">On the way to the goal</NavLink>
           <img src={arrowRight} alt="arrow-right" />
         </div>
       </div>
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
+      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -336,9 +340,9 @@ const Home = () => {
         <div className={css.diaryBlock}>
           <div className={css.titleDiv2}>
             <h2 className={css.title3}>Diary</h2>
-            <a className={css.seeMore} href="d">
+            <NavLink className={css.seeMore} to="/diary">
               See more
-            </a>
+            </NavLink>
           </div>
           {/* Breakfast */}
           <div className={css.mealBlock}>
@@ -782,7 +786,7 @@ const Home = () => {
             </div>
           </div>
           <div className={css.seeMore2}>
-            <a href="d">See more</a>
+            <NavLink to="/recommended">See more</NavLink>
             <img src={arrowRight} alt="arrow-right" />
           </div>
         </div>
