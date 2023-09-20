@@ -4,7 +4,7 @@ const getUserEmail = state => state.auth.user.email;
 const getRegData = state => state.auth.regData;
 const getUser = state => state.auth.user;
 const getToken = state => state.auth.user.token;
-const getIsLoading = state => state.auth.getIsLoading;
+const getIsLoading = state => state.auth.isLoading;
 
 const authSelectors = {
   getIsLoggedIn,
