@@ -22,7 +22,7 @@ import LoaderModal from 'components/LoaderModal/LoaderModal';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
-import { setLoadingTrue, setLoadingFalse } from 'redux/auth/auth-slice';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 function App() {
   const dispatch = useDispatch();
