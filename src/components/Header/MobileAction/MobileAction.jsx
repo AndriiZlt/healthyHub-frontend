@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import ButtonDropDown from '../ButtonDropDown/ButtonDropDown';
 import close from '../../../assets/close-circle.svg';
 import css from './MobileAction.module.css';
+import authSelectors from 'redux/auth/auth-selectors';
+
 
 function MobileAction({ closeButton }) {
+  const { goal, weight} = useSelector(authSelectors.getUser);
   const [showGoal, setShowGoal] = useState(false);
   const [showWeight, setshowWeight] = useState(false);
 
@@ -27,7 +31,7 @@ function MobileAction({ closeButton }) {
         <ButtonDropDown
           image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
           title="Goal"
-          text="Lose fat"
+          text={goal}
         />
       </button>
       <Modal
@@ -44,7 +48,7 @@ function MobileAction({ closeButton }) {
         <ButtonDropDown
           image="https://i.ibb.co/y5LpgvL/Waight-image.png"
           title="Weight"
-          text="65"
+          text={weight}
           subtext="kg"
           editIcon={true}
         />

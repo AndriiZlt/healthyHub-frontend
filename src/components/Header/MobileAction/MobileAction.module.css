@@ -23,8 +23,9 @@
   }
 .modal_action_dialog {
     width: 300px;
-    height: calc(100vh - 120px);
-    top: 30px;
+    height: calc(100vh - 125px);
+    top: 60px;
+    margin: auto;
 }
 .modal_action_content{
     background-color: #050505;
