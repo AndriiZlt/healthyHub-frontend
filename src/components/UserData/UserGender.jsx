@@ -2,28 +2,30 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userGender.svg';
 import css from './UserGender.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const UserGender = () => {
-  const [gender, setGender] = useState('Male');
-  const [age, setAge] = useState('');
+  const { gender, age } = useSelector(authSelectors.getRegData);
+  const [gender2, setGender2] = useState(gender || 'Male');
+  const [age2, setAge2] = useState(age || '');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChangeGender = evt => {
-    setGender(evt.target.value);
+    setGender2(evt.target.value);
   };
 
   const handleChangeAge = evt => {
-    setAge(evt.target.value);
+    setAge2(evt.target.value);
   };
 
   const formSubmit = e => {
     e.preventDefault();
+    dispatch(setRegData({ gender: gender2, age: age2 }));
     navigate('/userbody');
-    dispatch(setRegData({ gender, age }));
   };
 
   const Gender = {
@@ -53,7 +55,7 @@ const UserGender = () => {
               type="radio"
               name="gender"
               value={Gender.MALE}
-              defaultChecked
+              checked={gender2 === 'Male'}
             />
             <span className={css.customCheked}></span>
             Male
@@ -65,6 +67,7 @@ const UserGender = () => {
               type="radio"
               name="gender"
               value={Gender.FEMALE}
+              checked={gender2 === 'Female'}
             />
             <span className={css.customCheked}></span>
             Female
@@ -78,11 +81,11 @@ const UserGender = () => {
             onChange={handleChangeAge}
             id="user_age"
             type="number"
-            value={age}
+            value={age2}
             placeholder="Enter your age"
           />
 
-          <button className={css.genderButton} type="submit" disabled={!age}>
+          <button className={css.genderButton} type="submit" disabled={!age2}>
             Next
           </button>
         </form>
