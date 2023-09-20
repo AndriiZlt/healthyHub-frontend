@@ -18,7 +18,7 @@ import fruit4 from 'assets/fruit4.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
-import LoaderModal from 'components/LoaderModal/LoaderModal';
+// import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const Home = () => {
   // const [isLoading] = useState(false);
