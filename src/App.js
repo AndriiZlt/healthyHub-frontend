@@ -10,6 +10,7 @@ import ForgotPassword from 'components/ForgotPassword/ForgotPassword';
 import Main from './components/Main/Main';
 import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
+import RecordMealModal from 'components/Diary/RecordMealModal';
 import RecommendedFood from './components/RecommendedFood/RecommendedFood';
 import Settings from './components/Settings/Settings';
 import UserGoal from 'components/UserData/UserGoal';
@@ -127,6 +128,15 @@ function App() {
           element={
             <PrivateRoute>
               <Diary />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          exact
+          path="RecordMealModal"
+          element={
+            <PrivateRoute>
+              <RecordMealModal />
             </PrivateRoute>
           }
         />
