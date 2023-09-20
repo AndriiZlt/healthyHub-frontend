@@ -10,16 +10,18 @@ import menu from '../../assets/menu.svg';
 import authSelectors from 'redux/auth/auth-selectors';
 import MobileAction from './MobileAction/MobileAction';
 import LogoutModal from './LogoutModal/LogoutModal';
-// import Target from 'components/Target/SelectTarget';
+import WeightModal from './WeightModal/WeightModal';
+import Target from 'components/Target/SelectTarget';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isMobile = useMediaQuery('(max-width:833px)');
 
   const {avatarURL, name, goal, weight} = useSelector(authSelectors.getUser);
-  const isMobile = useMediaQuery('(max-width:833px)');
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+
   function closeButton() {
     setShowDropdown(false);
   }
@@ -29,6 +31,7 @@ const Header = () => {
   function closeModal() {
     setShowSetting(false)
   }
+
   return (
     <div className={css.header}>
       {!isLoggedIn ? (
@@ -46,7 +49,6 @@ const Header = () => {
               </Dropdown.Menu>
             </Dropdown>
           )}
-
           <Logo />
           <div className={css.header_action}>
             {isMobile ? (
@@ -66,7 +68,7 @@ const Header = () => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className={css.modal}>
-                    TADAM
+                    <Target/>
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
@@ -79,7 +81,7 @@ const Header = () => {
                       editIcon={true}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={css.modal}><WeightModal/></Dropdown.Menu>
                 </Dropdown>
               </>
             )}

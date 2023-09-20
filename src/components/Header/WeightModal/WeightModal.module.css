@@ -1,0 +1,59 @@
+.modal {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+.subtitle {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+.today {
+  font-size: 14px;
+  font-size: 14px;
+}
+.date {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  @media screen and (min-width: 834px) {
+    flex-direction: row;
+  }
+}
+.input {
+  background-color: #0f0f0f;
+  color: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid var(--color-primary-green-lite, #e3ffa8);
+  padding: 8px 10px;
+}
+
+.input::placeholder {
+  color: #b6b6b6;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42px;
+}
+.button {
+  padding: 0px;
+  margin: 0px;
+  color: #0f0f0f;
+}
