@@ -784,7 +784,7 @@ const Home = () => {
             </div>
           </div>
           <div className={css.seeMore2}>
-            <a href="d">See more</a>
+            <NavLink to="/recommended">See more</NavLink>
             <img src={arrowRight} alt="arrow-right" />
           </div>
         </div>
