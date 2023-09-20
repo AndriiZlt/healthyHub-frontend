@@ -10,6 +10,7 @@ import correct from '../../assets/correct.svg';
 import eye from '../../assets/eye.svg';
 import eyeOff from '../../assets/eye-off.svg';
 import Tooltip from 'components/Tooltip/Tooltip';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -75,12 +76,12 @@ const Login = () => {
 
   const formSubmitHandler = async e => {
     e.preventDefault();
-
+    dispatch(setLoadingTrue());
     if (email === '' || password === '') {
       Notify.failure('Please fill in all fields!');
       return;
     }
-    
+
     if (isValidEmail === false || isValidPassword === false) {
       Notify.failure('Please enter valid data!');
       return;

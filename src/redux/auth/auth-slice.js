@@ -56,6 +56,10 @@ export const authSlice = createSlice({
         console.log('after login', action.payload);
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isLoading = false;
+      })
+      .addCase(authOperations.logIn.rejected, (state, _) => {
+        state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
         state.user = initialState.user;
@@ -63,6 +67,7 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
+
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         if (action.payload.email) {
           console.log('Current user:', action.payload);
