@@ -76,15 +76,21 @@ const Login = () => {
     }
 
     const response = await dispatch(authOperations.logIn({ email, password }));
-
-    if (response.payload.status === 200) {
+    if (response.payload) {
       navigate('/main');
     } else {
-      const message = response.payload.data.message;
-      Notify.failure(message);
-    }
+      // const message = response.payload.data.message;
+      Notify.failure('Email or password is wrong');
 
-    navigate('/main');
+      setEmail('');
+      setPassword('');
+      setIsBlurredEmail(false);
+      setIsBlurredPassword(false);
+      handlePasswordValid();
+      handleEmailValid();
+      setEmailBorder('#e3ffa8');
+      setPaswordBorder('#e3ffa8');
+    }
   };
 
   return (
@@ -107,19 +113,15 @@ const Login = () => {
                   className={css.input}
                   style={{ borderColor: emailBorder }}
                 ></input>
-                {isBlurredEmail && !isValidEmail && (<img
-                  className={css.error}
-                  src={error}
-                  alt="Error"
-                />)}
+                {isBlurredEmail && !isValidEmail && (
+                  <img className={css.error} src={error} alt="Error" />
+                )}
                 {isBlurredEmail && !isValidEmail && (
                   <p className={css.notValid}>Enter a valid Email</p>
                 )}
-                {isBlurredEmail && isValidEmail && (<img
-                  className={css.correct}
-                  src={correct}
-                  alt="Correct"
-                />)}
+                {isBlurredEmail && isValidEmail && (
+                  <img className={css.correct} src={correct} alt="Correct" />
+                )}
                 {isBlurredEmail && isValidEmail && (
                   <p className={css.valid}>Email is valid</p>
                 )}
@@ -136,33 +138,39 @@ const Login = () => {
                   className={css.input}
                   style={{ borderColor: passwordBorder }}
                 ></input>
-                {!isBlurredPassword && (<img
-                  className={css.showPasswordBtn}
-                  src={showPassword ? eye : eyeOff}
-                  alt="Show password"
-                  onMouseEnter={togglePasswordVisibility}
-                  onMouseLeave={togglePasswordVisibility}
-                />)}
-                {isBlurredPassword && !isValidPassword && (<img
-                  className={css.error}
-                  src={error}
-                  alt="Error"
-                  onClick={togglePasswordVisibility}
-                />)}
+                {!isBlurredPassword && (
+                  <img
+                    className={css.showPasswordBtn}
+                    src={showPassword ? eye : eyeOff}
+                    alt="Show password"
+                    onMouseEnter={togglePasswordVisibility}
+                    onMouseLeave={togglePasswordVisibility}
+                  />
+                )}
+                {isBlurredPassword && !isValidPassword && (
+                  <img
+                    className={css.error}
+                    src={error}
+                    alt="Error"
+                    onClick={togglePasswordVisibility}
+                  />
+                )}
                 {isBlurredPassword && !isValidPassword && (
                   <p className={css.notValid}>Enter a valid Password *</p>
                 )}
-                {isBlurredPassword && isValidPassword && (<img
-                  className={css.correct}
-                  src={correct}
-                  alt="Correct"
-                  onClick={togglePasswordVisibility}
-                />)}
+                {isBlurredPassword && isValidPassword && (
+                  <img
+                    className={css.correct}
+                    src={correct}
+                    alt="Correct"
+                    onClick={togglePasswordVisibility}
+                  />
+                )}
                 {isBlurredPassword && isValidPassword && (
                   <p className={css.valid}>Password is secure</p>
                 )}
               </div>
-              
+
               <button
                 type="submit"
                 className={css.btn}
