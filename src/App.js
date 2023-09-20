@@ -26,12 +26,12 @@ import { setLoadingTrue, setLoadingFalse } from 'redux/auth/auth-slice';
 
 function App() {
   const dispatch = useDispatch();
-  // dispatch(setLoadingTrue());
+
   const isLoading = useSelector(authSelectors.getIsLoading);
 
   useEffect(() => {
+    dispatch(setLoadingTrue());
     dispatch(authOperations.fetchCurrentUser());
-    // dispatch(setLoadingFalse());
   }, [dispatch]);
 
   return (
