@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
@@ -16,8 +16,17 @@ import UserGoal from 'components/UserData/UserGoal';
 import UserGender from 'components/UserData/UserGender';
 import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
+import { Navigate } from 'react-router-dom';
+import Test from 'components/TestComponent/Test';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/auth/auth-operations';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -140,6 +149,8 @@ function App() {
           }
         />
       </Route>
+      <Route exact path="/*" element={<Navigate to="/" />} />
+      <Route exact path="/test" element={<Test />} />
     </Routes>
   );
 }

@@ -1,0 +1,18 @@
+.logout{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.link{
+    margin-left: 8px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height:1.42;
+}
+.user_link:hover, .user_link:focus{
+    color: #E3FFA8;
+}
+a{
+    margin: 0;
+}

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
@@ -58,6 +59,7 @@ const CaloriesDashboard = (props) => {
 			<Line data={chartData} />
 		</div>
 	);
+
 };
 
 export default CaloriesDashboard;

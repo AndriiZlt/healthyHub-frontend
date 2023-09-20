@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
@@ -15,12 +15,39 @@ import fruit1 from 'assets/fruit1.png';
 import fruit2 from 'assets/fruit2.png';
 import fruit3 from 'assets/fruit3.png';
 import fruit4 from 'assets/fruit4.png';
+import ModalAddMeal from './ModalAddMeal';
+import ModalAddWater from './ModalAddWater';
 
 const Home = () => {
+  const [modalMealOn, setModalMealOn] = useState(false);
+  const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
   const lunch = true;
   const dinner = false;
   const snack = false;
+
+  const escHandler = e => {
+    console.log(e.target);
+    if (e.target.id === 'overlay') {
+      setModalMealOn(false);
+      setModalWaterOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+    if (e.code === 'Escape') {
+      setModalMealOn(false);
+      setModalWaterOn(false);
+      window.removeEventListener('keydown', escHandler);
+      window.removeEventListener('click', escHandler);
+    }
+  };
+
+  const modalHandler = e => {
+    e.target.id === 'meal' ? setModalMealOn(true) : setModalWaterOn(true);
+    console.log(e.target.id);
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
 
   return (
     <div className={css.mainSection}>
@@ -31,6 +58,9 @@ const Home = () => {
           <img src={arrowRight} alt="arrow-right" />
         </div>
       </div>
+
+      {modalMealOn && <ModalAddMeal />}
+      {modalWaterOn && <ModalAddWater />}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -74,11 +104,11 @@ const Home = () => {
                 <img
                   style={{ width: '100%', height: '100%' }}
                   src={waterChart}
-                  alt="bubble"
+                  alt="water-chart"
                 />
               </div>
 
-              <div className={css.stats}>
+              <div className={css.stats2}>
                 <p className={css.statsTitle2}>Water consumption</p>
                 <div className={css.media2}>
                   <div className={css.statsWater}>
@@ -120,7 +150,12 @@ const Home = () => {
                     </span>
                   </p>
                 </div>
-                <img src={addWaterIntake} alt="add-water-intake" />
+                <img
+                  src={addWaterIntake}
+                  alt="add-water-intake"
+                  id="water"
+                  onClick={modalHandler}
+                />
               </div>
             </div>
           </div>
@@ -385,6 +420,8 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    id="meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
@@ -460,6 +497,8 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    id="meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
@@ -535,6 +574,8 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    id="meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
@@ -610,6 +651,8 @@ const Home = () => {
                     style={{ width: 150, height: 20 }}
                     src={recordYourMeal}
                     alt="record-your-meal"
+                    id="meal"
+                    onClick={modalHandler}
                   />
                 )}
               </li>
