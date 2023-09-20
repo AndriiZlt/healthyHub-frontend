@@ -21,7 +21,7 @@ import { NavLink } from 'react-router-dom';
 import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const Home = () => {
-  // const [isLoadingg] = useState(false);
+  // const [isLoading] = useState(false);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
@@ -64,7 +64,7 @@ const Home = () => {
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
-      {isLoading && <LoaderModal />}
+      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
