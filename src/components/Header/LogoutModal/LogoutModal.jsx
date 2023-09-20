@@ -15,7 +15,11 @@ function LogoutModal({ closeModal }) {
   }
   return (
     <div className={css.logout}>
-      <NavLink onClick={actiocClick} className={css.user_link} to="/settings">
+      <NavLink
+        onClick={() => closeModal()}
+        className={css.user_link}
+        to="/settings"
+      >
         <img src={settings} alt="settings" />
         <p className={css.link}>Setting</p>
       </NavLink>
