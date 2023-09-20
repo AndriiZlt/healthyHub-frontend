@@ -4,12 +4,14 @@ import wellcomeImage from "../../assets/welcomeImage.png"
 import error from '../../assets/error.svg';
 import correct from '../../assets/correct.svg';
 import css from './ForgotPassword.module.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,9 +35,17 @@ const ForgotPassword = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-  }
 
-  const navigate = useNavigate();
+    if (email === '') {
+      Notify.failure('Please enter your email!');
+      return;
+    }
+
+    if (isValidEmail === false) {
+      Notify.failure('Please enter valid data!');
+      return;
+    }
+  }
 
   return <div className={css.forgotPassword}> 
     <img src={wellcomeImage} alt="wellcomeImage" className={css.image} />

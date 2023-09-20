@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import css from './modals.module.css';
 
 const AddWaterIntakeModal = () => {
-  const [water, setWater] = useState('');
+  const [water] = useState('');
   return (
     <div className={css.divPadding}>
       <h2 className={css.sizeH2}>Add water intake</h2>
