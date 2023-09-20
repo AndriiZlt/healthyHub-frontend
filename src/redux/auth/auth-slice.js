@@ -37,6 +37,12 @@ export const authSlice = createSlice({
         state.regData[item] = action.payload[item];
       }
     },
+    setLoadingTrue(state, _) {
+      state.isLoading = true;
+    },
+    setLoadingFalse(state, _) {
+      state.isLoading = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -44,8 +50,10 @@ export const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.regData = initialState.regData;
+        state.isLoading = false;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
+        console.log('after login', action.payload);
         state.user = action.payload;
         state.isLoggedIn = true;
       })
@@ -57,11 +65,13 @@ export const authSlice = createSlice({
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         if (action.payload.email) {
           console.log('Current user:', action.payload);
+          state.user = action.payload;
         } else {
           state.user = initialState.user;
           state.isLoggedIn = false;
           state.regData = initialState.regData;
         }
+        state.isLoading = false;
       })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
         console.log(action.payload.data.message);
@@ -69,4 +79,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setRegData, setUserData } = authSlice.actions;
+export const { setRegData, setUserData, setLoadingTrue, setLoadingFalse } =
+  authSlice.actions;

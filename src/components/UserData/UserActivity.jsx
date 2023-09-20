@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 const UserActivity = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const UserActivity = () => {
 
   const formSubmit = async e => {
     e.preventDefault();
+    dispatch(setLoadingTrue());
     dispatch(setRegData({ activity }));
     setSubmited(true);
   };
