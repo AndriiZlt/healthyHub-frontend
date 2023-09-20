@@ -16,6 +16,7 @@ import settingSlice from './settings/setting-slice';
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
+
   // phonebook: contactsSlice.reducer,
   // filter: filterSlice.reducer,
 });
