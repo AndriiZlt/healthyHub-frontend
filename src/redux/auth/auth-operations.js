@@ -56,7 +56,9 @@ const fetchCurrentUser = createAsyncThunk(
   '/user/refresh',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.user.token;
+    console.log('Persisted token->', persistedToken);
     if (!persistedToken) {
+      console.log('No user');
       return {
         email: null,
         name: null,

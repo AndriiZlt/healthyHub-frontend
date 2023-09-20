@@ -61,6 +61,7 @@ export const authSlice = createSlice({
         state.user = initialState.user;
         state.isLoggedIn = false;
         state.regData = initialState.regData;
+        state.isLoading = false;
       })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         if (action.payload.email) {
