@@ -76,7 +76,7 @@ const Login = () => {
 
   const formSubmitHandler = async e => {
     e.preventDefault();
-    dispatch(setLoadingTrue());
+
     if (email === '' || password === '') {
       Notify.failure('Please fill in all fields!');
       return;
@@ -86,7 +86,7 @@ const Login = () => {
       Notify.failure('Please enter valid data!');
       return;
     }
-
+    dispatch(setLoadingTrue());
     const response = await dispatch(authOperations.logIn({ email, password }));
     if (response.payload) {
       navigate('/main');
