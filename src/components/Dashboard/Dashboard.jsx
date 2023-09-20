@@ -32,6 +32,7 @@ const Dashboard = () => {
 	const firstDayOfNextMonth = new Date(year, month + 1, 1);
 	firstDayOfNextMonth.setDate(firstDayOfNextMonth.getDate() - 1);
 	const numberOfDaysInMonth = firstDayOfNextMonth.getDate();
+	console.log(numberOfDaysInMonth);
 
 	return <section className={css.dashboardSection}>
 		<div className={css.dashboardHeading}>
@@ -69,7 +70,7 @@ const Dashboard = () => {
 					<p className={css.blockAverageValue}>Average value: <span className={css.blockAverageValueSpan}>{/* COUNTED AVERAGE VALUE, ЗАБРАТИ 1700 */1700} ml</span></p>
 				</div>
 				<div className={css.dashboardContainer}>
-					<div className={css.waterDashboard}><WaterDashboard /></div>
+					<div className={css.waterDashboard}><WaterDashboard time={time} numberOfDaysInMonth={numberOfDaysInMonth} /></div>
 				</div>
 			</div>
 		</div>
