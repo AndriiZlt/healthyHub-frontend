@@ -41,6 +41,7 @@ const Settings = () => {
   }
     
 
+
   return (
     <div className={css.conteiner}>
       <div className={css.wrapper}>
@@ -117,6 +118,7 @@ const Settings = () => {
                   name="gender"
                   value="male"
                 checked={formData.gender === 'male'}
+
                 />
                 <span className={css.customCheked}></span>
                 Male
@@ -200,6 +202,7 @@ const Settings = () => {
               checked={formData.activity === '1.9'}
               onChange={handleChange} />
                <span className={css.customCheked}></span>
+
               1.9 - if your work is related to physical labor, you train 2 times
               a day and include strength exercises in your training program
             </label>

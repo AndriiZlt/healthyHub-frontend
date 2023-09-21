@@ -4,13 +4,14 @@ import logout from '../../../assets/logout.svg';
 import settings from '../../../assets/setting.svg';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 function LogoutModal({ closeModal }) {
   const dispatch = useDispatch();
 
   function actiocClick() {
+    dispatch(setLoadingTrue());
     closeModal();
-    console.log('click on logout');
     dispatch(authOperations.logOut());
   }
   return (

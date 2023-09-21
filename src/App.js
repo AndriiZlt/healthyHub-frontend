@@ -10,6 +10,7 @@ import ForgotPassword from 'components/ForgotPassword/ForgotPassword';
 import Main from './components/Main/Main';
 import Dashboard from './components/Dashboard/Dashboard';
 import Diary from './components/Diary/Diary';
+import RecordMealModal from 'components/Diary/RecordMealModal';
 import RecommendedFood from './components/RecommendedFood/RecommendedFood';
 import Settings from './components/Settings/Settings';
 import UserGoal from 'components/UserData/UserGoal';
@@ -18,12 +19,20 @@ import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
 import Test from 'components/TestComponent/Test';
-import { useDispatch } from 'react-redux';
+import LoaderModal from 'components/LoaderModal/LoaderModal';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import authSelectors from 'redux/auth/auth-selectors';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 function App() {
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(authSelectors.getIsLoading);
+
   useEffect(() => {
+    console.log('Fetching current user...');
+    dispatch(setLoadingTrue());
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
@@ -127,6 +136,15 @@ function App() {
           element={
             <PrivateRoute>
               <Diary />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          exact
+          path="RecordMealModal"
+          element={
+            <PrivateRoute>
+              <RecordMealModal />
             </PrivateRoute>
           }
         />

@@ -9,7 +9,8 @@ import error from '../../assets/error.svg';
 import correct from '../../assets/correct.svg';
 import eye from '../../assets/eye.svg';
 import eyeOff from '../../assets/eye-off.svg';
-import Tooltip from 'components/Tooltip/Tooltip';
+// import Tooltip from 'components/Tooltip/Tooltip';
+import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,9 +18,9 @@ const Login = () => {
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
-  const [isValidPassword, setIsValidPassword] = useState(false);
-  const [isBlurredPassword, setIsBlurredPassword] = useState(false);
-  const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
+  // const [isValidPassword, setIsValidPassword] = useState(false);
+  // const [isBlurredPassword, setIsBlurredPassword] = useState(false);
+  // const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
   const [showPassword, setShowPassword] = useState(false);
   const [isShowPasswordBtn, setIsShowPasswordBtn] = useState(false);
   const navigate = useNavigate();
@@ -53,21 +54,21 @@ const Login = () => {
     }
   };
 
-  const handlePasswordValid = () => {
-    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
-    setIsValidPassword(passwordPattern.test(password));
+  // const handlePasswordValid = () => {
+  //   const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
+  //   setIsValidPassword(passwordPattern.test(password));
 
-    if (passwordPattern.test(password)) {
-      setPaswordBorder('#3CBC81');
-    } else {
-      setPaswordBorder('#E74A3B');
-    }
-  };
+  //   if (passwordPattern.test(password)) {
+  //     setPaswordBorder('#3CBC81');
+  //   } else {
+  //     setPaswordBorder('#E74A3B');
+  //   }
+  // };
 
-  const handlePasswordBlur = () => {
-    setIsBlurredPassword(true);
-    handlePasswordValid();
-  };
+  // const handlePasswordBlur = () => {
+  //   setIsBlurredPassword(true);
+  //   handlePasswordValid();
+  // };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -80,12 +81,13 @@ const Login = () => {
       Notify.failure('Please fill in all fields!');
       return;
     }
-    
-    if (isValidEmail === false || isValidPassword === false) {
+
+    // if (isValidEmail === false || isValidPassword === false) {
+    if (isValidEmail === false) {
       Notify.failure('Please enter valid data!');
       return;
     }
-
+    dispatch(setLoadingTrue());
     const response = await dispatch(authOperations.logIn({ email, password }));
     if (response.payload) {
       navigate('/main');
@@ -96,11 +98,11 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setIsBlurredEmail(false);
-      setIsBlurredPassword(false);
-      handlePasswordValid();
+      // setIsBlurredPassword(false);
+      // handlePasswordValid();
       handleEmailValid();
       setEmailBorder('#e3ffa8');
-      setPaswordBorder('#e3ffa8');
+      // setPaswordBorder('#e3ffa8');
       setIsShowPasswordBtn(false);
     }
   };
@@ -146,11 +148,12 @@ const Login = () => {
                   value={password}
                   placeholder="Password"
                   onChange={handlePasswordChange}
-                  onBlur={handlePasswordBlur}
+                  // onBlur={handlePasswordBlur}
                   className={css.input}
-                  style={{ borderColor: passwordBorder }}
+                  // style={{ borderColor: passwordBorder }}
                 ></input>
-                {!isBlurredPassword && isShowPasswordBtn && (
+                {/* {!isBlurredPassword && isShowPasswordBtn && ( */}
+                {isShowPasswordBtn && (
                   <img
                     className={css.showPasswordBtn}
                     src={showPassword ? eye : eyeOff}
@@ -159,7 +162,7 @@ const Login = () => {
                     onMouseLeave={togglePasswordVisibility}
                   />
                 )}
-                {isBlurredPassword && !isValidPassword && (
+                {/* {isBlurredPassword && !isValidPassword && (
                   <img
                     className={css.error}
                     src={error}
@@ -184,7 +187,7 @@ const Login = () => {
                 )}
                 {isBlurredPassword && isValidPassword && (
                   <p className={css.valid}>Password is secure</p>
-                )}
+                )} */}
               </div>
 
               <button

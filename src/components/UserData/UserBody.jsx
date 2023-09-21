@@ -2,27 +2,31 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/userBody.svg';
 import css from './UserBody.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const UserBody = () => {
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
+  const { height, weight } = useSelector(authSelectors.getRegData);
+  const [height2, setHeight2] = useState(height || '');
+  const [weight2, setWeight2] = useState(weight || '');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleChangeHeight = evt => {
-    setHeight(evt.target.value);
+    setHeight2(evt.target.value);
+    dispatch(setRegData({ height: evt.target.value }));
   };
 
   const handleChangeWeight = evt => {
-    setWeight(evt.target.value);
+    setWeight2(evt.target.value);
+    dispatch(setRegData({ weight: evt.target.value }));
   };
 
   const formSubmit = e => {
     e.preventDefault();
-    dispatch(setRegData({ height, weight }));
+    dispatch(setRegData({ height: height2, weight: weight2 }));
 
     navigate('/useractivity');
   };
@@ -44,7 +48,7 @@ const UserBody = () => {
             id="user_height"
             type="number"
             name="height"
-            value={height}
+            value={height2}
             onChange={handleChangeHeight}
             placeholder="Enter your height"
           ></input>
@@ -56,7 +60,7 @@ const UserBody = () => {
             id="user_weight"
             type="number"
             name="weight"
-            value={weight}
+            value={weight2}
             onChange={handleChangeWeight}
             placeholder="Enter your weight"
           ></input>
@@ -64,7 +68,7 @@ const UserBody = () => {
           <button
             className={css.bodyButton}
             type="submit"
-            disabled={!height || !weight}
+            disabled={!height2 || !weight2}
           >
             Next
           </button>

@@ -1,10 +1,12 @@
 import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import wellcomeImage from "../../assets/welcomeImage.png"
 import error from '../../assets/error.svg';
 import correct from '../../assets/correct.svg';
 import css from './ForgotPassword.module.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import authOperations from 'redux/auth/auth-operations';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +14,7 @@ const ForgotPassword = () => {
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,7 +36,7 @@ const ForgotPassword = () => {
     handleEmailValid();
   };
 
-  const formSubmitHandler = (e) => {
+  const formSubmitHandler = async (e) => {
     e.preventDefault();
 
     if (email === '') {
@@ -44,6 +47,19 @@ const ForgotPassword = () => {
     if (isValidEmail === false) {
       Notify.failure('Please enter valid data!');
       return;
+    }
+
+    const response = await dispatch(
+      authOperations.forgotPassword({ email })
+    );
+
+    console.log(response);
+
+    if (response.error) {
+      const message = "User with this email is not registered!";
+      Notify.failure(message);
+    } else {
+      navigate('/signin');
     }
   }
 
