@@ -98,13 +98,13 @@ const Register = () => {
     const response = await dispatch(
       authOperations.checkEmail({ email: email2 })
     );
-
-    if (response.payload.status === 200) {
+    
+    if (response.error) {
+      const message = "Email already use!";
+      Notify.failure(message);
+    } else {
       dispatch(setRegData({ name: name2, email: email2, password: password2 }));
       navigate('/usergoal');
-    } else {
-      const message = response.payload.data.message;
-      Notify.failure(message);
     }
   };
 
