@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import mealsOperations from './meals-operations';
 
 const initialState = {
-  today: {
-    breakfast: { carbons: null, protein: null, fat: null },
-    lunch: { carbons: null, protein: null, fat: null },
-    dinner: { carbons: null, protein: null, fat: null },
-    snack: { carbons: null, protein: null, fat: null },
-    water: [],
-    weight: null,
-  },
+  today: null,
 };
 
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
   reducers: {},
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder.addCase(mealsOperations.fetchDay.fulfilled, (state, action) => {
+      console.log('Fetch day fulfield', action.payload);
+      state.today = action.payload;
+    });
+  },
 });

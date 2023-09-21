@@ -92,7 +92,7 @@ const forgotPassword = createAsyncThunk('', async credentials => {
     console.log('Error in change password', error.message);
     throw error;
   }
-})
+});
 
 const authOperations = {
   register,

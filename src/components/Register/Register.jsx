@@ -39,7 +39,11 @@ const Register = () => {
   };
 
   const handleEmailValid = () => {
-    const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    const emailPattern = /^([a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3})$/;
+    // const emailPattern =
+    //   /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;
+
+    // const emailPattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3})$/;
     setIsValidEmail(emailPattern.test(email2));
 
     if (emailPattern.test(email2)) {
@@ -98,9 +102,9 @@ const Register = () => {
     const response = await dispatch(
       authOperations.checkEmail({ email: email2 })
     );
-    
+
     if (response.error) {
-      const message = "Email already use!";
+      const message = 'Email already use!';
       Notify.failure(message);
     } else {
       dispatch(setRegData({ name: name2, email: email2, password: password2 }));
