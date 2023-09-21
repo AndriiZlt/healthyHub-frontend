@@ -40,7 +40,8 @@ const data = [
 
 const Home = () => {
   const dispatch = useDispatch();
-  const currentDay = useSelector(mealsSelectors.getCurrentDay);
+
+  const currentDay = useSelector(mealsSelectors.getCurrentDay); // eslint-disable-line no-unused-vars
   const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
@@ -48,8 +49,8 @@ const Home = () => {
   const lunch = true;
   const dinner = false;
   const snack = false;
-  const [callories, setCallories] = useState(0);
-  const [water, setWater] = useState(0);
+  const [callories, setCallories] = useState(0); // eslint-disable-line no-unused-vars
+  const [water, setWater] = useState(0); // eslint-disable-line no-unused-vars
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
