@@ -57,11 +57,14 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
+      .addCase(authOperations.logIn.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         console.log('Login fulfield', action.payload.token);
         state.user = action.payload;
         state.isLoggedIn = true;
-        state.isLoading = false;
+        // state.isLoading = false;
       })
       .addCase(authOperations.logIn.rejected, (state, _) => {
         console.log('Login rejected');

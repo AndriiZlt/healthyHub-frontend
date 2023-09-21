@@ -19,7 +19,6 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 import { Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
-// import authSelectors from 'redux/auth/auth-selectors';
 import CalcBMR from 'helpers/BMRcalculation';
 
 const getRandomProducts = (data, count) => {
@@ -42,23 +41,25 @@ const data = [
 
 const Home = () => {
   const dispatch = useDispatch();
-
+  // eslint-disable-next-line no-unused-vars
+  const [todayReady, setTodayReady] = useState(
+    useSelector(mealsSelectors.getTodayReady)
+  );
   const {
-    breakfast,
-    lunch,
-    diner: dinner,
-    snack,
+    breakfast = [],
+    lunch = [],
+    diner: dinner = [],
+    snack = [],
     water = 0,
-  } = useSelector(mealsSelectors.getCurrentDay);
+  } = todayReady;
+
   const [waterConsumption, setWaterConsumption] = useState(water || 0); // eslint-disable-line no-unused-vars
-  // const user = useSelector(authSelectors.getUser);
   const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
 
   const [callories, setCallories] = useState(0); // eslint-disable-line no-unused-vars
 
-  console.log('main rerender', waterConsumption, water);
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
@@ -78,7 +79,7 @@ const Home = () => {
     setWaterConsumption(water);
     const randomProducts = getRandomProducts(products, 4);
     setRandomProducts(randomProducts);
-  }, [dispatch, water]);
+  }, [dispatch, todayReady, water]);
 
   const escHandler = e => {
     if (

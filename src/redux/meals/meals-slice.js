@@ -3,6 +3,7 @@ import mealsOperations from './meals-operations';
 
 const initialState = {
   today: null,
+  todayReady: false,
   month: null,
   yaer: null,
 };
@@ -23,6 +24,8 @@ export const mealsSlice = createSlice({
       .addCase(mealsOperations.fetchDay.fulfilled, (state, action) => {
         console.log('Fetch day fulfield', action.payload);
         state.today = action.payload;
+        state.todayReady = true;
+        console.log('todayReady = true');
       })
       .addCase(mealsOperations.fetchMonth.fulfilled, (state, action) => {
         console.log('Fetch month fulfield', action.payload);
