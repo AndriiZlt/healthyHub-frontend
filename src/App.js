@@ -23,17 +23,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
+import mealsOperations from 'redux/meals/meals-operations';
 
 function App() {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(authSelectors.getIsLoading);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   useEffect(() => {
-    console.log('Fetching current user...');
-    dispatch(setLoadingTrue());
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    (async () => {
+      if (isLoggedIn) {
+        console.log('Fetching current user...');
+        dispatch(setLoadingTrue());
+        dispatch(authOperations.fetchCurrentUser()).then(() => {
+          dispatch(mealsOperations.fetchDay());
+        });
+      }
+    })();
+  }, [dispatch, isLoggedIn]);
 
   return (
     <>

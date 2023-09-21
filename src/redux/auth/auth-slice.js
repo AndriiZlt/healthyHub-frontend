@@ -58,7 +58,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        console.log('after login', action.payload);
+        console.log('Login fulfield', action.payload.token);
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isLoading = false;

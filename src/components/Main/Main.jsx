@@ -17,8 +17,8 @@ import { NavLink } from 'react-router-dom';
 import { products } from 'components/RecommendedFood/RecommendedFood';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import { Doughnut } from 'react-chartjs-2';
-import { useDispatch } from 'react-redux';
-import mealsOperations from 'redux/meals/meals-operations';
+import { useDispatch, useSelector } from 'react-redux';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
@@ -40,6 +40,7 @@ const data = [
 
 const Home = () => {
   const dispatch = useDispatch();
+  const currentDay = useSelector(mealsSelectors.getCurrentDay);
   const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
@@ -47,6 +48,8 @@ const Home = () => {
   const lunch = true;
   const dinner = false;
   const snack = false;
+  const [callories, setCallories] = useState(0);
+  const [water, setWater] = useState(0);
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
@@ -63,13 +66,9 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // Fetching current day
-    dispatch(mealsOperations.fetchDay());
-
-    // random food
     const randomProducts = getRandomProducts(products, 4);
     setRandomProducts(randomProducts);
-  }, []);
+  }, [dispatch]);
 
   const escHandler = e => {
     if (e.target.id === 'overlay') {
@@ -115,7 +114,7 @@ const Home = () => {
               <img className={css.icon1} src={bubble} alt="bubble" />
               <div className={css.stats}>
                 <p className={css.statsTitle}>Calories</p>
-                <p className={css.statsNumber}>1700</p>
+                <p className={css.statsNumber}>{callories}</p>
               </div>
             </div>
             <div className={css.water}>
@@ -123,7 +122,7 @@ const Home = () => {
               <div className={css.stats}>
                 <p className={css.statsTitle}>Water</p>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <p className={css.statsNumber}>1500</p>
+                  <p className={css.statsNumber}>{water}</p>
                   <p
                     style={{
                       fontSize: '14px',
@@ -407,7 +406,7 @@ const Home = () => {
                   <p className={css.statsTitle3}>Breakfast</p>
                 </div>
 
-                {breakfast ? (
+                {breakfast.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -561,7 +560,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Dinner</p>
                 </div>
-                {dinner ? (
+                {dinner.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -638,7 +637,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Snack</p>
                 </div>
-                {snack ? (
+                {snack.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
