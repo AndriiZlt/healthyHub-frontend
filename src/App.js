@@ -19,7 +19,7 @@ import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
 import Test from 'components/TestComponent/Test';
-import LoaderModal from 'components/LoaderModal/LoaderModal';
+import LoaderModal from 'components/LoaderModal/LoaderModal'; // eslint-disable-line no-unused-vars
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
@@ -28,7 +28,7 @@ import { setLoadingTrue } from 'redux/auth/auth-slice';
 function App() {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(authSelectors.getIsLoading);
+  const isLoading = useSelector(authSelectors.getIsLoading); // eslint-disable-line no-unused-vars
 
   useEffect(() => {
     console.log('Fetching current user...');
@@ -139,7 +139,7 @@ function App() {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           exact
           path="RecordMealModal"
           element={
