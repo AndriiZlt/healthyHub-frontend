@@ -19,6 +19,8 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 import { Doughnut } from 'react-chartjs-2';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
+// import authSelectors from 'redux/auth/auth-selectors';
+import CalcBMR from 'helpers/BMRcalculation';
 
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
@@ -41,16 +43,22 @@ const data = [
 const Home = () => {
   const dispatch = useDispatch();
 
-  const currentDay = useSelector(mealsSelectors.getCurrentDay); // eslint-disable-line no-unused-vars
+  const {
+    breakfast,
+    lunch,
+    diner: dinner,
+    snack,
+    water = 0,
+  } = useSelector(mealsSelectors.getCurrentDay);
+  const [waterConsumption, setWaterConsumption] = useState(water || 0); // eslint-disable-line no-unused-vars
+  // const user = useSelector(authSelectors.getUser);
   const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
-  const breakfast = false;
-  const lunch = true;
-  const dinner = false;
-  const snack = false;
+
   const [callories, setCallories] = useState(0); // eslint-disable-line no-unused-vars
-  const [water, setWater] = useState(0); // eslint-disable-line no-unused-vars
+
+  console.log('main rerender', waterConsumption, water);
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
@@ -67,12 +75,17 @@ const Home = () => {
   });
 
   useEffect(() => {
+    setWaterConsumption(water);
     const randomProducts = getRandomProducts(products, 4);
     setRandomProducts(randomProducts);
-  }, [dispatch]);
+  }, [dispatch, water]);
 
   const escHandler = e => {
-    if (e.target.id === 'overlay') {
+    if (
+      e.target.id === 'overlay' ||
+      e.target.id === 'add-more' ||
+      e.key === 'Enter'
+    ) {
       setModalMealOn(false);
       setModalWaterOn(false);
       window.removeEventListener('keydown', escHandler);
@@ -115,7 +128,9 @@ const Home = () => {
               <img className={css.icon1} src={bubble} alt="bubble" />
               <div className={css.stats}>
                 <p className={css.statsTitle}>Calories</p>
-                <p className={css.statsNumber}>{callories}</p>
+                <p className={css.statsNumber}>
+                  <CalcBMR />
+                </p>
               </div>
             </div>
             <div className={css.water}>
@@ -123,7 +138,7 @@ const Home = () => {
               <div className={css.stats}>
                 <p className={css.statsTitle}>Water</p>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <p className={css.statsNumber}>{water}</p>
+                  <p className={css.statsNumber}>1500</p>
                   <p
                     style={{
                       fontSize: '14px',
@@ -156,7 +171,9 @@ const Home = () => {
                 <p className={css.statsTitle2}>Water consumption</p>
                 <div className={css.media2}>
                   <div className={css.statsWater}>
-                    <p className={css.statsWaterConsumption}>1050</p>
+                    <p className={css.statsWaterConsumption}>
+                      {waterConsumption}
+                    </p>
                     <p
                       style={{
                         fontSize: '14px',
@@ -180,7 +197,7 @@ const Home = () => {
                         marginLeft: 4,
                       }}
                     >
-                      450
+                      {Math.max(1500 - waterConsumption, 0)}
                     </span>
                     <span
                       style={{

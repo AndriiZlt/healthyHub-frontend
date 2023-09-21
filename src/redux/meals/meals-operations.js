@@ -55,10 +55,14 @@ const fetchYear = createAsyncThunk('meals/fetchYear', async () => {
 });
 
 const waterIntake = createAsyncThunk('meals/waterIntake', async waterIntake => {
-  console.log('inside waterIntake operation', waterIntake);
+  console.log('Sending water intake', waterIntake);
   try {
-    // const { data } = await axios.post('/meals/');
-  } catch (error) {}
+    const { data } = await axios.patch('/user/day/water', waterIntake);
+    return data;
+  } catch (error) {
+    console.log('Error in water intake sending', error.response.data);
+    throw error();
+  }
 });
 
 const mealsOperations = {
