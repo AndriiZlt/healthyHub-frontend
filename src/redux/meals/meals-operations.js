@@ -17,7 +17,6 @@ const fetchDay = createAsyncThunk('meals/fetchDay', async () => {
   console.log('Fetching day...');
   try {
     const { data } = await axios.get('/user/day');
-    console.log('get data:', data[0]);
     if (data.message === 'Day not found!') {
       console.log('creating day...');
       const { data } = await axios.post('/user/day');

@@ -16,7 +16,6 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   console.log('Login in with', credentials);
   try {
     const { data } = await axios.post('/user/login', credentials);
-    console.log('login token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -56,7 +55,6 @@ const fetchCurrentUser = createAsyncThunk(
   '/user/refresh',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.user.token;
-    console.log('Persisted token->', persistedToken);
     if (!persistedToken) {
       console.log('No user');
       return {
