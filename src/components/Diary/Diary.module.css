@@ -1,5 +1,12 @@
-.sectionDiary ul,
-li,
+.sectionDiary ul {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.sectionDiary li,
 h2,
 img,
 span,
