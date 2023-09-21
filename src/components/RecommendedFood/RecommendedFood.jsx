@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import illustration from '../../assets/RecommendedFood.svg';
 import css from './RecommendedFood.module.css';
 
-const products = [
+export const products = [
   {
     name: 'Apples',
     amount: '100 g',

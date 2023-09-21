@@ -19,6 +19,7 @@ const UserGoal = () => {
 
   const formSubmit = e => {
     e.preventDefault();
+    dispatch(setRegData({ goal: goal2 }));
     navigate('/usergender');
   };
 

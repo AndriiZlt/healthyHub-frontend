@@ -26,7 +26,7 @@ const UserBody = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    // dispatch(setRegData({ height: height2, weight: weight2 }));
+    dispatch(setRegData({ height: height2, weight: weight2 }));
 
     navigate('/useractivity');
   };

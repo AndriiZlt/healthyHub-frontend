@@ -15,6 +15,7 @@ const UserGender = () => {
   const navigate = useNavigate();
 
   const handleChangeGender = evt => {
+    console.log(evt.target.value);
     setGender2(evt.target.value);
     dispatch(setRegData({ gender: evt.target.value }));
   };
@@ -26,7 +27,7 @@ const UserGender = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-
+    dispatch(setRegData({ age: age2, gender: gender2 }));
     navigate('/userbody');
   };
 
