@@ -17,7 +17,7 @@ import UserGender from 'components/UserData/UserGender';
 import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
-import Test from 'components/TestComponent/Test';
+import TestDoughnut from 'components/TestComponent/TestDoughnut';
 import LoaderModal from 'components/LoaderModal/LoaderModal';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
@@ -168,7 +168,7 @@ function App() {
           />
         </Route>
         <Route exact path="/*" element={<Navigate to="/" />} />
-        <Route exact path="/test" element={<Test />} />
+        <Route exact path="/test" element={<TestDoughnut />} />
       </Routes>
     </>
   );
