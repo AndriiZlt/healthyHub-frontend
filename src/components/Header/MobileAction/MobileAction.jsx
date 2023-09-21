@@ -62,7 +62,7 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body>
-          <WeightModal/>
+          <WeightModal closeWeightMobileModal={closeWeightModal}/>
           {/* <button onClick={closeWeightModal}>CLOSE</button> */}
         </Modal.Body>
       </Modal>

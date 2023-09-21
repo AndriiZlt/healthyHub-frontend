@@ -21,6 +21,7 @@ const Header = () => {
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+  const [showWeight, setWeight] = useState(false);
 
   function closeButton() {
     setShowDropdown(false);
@@ -30,6 +31,9 @@ const Header = () => {
   }
   function closeModal() {
     setShowSetting(false);
+  }
+  function closeWeightModal() {
+    setWeight(false);
   }
 
   return (
@@ -71,7 +75,7 @@ const Header = () => {
                     <Target />
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown>
+                <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
                       image="https://i.ibb.co/y5LpgvL/Waight-image.png"
@@ -82,7 +86,7 @@ const Header = () => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
-                    <WeightModal />
+                    <WeightModal closeWeightModal={closeWeightModal} />
                   </Dropdown.Menu>
                 </Dropdown>
               </>

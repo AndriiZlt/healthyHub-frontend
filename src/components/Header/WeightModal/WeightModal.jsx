@@ -1,6 +1,9 @@
+import useMediaQuery from 'helpers/useMediaQuery';
+import close from '../../../assets/close-circle.svg';
 import css from './WeightModal.module.css';
 
-function WeightModal() {
+function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
+  const isMobile = useMediaQuery('(max-width:833px)');
   let today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -16,10 +19,22 @@ function WeightModal() {
         Today <span className={css.date}>{today}</span>
       </p>
       <form className={css.form}>
-        <input className={css.input} placeholder="Enter your weight" type="text" />
+        <input
+          className={css.input}
+          placeholder="Enter your weight"
+          type="text"
+        />
         <button className={css.button}>Confirm</button>
       </form>
-      {/* <img src="" alt="" /> */}
+      {isMobile ? (
+        <button onClick={closeWeightMobileModal} className={css.close_mobile}>
+          Cancel
+        </button>
+      ) : (
+        <button onClick={closeWeightModal} className={css.close}>
+          <img src={close} alt="close" />
+        </button>
+      )}
     </div>
   );
 }
