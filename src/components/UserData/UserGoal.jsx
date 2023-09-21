@@ -14,6 +14,7 @@ const UserGoal = () => {
 
   const handleChange = e => {
     setGoal2(e.target.value);
+    dispatch(setRegData({ goal: e.target.value }));
   };
 
   const formSubmit = e => {
@@ -44,7 +45,7 @@ const UserGoal = () => {
               type="radio"
               name="goal"
               value={Goal.FIRST}
-              defaultChecked
+              checked={goal2 === 'Lose Fat'}
             />
             <span className={css.customCheked}></span>
             Lose Fat
@@ -56,6 +57,7 @@ const UserGoal = () => {
               type="radio"
               name="goal"
               value={Goal.SECOND}
+              checked={goal2 === 'Maintain'}
             />
             <span className={css.customCheked}></span>
             Maintain
@@ -67,6 +69,7 @@ const UserGoal = () => {
               type="radio"
               name="goal"
               value={Goal.THIRD}
+              checked={goal2 === 'Gain Muscle'}
             />
             <span className={css.customCheked}></span>
             Gain Muscle

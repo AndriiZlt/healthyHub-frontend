@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
@@ -11,20 +11,33 @@ import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
 import dinnerIcon from 'assets/dinner.svg';
 import snackIcon from 'assets/snack.svg';
-import fruit1 from 'assets/fruit1.png';
-import fruit2 from 'assets/fruit2.png';
-import fruit3 from 'assets/fruit3.png';
-import fruit4 from 'assets/fruit4.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
+import { NavLink } from 'react-router-dom';
+import { products } from 'components/RecommendedFood/RecommendedFood';
+
+const getRandomProducts = (data, count) => {
+  const randomData = [...data];
+  for (let i = randomData.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [randomData[i], randomData[j]] = [randomData[j], randomData[i]];
+  }
+  return randomData.slice(0, count);
+};
 
 const Home = () => {
+  const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
   const breakfast = false;
   const lunch = true;
   const dinner = false;
   const snack = false;
+
+  useEffect(() => {
+    const randomProducts = getRandomProducts(products, 4);
+    setRandomProducts(randomProducts);
+  }, []);
 
   const escHandler = e => {
     console.log(e.target);
@@ -54,13 +67,14 @@ const Home = () => {
       <div className={css.titleDiv}>
         <h1 className={css.title1}>Today</h1>
         <div className={css.toGoal}>
-          <a href="d">On the way to the goal</a>
+          <NavLink to="/dashboard">On the way to the goal</NavLink>
           <img src={arrowRight} alt="arrow-right" />
         </div>
       </div>
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
+      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -336,9 +350,9 @@ const Home = () => {
         <div className={css.diaryBlock}>
           <div className={css.titleDiv2}>
             <h2 className={css.title3}>Diary</h2>
-            <a className={css.seeMore} href="d">
+            <NavLink className={css.seeMore} to="/diary">
               See more
-            </a>
+            </NavLink>
           </div>
           {/* Breakfast */}
           <div className={css.mealBlock}>
@@ -665,124 +679,40 @@ const Home = () => {
           <div className={css.titleDiv2}>
             <h2 className={css.title3}>Recommended food</h2>
           </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit1} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Avocado</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
+
+          {randomProducts.map(product => (
+            <div className={css.greyBlock2} key={product.name}>
+              <img src={product.img} alt="fruit" />
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                }}
+              >
+                <p className={css.statsTitle3}>{product.name}</p>
+                <div style={{ display: 'flex' }}>
+                  <p className={css.fruitStats}>
+                    {product.amount}
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 500,
+                        color: '#B6B6B6',
+                        marginLeft: 6,
+                      }}
+                    >
+                      {product.calories}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit2} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Beans</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit3} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Nuts</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit4} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Broccoli</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
           <div className={css.seeMore2}>
-            <a href="d">See more</a>
+            <NavLink to="/recommended">See more</NavLink>
             <img src={arrowRight} alt="arrow-right" />
           </div>
         </div>

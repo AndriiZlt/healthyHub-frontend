@@ -1,33 +1,36 @@
 .button {
-    background-color: transparent !important;
-    border: none !important;
-    border-radius: 16px;
-    height: 48px;
-    width: auto;
-    padding: 0;
-    color: white;
-  }
-
-  .mobile_action{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .close{
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    right: 16px;
-    top: 16px;
-  }
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 16px;
+  height: 48px;
+  width: auto;
+  padding: 0;
+  color: white;
+}
+.modal {
+  padding: 24px 10px !important;
+}
+.mobile_action {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.close {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
 .modal_action_dialog {
-    width: 300px;
-    height: calc(100vh - 120px);
-    top: 30px;
+  width: 320px;
+  height: calc(100vh - 125px);
+  top: 60px;
+  margin: auto;
 }
-.modal_action_content{
-    background-color: #050505;
-    height: 100%;
+.modal_action_content {
+  background-color: #050505;
+  height: 100%;
+  border-radius: 0;
 }
- 

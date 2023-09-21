@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import illustration from '../../assets/RecommendedFood.svg';
 import css from './RecommendedFood.module.css';
 
-const products = [
+export const products = [
   {
     name: 'Apples',
     amount: '100 g',
@@ -331,7 +331,7 @@ const getRandomProducts = (data, count) => {
     [randomData[i], randomData[j]] = [randomData[j], randomData[i]];
   }
   return randomData.slice(0, count);
-}
+};
 
 const RecommendedFood = () => {
   const [randomProducts, setRandomProducts] = useState([]);
@@ -345,21 +345,31 @@ const RecommendedFood = () => {
     <div className={css.conteiner}>
       <h1 className={css.title}>Recommended food</h1>
       <div className={css.wrapperDesktop}>
-      <img src={illustration} alt="recommended food illustration" className={css.picture}></img>
-      <div className={css.wrapperTablet}>
-      {randomProducts.map(product => (
-          <div className={css.thumb}>
-            <img src={product.img} alt="product" className={css.icon} width={46} height={46}/>
-          <div>
-            <li className={css.name}> {product.name}</li>
-            <div className={css.description}>
-            <li className={css.amount}> {product.amount}</li>
-            <li className={css.calories}> {product.calories} calories</li>
-         </div>
+        <img
+          src={illustration}
+          alt="recommended food illustration"
+          className={css.picture}
+        ></img>
+        <div className={css.wrapperTablet}>
+          {randomProducts.map(product => (
+            <div className={css.thumb} key={product.name}>
+              <img
+                src={product.img}
+                alt="product"
+                className={css.icon}
+                width={46}
+                height={46}
+              />
+              <div>
+                <li className={css.name}> {product.name}</li>
+                <div className={css.description}>
+                  <li className={css.amount}> {product.amount}</li>
+                  <li className={css.calories}> {product.calories} calories</li>
+                </div>
+              </div>
             </div>
-            </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
   );

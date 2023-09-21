@@ -13,7 +13,7 @@ export const token = {
 };
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
-  console.log('login', JSON.stringify(credentials));
+  console.log('Login in with', credentials);
   try {
     const { data } = await axios.post('/user/login', credentials);
     console.log('login token=>' + data.token);
@@ -28,16 +28,17 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/user/register', credentials);
-    token.set(data.token);
-    return data;
+    if (data) {
+      console.log('Succesfull registration, login in...');
+      const { email, password } = credentials;
+      const { data } = await axios.post('/user/login', { email, password });
+      token.set(data.token);
+      console.log('token=>', data.token);
+      return data;
+    }
   } catch (error) {
     console.log('Error in Register', error.response.data);
     throw new Error('Error in Register');
-  } finally {
-    console.log('Succesfull registration, login in...');
-    const { email, password } = credentials;
-    const { data } = await axios.post('/user/login', { email, password });
-    data && console.log('Login success');
   }
 });
 
@@ -55,7 +56,9 @@ const fetchCurrentUser = createAsyncThunk(
   '/user/refresh',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.user.token;
+    console.log('Persisted token->', persistedToken);
     if (!persistedToken) {
+      console.log('No user');
       return {
         email: null,
         name: null,
@@ -76,9 +79,20 @@ const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
     const response = await axios.post('/user/check-email', credentials);
     return response;
   } catch (error) {
-    console.log('Error in register', error.message);
+    console.log('Error in check email', error.message);
+    throw error;
   }
 });
+
+const forgotPassword = createAsyncThunk('', async credentials => {
+  try {
+    const response = await axios.patch('/user/change-password', credentials);
+    return response;
+  } catch (error) {
+    console.log('Error in change password', error.message);
+    throw error;
+  }
+})
 
 const authOperations = {
   register,
@@ -86,6 +100,7 @@ const authOperations = {
   logOut,
   fetchCurrentUser,
   checkEmail,
+  forgotPassword,
 };
 
 export default authOperations;

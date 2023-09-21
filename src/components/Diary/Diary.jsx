@@ -1,5 +1,7 @@
 import React from 'react';
+// import { useState } from 'react';
 import css from './Diary.module.css';
+// import recordMealModal from './recordMealModal';
 import arrow_rigth from '../../assets/arrow-back.svg';
 import breakfast from '../../assets/breakfast.svg';
 import lunch from '../../assets/lunch.svg';
@@ -10,6 +12,9 @@ import edit_text from '../../assets/edit_text.svg';
 import plus from '../../assets/plus.svg';
 
 const Diary = () => {
+
+  // const [recordMealModal, recordMeal] = useState(false);
+
   return (
     <section className={css.section}>
       <div className={css.dairy_title}>

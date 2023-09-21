@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import ButtonDropDown from '../ButtonDropDown/ButtonDropDown';
 import close from '../../../assets/close-circle.svg';
 import css from './MobileAction.module.css';
+import authSelectors from 'redux/auth/auth-selectors';
+import WeightModal from '../WeightModal/WeightModal';
+import Target from 'components/Target/SelectTarget';
 
 function MobileAction({ closeButton }) {
+  const { goal, weight} = useSelector(authSelectors.getUser);
   const [showGoal, setShowGoal] = useState(false);
   const [showWeight, setshowWeight] = useState(false);
 
@@ -27,7 +32,7 @@ function MobileAction({ closeButton }) {
         <ButtonDropDown
           image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
           title="Goal"
-          text="Lose fat"
+          text={goal}
         />
       </button>
       <Modal
@@ -37,14 +42,15 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <button onClick={closeGoalModal}>CLOSE</button>
+          <Target/>
+          {/* <button onClick={closeGoalModal}>CLOSE</button> */}
         </Modal.Body>
       </Modal>
       <button className={css.button} onClick={handleWeightShow}>
         <ButtonDropDown
           image="https://i.ibb.co/y5LpgvL/Waight-image.png"
           title="Weight"
-          text="65"
+          text={weight}
           subtext="kg"
           editIcon={true}
         />
@@ -56,7 +62,8 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body>
-          <button onClick={closeWeightModal}>CLOSE</button>
+          <WeightModal closeWeightMobileModal={closeWeightModal}/>
+          {/* <button onClick={closeWeightModal}>CLOSE</button> */}
         </Modal.Body>
       </Modal>
       <button onClick={closeButton} className={css.close}>
