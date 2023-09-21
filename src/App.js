@@ -35,8 +35,8 @@ function App() {
   useEffect(() => {
     (async () => {
       if (isLoggedIn) {
+        // dispatch(setLoadingTrue());
         console.log('Fetching current user...');
-        dispatch(setLoadingTrue());
         dispatch(authOperations.fetchCurrentUser()).then(() => {
           dispatch(mealsOperations.fetchDay());
         });
