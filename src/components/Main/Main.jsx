@@ -15,6 +15,10 @@ import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
 import { products } from 'components/RecommendedFood/RecommendedFood';
+import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
+import { Doughnut } from 'react-chartjs-2';
+import { useDispatch } from 'react-redux';
+import mealsOperations from 'redux/meals/meals-operations';
 
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
@@ -25,7 +29,17 @@ const getRandomProducts = (data, count) => {
   return randomData.slice(0, count);
 };
 
+const data = [
+  {
+    id: 1,
+    year: 2016,
+    userGain: 80000,
+    userLost: 823,
+  },
+];
+
 const Home = () => {
+  const dispatch = useDispatch();
   const [randomProducts, setRandomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
@@ -33,14 +47,31 @@ const Home = () => {
   const lunch = true;
   const dinner = false;
   const snack = false;
+  const [chartData] = useState({
+    labels: data.map(item => item.year),
+    datasets: [
+      {
+        // label: 'users gained',
+        data: data.map(item => item.userGain),
+        backgroundColor: ['rgba(69, 255, 188, 1)'],
+        borderColor: 'black',
+        borderWidth: 1,
+        hoverOffset: 1,
+        tension: 0.5,
+      },
+    ],
+  });
 
   useEffect(() => {
+    // Fetching current day
+    dispatch(mealsOperations.fetchDay());
+
+    // random food
     const randomProducts = getRandomProducts(products, 4);
     setRandomProducts(randomProducts);
   }, []);
 
   const escHandler = e => {
-    console.log(e.target);
     if (e.target.id === 'overlay') {
       setModalMealOn(false);
       setModalWaterOn(false);
@@ -57,7 +88,6 @@ const Home = () => {
 
   const modalHandler = e => {
     e.target.id === 'meal' ? setModalMealOn(true) : setModalWaterOn(true);
-    console.log(e.target.id);
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
   };
@@ -180,11 +210,15 @@ const Home = () => {
           <h2 className={css.title2}>Food</h2>
           <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
-              <img
-                className={css.icon3}
+              <div className={css.icon3}>
+                <Doughnut data={chartData} />
+              </div>
+
+              {/* <img
+
                 src={chartCalories}
                 alt="calories-chart"
-              />
+              /> */}
               <div className={css.stats}>
                 <ul
                   style={{

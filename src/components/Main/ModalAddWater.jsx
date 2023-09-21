@@ -1,37 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './modals.module.css';
 
 const ModalAddWater = () => {
+  const [water, setWater] = useState('');
+  const confirmHandler = () => {
+    console.log(water);
+    // setWater(e.target.value);
+  };
+
   return (
     <div className={css.overlay} id="overlay">
       <div className={css.modal}>
-        <div className={css.divPadding}>
-          <h2 className={css.sizeH2}>Add water intake</h2>
-          <div className={css.divForm}>
-            <h3 className={css.sizeH3}>How much water</h3>
-          </div>
-
-          <form id="meal-form">
-            <div className={css.formGroup}>
-              <input
-                type="number"
-                id="carbohydrates"
-                name="carbohydrates"
-                placeholder="Enter milliliters"
-                required
-              />
-            </div>
-            <div className={css.formGroup}>
-              <button type="button" id="add-more">
-                Confirm
-              </button>
-            </div>
-            <div className={css.formGroup}>
-              <button type="button" id="cancel">
-                Cancel
-              </button>
-            </div>
-          </form>
+        <h2 className={css.titleH2}>Add water intake</h2>
+        <div className={css.media}>
+          <h3 className={css.titleH3}>How much water</h3>
+          <input
+            className={css.input}
+            type="number"
+            id="water"
+            name="water"
+            placeholder="Enter milliliters"
+            required
+            value={water}
+            onChange={e => setWater(e.target.value)}
+            max="9999"
+            min="1"
+          />
+          <button
+            className={css.confirmButton}
+            type="button"
+            id="add-more"
+            onClick={confirmHandler}
+          >
+            Confirm
+          </button>
+          <button className={css.cancelButton} type="button" id="cancel">
+            Cancel
+          </button>
         </div>
       </div>
     </div>
