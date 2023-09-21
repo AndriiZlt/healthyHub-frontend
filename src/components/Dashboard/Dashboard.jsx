@@ -20,7 +20,6 @@ const Dashboard = () => {
 	}
 
 	const currentDate = new Date();
-	currentDate.setMonth(currentDate.getMonth() - 1);
 	const month = currentDate.getMonth();
 	const monthNames = [
 		"January", "February", "March", "April", "May", "June",
@@ -32,7 +31,6 @@ const Dashboard = () => {
 	const firstDayOfNextMonth = new Date(year, month + 1, 1);
 	firstDayOfNextMonth.setDate(firstDayOfNextMonth.getDate() - 1);
 	const numberOfDaysInMonth = firstDayOfNextMonth.getDate();
-	console.log(numberOfDaysInMonth);
 
 	return <section className={css.dashboardSection}>
 		<div className={css.dashboardHeading}>

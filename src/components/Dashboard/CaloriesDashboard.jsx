@@ -8,12 +8,34 @@ import css from "./Dashboard.module.css";
 
 const CaloriesDashboard = (props) => {
 
+	// const data = [
+	// 	{
+	// 		id: 1,
+	// 		year: 2016,
+	// 		userGain: 80000,
+	// 		userLost: 823,
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		year: 2017,
+	// 		userGain: 60000,
+	// 		userLost: 700,
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		year: 2018,
+	// 		userGain: 5000,
+	// 		userLost: 900,
+	// 	},
+	// 	{
+	// 		id: 4,
+	// 		year: 2019,
+	// 		userGain: 90000,
+	// 		userLost: 823,
+	// 	},
+	// ];
+
 	const data = [
-		// {
-		// 	id: 1,
-		// 	month: "Jan",
-		// 	userGain: 80,
-		// }
 	];
 
 	const monthNames = [
