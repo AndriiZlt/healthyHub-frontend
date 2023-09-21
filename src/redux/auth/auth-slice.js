@@ -52,6 +52,10 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
+      .addCase(authOperations.register.rejected, (state, _) => {
+        console.log('register rejected');
+        state.isLoading = false;
+      })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         console.log('after login', action.payload);
         state.user = action.payload;
@@ -59,6 +63,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.logIn.rejected, (state, _) => {
+        console.log('Login rejected');
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
@@ -67,7 +72,10 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
-
+      .addCase(authOperations.logOut.rejected, (state, _) => {
+        console.log('Logout rejected');
+        state.isLoading = false;
+      })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         if (action.payload.email) {
           console.log('Current user:', action.payload);
@@ -79,10 +87,15 @@ export const authSlice = createSlice({
         }
         state.isLoading = false;
       })
+      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        state.isLoading = false;
+      })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
         console.log(action.payload.data.message);
+        state.isLoading = false;
       })
-      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+      .addCase(authOperations.checkEmail.rejected, (state, _) => {
+        console.log('Email check rejected');
         state.isLoading = false;
       });
   },

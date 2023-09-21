@@ -14,11 +14,11 @@ const UserGoal = () => {
 
   const handleChange = e => {
     setGoal2(e.target.value);
+    dispatch(setRegData({ goal: e.target.value }));
   };
 
   const formSubmit = e => {
     e.preventDefault();
-    dispatch(setRegData({ goal: goal2 }));
     navigate('/usergender');
   };
 
