@@ -112,6 +112,12 @@ const Register = () => {
     }
   };
 
+  const enterPressHandler = e => {
+    if (e.key === 'Enter') {
+      formSubmitHandler();
+    }
+  };
+
   return (
     <div className={css.register}>
       <img src={wellcomeImage} alt="wellcomeImage" className={css.image} />
@@ -169,6 +175,7 @@ const Register = () => {
                 onBlur={handlePasswordBlur}
                 className={css.input}
                 style={{ borderColor: passwordBorder }}
+                onKeyDown={enterPressHandler}
               ></input>
               {!isBlurredPassword && isShowPasswordBtn && (
                 <img

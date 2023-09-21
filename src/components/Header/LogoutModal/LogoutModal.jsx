@@ -5,14 +5,17 @@ import settings from '../../../assets/setting.svg';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
+import { clearMealData } from 'redux/meals/meals-slice';
 
 function LogoutModal({ closeModal }) {
   const dispatch = useDispatch();
 
   function actiocClick() {
-    dispatch(setLoadingTrue());
-    closeModal();
-    dispatch(authOperations.logOut());
+    (async () => {
+      dispatch(setLoadingTrue());
+      closeModal();
+      dispatch(authOperations.logOut()).then(() => dispatch(clearMealData()));
+    })();
   }
   return (
     <div className={css.logout}>

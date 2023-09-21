@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
-import css from './modals.module.css';
+import css from './AddWater.module.css';
+import { useDispatch } from 'react-redux';
+import mealsOperations from 'redux/meals/meals-operations';
 
 const ModalAddWater = () => {
   const [water, setWater] = useState('');
+  const dispatch = useDispatch();
+
   const confirmHandler = () => {
-    console.log(water);
-    // setWater(e.target.value);
+    if (water !== '') {
+      dispatch(mealsOperations.waterIntake({ water }));
+    }
+  };
+
+  const enterPressHandler = e => {
+    if (e.key === 'Enter') {
+      confirmHandler();
+    }
   };
 
   return (
@@ -20,11 +31,11 @@ const ModalAddWater = () => {
             id="water"
             name="water"
             placeholder="Enter milliliters"
-            required
             value={water}
             onChange={e => setWater(e.target.value)}
             max="9999"
             min="1"
+            onKeyDown={enterPressHandler}
           />
           <button
             className={css.confirmButton}

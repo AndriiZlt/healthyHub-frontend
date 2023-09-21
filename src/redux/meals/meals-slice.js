@@ -10,7 +10,14 @@ const initialState = {
 export const mealsSlice = createSlice({
   name: 'meals',
   initialState,
-  reducers: {},
+  reducers: {
+    clearMealData(state, _) {
+      console.log('Clearing meals data');
+      state.today = null;
+      state.month = null;
+      state.year = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(mealsOperations.fetchDay.fulfilled, (state, action) => {
@@ -24,6 +31,12 @@ export const mealsSlice = createSlice({
       .addCase(mealsOperations.fetchYear.fulfilled, (state, action) => {
         console.log('Fetch year fulfield', action.payload);
         state.year = action.payload;
+      })
+      .addCase(mealsOperations.waterIntake.fulfilled, (state, action) => {
+        console.log('Water intake fulfield', action.payload);
+        state.today = action.payload;
       });
   },
 });
+
+export const { clearMealData } = mealsSlice.actions;
