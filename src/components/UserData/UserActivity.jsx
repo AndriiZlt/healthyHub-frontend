@@ -30,6 +30,7 @@ const UserActivity = () => {
 
   const formSubmit = async e => {
     e.preventDefault();
+    dispatch(setRegData({ activity: activity2 }));
     dispatch(setLoadingTrue());
 
     setSubmited(true);

@@ -54,6 +54,7 @@ export const authSlice = createSlice({
       })
       .addCase(authOperations.register.rejected, (state, _) => {
         console.log('register rejected');
+        state.regData.password = null;
         state.isLoading = false;
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
