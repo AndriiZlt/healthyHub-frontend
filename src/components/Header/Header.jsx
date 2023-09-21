@@ -10,16 +10,19 @@ import menu from '../../assets/menu.svg';
 import authSelectors from 'redux/auth/auth-selectors';
 import MobileAction from './MobileAction/MobileAction';
 import LogoutModal from './LogoutModal/LogoutModal';
-// import Target from 'components/Target/SelectTarget';
+import WeightModal from './WeightModal/WeightModal';
+import Target from 'components/Target/SelectTarget';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
-  const {avatarURL, name, goal, weight} = useSelector(authSelectors.getUser);
   const isMobile = useMediaQuery('(max-width:833px)');
+
+  const { avatarURL, name, goal, weight } = useSelector(authSelectors.getUser);
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
+  const [showWeight, setWeight] = useState(false);
+
   function closeButton() {
     setShowDropdown(false);
   }
@@ -27,8 +30,12 @@ const Header = () => {
     setShowDropdown(true);
   }
   function closeModal() {
-    setShowSetting(false)
+    setShowSetting(false);
   }
+  function closeWeightModal() {
+    setWeight(false);
+  }
+
   return (
     <div className={css.header}>
       {!isLoggedIn ? (
@@ -46,7 +53,6 @@ const Header = () => {
               </Dropdown.Menu>
             </Dropdown>
           )}
-
           <Logo />
           <div className={css.header_action}>
             {isMobile ? (
@@ -65,11 +71,11 @@ const Header = () => {
                       text={goal}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={css.modal}>
-                    TADAM
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
+                    <Target />
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown>
+                <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
                       image="https://i.ibb.co/y5LpgvL/Waight-image.png"
@@ -79,12 +85,18 @@ const Header = () => {
                       editIcon={true}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={css.modal}>TADAM</Dropdown.Menu>
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
+                    <WeightModal closeWeightModal={closeWeightModal} />
+                  </Dropdown.Menu>
                 </Dropdown>
               </>
             )}
 
-            <Dropdown show={showSetting} onToggle={e => setShowSetting(e)} align="end">
+            <Dropdown
+              show={showSetting}
+              onToggle={e => setShowSetting(e)}
+              align="end"
+            >
               <Dropdown.Toggle className={css.button}>
                 <ButtonDropDown
                   image={avatarURL}
@@ -93,7 +105,7 @@ const Header = () => {
                 />
               </Dropdown.Toggle>
               <Dropdown.Menu className={css.modal}>
-                <LogoutModal closeModal={closeModal}/>
+                <LogoutModal closeModal={closeModal} />
               </Dropdown.Menu>
             </Dropdown>
           </div>
