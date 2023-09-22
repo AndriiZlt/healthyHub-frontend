@@ -47,11 +47,16 @@
   border: 1px solid var(--color-primary-green-lite, #e3ffa8);
   padding: 8px 10px;
   height: 36px;
+  width: 100% !important;
   @media screen and (min-width: 834px) {
-    width: 165px;
+    max-width: 165px;
   }
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input::placeholder {
   color: #b6b6b6;
   font-size: 14px;

@@ -1,73 +1,85 @@
-.button{
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    height: 48px;
+.button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: 48px;
 }
 .button:hover {
-    .title, .user {
-        color: #E3FFA8;
-    }
-    .image {
-        box-shadow: 0 0 15px rgba(227, 255, 168, 0.3);
-    }
-    .avatar {
-        box-shadow: 0 0 15px rgba(227, 255, 168, 0.3);
-    }
+  .title,
+  .user {
+    color: #e3ffa8;
+  }
+  .image {
+    box-shadow: 0 0 15px rgba(227, 255, 168, 0.3);
+  }
+  .avatar {
+    box-shadow: 0 0 15px rgba(227, 255, 168, 0.3);
+  }
 }
-.image{
-    padding: 10px;
-    width: 48px;
-    height: 48px;
-    box-sizing: border-box;
-    border: 1px solid #292928;
-    border-radius: 12px;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
+.image {
+  padding: 10px;
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  border: 1px solid #292928;
+  border-radius: 12px;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
-.avatar{
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in-out;
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
-.user{
-    font-family: Poppins;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.33;
-    text-align: end;
-    
-    @media screen and (min-width: 834px){
-        font-size: 14px;
-        line-height: 1.42;
-        justify-content: end;
-        width: 111px;
-    }
-    @media screen and (min-width: 1440px){
-        width: 118px;
-    }
-}
-.title{
-    font-family: Poppins;
+.user {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  text-align: end;
+
+  @media screen and (min-width: 834px) {
     font-size: 14px;
-    font-weight: 600;
     line-height: 1.42;
-    text-align: start;
+    justify-content: end;
+    width: 111px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 118px;
+  }
 }
-.text{
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.42;
+.title {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.42;
+  text-align: start;
 }
-.subtext{
-    color: #B6B6B6;
-    margin: 0;
-    margin-left: 4px;
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42;
+.text {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+}
+.subtext {
+  color: #b6b6b6;
+  margin: 0;
+  margin-left: 4px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+}
+.texts {
+  margin-right: 6px;
+}
+.down {
+  transform: rotate(0deg);
+  transition-duration: 0.3s;
+}
+.up {
+  transform: rotate(180deg);
+  transition-duration: 0.3s;
 }
