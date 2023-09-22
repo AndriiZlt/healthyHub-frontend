@@ -67,12 +67,63 @@ const waterIntake = createAsyncThunk('meals/waterIntake', async waterIntake => {
   }
 });
 
+const recordMeal = createAsyncThunk('meals/sendMeal', async meal => {
+  console.log('Recording meal', meal);
+  try {
+    if (meal.title === 'Breakfast') {
+      const { data } = await axios.patch('/user/day/breakfast', meal.record);
+      console.log('breakfast data', data);
+      return data;
+    } else if (meal.title === 'Lunch') {
+      const { data } = await axios.patch('/user/day/lunch', meal.record);
+      console.log('lunch data', data);
+      return data;
+    } else if (meal.title === 'Dinner') {
+      const { data } = await axios.patch('/user/day/dinner', meal.record);
+      console.log('dinner data', data);
+      return data;
+    } else if (meal.title === 'Snack') {
+      const { data } = await axios.patch('/user/day/snack', meal.record);
+      console.log('snack data', data);
+      return data;
+    } else {
+      console.log('No record was sent');
+    }
+  } catch (error) {
+    console.log('Error in meal record sending', error.response.data);
+    throw error();
+  }
+});
+
+const getMonth = createAsyncThunk('meals/getMonth', async () => {
+  try {
+    const { data } = await axios.get('/user/day/year');
+    console.log(data);
+  } catch (error) {
+    console.log('Error in water intake sending', error.response.data);
+    throw error();
+  }
+});
+
+const getYear = createAsyncThunk('meals/getYear', async () => {
+  try {
+    const { data } = await axios.get('/user/day/year');
+    console.log(data);
+  } catch (error) {
+    console.log('Error in water intake sending', error.response.data);
+    throw error();
+  }
+});
+
 const mealsOperations = {
   fetchMeals,
   waterIntake,
   fetchDay,
   fetchMonth,
   fetchYear,
+  recordMeal,
+  getMonth,
+  getYear,
 };
 
 export default mealsOperations;
