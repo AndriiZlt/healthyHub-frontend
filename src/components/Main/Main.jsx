@@ -47,7 +47,6 @@ const Home = () => {
   const [randomProducts, setRundomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
-
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
