@@ -107,7 +107,6 @@ const Home = () => {
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
-      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
