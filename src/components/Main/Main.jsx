@@ -106,7 +106,6 @@ const Home = () => {
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
-      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -157,14 +156,13 @@ const Home = () => {
               </div> */}
               <div className={css.waterGlass}>
                 <div className={css.waterWrapper}>
-                  <p className={css.percent}>{`${percentage}%`}</p>
+                  <p className={css.percent}>asas</p>
                   <div
                     className={css.waterLevel}
-                    style={{ height: height }}
+                    // style={{ height:  }}
                   ></div>
                 </div>
               </div>
-              
 
               <div className={css.stats2}>
                 <p className={css.statsTitle2}>Water consumption</p>
