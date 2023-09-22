@@ -3,7 +3,7 @@ import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
 import milk from 'assets/milk.svg';
-import waterChart from 'assets/water-chart.svg';
+// import waterChart from 'assets/water-chart.svg';
 import addWaterIntake from 'assets/add-water-intake.svg';
 import chartCalories from 'assets/chart-calories.svg';
 import recordYourMeal from 'assets/recordYourMeal.svg';
@@ -149,12 +149,21 @@ const Home = () => {
           <h2 className={css.title2}>Water</h2>
           <div className={css.greyBlockWater}>
             <div className={css.water}>
-              <div className={css.chartWater}>
+              {/* <div className={css.chartWater}>
                 <img
                   style={{ width: '100%', height: '100%' }}
                   src={waterChart}
                   alt="water-chart"
                 />
+              </div> */}
+              <div className={css.waterGlass}>
+                <div className={css.waterWrapper}>
+                  <p className={css.percent}>{`${percentage}%`}</p>
+                  <div
+                    className={css.waterLevel}
+                    style={{ height: height }}
+                  ></div>
+                </div>
               </div>
 
               <div className={css.stats2}>
