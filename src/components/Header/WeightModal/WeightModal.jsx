@@ -1,41 +1,31 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import authSelectors from 'redux/auth/auth-selectors';
 import settingsOperations from 'redux/settings/settings-operations';
 import useMediaQuery from 'helpers/useMediaQuery';
 import close from '../../../assets/close-circle.svg';
 import css from './WeightModal.module.css';
-import authOperations from 'redux/auth/auth-operations';
 
 function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
   const dispatch = useDispatch();
   const weightRef = useRef();
 
-  
   const { name, age, gender, height, weight, activity } = useSelector(
     authSelectors.getUser
   );
 
-  let weights = weight
-
-  useEffect(() => {
-    console.log('???')
-  },[weight]);
-
   function handleSubmit(evt) {
     evt.preventDefault();
     const value = weightRef.current.value;
-    weights = value;
     dispatch(
       settingsOperations.saveSettings({
         ...{ name, age, gender, height, weight, activity },
         weight: value,
       })
     );
-    // const data = useSelector(authOperations.getUser);
+    closeWeightModal();
     const form = evt.target;
     form.reset();
-
   }
 
   const isMobile = useMediaQuery('(max-width:833px)');
@@ -59,6 +49,8 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
           placeholder="Enter your weight"
           type="number"
           ref={weightRef}
+          max={500}
+          min={0}
         />
         <button className={css.button}>Confirm</button>
       </form>

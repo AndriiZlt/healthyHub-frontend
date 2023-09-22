@@ -1,18 +1,68 @@
-.logout{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.logout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.link{
-    margin-left: 8px;
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: 500;
-    line-height:1.42;
+.link {
+  margin-left: 8px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
 }
-.user_link:hover, .user_link:focus{
-    color: #E3FFA8;
+.user_link {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
 }
-a{
-    margin: 0;
+.user_link:hover,
+.user_link:focus {
+  color: #e3ffa8;
+}
+a {
+  margin: 0;
+}
+.modal_action_dialog {
+  width: 350px !important;
+  max-width: 93vw;
+  margin: auto;
+}
+.modal_action_content {
+  border-radius: 12px;
+  background-color: #0f0f0f;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+  padding: 40px 24px;
+  display: flex;
+}
+.close_button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.close_button:hover,
+.close_button:focus {
+  color: #e3ffa8;
+}
+.modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+.modal > .user_link {
+  min-width: 100px;
+  text-align: center;
+}
+.logout_link > p {
+  line-height: 2;
+  font-size: 16px;
+}
+.close_text {
+  font-weight: 500;
 }

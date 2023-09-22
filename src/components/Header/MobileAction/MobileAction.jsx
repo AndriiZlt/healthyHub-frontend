@@ -19,7 +19,6 @@ function MobileAction({ closeButton }) {
   const handleWeightClose = () => setshowWeight(false);
   const handleWeightShow = () => setshowWeight(true);
 
-  // eslint-disable-next-line no-unused-vars
   function closeGoalModal() {
     setShowGoal(false);
   }
@@ -43,8 +42,7 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <Target />
-          {/* <button onClick={closeGoalModal}>CLOSE</button> */}
+          <Target closeGoalModal={closeGoalModal} />
         </Modal.Body>
       </Modal>
       <button className={css.button} onClick={handleWeightShow}>
@@ -63,8 +61,7 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <WeightModal closeWeightMobileModal={closeWeightModal}/>
-          {/* <button onClick={closeWeightModal}>CLOSE</button> */}
+          <WeightModal closeWeightMobileModal={closeWeightModal} />
         </Modal.Body>
       </Modal>
       <button onClick={closeButton} className={css.close}>
