@@ -25,18 +25,20 @@ import authSelectors from 'redux/auth/auth-selectors';
 // import { setLoadingTrue } from 'redux/auth/auth-slice';
 import mealsOperations from 'redux/meals/meals-operations';
 import TestIrina from 'components/TestComponent/TestIrina';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 function App() {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(authSelectors.getIsLoading);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const todayReady = useSelector(mealsSelectors.getTodayReady);
 
   useEffect(() => {
     (async () => {
       if (isLoggedIn) {
         // dispatch(setLoadingTrue());
-        console.log('Fetching current user...');
+        console.log('Fetching current user in App...');
         dispatch(authOperations.fetchCurrentUser()).then(() => {
           dispatch(mealsOperations.fetchDay());
         });
@@ -46,7 +48,9 @@ function App() {
 
   return (
     <>
-      {isLoading && <LoaderModal />}
+      {((isLoggedIn && isLoading) || (isLoggedIn && !todayReady)) && (
+        <LoaderModal />
+      )}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
@@ -125,11 +129,7 @@ function App() {
           <Route
             exact
             path="main"
-            element={
-              <PrivateRoute>
-                <Main />
-              </PrivateRoute>
-            }
+            element={<PrivateRoute>{todayReady && <Main />}</PrivateRoute>}
           />
           <Route
             exact

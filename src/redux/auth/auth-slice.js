@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+// import { mealsSlice } from 'redux/meals/meals-slice';
+// import { store } from 'redux/store';
 
 const initialState = {
   user: {
@@ -71,10 +73,13 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
-        state.user = initialState.user;
         state.isLoggedIn = false;
+        state.user = initialState.user;
         state.regData = initialState.regData;
         state.isLoading = false;
+        // mealsSlice.actions.clearMealData();
+        // const reduxStore = store.getState();
+        // console.log('reduxStore', reduxStore);
       })
       .addCase(authOperations.logOut.rejected, (state, _) => {
         console.log('Logout rejected');
