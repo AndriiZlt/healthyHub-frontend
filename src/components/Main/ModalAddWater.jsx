@@ -9,7 +9,11 @@ const ModalAddWater = () => {
 
   const confirmHandler = () => {
     if (water !== '') {
-      dispatch(mealsOperations.waterIntake({ water }));
+      (async () => {
+        dispatch(mealsOperations.waterIntake({ water })).then(() => {
+          dispatch(mealsOperations.fetchDay());
+        });
+      })();
     }
   };
 

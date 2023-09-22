@@ -17,9 +17,10 @@ import { NavLink } from 'react-router-dom';
 import { products } from 'components/RecommendedFood/RecommendedFood';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import { Doughnut } from 'react-chartjs-2';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
 import mealsSelectors from 'redux/meals/meals-selectors';
 import CalcBMR from 'helpers/BMRcalculation';
+// import mealsOperations from 'redux/meals/meals-operations';
 
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
@@ -40,32 +41,12 @@ const data = [
 ];
 
 const Home = () => {
-  const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
-  const [todayReady, setTodayReady] = useState(
-    useSelector(mealsSelectors.getTodayReady)
-  );
-  const {
-    breakfast = [],
-    lunch = [],
-    diner: dinner = [],
-    snack = [],
-    water = 0,
-  } = todayReady;
-
-  const [waterConsumption, setWaterConsumption] = useState(water || 0); // eslint-disable-line no-unused-vars
-  const [randomProducts, setRandomProducts] = useState([]);
+  // const dispatch = useDispatch();
+  // const todayReady = useSelector(mealsSelectors.getTodayReady); // eslint-disable-line no-unused-vars
+  const today = useSelector(mealsSelectors.getCurrentDay);
+  const [randomProducts, setRundomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
-
-  const [callories, setCallories] = useState(0); // eslint-disable-line no-unused-vars
-  const dailyWaterIntake = 1500;  
-
-  const waterPercentage = (waterConsumption / dailyWaterIntake) * 100;
-  const percentage = parseInt(waterPercentage, 10); 
-
-  const height = 148 * waterPercentage / 100;
-
   const [chartData] = useState({
     labels: data.map(item => item.year),
     datasets: [
@@ -82,10 +63,11 @@ const Home = () => {
   });
 
   useEffect(() => {
-    setWaterConsumption(water);
-    const randomProducts = getRandomProducts(products, 4);
-    setRandomProducts(randomProducts);
-  }, [dispatch, todayReady, water]);
+    console.log('Main page render');
+    setRundomProducts(getRandomProducts(products, 4));
+  }, []);
+
+  const { breakfast, lunch, diner: dinner, snack, water } = today;
 
   const escHandler = e => {
     if (
@@ -188,9 +170,7 @@ const Home = () => {
                 <p className={css.statsTitle2}>Water consumption</p>
                 <div className={css.media2}>
                   <div className={css.statsWater}>
-                    <p className={css.statsWaterConsumption}>
-                      {waterConsumption}
-                    </p>
+                    <p className={css.statsWaterConsumption}>{water}</p>
                     <p
                       style={{
                         fontSize: '14px',
@@ -214,7 +194,7 @@ const Home = () => {
                         marginLeft: 4,
                       }}
                     >
-                      {Math.max(1500 - waterConsumption, 0)}
+                      {Math.max(1500 - water, 0)}
                     </span>
                     <span
                       style={{

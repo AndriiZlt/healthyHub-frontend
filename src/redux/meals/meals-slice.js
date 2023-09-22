@@ -17,6 +17,7 @@ export const mealsSlice = createSlice({
       state.today = null;
       state.month = null;
       state.year = null;
+      state.todayReady = false;
     },
   },
   extraReducers: builder => {
@@ -26,6 +27,10 @@ export const mealsSlice = createSlice({
         state.today = action.payload;
         state.todayReady = true;
         console.log('todayReady = true');
+      })
+      .addCase(mealsOperations.fetchDay.pending, (state, _) => {
+        // state.todayReady = false;
+        // console.log('today ready false');
       })
       .addCase(mealsOperations.fetchMonth.fulfilled, (state, action) => {
         console.log('Fetch month fulfield', action.payload);
