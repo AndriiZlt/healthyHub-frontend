@@ -36,9 +36,13 @@
 .toGoal a {
   font-size: 14px;
   line-height: 20px;
-  margin-right: 6px;
+
   margin-left: 0;
   color: var(--primary-grey-color);
+}
+
+.toGoal img {
+  margin-left: 6px;
 }
 
 /* Daily goal block */

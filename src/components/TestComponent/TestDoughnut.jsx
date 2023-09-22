@@ -4,48 +4,24 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 
 const data = [
   {
-    id: 1,
-    year: 2016,
-    userGain: 80000,
-    userLost: 823,
+    percentage: 50,
   },
   {
-    id: 2,
-    year: 2017,
-    userGain: 50000,
-    userLost: 900,
+    percentage: 50,
   },
-  // {
-  //   id: 3,
-  //   year: 2018,
-  //   userGain: 4000,
-  //   userLost: 900,
-  // },
-  // {
-  //   id: 4,
-  //   year: 2019,
-  //   userGain: 30000,
-  //   userLost: 823,
-  // },
 ];
 
 const Test = () => {
   const [chartData] = useState({
-    labels: data.map(item => item.year),
     datasets: [
       {
-        label: 'users gained',
-        data: data.map(item => item.userGain),
-        backgroundColor: [
-          'rgb(69, 255, 188)',
-          'rgba(54, 163, 235, 0)',
-          // 'rgb(255, 205, 86)',
-        ],
+        data: data.map(item => item.percentage),
+        backgroundColor: ['rgb(69, 255, 188)', 'rgba(54, 163, 235, 0)'],
         borderColor: 'red',
         borderRadius: [180, 0],
         borderWidth: 0,
         hoverOffset: 0,
-        tension: 0.5,
+        tension: 2,
         // clip: { left: 55, top: true, right: -2, bottom: 0 },
         // borderAlign: 'right',
       },
@@ -54,16 +30,10 @@ const Test = () => {
 
   const textCenter = {
     id: 'textCenter',
-    beforeDatasetsDraw(chart, args, pluginOptions) {
-      // const { ctx, data } = chart;
-      // ctx.save();
-      // ctx.font = '30px';
-    },
+    beforeDatasetsDraw(chart, args, pluginOptions) {},
   };
   return (
     <div style={{ width: 400, backgroundColor: 'white' }}>
-      {/* <Line data={chartData} />
-      <Pie data={chartData} /> */}
       <Doughnut data={chartData} plugins={[textCenter]} />
     </div>
   );

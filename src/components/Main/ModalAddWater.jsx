@@ -49,7 +49,7 @@ const ModalAddWater = () => {
           >
             Confirm
           </button>
-          <button className={css.cancelButton} type="button" id="cancel">
+          <button className={css.cancelButton} type="button" id="cancelWater">
             Cancel
           </button>
         </div>
