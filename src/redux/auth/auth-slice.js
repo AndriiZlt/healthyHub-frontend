@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+// import { mealsSlice } from 'redux/meals/meals-slice';
+// import { store } from 'redux/store';
 
 const initialState = {
   user: {
@@ -52,22 +54,37 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
-      .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        console.log('after login', action.payload);
-        state.user = action.payload;
-        state.isLoggedIn = true;
-        state.isLoading = false;
-      })
-      .addCase(authOperations.logIn.rejected, (state, _) => {
-        state.isLoading = false;
-      })
-      .addCase(authOperations.logOut.fulfilled, (state, _) => {
-        state.user = initialState.user;
-        state.isLoggedIn = false;
+      .addCase(authOperations.register.rejected, (state, _) => {
+        console.log('register rejected');
         state.regData = initialState.regData;
         state.isLoading = false;
       })
-
+      .addCase(authOperations.logIn.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(authOperations.logIn.fulfilled, (state, action) => {
+        console.log('Login fulfield', action.payload.token);
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        // state.isLoading = false;
+      })
+      .addCase(authOperations.logIn.rejected, (state, _) => {
+        console.log('Login rejected');
+        state.isLoading = false;
+      })
+      .addCase(authOperations.logOut.fulfilled, (state, _) => {
+        state.isLoggedIn = false;
+        state.user = initialState.user;
+        state.regData = initialState.regData;
+        state.isLoading = false;
+        // mealsSlice.actions.clearMealData();
+        // const reduxStore = store.getState();
+        // console.log('reduxStore', reduxStore);
+      })
+      .addCase(authOperations.logOut.rejected, (state, _) => {
+        console.log('Logout rejected');
+        state.isLoading = false;
+      })
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         if (action.payload.email) {
           console.log('Current user:', action.payload);
@@ -79,10 +96,15 @@ export const authSlice = createSlice({
         }
         state.isLoading = false;
       })
+      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        state.isLoading = false;
+      })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
         console.log(action.payload.data.message);
+        state.isLoading = false;
       })
-      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+      .addCase(authOperations.checkEmail.rejected, (state, _) => {
+        console.log('Email check rejected');
         state.isLoading = false;
       });
   },

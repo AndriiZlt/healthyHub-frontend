@@ -53,14 +53,35 @@
   font-size: 14px;
 }
 
+.inputGender:checked,
+.inputGender:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.customCheked {
+  display: inline-block;
+  margin-right: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-grey-color);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.inputGender:checked + .customCheked {
+  border: 0;
+  background-color: var(--primary-green-lite-color);
+  background: url(../../assets/userRadioCheked.svg);
+}
+
+
 .labelGender {
   margin-right: 16px;
   font-size: 14px;
 }
 
-.labelGender input{
-  margin-right: 8px;
-}
 
 .activity {
   display: flex;
@@ -72,8 +93,17 @@
   margin-bottom: 24px;
 }
 
-.labelActivity input{
-  margin-right: 8px;
+.inputRadioActive:checked,
+.inputRadioActive:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+
+.inputRadioActive:checked + .customCheked {
+  border: 0;
+  background-color: var(--primary-green-lite-color);
+  background: url(../../assets/userRadioCheked.svg);
 }
 
 
@@ -127,7 +157,6 @@
   }
   .buttonsTablet {
     margin-top: 24px;
-    /* margin-right: 27px;  */
     margin-bottom: 20px;
   }
   .btnActive {
@@ -178,9 +207,14 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 40px;
-    border: 1px solid var(--primary-grey-color);
+    color: var(--primary-white-color);
+  border: 1px solid var(--primary-grey-color);
     border-radius: 12px;
     background-color: var(--primary-black-second-color);
+  }
+
+  .input:hover {
+    border: 1px solid var(--primary-lite-green-color);
   }
 
   .activity {
@@ -206,7 +240,6 @@
 
   .buttonsTablet {
     margin-top: 20px;
-    /* margin-right: 32px;  */
     margin-bottom: 16px;
   }
 

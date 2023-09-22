@@ -9,7 +9,7 @@ import WeightModal from '../WeightModal/WeightModal';
 import Target from 'components/Target/SelectTarget';
 
 function MobileAction({ closeButton }) {
-  const { goal, weight} = useSelector(authSelectors.getUser);
+  const { goal, weight } = useSelector(authSelectors.getUser);
   const [showGoal, setShowGoal] = useState(false);
   const [showWeight, setshowWeight] = useState(false);
 
@@ -19,6 +19,7 @@ function MobileAction({ closeButton }) {
   const handleWeightClose = () => setshowWeight(false);
   const handleWeightShow = () => setshowWeight(true);
 
+  // eslint-disable-next-line no-unused-vars
   function closeGoalModal() {
     setShowGoal(false);
   }
@@ -42,7 +43,7 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <Target/>
+          <Target />
           {/* <button onClick={closeGoalModal}>CLOSE</button> */}
         </Modal.Body>
       </Modal>

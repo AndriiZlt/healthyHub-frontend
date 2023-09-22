@@ -97,6 +97,7 @@
     line-height: 20px;
     margin-bottom: 80px;
     text-align: center;
+    cursor: pointer;
 }
 
 .text {
@@ -111,6 +112,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
+    cursor: pointer;
 }
 
 @media (min-width: 834px) {

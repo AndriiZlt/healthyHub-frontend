@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import css from './AddMeal.module.css';
+import css from './RecordMealModal.module.css';
 import breakfast from '../../assets/breakfast.svg';
 import plus from '../../assets/plus.svg';
-import { NavLink } from 'react-router-dom';
 
-const ModalAddMeal = () => {
+const RecordMealModal = () => {
   const [product, setProduct] = useState(); // eslint-disable-line no-unused-vars
   const [carbonoh, setCarbonoh] = useState(); // eslint-disable-line no-unused-vars
   const [protein, setProtein] = useState(); // eslint-disable-line no-unused-vars
@@ -34,11 +33,7 @@ const ModalAddMeal = () => {
             </a>
             <h3 className={css.diary_title}>Breakfast</h3>
           </div>
-          <form
-            className={css.formMeal}
-            onSubmit={formSubmitHandler}
-            id="recordMealForm"
-          >
+          <form onSubmit={formSubmitHandler} id="recordMealForm">
             <ul className={css.diary_breakfast_list}>
               <li className={css.diary_breakfast_item}>
                 <input
@@ -61,7 +56,7 @@ const ModalAddMeal = () => {
             </ul>
           </form>
           <div className={css.diary_add_meal_wrapper}>
-            <NavLink href="" className={css.diary_add_meal}>
+            <a href="" className={css.diary_add_meal}>
               <img
                 src={plus}
                 alt="plus"
@@ -69,7 +64,7 @@ const ModalAddMeal = () => {
                 style={{ height: 16, width: 16 }}
               />
               Add more
-            </NavLink>
+            </a>
           </div>
 
           <div className={css.buttons}>
@@ -96,4 +91,4 @@ const ModalAddMeal = () => {
   );
 };
 
-export default ModalAddMeal;
+export default RecordMealModal;

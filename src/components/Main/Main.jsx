@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
 import milk from 'assets/milk.svg';
-import waterChart from 'assets/water-chart.svg';
+// import waterChart from 'assets/water-chart.svg';
 import addWaterIntake from 'assets/add-water-intake.svg';
 import chartCalories from 'assets/chart-calories.svg';
 import recordYourMeal from 'assets/recordYourMeal.svg';
@@ -11,27 +11,70 @@ import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
 import dinnerIcon from 'assets/dinner.svg';
 import snackIcon from 'assets/snack.svg';
-import fruit1 from 'assets/fruit1.png';
-import fruit2 from 'assets/fruit2.png';
-import fruit3 from 'assets/fruit3.png';
-import fruit4 from 'assets/fruit4.png';
 import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
-// import LoaderModal from 'components/LoaderModal/LoaderModal';
+import { products } from 'components/RecommendedFood/RecommendedFood';
+import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
+import { Doughnut } from 'react-chartjs-2';
+import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
+import mealsSelectors from 'redux/meals/meals-selectors';
+import CalcBMR from 'helpers/BMRcalculation';
+// import mealsOperations from 'redux/meals/meals-operations';
+
+const getRandomProducts = (data, count) => {
+  const randomData = [...data];
+  for (let i = randomData.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [randomData[i], randomData[j]] = [randomData[j], randomData[i]];
+  }
+  return randomData.slice(0, count);
+};
+
+const data = [
+  {
+    id: 1,
+    year: 2016,
+    userGain: 80000,
+    userLost: 823,
+  },
+];
 
 const Home = () => {
-  // const [isLoading] = useState(false);
+  // const dispatch = useDispatch();
+  // const todayReady = useSelector(mealsSelectors.getTodayReady); // eslint-disable-line no-unused-vars
+  const today = useSelector(mealsSelectors.getCurrentDay);
+  const [randomProducts, setRundomProducts] = useState([]);
   const [modalMealOn, setModalMealOn] = useState(false);
   const [modalWaterOn, setModalWaterOn] = useState(false);
-  const breakfast = false;
-  const lunch = true;
-  const dinner = false;
-  const snack = false;
+  const [chartData] = useState({
+    labels: data.map(item => item.year),
+    datasets: [
+      {
+        // label: 'users gained',
+        data: data.map(item => item.userGain),
+        backgroundColor: ['rgba(69, 255, 188, 1)'],
+        borderColor: 'black',
+        borderWidth: 1,
+        hoverOffset: 1,
+        tension: 0.5,
+      },
+    ],
+  });
+
+  useEffect(() => {
+    console.log('Main page render');
+    setRundomProducts(getRandomProducts(products, 4));
+  }, []);
+
+  const { breakfast, lunch, diner: dinner, snack, water } = today;
 
   const escHandler = e => {
-    console.log(e.target);
-    if (e.target.id === 'overlay') {
+    if (
+      e.target.id === 'overlay' ||
+      e.target.id === 'add-more' ||
+      e.key === 'Enter'
+    ) {
       setModalMealOn(false);
       setModalWaterOn(false);
       window.removeEventListener('keydown', escHandler);
@@ -47,7 +90,6 @@ const Home = () => {
 
   const modalHandler = e => {
     e.target.id === 'meal' ? setModalMealOn(true) : setModalWaterOn(true);
-    console.log(e.target.id);
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
   };
@@ -64,7 +106,6 @@ const Home = () => {
 
       {modalMealOn && <ModalAddMeal />}
       {modalWaterOn && <ModalAddWater />}
-      {/* {isLoading && <LoaderModal />} */}
 
       <div className={css.media1}>
         {/* Daily goal block */}
@@ -75,7 +116,9 @@ const Home = () => {
               <img className={css.icon1} src={bubble} alt="bubble" />
               <div className={css.stats}>
                 <p className={css.statsTitle}>Calories</p>
-                <p className={css.statsNumber}>1700</p>
+                <p className={css.statsNumber}>
+                  <CalcBMR />
+                </p>
               </div>
             </div>
             <div className={css.water}>
@@ -104,19 +147,28 @@ const Home = () => {
           <h2 className={css.title2}>Water</h2>
           <div className={css.greyBlockWater}>
             <div className={css.water}>
-              <div className={css.chartWater}>
+              {/* <div className={css.chartWater}>
                 <img
                   style={{ width: '100%', height: '100%' }}
                   src={waterChart}
                   alt="water-chart"
                 />
+              </div> */}
+              <div className={css.waterGlass}>
+                <div className={css.waterWrapper}>
+                  <p className={css.percent}>asas</p>
+                  <div
+                    className={css.waterLevel}
+                    // style={{ height:  }}
+                  ></div>
+                </div>
               </div>
 
               <div className={css.stats2}>
                 <p className={css.statsTitle2}>Water consumption</p>
                 <div className={css.media2}>
                   <div className={css.statsWater}>
-                    <p className={css.statsWaterConsumption}>1050</p>
+                    <p className={css.statsWaterConsumption}>{water}</p>
                     <p
                       style={{
                         fontSize: '14px',
@@ -140,7 +192,7 @@ const Home = () => {
                         marginLeft: 4,
                       }}
                     >
-                      450
+                      {Math.max(1500 - water, 0)}
                     </span>
                     <span
                       style={{
@@ -170,11 +222,15 @@ const Home = () => {
           <h2 className={css.title2}>Food</h2>
           <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
-              <img
-                className={css.icon3}
+              <div className={css.icon3}>
+                <Doughnut data={chartData} />
+              </div>
+
+              {/* <img
+
                 src={chartCalories}
                 alt="calories-chart"
-              />
+              /> */}
               <div className={css.stats}>
                 <ul
                   style={{
@@ -363,7 +419,7 @@ const Home = () => {
                   <p className={css.statsTitle3}>Breakfast</p>
                 </div>
 
-                {breakfast ? (
+                {breakfast.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -517,7 +573,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Dinner</p>
                 </div>
-                {dinner ? (
+                {dinner.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -594,7 +650,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Snack</p>
                 </div>
-                {snack ? (
+                {snack.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -669,122 +725,38 @@ const Home = () => {
           <div className={css.titleDiv2}>
             <h2 className={css.title3}>Recommended food</h2>
           </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit1} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Avocado</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
+
+          {randomProducts.map(product => (
+            <div className={css.greyBlock2} key={product.name}>
+              <img src={product.img} alt="fruit" />
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                }}
+              >
+                <p className={css.statsTitle3}>{product.name}</p>
+                <div style={{ display: 'flex' }}>
+                  <p className={css.fruitStats}>
+                    {product.amount}
+                    <span
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 500,
+                        color: '#B6B6B6',
+                        marginLeft: 6,
+                      }}
+                    >
+                      {product.calories}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit2} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Beans</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit3} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Nuts</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className={css.greyBlock2}>
-            <img src={fruit4} alt="fruit" />
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-              }}
-            >
-              <p className={css.statsTitle3}>Broccoli</p>
-              <div style={{ display: 'flex' }}>
-                <p className={css.fruitStats}>
-                  100 g
-                  <span
-                    style={{
-                      fontSize: '14px',
-                      lineHeight: '20px',
-                      fontWeight: 500,
-                      color: '#B6B6B6',
-                      marginLeft: 6,
-                    }}
-                  >
-                    200 calories
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
           <div className={css.seeMore2}>
             <NavLink to="/recommended">See more</NavLink>
             <img src={arrowRight} alt="arrow-right" />

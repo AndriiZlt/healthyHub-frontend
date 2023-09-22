@@ -16,7 +16,6 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   console.log('Login in with', credentials);
   try {
     const { data } = await axios.post('/user/login', credentials);
-    console.log('login token=>' + data.token);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -56,7 +55,6 @@ const fetchCurrentUser = createAsyncThunk(
   '/user/refresh',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.user.token;
-    console.log('Persisted token->', persistedToken);
     if (!persistedToken) {
       console.log('No user');
       return {
@@ -79,7 +77,17 @@ const checkEmail = createAsyncThunk('user/checkEmail', async credentials => {
     const response = await axios.post('/user/check-email', credentials);
     return response;
   } catch (error) {
-    console.log('Error in register', error.message);
+    console.log('Error in check email', error.message);
+    throw error;
+  }
+});
+
+const forgotPassword = createAsyncThunk('', async credentials => {
+  try {
+    const response = await axios.patch('/user/change-password', credentials);
+    return response;
+  } catch (error) {
+    console.log('Error in change password', error.message);
     throw error;
   }
 });
@@ -90,6 +98,7 @@ const authOperations = {
   logOut,
   fetchCurrentUser,
   checkEmail,
+  forgotPassword,
 };
 
 export default authOperations;
