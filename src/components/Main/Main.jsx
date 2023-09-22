@@ -156,10 +156,10 @@ const Home = () => {
               </div> */}
               <div className={css.waterGlass}>
                 <div className={css.waterWrapper}>
-                  <p className={css.percent}>{`${percentage}%`}</p>
+                  <p className={css.percent}>asas</p>
                   <div
                     className={css.waterLevel}
-                    style={{ height: height }}
+                    // style={{ height:  }}
                   ></div>
                 </div>
               </div>
