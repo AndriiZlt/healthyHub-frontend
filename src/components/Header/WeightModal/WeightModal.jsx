@@ -13,10 +13,12 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
   const { name, age, gender, height, weight, activity } = useSelector(
     authSelectors.getUser
   );
-
+  const data = useSelector(state => state.user);
+  console.log(data)
   function handleSubmit(evt) {
     evt.preventDefault();
     const value = weightRef.current.value;
+    
     dispatch(
       settingsOperations.saveSettings({
         ...{ name, age, gender, height, weight, activity },
