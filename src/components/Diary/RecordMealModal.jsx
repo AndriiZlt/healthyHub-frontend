@@ -5,10 +5,10 @@ import breakfast from '../../assets/breakfast.svg';
 import plus from '../../assets/plus.svg';
 
 const RecordMealModal = () => {
-  const [product, setProduct] = useState();
-  const [carbonoh, setCarbonoh] = useState();
-  const [protein, setProtein] = useState();
-  const [fat, setFat] = useState();
+  const [product, setProduct] = useState(); // eslint-disable-line no-unused-vars
+  const [carbonoh, setCarbonoh] = useState(); // eslint-disable-line no-unused-vars
+  const [protein, setProtein] = useState(); // eslint-disable-line no-unused-vars
+  const [fat, setFat] = useState(); // eslint-disable-line no-unused-vars
 
   const formSubmitHandler = async e => {
     e.preventDefault();

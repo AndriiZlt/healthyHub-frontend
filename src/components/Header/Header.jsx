@@ -22,12 +22,13 @@ const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
   const [showWeight, setWeight] = useState(false);
+  const [showGoal, setShowGoal] = useState(false);
 
-  function closeButton() {
-    setShowDropdown(false);
-  }
   function openButton() {
     setShowDropdown(true);
+  }
+  function closeButton() {
+    setShowDropdown(false);
   }
   function closeModal() {
     setShowSetting(false);
@@ -35,7 +36,10 @@ const Header = () => {
   function closeWeightModal() {
     setWeight(false);
   }
-
+  function closeGoaltModal() {
+    setShowGoal(false);
+  }
+  // console.log('qweqwe', showGoal);
   return (
     <div className={css.header}>
       {!isLoggedIn ? (
@@ -63,16 +67,17 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Dropdown>
+                <Dropdown show={showGoal} onToggle={e => setShowGoal(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
                       image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
                       title="Goal"
                       text={goal}
+                      showGoal={showGoal}
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
-                    <Target />
+                    <Target closeGoaltModal={closeGoaltModal} />
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
@@ -102,6 +107,7 @@ const Header = () => {
                   image={avatarURL}
                   text={name}
                   userAction={true}
+                  showSetting={showSetting}
                 />
               </Dropdown.Toggle>
               <Dropdown.Menu className={css.modal}>

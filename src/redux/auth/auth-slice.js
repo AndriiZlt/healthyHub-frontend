@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+// import { mealsSlice } from 'redux/meals/meals-slice';
+// import { store } from 'redux/store';
 
 const initialState = {
   user: {
@@ -54,11 +56,14 @@ export const authSlice = createSlice({
       })
       .addCase(authOperations.register.rejected, (state, _) => {
         console.log('register rejected');
-        state.regData.password = null;
+        state.regData = initialState.regData;
         state.isLoading = false;
       })
+      .addCase(authOperations.logIn.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        console.log('after login', action.payload);
+        console.log('Login fulfield', action.payload.token);
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isLoading = false;
@@ -68,8 +73,8 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state, _) => {
-        state.user = initialState.user;
         state.isLoggedIn = false;
+        state.user = initialState.user;
         state.regData = initialState.regData;
         state.isLoading = false;
       })

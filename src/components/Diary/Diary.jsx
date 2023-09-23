@@ -12,11 +12,10 @@ import edit_text from '../../assets/edit_text.svg';
 import plus from '../../assets/plus.svg';
 
 const Diary = () => {
-
   // const [recordMealModal, recordMeal] = useState(false);
 
   return (
-    <section className={css.section}>
+    <section className={css.sectionDiary}>
       <div className={css.dairy_title}>
         <a href="a">
           <img
@@ -244,7 +243,7 @@ const Diary = () => {
               <div className={css.dairy_wrapper_title}>
                 <div className={css.dairy_title_dinner}>
                   <img src={diner} alt="diner" className={css.icon_dish} />
-                  <h3>Diner</h3>
+                  <h3>Dinner</h3>
                 </div>
               </div>
 

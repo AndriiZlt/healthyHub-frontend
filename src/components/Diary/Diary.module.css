@@ -1,7 +1,13 @@
-ul,
-li,
+.sectionDiary ul {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.sectionDiary li,
 h2,
-h3,
 img,
 span,
 p {
@@ -12,14 +18,29 @@ p {
   height: auto;
   border: 0;
 }
-a {
+
+.sectionDiary h3 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: var(--primary-white-color);
+}
+
+.sectionDiary a {
   cursor: pointer;
 }
+
 .edit_icon {
   display: none;
 }
 
-.section {
+.sectionDiary {
   padding: 16px 0 40px;
 }
 
@@ -29,13 +50,9 @@ a {
   margin-bottom: 16px;
 }
 
-h2 {
+.sectionDiary h2 {
   font-family: inherit;
   font-weight: 500;
-}
-h3 {
-  color: var(--primary-white-color);
-  font-weight: regular;
 }
 
 .arrow_rigth {
@@ -99,11 +116,11 @@ h3 {
   margin-top: 24px;
 }
 
-.wrapper_dishes_block{
+.wrapper_dishes_block {
   padding: 16px 12px;
   /* border: 1px solid white; */
   border-radius: 12px;
-  background-color: var(--prymary-black-second-color);
+  background-color: var(--primary-black-second-color);
 }
 .dairy_add_dish_item:not(:last-child):not(:first-child) {
   margin-bottom: 40px;
@@ -125,7 +142,7 @@ h3 {
   align-items: center;
   margin-bottom: 0;
 }
-span {
+.sectionDiary span {
   margin-right: 16px;
   text-align: start;
 }
@@ -164,16 +181,23 @@ span {
   font-family: inherit;
 }
 .dairy_add_dish_item,
-a {
+.sectionDiary a {
   display: flex;
   align-items: center;
 }
 
 @media (min-width: 834px) {
-  .section {
+  .sectionDiary {
     padding-top: 24px;
     padding-bottom: 40px;
   }
+
+  .sectionDiary h3 {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+
   .dairy_wrapper {
     display: flex;
     align-items: center;
@@ -185,8 +209,8 @@ a {
     margin-bottom: 6px;
   }
   .dairy_title_breakfast {
-    width: 104px;
-    margin-right: 196px;
+    width: 344px;
+    /* margin-right: 196px; */
     margin-bottom: 6px;
   }
   .dairy_breakfast_list {
@@ -250,22 +274,22 @@ a {
     margin-top: 24px;
   }
   .dairy_title_lunch {
-    width: 66px;
-    margin-right: 234px;
+    width: 611px;
+    /* margin-right: 234px; */
     margin-bottom: 6px;
   }
   .dairy_title_dinner {
-    width: 115px;
-    margin-right: 229px;
+    width: 344px;
+    /* margin-right: 229px; */
   }
   .dairy_title_snack {
-    width: 111px;
-    margin-right: 233px;
+    width: 344px;
+    /* margin-right: 233px; */
   }
 }
 
 @media (min-width: 1440px) {
-  .section {
+  .sectionDiary {
     padding-top: 20px;
     padding-bottom: 52px;
   }
@@ -283,13 +307,14 @@ a {
   .dairy_dish_wrapper {
     margin-bottom: 20px;
   }
+
   /* .wrapper_dishes:not(nth-child(1n)){
     margin-right: 20px;
   }
   .wrapper_dishes:not(nth-child(-n+2)){
     margin-bottom: 20px;
   } */
-  dairy_wrapper_dishes {
+  .dairy_wrapper_dishes {
     width: 679px;
     /* height: 240px; */
   }
@@ -305,23 +330,23 @@ a {
     margin-bottom: 0;
   }
   .dairy_title_breakfast {
-    width: 104px;
-    margin-right: 126px;
+    width: 274px;
+    /* margin-right: 126px; */
     margin-bottom: 6px;
   }
   .dairy_title_lunch {
-    width: 66px;
-    margin-right: 164px;
+    width: 442px;
+    /* margin-right: 164px; */
     margin-bottom: 6px;
   }
   .dairy_title_dinner {
-    width: 115px;
-    margin-right: 159px;
+    width: 274px;
+    /* margin-right: 159px; */
     margin-bottom: 6px;
   }
   .dairy_title_snack {
-    width: 111px;
-    margin-right: 163px;
+    width: 274px;
+    /* margin-right: 163px; */
     margin-bottom: 6px;
   }
   .dairy_breakfast_list {

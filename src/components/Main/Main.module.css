@@ -36,9 +36,13 @@
 .toGoal a {
   font-size: 14px;
   line-height: 20px;
-  margin-right: 6px;
+
   margin-left: 0;
   color: var(--primary-grey-color);
+}
+
+.toGoal img {
+  margin-left: 6px;
 }
 
 /* Daily goal block */
@@ -119,6 +123,38 @@
   width: 80px;
   height: 192px;
   margin-right: 20px;
+}
+
+.waterGlass {
+  width: 80px;
+  height: 192px;
+  padding: 7px;
+  background: var(--primary-black-color);
+  margin-right: 20px;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--secondary-grey-color);
+}
+
+.waterWrapper {
+  position: absolute;
+  bottom: 7px;
+}
+
+.percent {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--primary-violet-color);
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.waterLevel {
+  width: 64px;
+  height: 176px;
+  background: var(--primary-violet-color);
+  border-radius: 20px;
 }
 
 .statsTitle2 {
