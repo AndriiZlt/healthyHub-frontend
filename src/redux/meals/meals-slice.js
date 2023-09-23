@@ -5,7 +5,7 @@ const initialState = {
   today: null,
   todayReady: false,
   month: null,
-  yaer: null,
+  year: null,
   modalMealOn: false,
   modalWaterOn: false,
 };
