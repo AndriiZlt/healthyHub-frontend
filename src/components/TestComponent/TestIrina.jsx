@@ -1,7 +1,12 @@
-import React from 'react';
+// import React from 'react';
+import { useDispatch } from 'react-redux';
+import mealsOperations from 'redux/meals/meals-operations';
 
 const TestIrina = () => {
-  return <div>sdasds</div>;
+  const dispatch = useDispatch();
+  setTimeout(() => dispatch(mealsOperations.fetchYear()), 3000);
+
+  return <div>skjdsak</div>;
 };
 
 export default TestIrina;

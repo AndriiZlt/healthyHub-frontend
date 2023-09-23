@@ -18,7 +18,7 @@ const Header = () => {
   const isMobile = useMediaQuery('(max-width:833px)');
 
   const { avatarURL, name, goal, weight } = useSelector(authSelectors.getUser);
-
+  // console.log('Wight in header', weight);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
   const [showWeight, setWeight] = useState(false);
