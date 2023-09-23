@@ -18,7 +18,7 @@ const Header = () => {
   const isMobile = useMediaQuery('(max-width:833px)');
 
   const { avatarURL, name, goal, weight } = useSelector(authSelectors.getUser);
-
+  // console.log('Wight in header', weight);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
   const [showWeight, setWeight] = useState(false);
@@ -39,7 +39,7 @@ const Header = () => {
   function closeGoaltModal() {
     setShowGoal(false);
   }
-  console.log('qweqwe', showGoal);
+  // console.log('qweqwe', showGoal);
   return (
     <div className={css.header}>
       {!isLoggedIn ? (

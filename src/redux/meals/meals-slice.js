@@ -5,7 +5,9 @@ const initialState = {
   today: null,
   todayReady: false,
   month: null,
-  yaer: null,
+  year: null,
+  modalMealOn: false,
+  modalWaterOn: false,
 };
 
 export const mealsSlice = createSlice({
@@ -19,6 +21,17 @@ export const mealsSlice = createSlice({
       state.year = null;
       state.todayReady = false;
     },
+    setModalMealOn(state, action) {
+      state.modalMealOn = true;
+    },
+    setModalWaterOn(state, _) {
+      console.log('set modal water on');
+      state.modalWaterOn = true;
+    },
+    setModalsOff(state, _) {
+      state.modalWaterOn = false;
+      state.modalMealOn = false;
+    },
   },
   extraReducers: builder => {
     builder
@@ -26,7 +39,6 @@ export const mealsSlice = createSlice({
         console.log('Fetch day fulfield', action.payload);
         state.today = action.payload;
         state.todayReady = true;
-        console.log('todayReady = true');
       })
       .addCase(mealsOperations.fetchDay.pending, (state, _) => {
         // state.todayReady = false;
@@ -43,8 +55,14 @@ export const mealsSlice = createSlice({
       .addCase(mealsOperations.waterIntake.fulfilled, (state, action) => {
         console.log('Water intake fulfield', action.payload);
         state.today = action.payload;
+      })
+      .addCase(mealsOperations.recordMeal.fulfilled, (state, action) => {
+        console.log('Record meal fulfield', action.payload);
+        state.today = action.payload;
+        state.modalMealOn = false;
       });
   },
 });
 
-export const { clearMealData } = mealsSlice.actions;
+export const { clearMealData, setModalMealOn, setModalWaterOn, setModalsOff } =
+  mealsSlice.actions;

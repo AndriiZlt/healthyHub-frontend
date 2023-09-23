@@ -19,7 +19,6 @@ const Dashboard = () => {
     setTimeToggleHidden(true);
     setTime(prevTime => (prevTime === 'month' ? 'year' : 'month'));
   };
-
   const currentDate = new Date();
   currentDate.setMonth(currentDate.getMonth() - 1);
   const month = currentDate.getMonth();

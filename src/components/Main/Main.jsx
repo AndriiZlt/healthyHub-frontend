@@ -16,11 +16,17 @@ import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
 import { products } from 'components/RecommendedFood/RecommendedFood';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2'; // eslint-disable-line
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
 import mealsSelectors from 'redux/meals/meals-selectors';
 import CalcBMR from 'helpers/BMRcalculation';
-// import mealsOperations from 'redux/meals/meals-operations';
+import useCalculatedData from 'helpers/useCalculatedData';
+
+import {
+  setModalsOff,
+  setModalMealOn,
+  setModalWaterOn,
+} from 'redux/meals/meals-slice';
 
 const getRandomProducts = (data, count) => {
   const randomData = [...data];
@@ -31,65 +37,60 @@ const getRandomProducts = (data, count) => {
   return randomData.slice(0, count);
 };
 
-const data = [
-  {
-    id: 1,
-    year: 2016,
-    userGain: 80000,
-    userLost: 823,
-  },
-];
-
 const Home = () => {
-  // const dispatch = useDispatch();
-  // const todayReady = useSelector(mealsSelectors.getTodayReady); // eslint-disable-line no-unused-vars
+  const dispatch = useDispatch();
   const today = useSelector(mealsSelectors.getCurrentDay);
   const [randomProducts, setRundomProducts] = useState([]);
-  const [modalMealOn, setModalMealOn] = useState(false);
-  const [modalWaterOn, setModalWaterOn] = useState(false);
-  const [chartData] = useState({
-    labels: data.map(item => item.year),
-    datasets: [
-      {
-        // label: 'users gained',
-        data: data.map(item => item.userGain),
-        backgroundColor: ['rgba(69, 255, 188, 1)'],
-        borderColor: 'black',
-        borderWidth: 1,
-        hoverOffset: 1,
-        tension: 0.5,
-      },
-    ],
-  });
-
+  const [mealTitle, setMealTitle] = useState('Breakfast');
+  const modalWaterOn = useSelector(mealsSelectors.getModalWaterOn);
+  const modalMealOn = useSelector(mealsSelectors.getModalMealOn);
   useEffect(() => {
-    console.log('Main page render');
     setRundomProducts(getRandomProducts(products, 4));
   }, []);
 
-  const { breakfast, lunch, diner: dinner, snack, water } = today;
+  const { water = 0 } = today;
+  const waterPercetage = Math.min(Math.floor((water / 1500) * 100), 100);
+  const waterHeight = Math.min(Math.floor(176 * (waterPercetage / 100)), 1500);
+  // eslint-disable--line
+  const {
+    breakfast,
+    lunch,
+    dinner,
+    snack,
+    calories, // eslint-disable--line
+    carbonohidrates, // eslint-disable--line
+    protein, // eslint-disable--line
+    fat, // eslint-disable--line
+  } = useCalculatedData();
 
+  console.log(
+    calories, // eslint-disable--line
+    carbonohidrates, // eslint-disable--line
+    protein, // eslint-disable--line
+    fat
+  );
   const escHandler = e => {
     if (
       e.target.id === 'overlay' ||
-      e.target.id === 'add-more' ||
-      e.key === 'Enter'
+      e.code === 'Escape' ||
+      e.target.id === 'cancelWater' ||
+      e.target.id === 'cancelMeal'
     ) {
-      setModalMealOn(false);
-      setModalWaterOn(false);
-      window.removeEventListener('keydown', escHandler);
-      window.removeEventListener('click', escHandler);
-    }
-    if (e.code === 'Escape') {
-      setModalMealOn(false);
-      setModalWaterOn(false);
+      dispatch(setModalsOff());
       window.removeEventListener('keydown', escHandler);
       window.removeEventListener('click', escHandler);
     }
   };
 
+  const modalWaterHandler = () => {
+    dispatch(setModalWaterOn());
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
+
   const modalHandler = e => {
-    e.target.id === 'meal' ? setModalMealOn(true) : setModalWaterOn(true);
+    setMealTitle(e.target.name);
+    dispatch(setModalMealOn());
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
   };
@@ -99,12 +100,15 @@ const Home = () => {
       <div className={css.titleDiv}>
         <h1 className={css.title1}>Today</h1>
         <div className={css.toGoal}>
-          <NavLink to="/dashboard">On the way to the goal</NavLink>
-          <img src={arrowRight} alt="arrow-right" />
+          <NavLink to="/dashboard">
+            On the way to the goal
+            <img src={arrowRight} alt="arrow-right" />
+          </NavLink>
         </div>
       </div>
 
-      {modalMealOn && <ModalAddMeal />}
+      {modalMealOn && <ModalAddMeal title={mealTitle} />}
+
       {modalWaterOn && <ModalAddWater />}
 
       <div className={css.media1}>
@@ -156,10 +160,10 @@ const Home = () => {
               </div> */}
               <div className={css.waterGlass}>
                 <div className={css.waterWrapper}>
-                  <p className={css.percent}>asas</p>
+                  <p className={css.percent}>{waterPercetage}%</p>
                   <div
                     className={css.waterLevel}
-                    // style={{ height:  }}
+                    style={{ height: waterHeight }}
                   ></div>
                 </div>
               </div>
@@ -210,7 +214,7 @@ const Home = () => {
                   src={addWaterIntake}
                   alt="add-water-intake"
                   id="water"
-                  onClick={modalHandler}
+                  onClick={modalWaterHandler}
                 />
               </div>
             </div>
@@ -223,7 +227,7 @@ const Home = () => {
           <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
               <div className={css.icon3}>
-                <Doughnut data={chartData} />
+                {/* <Doughnut data={chartData} /> */}
               </div>
 
               {/* <img
@@ -435,7 +439,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -452,7 +456,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.protein}
                           </span>
                         </p>
                       </li>
@@ -469,7 +473,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.fat}
                           </span>
                         </p>
                       </li>
@@ -481,6 +485,7 @@ const Home = () => {
                     src={recordYourMeal}
                     alt="record-your-meal"
                     id="meal"
+                    name="Breakfast"
                     onClick={modalHandler}
                   />
                 )}
@@ -496,7 +501,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Lunch</p>
                 </div>
-                {lunch ? (
+                {lunch.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -512,7 +517,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -529,7 +534,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.protein}
                           </span>
                         </p>
                       </li>
@@ -546,7 +551,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.fat}
                           </span>
                         </p>
                       </li>
@@ -558,6 +563,7 @@ const Home = () => {
                     src={recordYourMeal}
                     alt="record-your-meal"
                     id="meal"
+                    name="Lunch"
                     onClick={modalHandler}
                   />
                 )}
@@ -589,7 +595,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -606,7 +612,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.protein}
                           </span>
                         </p>
                       </li>
@@ -623,7 +629,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.fat}
                           </span>
                         </p>
                       </li>
@@ -635,6 +641,7 @@ const Home = () => {
                     src={recordYourMeal}
                     alt="record-your-meal"
                     id="meal"
+                    name="Dinner"
                     onClick={modalHandler}
                   />
                 )}
@@ -666,7 +673,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -683,7 +690,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.protein}
                           </span>
                         </p>
                       </li>
@@ -700,7 +707,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.fat}
                           </span>
                         </p>
                       </li>
@@ -712,6 +719,7 @@ const Home = () => {
                     src={recordYourMeal}
                     alt="record-your-meal"
                     id="meal"
+                    name="Snack"
                     onClick={modalHandler}
                   />
                 )}
