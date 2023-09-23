@@ -19,12 +19,14 @@ export const mealsSlice = createSlice({
       state.today = null;
       state.month = null;
       state.year = null;
+      state.todayReady = false;
     },
     setModalMealOn(state, action) {
-      state.modalMealOn = action.payload;
+      state.modalMealOn = true;
     },
-    setModalWaterOn(state, action) {
-      state.modalWaterOn = action.payload;
+    setModalWaterOn(state, _) {
+      console.log('set modal water on');
+      state.modalWaterOn = true;
     },
     setModalsOff(state, _) {
       state.modalWaterOn = false;
