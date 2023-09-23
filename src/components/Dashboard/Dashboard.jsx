@@ -15,7 +15,6 @@ const Dashboard = () => {
 	const [timeToggleHidden, setTimeToggleHidden] = useState(true);
 	const [userData, setUserData] = useState([]) // setUserData(res.body)
 
-
 	const currentDate = new Date();
 	const month = currentDate.getMonth();
 	const monthNames = [

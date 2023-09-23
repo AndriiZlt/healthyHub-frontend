@@ -17,11 +17,11 @@ const calculateDay = data => {
     date: '',
   };
   const meals = ['breakfast', 'lunch', 'dinner', 'snack'];
-  for (const item of meals) {
-    for (const record of data[item]) {
-      for (const stat in record) {
+  for (const meal of meals) {
+    for (const record in data[meal]) {
+      for (const stat in data[meal][record]) {
         if (stat !== '_id' && stat !== 'name') {
-          result[item][stat] += record[stat];
+          result[meal][stat] += data[meal][record][stat];
         }
       }
     }
@@ -33,7 +33,6 @@ const calculateDay = data => {
   }
   result.water = data.water;
   result.date = data.date;
-  // console.log('calculated result=>', result);
   return result;
 };
 
@@ -44,8 +43,9 @@ const useDashboardMonth = async () => {
   useEffect(() => {
     dispatch(mealsOperations.fetchMonth());
   }, [dispatch]);
-  for (const day of month) {
-    const result = calculateDay(day);
+  for (const day in month) {
+    const result = calculateDay(month[day]);
+
     chart.push({
       date: result.date,
       calories: result.calories,
@@ -53,7 +53,7 @@ const useDashboardMonth = async () => {
       weight: result.weight,
     });
   }
-  // console.log('chart', chart);
+
   return chart;
 };
 
