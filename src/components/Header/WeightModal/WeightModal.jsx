@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
+import useMediaQuery from 'helpers/useMediaQuery';
 import authSelectors from 'redux/auth/auth-selectors';
 import authOperations from 'redux/auth/auth-operations';
-import useMediaQuery from 'helpers/useMediaQuery';
 import close from '../../../assets/close-circle.svg';
 import css from './WeightModal.module.css';
 
 function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
   const dispatch = useDispatch();
   const weightRef = useRef();
-
+  const isMobile = useMediaQuery('(max-width:833px)');
   const {
     name,
     goal,
@@ -21,7 +21,7 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
     token,
     avatarURL,
   } = useSelector(authSelectors.getUser);
-  
+
   function handleSubmit(evt) {
     evt.preventDefault();
     const value = weightRef.current.value;
@@ -37,12 +37,10 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
         },
       })
     );
-    closeWeightModal();
+    isMobile ? closeWeightMobileModal() : closeWeightModal();
     const form = evt.target;
     form.reset();
   }
-
-  const isMobile = useMediaQuery('(max-width:833px)');
   let today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0');
