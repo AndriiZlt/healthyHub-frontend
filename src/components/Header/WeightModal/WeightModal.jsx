@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import authSelectors from 'redux/auth/auth-selectors';
-import settingsOperations from 'redux/settings/settings-operations';
+import authOperations from 'redux/auth/auth-operations';
 import useMediaQuery from 'helpers/useMediaQuery';
 import close from '../../../assets/close-circle.svg';
 import css from './WeightModal.module.css';
@@ -10,19 +10,31 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
   const dispatch = useDispatch();
   const weightRef = useRef();
 
-  const { name, age, gender, height, weight, activity } = useSelector(
-    authSelectors.getUser
-  );
-  const data = useSelector(state => state.user);
-  console.log(data)
+  const {
+    name,
+    goal,
+    gender,
+    age,
+    height,
+    weight,
+    activity,
+    token,
+    avatarURL,
+  } = useSelector(authSelectors.getUser);
+  
   function handleSubmit(evt) {
     evt.preventDefault();
     const value = weightRef.current.value;
-    
+
     dispatch(
-      settingsOperations.saveSettings({
-        ...{ name, age, gender, height, weight, activity },
-        weight: value,
+      authOperations.saveSettings({
+        token,
+        goal,
+        avatarURL,
+        setting: {
+          ...{ name, gender, age, height, weight, activity },
+          weight: value,
+        },
       })
     );
     closeWeightModal();

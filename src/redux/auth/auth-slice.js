@@ -103,6 +103,11 @@ export const authSlice = createSlice({
       .addCase(authOperations.checkEmail.rejected, (state, _) => {
         console.log('Email check rejected');
         state.isLoading = false;
+      })
+      .addCase(authOperations.saveSettings.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isLoading = false;
       });
   },
 });
