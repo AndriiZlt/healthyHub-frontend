@@ -30,7 +30,7 @@ const useCalculatedData = () => {
       result[nutrient] += result[meal][nutrient];
     }
   }
-  console.log('calculated result=>', result);
+  // console.log('calculated result=>', result);
   return result;
 };
 

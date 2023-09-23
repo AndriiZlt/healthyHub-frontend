@@ -45,11 +45,11 @@ const fetchMonth = createAsyncThunk('meals/fetchMonth', async () => {
 });
 
 const fetchYear = createAsyncThunk('meals/fetchYear', async () => {
-  console.log('Fetching month...');
+  console.log('Fetching Year...');
   try {
     const { data } = await axios.get('/user/day/year');
-    console.log('data in fetching year', data);
-    return data[0];
+    console.log('data in fetching year', data.newStatistic);
+    return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching year', error.response.data);
     throw error();
@@ -108,7 +108,7 @@ const getMonth = createAsyncThunk('meals/getMonth', async () => {
 const getYear = createAsyncThunk('meals/getYear', async () => {
   try {
     const { data } = await axios.get('/user/day/year');
-    console.log(data);
+    console.log(data.newStatistic);
   } catch (error) {
     console.log('Error in water intake sending', error.response.data);
     throw error();
