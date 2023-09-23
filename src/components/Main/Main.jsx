@@ -57,18 +57,12 @@ const Home = () => {
     lunch,
     dinner,
     snack,
-    calories, // eslint-disable--line
-    carbonohidrates, // eslint-disable--line
-    protein, // eslint-disable--line
-    fat, // eslint-disable--line
+    calories, // eslint-disable-line
+    carbonohidrates, // eslint-disable-line
+    protein, // eslint-disable-line
+    fat, // eslint-disable-line
   } = useCalculatedData();
 
-  console.log(
-    calories, // eslint-disable--line
-    carbonohidrates, // eslint-disable--line
-    protein, // eslint-disable--line
-    fat
-  );
   const escHandler = e => {
     if (
       e.target.id === 'overlay' ||
@@ -423,7 +417,7 @@ const Home = () => {
                   <p className={css.statsTitle3}>Breakfast</p>
                 </div>
 
-                {breakfast.length !== 0 ? (
+                {today.breakfast.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -501,7 +495,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Lunch</p>
                 </div>
-                {lunch.length !== 0 ? (
+                {today.lunch.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -579,7 +573,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Dinner</p>
                 </div>
-                {dinner.length !== 0 ? (
+                {today.dinner.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -657,7 +651,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Snack</p>
                 </div>
-                {snack.length !== 0 ? (
+                {today.snack.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
