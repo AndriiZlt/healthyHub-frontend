@@ -13,6 +13,7 @@ import plus from '../../assets/plus.svg';
 import useCalculatedData from 'helpers/useCalculatedData';
 import { useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
+import { NavLink } from 'react-router-dom';
 
 const Diary = () => {
   // const [recordMealModal, recordMeal] = useState(false);
@@ -23,13 +24,13 @@ const Diary = () => {
   return (
     <section className={css.sectionDiary}>
       <div className={css.dairy_title}>
-        <a href="a">
+        <NavLink to="/main">
           <img
             src={arrow_rigth}
             alt="arrow-rigth"
             className={css.arrow_rigth}
           />
-        </a>
+        </NavLink>
         <h2>Diary</h2>
       </div>
 
@@ -68,22 +69,15 @@ const Diary = () => {
             {/* Item 1 */}
             <div className={css.wrapper_dishes_block}>
               <ul className={css.dairy_dish_list}>
-                <div className={css.dairy_elem_list}>
-                  <li className={css.dairy_add_dish_item}>
-                    <span>1</span>
-                    <p className={css.dairy_dish_p}>English breakfast</p>
-                    <img
-                      src={edit_pen}
-                      alt="edit_pen"
-                      className={css.edit_pen}
-                    />
-                    <img
-                      src={edit_text}
-                      alt="edit_text"
-                      className={css.edit_text}
-                    />
-                  </li>
-
+                <li className={css.dairy_add_dish_item}>
+                  <span>1</span>
+                  <p className={css.dairy_dish_p}>English breakfast</p>
+                  <img src={edit_pen} alt="edit_pen" className={css.edit_pen} />
+                  <img
+                    src={edit_text}
+                    alt="edit_text"
+                    className={css.edit_text}
+                  />
                   <div className={css.dairy_elem_breakfast}>
                     <ul className={css.dairy_elem_breakfast_list}>
                       <li className={css.dairy_elem_breakfast_item}>
@@ -121,7 +115,8 @@ const Diary = () => {
                       </div>
                     </ul>
                   </div>
-                </div>
+                </li>
+
                 {/* Item 2 */}
                 <li className={css.dairy_add_dish_item}>
                   <span>2</span>
