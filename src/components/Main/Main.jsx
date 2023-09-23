@@ -41,7 +41,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const today = useSelector(mealsSelectors.getCurrentDay);
   const [randomProducts, setRundomProducts] = useState([]);
-  const [mealTitle, setMealTitle] = useState('Breakfast');
+  const [mealTitle, setMealTitle] = useState('');
   const modalWaterOn = useSelector(mealsSelectors.getModalWaterOn);
   const modalMealOn = useSelector(mealsSelectors.getModalMealOn);
   useEffect(() => {
@@ -420,7 +420,7 @@ const Home = () => {
                 {today.breakfast.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -437,7 +437,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -454,7 +454,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -498,7 +498,7 @@ const Home = () => {
                 {today.lunch.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -515,7 +515,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -532,7 +532,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -576,7 +576,7 @@ const Home = () => {
                 {today.dinner.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -593,7 +593,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -610,7 +610,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
@@ -654,7 +654,7 @@ const Home = () => {
                 {today.snack.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Carbonohidrates:
                           <span
@@ -671,7 +671,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Protein:
                           <span
@@ -688,7 +688,7 @@ const Home = () => {
                           </span>
                         </p>
                       </li>
-                      <li>
+                      <li style={{ listStyle: 'none' }}>
                         <p className={css.mealRecord}>
                           Fat:
                           <span
