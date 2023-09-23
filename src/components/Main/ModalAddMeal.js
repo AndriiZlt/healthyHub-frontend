@@ -48,6 +48,7 @@ const ModalAddMeal = ({ title }) => {
   const [div4, setDiv4] = useState('none');
 
   const [display, setDisplay] = useState(1);
+
   const [div2name, setDiv2name] = useState('');
   const [div2carb, setDiv2carb] = useState('');
   const [div2protein, setDiv2protein] = useState('');
@@ -95,21 +96,18 @@ const ModalAddMeal = ({ title }) => {
   });
 
   const formSubmitHandler = async () => {
-    switch (display) {
-      case 1:
-        if (
-          div1name === '' ||
-          div1carb === '' ||
-          div1protein === '' ||
-          div1protein === '' ||
-          div1fat === '' ||
-          div1calories === ''
-        ) {
-          Notify.warning('Fill in all fields!');
-          break;
-        }
-        break;
-      case 2:
+    if (display === 1) {
+      if (
+        div1name === '' ||
+        div1carb === '' ||
+        div1protein === '' ||
+        div1protein === '' ||
+        div1fat === '' ||
+        div1calories === ''
+      ) {
+        Notify.warning('Fill in all fields!');
+        return;
+      } else if (display === 2) {
         if (
           div2name === '' ||
           div2carb === '' ||
@@ -118,11 +116,10 @@ const ModalAddMeal = ({ title }) => {
           div2fat === '' ||
           div2calories === ''
         ) {
-          Notify.warning('Fill in all fields!3');
-          break;
+          Notify.warning('Fill in all fields!');
+          return;
         }
-        break;
-      case 3:
+      } else if (display === 3) {
         if (
           div3name === '' ||
           div3carb === '' ||
@@ -131,36 +128,32 @@ const ModalAddMeal = ({ title }) => {
           div3fat === '' ||
           div3calories === ''
         ) {
-          Notify.warning('Fill in all fields!4');
-          break;
+          Notify.warning('Fill in all fields!');
+          return;
         }
-        break;
-
-      case 4:
+      } else if (display === 4) {
         if (
-          div3name === '' ||
-          div3carb === '' ||
-          div3protein === '' ||
-          div3protein === '' ||
-          div3fat === '' ||
-          div3calories === ''
+          div4name === '' ||
+          div4carb === '' ||
+          div4protein === '' ||
+          div4protein === '' ||
+          div4fat === '' ||
+          div4calories === ''
         ) {
-          Notify.warning('Fill in all fields!5');
-          break;
+          Notify.warning('Fill in all fields!');
+          return;
         }
-        break;
-      default:
-        console.log('All good');
-        break;
-    }
-
-    const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
-    dispatch(setModalsOff());
-    for (const record of data) {
-      if (record.name !== '') {
-        dispatch(mealsOperations.recordMeal({ title, record })).then(() => {
-          Notify.success('Your meal was recorded!');
-        });
+      }
+      console.log('after empty check');
+      const title = document.getElementById('mealTitle').innerHTML;
+      console.log('title', title); // eslint-disable-line no-unused-vars
+      dispatch(setModalsOff());
+      for (const record of data) {
+        if (record.name !== '') {
+          dispatch(mealsOperations.recordMeal({ title, record })).then(() => {
+            Notify.success('Your meal was recorded!');
+          });
+        }
       }
     }
   };
