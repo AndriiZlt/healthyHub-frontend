@@ -10,9 +10,15 @@ import snack from '../../assets/snack.svg';
 import edit_pen from '../../assets/edit_pen.svg';
 import edit_text from '../../assets/edit_text.svg';
 import plus from '../../assets/plus.svg';
+import useCalculatedData from 'helpers/useCalculatedData';
+import { useSelector } from 'react-redux';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 const Diary = () => {
   // const [recordMealModal, recordMeal] = useState(false);
+
+  const calculatedData = useCalculatedData(); // eslint-disable-line
+  const today = useSelector(mealsSelectors.getCurrentDay); // eslint-disable-line
 
   return (
     <section className={css.sectionDiary}>

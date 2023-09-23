@@ -36,8 +36,8 @@ const fetchMonth = createAsyncThunk('meals/fetchMonth', async () => {
   console.log('Fetching month...');
   try {
     const { data } = await axios.get('/user/day/month');
-    console.log('data in fetching month', data);
-    return data[0];
+    console.log('data in fetching month', data.newStatistic);
+    return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching month', error.response.data);
     throw error();
