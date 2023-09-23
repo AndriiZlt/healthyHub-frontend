@@ -6,7 +6,6 @@ import WaterDashboard from './WaterDashboard';
 import WeightDashboard from './WeightDashboard';
 import css from './Dashboard.module.css';
 import { NavLink } from 'react-router-dom';
-import useDashboardMonth from 'helpers/useDashboardMonth';
 
 const Dashboard = () => {
   const [time, setTime] = useState('month');
@@ -20,7 +19,6 @@ const Dashboard = () => {
     setTimeToggleHidden(true);
     setTime(prevTime => (prevTime === 'month' ? 'year' : 'month'));
   };
-  const result = useDashboardMonth();
   const currentDate = new Date();
   currentDate.setMonth(currentDate.getMonth() - 1);
   const month = currentDate.getMonth();
