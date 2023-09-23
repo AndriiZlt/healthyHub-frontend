@@ -20,12 +20,12 @@ import { Doughnut } from 'react-chartjs-2'; // eslint-disable-line
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
 import mealsSelectors from 'redux/meals/meals-selectors';
 import CalcBMR from 'helpers/BMRcalculation';
+import useCalculatedData from 'helpers/useCalculatedData';
 
 import {
   setModalsOff,
   setModalMealOn,
-
-  // setModalWaterOn,
+  setModalWaterOn,
 } from 'redux/meals/meals-slice';
 
 const getRandomProducts = (data, count) => {
@@ -37,71 +37,63 @@ const getRandomProducts = (data, count) => {
   return randomData.slice(0, count);
 };
 
-const calcData = data => {
-  const result = {
-    breakfast: { carbonohidrates: 1, protein: 0, fat: 0, calories: 0 },
-    lunch: { carbonohidrates: 2, protein: 0, fat: 0, calories: 0 },
-    dinner: { carbonohidrates: 3, protein: 0, fat: 0, calories: 0 },
-    snack: { carbonohidrates: 4, protein: 0, fat: 0, calories: 0 },
-  };
-  const meals = ['breakfast', 'lunch', 'dinner', 'snack'];
-  for (const item of meals) {
-    for (const record of data[item]) {
-      console.log('data', data[item], record);
-      console.log('result', result[item].carbonohidrates);
-      // result[item][record].carbonohidrates += record.carbonohidrates;
-      // result[item][record].protein += record.protein;
-      // result[item][record].fat = record.fat;
-      // result[item][record].calories = record.calories;
-    }
-  }
-};
-
 const Home = () => {
   const dispatch = useDispatch();
   const today = useSelector(mealsSelectors.getCurrentDay);
   const [randomProducts, setRundomProducts] = useState([]);
   const [mealTitle, setMealTitle] = useState('Breakfast');
-  const [modalWaterOn, setModalWaterOn] = useState(
-    useSelector(mealsSelectors.getModalWaterOn)
-  );
-
+  const modalWaterOn = useSelector(mealsSelectors.getModalWaterOn);
   const modalMealOn = useSelector(mealsSelectors.getModalMealOn);
   useEffect(() => {
     setRundomProducts(getRandomProducts(products, 4));
   }, []);
 
-  const { breakfast, lunch, dinner, snack, water = 0 } = today;
+  const { water = 0 } = today;
   const waterPercetage = Math.min(Math.floor((water / 1500) * 100), 100);
   const waterHeight = Math.min(Math.floor(176 * (waterPercetage / 100)), 1500);
+  // eslint-disable--line
+  const {
+    breakfast,
+    lunch,
+    dinner,
+    snack,
+    calories, // eslint-disable--line
+    carbonohidrates, // eslint-disable--line
+    protein, // eslint-disable--line
+    fat, // eslint-disable--line
+  } = useCalculatedData();
 
+  console.log(
+    calories, // eslint-disable--line
+    carbonohidrates, // eslint-disable--line
+    protein, // eslint-disable--line
+    fat
+  );
   const escHandler = e => {
     if (
       e.target.id === 'overlay' ||
-      e.target.id === 'add-more' ||
       e.code === 'Escape' ||
       e.target.id === 'cancelWater' ||
       e.target.id === 'cancelMeal'
     ) {
-      dispatch(setModalsOff(false));
-
+      dispatch(setModalsOff());
       window.removeEventListener('keydown', escHandler);
       window.removeEventListener('click', escHandler);
     }
   };
 
-  const modalHandler = e => {
-    if (e.target.id === 'meal') {
-      setMealTitle(e.target.name);
-      dispatch(setModalMealOn(true));
-    } else {
-      dispatch(setModalWaterOn(true));
-    }
+  const modalWaterHandler = () => {
+    dispatch(setModalWaterOn());
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
   };
-  // eslint-disable-next-line
-  const mealsData = calcData(today);
+
+  const modalHandler = e => {
+    setMealTitle(e.target.name);
+    dispatch(setModalMealOn());
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
 
   return (
     <div className={css.mainSection}>
@@ -116,6 +108,7 @@ const Home = () => {
       </div>
 
       {modalMealOn && <ModalAddMeal title={mealTitle} />}
+
       {modalWaterOn && <ModalAddWater />}
 
       <div className={css.media1}>
@@ -221,7 +214,7 @@ const Home = () => {
                   src={addWaterIntake}
                   alt="add-water-intake"
                   id="water"
-                  onClick={modalHandler}
+                  onClick={modalWaterHandler}
                 />
               </div>
             </div>
@@ -446,7 +439,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -463,7 +456,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.protein}
                           </span>
                         </p>
                       </li>
@@ -480,7 +473,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {breakfast.fat}
                           </span>
                         </p>
                       </li>
@@ -508,7 +501,7 @@ const Home = () => {
                   />
                   <p className={css.statsTitle3}>Lunch</p>
                 </div>
-                {lunch ? (
+                {lunch.length !== 0 ? (
                   <div className={css.mealStats}>
                     <ul>
                       <li>
@@ -524,7 +517,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -541,7 +534,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.protein}
                           </span>
                         </p>
                       </li>
@@ -558,7 +551,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {lunch.fat}
                           </span>
                         </p>
                       </li>
@@ -602,7 +595,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -619,7 +612,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.protein}
                           </span>
                         </p>
                       </li>
@@ -636,7 +629,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {dinner.fat}
                           </span>
                         </p>
                       </li>
@@ -680,7 +673,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.carbonohidrates}
                           </span>
                         </p>
                       </li>
@@ -697,7 +690,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.protein}
                           </span>
                         </p>
                       </li>
@@ -714,7 +707,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            60
+                            {snack.fat}
                           </span>
                         </p>
                       </li>

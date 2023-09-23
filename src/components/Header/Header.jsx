@@ -39,7 +39,7 @@ const Header = () => {
   function closeGoaltModal() {
     setShowGoal(false);
   }
-  console.log('qweqwe', showGoal);
+  // console.log('qweqwe', showGoal);
   return (
     <div className={css.header}>
       {!isLoggedIn ? (

@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux'; // eslint-disable-line no-unused-vars
 import { Notify } from 'notiflix';
 import Notiflix from 'notiflix';
+
 import mealsOperations from 'redux/meals/meals-operations';
 import { setModalsOff } from 'redux/meals/meals-slice';
 const data = [
@@ -73,7 +74,14 @@ const ModalAddMeal = ({ title }) => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    window.addEventListener('keydown', enterHandler);
+    // window.addEventListener('click', enterHandler);
+    return window.removeEventListener('keydown', enterHandler);
+  });
+
   const enterHandler = e => {
+    console.log('enter handler');
     if (e.key === 'Enter') {
       addMealHandler();
     }
@@ -81,17 +89,12 @@ const ModalAddMeal = ({ title }) => {
       dispatch(setModalsOff());
     }
   };
-  useEffect(() => {
-    window.addEventListener('keydown', enterHandler);
-    window.addEventListener('click', enterHandler);
-  });
 
   Notiflix.Notify.init({
     zindex: 9999999,
   });
 
   const formSubmitHandler = async () => {
-    console.log(display);
     switch (display) {
       case 1:
         if (
@@ -102,8 +105,7 @@ const ModalAddMeal = ({ title }) => {
           div1fat === '' ||
           div1calories === ''
         ) {
-          console.log('here');
-          Notify.warning('Fill in all fields!2');
+          Notify.warning('Fill in all fields!');
           break;
         }
         break;
@@ -153,6 +155,7 @@ const ModalAddMeal = ({ title }) => {
     }
 
     const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
+    dispatch(setModalsOff());
     for (const record of data) {
       if (record.name !== '') {
         dispatch(mealsOperations.recordMeal({ title, record })).then(() => {
@@ -173,8 +176,8 @@ const ModalAddMeal = ({ title }) => {
           div1fat === '' ||
           div1calories === ''
         ) {
-          console.log('here2');
-          Notify.warning('Fill in all fields!!');
+          console.log('here22');
+          // Notify.warning('Fill in all fields!!2');
           break;
         }
         setDiv2('flex');
@@ -189,7 +192,7 @@ const ModalAddMeal = ({ title }) => {
           div2fat === '' ||
           div2calories === ''
         ) {
-          Notify.warning('Fill in all fields!');
+          // Notify.warning('Fill in all fields!');
           break;
         }
         setDiv3('flex');
@@ -204,7 +207,7 @@ const ModalAddMeal = ({ title }) => {
           div3fat === '' ||
           div3calories === ''
         ) {
-          Notify.warning('Fill in all fields!');
+          // Notify.warning('Fill in all fields!');
           break;
         }
         setDiv4('flex');
@@ -236,11 +239,7 @@ const ModalAddMeal = ({ title }) => {
             </h3>
           </div>
           <div className={css.formDiv}>
-            <div
-              className={css.formMeal}
-              // onSubmit={formSubmitHandler}
-              id="recordMealForm"
-            >
+            <div className={css.formMeal} id="recordMealForm">
               {/* DIV 1 */}
               <div
                 className={css.diary_breakfast_list}
@@ -538,8 +537,7 @@ const ModalAddMeal = ({ title }) => {
             </button>
             <button
               type="button"
-              from="formSubmitHandler"
-              id="meal-confirm"
+              id="confirmMeal"
               onClick={formSubmitHandler}
               className={css.btnActive}
             >

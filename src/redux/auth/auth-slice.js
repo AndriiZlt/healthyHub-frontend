@@ -66,7 +66,7 @@ export const authSlice = createSlice({
         console.log('Login fulfield', action.payload.token);
         state.user = action.payload;
         state.isLoggedIn = true;
-        // state.isLoading = false;
+        state.isLoading = false;
       })
       .addCase(authOperations.logIn.rejected, (state, _) => {
         console.log('Login rejected');
@@ -77,9 +77,6 @@ export const authSlice = createSlice({
         state.user = initialState.user;
         state.regData = initialState.regData;
         state.isLoading = false;
-        // mealsSlice.actions.clearMealData();
-        // const reduxStore = store.getState();
-        // console.log('reduxStore', reduxStore);
       })
       .addCase(authOperations.logOut.rejected, (state, _) => {
         console.log('Logout rejected');
