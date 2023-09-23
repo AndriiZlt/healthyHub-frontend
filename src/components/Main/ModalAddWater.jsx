@@ -21,6 +21,7 @@ const ModalAddWater = () => {
     }
     (async () => {
       dispatch(mealsOperations.waterIntake({ water })).then(() => {
+        Notify.success('Water intake recorded!');
         dispatch(mealsOperations.fetchDay());
       });
     })();
