@@ -1,39 +1,9 @@
-
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from "./Dashboard.module.css";
 
-
-
 const CaloriesDashboard = (props) => {
-
-	// const data = [
-	// 	{
-	// 		id: 1,
-	// 		year: 2016,
-	// 		userGain: 80000,
-	// 		userLost: 823,
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		year: 2017,
-	// 		userGain: 60000,
-	// 		userLost: 700,
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		year: 2018,
-	// 		userGain: 5000,
-	// 		userLost: 900,
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		year: 2019,
-	// 		userGain: 90000,
-	// 		userLost: 823,
-	// 	},
-	// ];
 
 	const data = [
 	];
@@ -46,15 +16,15 @@ const CaloriesDashboard = (props) => {
 	if (props.time === 'month') {
 		for (let i = 0; i < props.numberOfDaysInMonth; i++) {
 			data.push({
-				id: i,
-				time: i,
+				time: i + 1,
 				kcal: 65,
 			},);
 		}
-	} if (props.time === 'year') {
+	}
+
+	if (props.time === 'year') {
 		for (let i = 0; i < monthNames.length; i++) {
 			data.push({
-				id: i,
 				time: monthNames[i],
 				kcal: 65,
 			},);
