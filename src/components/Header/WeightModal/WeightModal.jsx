@@ -27,7 +27,7 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
     const value = weightRef.current.value;
 
     dispatch(
-      authOperations.saveSettings({
+      authOperations.saveSettings2({
         token,
         goal,
         avatarURL,
