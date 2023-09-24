@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// const orderMeals = meals => {};
-
 const fetchMeals = createAsyncThunk('meals/getMeals', async userId => {
   try {
     const { data } = await axios.get('/meals', userId);
@@ -22,6 +20,7 @@ const fetchDay = createAsyncThunk('meals/fetchDay', async () => {
       console.log('creating day...');
       const { data } = await axios.post('/user/day');
       console.log('data after creating', data);
+
       return data;
     } else {
       return data[0];
@@ -59,13 +58,25 @@ const fetchYear = createAsyncThunk('meals/fetchYear', async () => {
 const waterIntake = createAsyncThunk('meals/waterIntake', async waterIntake => {
   console.log('Sending water intake', waterIntake);
   try {
-    const { data } = await axios.patch('/user/day/water', waterIntake);
+    const { data } = await axios.post('/user/water-intake', waterIntake);
     return data;
   } catch (error) {
     console.log('Error in water intake sending', error.response.data);
     throw error();
   }
 });
+
+// const recordMeal = createAsyncThunk('meals/sendMeal', async meal => {
+//   console.log('Recording meal...', meal);
+//   try {
+//     const { data } = await axios.post('/user/day/food-intake', meal.record);
+//     console.log('Meal data after record', data);
+//     return data;
+//   } catch (error) {
+//     console.log('Error in meal record sending', error.response.data);
+//     throw error();
+//   }
+// });
 
 const recordMeal = createAsyncThunk('meals/sendMeal', async meal => {
   console.log('Recording meal', meal);
@@ -97,8 +108,7 @@ const recordMeal = createAsyncThunk('meals/sendMeal', async meal => {
 
 const getMonth = createAsyncThunk('meals/getMonth', async () => {
   try {
-    const { data } = await axios.get('/user/day/year');
-    console.log(data);
+    const { data } = await axios.get('/user/day/year'); // eslint-disable-line
   } catch (error) {
     console.log('Error in water intake sending', error.response.data);
     throw error();

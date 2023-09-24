@@ -26,7 +26,7 @@ p {
   height: auto;
   border: 0;
   font-size: 18px;
-  line-height: 26px;
+  line-height: 30px;
   font-weight: 400;
   color: var(--primary-white-color);
 }
@@ -48,6 +48,13 @@ p {
   align-items: center;
   margin-bottom: 16px;
 }
+
+/* .diary_wrapper_title h3 {
+  margin-left: 12px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+} */
 
 .dairy_title h2 {
   display: flex;

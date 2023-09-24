@@ -17,6 +17,7 @@ const UserActivity = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (submited) {
+      dispatch(setLoadingTrue());
       dispatch(authOperations.register(credentials));
       setSubmited(false);
       navigate('/main');

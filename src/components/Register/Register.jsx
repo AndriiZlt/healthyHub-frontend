@@ -114,7 +114,7 @@ const Register = () => {
 
   const enterPressHandler = e => {
     if (e.key === 'Enter') {
-      formSubmitHandler();
+      formSubmitHandler(e);
     }
   };
 

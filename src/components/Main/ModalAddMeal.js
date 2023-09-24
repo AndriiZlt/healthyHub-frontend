@@ -12,6 +12,7 @@ import mealsOperations from 'redux/meals/meals-operations';
 import { setModalsOff } from 'redux/meals/meals-slice';
 const data = [
   {
+    mealType: '',
     name: '',
     carbonohidrates: '',
     protein: '',
@@ -19,6 +20,7 @@ const data = [
     calories: '',
   },
   {
+    mealType: '',
     name: '',
     carbonohidrates: '',
     protein: '',
@@ -26,6 +28,7 @@ const data = [
     calories: '',
   },
   {
+    mealType: '',
     name: '',
     carbonohidrates: '',
     protein: '',
@@ -33,6 +36,7 @@ const data = [
     calories: '',
   },
   {
+    mealType: '',
     name: '',
     carbonohidrates: '',
     protein: '',
@@ -76,13 +80,15 @@ const ModalAddMeal = ({ title }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.addEventListener('keydown', enterHandler);
+    console.log('useEffect');
+    const button = document.getElementById('confirmMeal');
+    button.addEventListener('keydown', enterHandler);
     // window.addEventListener('click', enterHandler);
-    return window.removeEventListener('keydown', enterHandler);
+    return document.removeEventListener('keydown', enterHandler);
   });
 
   const enterHandler = e => {
-    console.log('enter handler');
+    console.log('enter pressed');
     if (e.key === 'Enter') {
       addMealHandler();
     }
@@ -107,53 +113,55 @@ const ModalAddMeal = ({ title }) => {
       ) {
         Notify.warning('Fill in all fields!');
         return;
-      } else if (display === 2) {
-        if (
-          div2name === '' ||
-          div2carb === '' ||
-          div2protein === '' ||
-          div2protein === '' ||
-          div2fat === '' ||
-          div2calories === ''
-        ) {
-          Notify.warning('Fill in all fields!');
-          return;
-        }
-      } else if (display === 3) {
-        if (
-          div3name === '' ||
-          div3carb === '' ||
-          div3protein === '' ||
-          div3protein === '' ||
-          div3fat === '' ||
-          div3calories === ''
-        ) {
-          Notify.warning('Fill in all fields!');
-          return;
-        }
-      } else if (display === 4) {
-        if (
-          div4name === '' ||
-          div4carb === '' ||
-          div4protein === '' ||
-          div4protein === '' ||
-          div4fat === '' ||
-          div4calories === ''
-        ) {
-          Notify.warning('Fill in all fields!');
-          return;
-        }
       }
-      console.log('after empty check');
-      const title = document.getElementById('mealTitle').innerHTML;
-      console.log('title', title); // eslint-disable-line no-unused-vars
-      dispatch(setModalsOff());
-      for (const record of data) {
-        if (record.name !== '') {
-          dispatch(mealsOperations.recordMeal({ title, record })).then(() => {
-            Notify.success('Your meal was recorded!');
-          });
-        }
+    } else if (display === 2) {
+      if (
+        div2name === '' ||
+        div2carb === '' ||
+        div2protein === '' ||
+        div2protein === '' ||
+        div2fat === '' ||
+        div2calories === ''
+      ) {
+        Notify.warning('Fill in all fields!');
+        return;
+      }
+    } else if (display === 3) {
+      if (
+        div3name === '' ||
+        div3carb === '' ||
+        div3protein === '' ||
+        div3protein === '' ||
+        div3fat === '' ||
+        div3calories === ''
+      ) {
+        Notify.warning('Fill in all fields!');
+        return;
+      }
+    } else if (display === 4) {
+      if (
+        div4name === '' ||
+        div4carb === '' ||
+        div4protein === '' ||
+        div4protein === '' ||
+        div4fat === '' ||
+        div4calories === ''
+      ) {
+        Notify.warning('Fill in all fields!');
+        return;
+      }
+    }
+
+    console.log('after empty check');
+    const title = document.getElementById('mealTitle').innerHTML;
+    console.log('title', title); // eslint-disable-line no-unused-vars
+    dispatch(setModalsOff());
+    for (const record of data) {
+      if (record.name !== '') {
+        record.mealType = title.toLowerCase();
+        dispatch(mealsOperations.recordMeal({ record, title })).then(() => {
+          Notify.success('Your meal was recorded!');
+        });
       }
     }
   };
@@ -169,8 +177,7 @@ const ModalAddMeal = ({ title }) => {
           div1fat === '' ||
           div1calories === ''
         ) {
-          console.log('here22');
-          // Notify.warning('Fill in all fields!!2');
+          Notify.warning('Fill in all fields!');
           break;
         }
         setDiv2('flex');
@@ -185,7 +192,7 @@ const ModalAddMeal = ({ title }) => {
           div2fat === '' ||
           div2calories === ''
         ) {
-          // Notify.warning('Fill in all fields!');
+          Notify.warning('Fill in all fields!');
           break;
         }
         setDiv3('flex');
@@ -200,7 +207,7 @@ const ModalAddMeal = ({ title }) => {
           div3fat === '' ||
           div3calories === ''
         ) {
-          // Notify.warning('Fill in all fields!');
+          Notify.warning('Fill in all fields!');
           break;
         }
         setDiv4('flex');
@@ -227,7 +234,11 @@ const ModalAddMeal = ({ title }) => {
               alt="breakfast"
               style={{ height: 32, width: 32 }}
             />
-            <h3 className={css.diary_title} id="mealTitle">
+            <h3
+              className={css.diary_title}
+              id="mealTitle"
+              style={{ marginLeft: 12 }}
+            >
               {title}
             </h3>
           </div>
@@ -523,7 +534,7 @@ const ModalAddMeal = ({ title }) => {
             <button
               type="button"
               id="cancelMeal"
-              onClick={() => {}}
+              onClick={enterHandler}
               className={css.btn}
             >
               Cancel
