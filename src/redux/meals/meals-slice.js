@@ -8,6 +8,7 @@ const initialState = {
   year: null,
   modalMealOn: false,
   modalWaterOn: false,
+  modalEditOn: false,
 };
 
 export const mealsSlice = createSlice({
@@ -21,16 +22,19 @@ export const mealsSlice = createSlice({
       state.year = null;
       state.todayReady = false;
     },
-    setModalMealOn(state, action) {
+    setModalMealOn(state, _) {
       state.modalMealOn = true;
     },
     setModalWaterOn(state, _) {
-      console.log('set modal water on');
       state.modalWaterOn = true;
+    },
+    setModalEditOn(state, _) {
+      state.modalEditOn = true;
     },
     setModalsOff(state, _) {
       state.modalWaterOn = false;
       state.modalMealOn = false;
+      state.modalEditOn = false;
     },
   },
   extraReducers: builder => {
@@ -60,9 +64,18 @@ export const mealsSlice = createSlice({
         console.log('Record meal fulfield', action.payload);
         state.today = action.payload;
         state.modalMealOn = false;
+      })
+      .addCase(mealsOperations.editMeal.fulfilled, (state, action) => {
+        console.log('Edit meal fulfield', action.payload);
+        state.today = action.payload;
       });
   },
 });
 
-export const { clearMealData, setModalMealOn, setModalWaterOn, setModalsOff } =
-  mealsSlice.actions;
+export const {
+  clearMealData,
+  setModalMealOn,
+  setModalWaterOn,
+  setModalsOff,
+  setModalEditOn,
+} = mealsSlice.actions;

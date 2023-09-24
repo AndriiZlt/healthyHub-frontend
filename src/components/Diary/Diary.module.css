@@ -151,10 +151,10 @@ p {
 
 .record {
   width: 100%;
-  height: 46px;
+  height: 40px;
 }
 .record:not(:last-child) {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 }
 
 .number {
@@ -167,7 +167,7 @@ p {
 }
 
 .number:not(:last-child) {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .recordMealText {

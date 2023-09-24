@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux'; // eslint-disable-line no-unused-vars
 import { Notify } from 'notiflix';
 import Notiflix from 'notiflix';
-
+import capitalize from 'helpers/useCapitalize';
 import mealsOperations from 'redux/meals/meals-operations';
 import { setModalsOff } from 'redux/meals/meals-slice';
 const data = [
@@ -80,14 +80,11 @@ const ModalAddMeal = ({ title }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('2');
     document.addEventListener('keypress', enterHandler);
-    // window.addEventListener('click', enterHandler);
     return document.removeEventListener('keypress', enterHandler);
   });
 
   const enterHandler = e => {
-    console.log(1);
     if (e.key === 'Enter') {
       addMealHandler(e);
     }
@@ -151,13 +148,12 @@ const ModalAddMeal = ({ title }) => {
       }
     }
 
-    console.log('after empty check');
     const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
     dispatch(setModalsOff());
     for (const record of data) {
       if (record.name !== '') {
         record.mealType = title.toLowerCase();
-        dispatch(mealsOperations.recordMeal({ record, title })).then(() => {
+        dispatch(mealsOperations.recordMeal(record)).then(() => {
           Notify.success('Your meal was recorded!');
         });
       }
@@ -257,7 +253,7 @@ const ModalAddMeal = ({ title }) => {
                   id="name"
                   value={div1name}
                   onChange={e => {
-                    setDiv1name(e.target.value);
+                    setDiv1name(capitalize(e.target.value));
                   }}
                 />
 
@@ -325,7 +321,7 @@ const ModalAddMeal = ({ title }) => {
                   id="name"
                   value={div2name}
                   onChange={e => {
-                    setDiv2name(e.target.value);
+                    setDiv2name(capitalize(e.target.value));
                   }}
                 />
 
@@ -393,7 +389,7 @@ const ModalAddMeal = ({ title }) => {
                   id="name"
                   value={div3name}
                   onChange={e => {
-                    setDiv3name(e.target.value);
+                    setDiv3name(capitalize(e.target.value));
                   }}
                 />
 
@@ -461,7 +457,7 @@ const ModalAddMeal = ({ title }) => {
                   id="name"
                   value={div4name}
                   onChange={e => {
-                    setDiv4name(e.target.value);
+                    setDiv4name(capitalize(e.target.value));
                   }}
                 />
 
