@@ -48,9 +48,7 @@ function App() {
 
   return (
     <>
-      {((isLoggedIn && isLoading) || (isLoggedIn && !todayReady)) && (
-        <LoaderModal />
-      )}
+      {(isLoading || (isLoggedIn && !todayReady)) && <LoaderModal />}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route

@@ -30,7 +30,6 @@ const Settings = () => {
       ...formData,
       [name]: value,
     });
-    console.log('formData:', formData);
   };
 
   const handleAvatarChange = e => {
@@ -53,6 +52,8 @@ const Settings = () => {
       const avatarData = new FormData();
       avatarData.append('avatar', avatarFile);
       dispatch(authOperations.updateAvatar(avatarData));
+      dispatch(authOperations.saveSettings(formData));
+      navigate('/main');
     } else {
       dispatch(authOperations.saveSettings(formData));
       navigate('/main');

@@ -112,6 +112,10 @@ export const authSlice = createSlice({
         state.user.activity = action.payload.activity;
         state.user.weight = action.payload.weight;
       })
+      .addCase(authOperations.saveSettings2.fulfilled, (state, action) => {
+        console.log('Save settings2 fulfield', action.payload);
+        state.user.weight = action.payload.weight;
+      })
       .addCase(authOperations.updateAvatar.fulfilled, (state, action) => {
         console.log('UpdateAvatar fulfield', action.payload);
         state.user.avatarURL = action.payload;
