@@ -26,7 +26,7 @@
 .modal_action_dialog {
   width: 320px;
   height: calc(100vh - 125px);
-  top: 60px;
+  top: 100px;
   margin: auto;
 }
 .modal_action_content {

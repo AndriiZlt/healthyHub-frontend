@@ -92,6 +92,25 @@ const forgotPassword = createAsyncThunk('', async credentials => {
   }
 });
 
+const saveSettings = createAsyncThunk(
+  'user/change-settings',
+  async userData => {
+    try {
+      const { data } = await axios.patch(
+        '/user/change-settings',
+        userData.setting
+      );
+      const token = userData.token;
+      const goal = userData.goal;
+      const avatarURL = userData.avatarURL;
+      return { ...data, token, goal, avatarURL };
+    } catch (error) {
+      console.log('Error in Settings', error.response.data);
+      throw error();
+    }
+  }
+);
+
 const authOperations = {
   register,
   logIn,
@@ -99,6 +118,7 @@ const authOperations = {
   fetchCurrentUser,
   checkEmail,
   forgotPassword,
+  saveSettings,
 };
 
 export default authOperations;

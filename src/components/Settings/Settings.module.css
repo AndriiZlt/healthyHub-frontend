@@ -16,6 +16,7 @@
 
 .link {
   font-size: 14px;
+  color: var(--primary-white-color);
 }
 
 .download {
@@ -47,6 +48,27 @@
    display: flex; 
    margin-bottom: 40px; 
 }
+
+.avatarImg {
+  height: 36px;
+  width: 36px; 
+  margin-right: 12px;
+  border-radius: 50%; 
+}
+
+
+.photoButton {
+  display: flex; 
+margin-top: auto;
+margin-bottom: auto;
+  background-color: transparent;
+  border: none;
+  width: 171px;
+  height: 20px;
+}
+
+
+
 
 .inputGender {
   margin-bottom: 40px;

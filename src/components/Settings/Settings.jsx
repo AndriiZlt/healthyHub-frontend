@@ -14,7 +14,7 @@ const Settings = () => {
     const navigate = useNavigate();
     const { name, age, gender, height, weight, activity } = useSelector(authSelectors.getUser);
     const [formData, setFormData] = useState({ name, age, gender, height, weight, activity });
-
+    const [avatarFile, setAvatarFile] = useState(null);
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -23,17 +23,27 @@ const Settings = () => {
         [name]: value,
       });
     };
+
+     const handleAvatarChange = (e) => {
+        const file = e.target.files[0];
+        setAvatarFile(file);
+     };
   
-    const handleSave = (e) => {
-      e.preventDefault();
-      if (formData.name === '' || formData.age === '' || formData.height === '' || formData.weight === '') {
-        Notify.failure('Please fill in all fields!');
-        return;
-      } else {
-         dispatch(settingsOperations.saveSettings(formData));
-         navigate('/main');
-      }
-  }
+      const handleSave = (e) => {
+        e.preventDefault();
+        if (formData.name === '' || formData.age === '' || formData.height === '' || formData.weight === '') {
+          Notify.failure('Please fill in all fields!');
+          return;
+        } 
+        if (avatarFile) {
+        const avatarFormData = new FormData();
+        avatarFormData.append('avatarURL', avatarFile);
+        dispatch(settingsOperations.updateAvatar(avatarFormData));
+        } else {
+           dispatch(settingsOperations.saveSettings(formData));
+           navigate('/main');
+       }
+     }
   
     const handleCancel = () => {
     setFormData({ name, age, gender, height, weight, activity });
@@ -83,14 +93,27 @@ const Settings = () => {
                 Your photo
               </label>
               <div className={css.photo}>
+              {avatarFile ? (
+                  <img className={css.avatarImg} src={URL.createObjectURL(avatarFile)}
+                  alt='avatar'/>
+                  ):(
+                 <img className={css.avatarImg} src={formData.avatarURL} alt='avatar'/>
+                  )} 
+            <button className={css.photoButton} type="button">
+            <input type="file"  
+                  name="photo" 
+                  onChange={handleAvatarChange} 
+                  accept="image/*"
+                  className={css.photoInput}/>
                 <img
                   className={css.download}
                   src={download}
                   alt="download illustration"
                 ></img>
-                <a href=" " className={css.link}>
+                <p className={css.link}>
                   Download new photo
-                </a>
+                </p>
+                </button>
               </div>
             </div>
             <div>
