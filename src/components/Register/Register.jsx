@@ -40,10 +40,6 @@ const Register = () => {
 
   const handleEmailValid = () => {
     const emailPattern = /^([a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3})$/;
-    // const emailPattern =
-    //   /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;
-
-    // const emailPattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3})$/;
     setIsValidEmail(emailPattern.test(email2));
 
     if (emailPattern.test(email2)) {
