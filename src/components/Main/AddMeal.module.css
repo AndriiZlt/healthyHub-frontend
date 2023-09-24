@@ -35,22 +35,32 @@
 .formMeal {
   width: 100%;
   margin-bottom: 24px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  box-sizing: border-box;
+  /* height: 37px; */
+  padding: 2px;
 }
 
 .diary_breakfast_list {
-  margin-left: 0;
-  padding-left: 0;
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin-left: 0;
+  padding-left: 0; */
+  /* margin-bottom: 5px; */
 }
 
-.diary_breakfast_item:not(:last-child) {
-  margin-bottom: 16px;
-}
 .diary_add_meal {
   color: var(--secondary-yellow-color);
   font-size: 14px;
   line-height: 2px;
 }
+
 .btnActive {
   height: 36px;
   width: 276px;
@@ -86,7 +96,7 @@
 .diary_breakfast_item {
   width: 100%;
   height: 36px;
-  color: var(--primary-grey-color);
+  color: var(--primary-white-color);
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -94,6 +104,14 @@
   border-radius: 12px;
   border: 1px solid var(--primary-green-lite-color);
   padding: 8px 10px;
+}
+
+.diary_breakfast_item::placeholder {
+  color: var(--primary-grey-color);
+}
+
+.diary_breakfast_item:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 .formDiv {
@@ -127,7 +145,11 @@
     display: flex;
     flex-direction: column;
     width: 628px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     /* flex-wrap: wrap; */
+    /* height: 37px; */
   }
 
   .diary_breakfast {
@@ -138,10 +160,14 @@
     display: block;
     width: 100%;
     padding: 8px 10px;
+    margin-bottom: 0px;
+  }
+
+  .diary_breakfast_item:not(:last-child) {
+    margin-bottom: 0;
   }
 
   .buttons {
-    /* display: inline-block; */
     flex-direction: row;
     align-items: center;
     justify-content: end;
@@ -149,29 +175,27 @@
 
   .diary_breakfast_list {
     display: flex;
-    height: 36px;
-    margin-bottom: 5;
-  }
-  /* .diary_breakfast_item:nth-child(-n + 2) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-  } */
+    margin-bottom: 5px;
+  }
+
   .diary_breakfast_item:not(:last-child) {
-    margin-right: 12px;
+    margin-right: 11px;
   }
 
   .diary_breakfast_item[id='name'] {
     width: 255px;
-    font-size: 14px;
   }
 
   .diary_breakfast_item[id='carbonohidrates'] {
     width: 100px;
-    font-size: 14px;
   }
 
   .diary_breakfast_item[id='protein'] {
     width: 86px;
-    font-size: 14px;
   }
 
   .diary_breakfast_item[id='fat'] {
@@ -198,9 +222,13 @@
     height: 408px;
     padding: 24px;
   }
+
   .formMeal {
     display: flex;
     width: 628px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     /* flex-wrap: wrap; */
   }
 
@@ -212,15 +240,10 @@
 
   .diary_breakfast_list {
     display: flex;
-    /* width: 100%; */
+    width: 100%;
+    margin-bottom: 5px;
   }
 
-  /* .diary_breakfast_item:first-child {
-    width: 100%;
-  } */
-  /* .diary_breakfast_item:not(:last-child) {
-    margin-right: 12px;
-  } */
   .diary_add_meal_wrapper {
     margin-bottom: 136px;
   }

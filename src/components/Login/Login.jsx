@@ -9,7 +9,6 @@ import error from '../../assets/error.svg';
 import correct from '../../assets/correct.svg';
 import eye from '../../assets/eye.svg';
 import eyeOff from '../../assets/eye-off.svg';
-// import Tooltip from 'components/Tooltip/Tooltip';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 const Login = () => {
@@ -18,9 +17,6 @@ const Login = () => {
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
-  // const [isValidPassword, setIsValidPassword] = useState(false);
-  // const [isBlurredPassword, setIsBlurredPassword] = useState(false);
-  // const [passwordBorder, setPaswordBorder] = useState('#e3ffa8');
   const [showPassword, setShowPassword] = useState(false);
   const [isShowPasswordBtn, setIsShowPasswordBtn] = useState(false);
   const navigate = useNavigate();
@@ -54,22 +50,6 @@ const Login = () => {
     }
   };
 
-  // const handlePasswordValid = () => {
-  //   const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
-  //   setIsValidPassword(passwordPattern.test(password));
-
-  //   if (passwordPattern.test(password)) {
-  //     setPaswordBorder('#3CBC81');
-  //   } else {
-  //     setPaswordBorder('#E74A3B');
-  //   }
-  // };
-
-  // const handlePasswordBlur = () => {
-  //   setIsBlurredPassword(true);
-  //   handlePasswordValid();
-  // };
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -92,17 +72,11 @@ const Login = () => {
     if (response.payload) {
       navigate('/main');
     } else {
-      // const message = response.payload.data.message;
       Notify.failure('Email or password is wrong');
-
-      setEmail('');
       setPassword('');
       setIsBlurredEmail(false);
-      // setIsBlurredPassword(false);
-      // handlePasswordValid();
       handleEmailValid();
       setEmailBorder('#e3ffa8');
-      // setPaswordBorder('#e3ffa8');
       setIsShowPasswordBtn(false);
     }
   };
@@ -162,32 +136,6 @@ const Login = () => {
                     onMouseLeave={togglePasswordVisibility}
                   />
                 )}
-                {/* {isBlurredPassword && !isValidPassword && (
-                  <img
-                    className={css.error}
-                    src={error}
-                    alt="Error"
-                    onClick={togglePasswordVisibility}
-                  />
-                )}
-                {isBlurredPassword && !isValidPassword && (
-                  <div className={css.notValid}>
-                    <Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">
-                      Enter a valid Password *
-                    </Tooltip>
-                  </div>
-                )}
-                {isBlurredPassword && isValidPassword && (
-                  <img
-                    className={css.correct}
-                    src={correct}
-                    alt="Correct"
-                    onClick={togglePasswordVisibility}
-                  />
-                )}
-                {isBlurredPassword && isValidPassword && (
-                  <p className={css.valid}>Password is secure</p>
-                )} */}
               </div>
 
               <button

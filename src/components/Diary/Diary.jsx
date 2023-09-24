@@ -35,9 +35,7 @@ const Diary = () => {
   } = useCalculatedData();
 
   const modalHandler = e => {
-    console.log('meal title', e.target.name);
-    // setMealTitle(e.target);
-
+    setMealTitle(e.target.id);
     dispatch(setModalMealOn());
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
@@ -189,6 +187,7 @@ const Diary = () => {
                     className={css.dairy_add_dish}
                     name="Breakfast"
                     onClick={modalHandler}
+                    id="Breakfast"
                   >
                     Record your meal
                   </p>
@@ -304,17 +303,10 @@ const Diary = () => {
                   className={css.dairy_add_dish}
                   name="Lunch"
                   onClick={modalHandler}
+                  id="Lunch"
                 >
                   Record your meal
                 </p>
-                {/* <img
-                  style={{ width: 150, height: 20 }}
-                  src={recordYourMeal}
-                  alt="record-your-meal"
-                  id="meal"
-                  name="Dinner"
-                  onClick={modalHandler}
-                /> */}
               </div>
               {/* end of text */}
             </div>
@@ -444,6 +436,7 @@ const Diary = () => {
                     className={css.dairy_add_dish}
                     name="Dinner"
                     onClick={modalHandler}
+                    id="Dinner"
                   >
                     Record your meal
                   </p>
@@ -566,6 +559,7 @@ const Diary = () => {
                   className={css.dairy_add_dish}
                   name="Snack"
                   onClick={modalHandler}
+                  id="Snack"
                 >
                   Record your meal
                 </p>
