@@ -17,10 +17,13 @@ const UserActivity = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (submited) {
-      dispatch(setLoadingTrue());
-      dispatch(authOperations.register(credentials));
-      setSubmited(false);
-      navigate('/main');
+      (async () => {
+        const response = await dispatch(authOperations.register(credentials));
+        if (response) {
+          navigate('/main');
+        }
+        setSubmited(false);
+      })();
     }
   }, [credentials, dispatch, navigate, submited]);
 
@@ -30,10 +33,9 @@ const UserActivity = () => {
   };
 
   const formSubmit = async e => {
+    dispatch(setLoadingTrue());
     e.preventDefault();
     dispatch(setRegData({ activity: activity2 }));
-    dispatch(setLoadingTrue());
-
     setSubmited(true);
   };
 

@@ -11,14 +11,14 @@ const fetchMeals = createAsyncThunk('meals/getMeals', async userId => {
   }
 });
 
-const fetchDay = createAsyncThunk('meals/fetchDay', async () => {
+const fetchDay = createAsyncThunk('meals/fetchDay', async weight => {
   console.log('Fetching day...');
   try {
     const { data } = await axios.get('/user/day');
     // console.log('data', data);
     if (data.message === 'Day not found!') {
       console.log('creating day...');
-      const { data } = await axios.post('/user/day');
+      const { data } = await axios.post('/user/day', { weight });
       console.log('data after creating', data);
 
       return data;

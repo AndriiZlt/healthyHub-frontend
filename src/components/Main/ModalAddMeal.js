@@ -80,17 +80,16 @@ const ModalAddMeal = ({ title }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('useEffect');
-    const button = document.getElementById('confirmMeal');
-    button.addEventListener('keydown', enterHandler);
+    console.log('2');
+    document.addEventListener('keypress', enterHandler);
     // window.addEventListener('click', enterHandler);
-    return document.removeEventListener('keydown', enterHandler);
+    return document.removeEventListener('keypress', enterHandler);
   });
 
   const enterHandler = e => {
-    console.log('enter pressed');
+    console.log(1);
     if (e.key === 'Enter') {
-      addMealHandler();
+      addMealHandler(e);
     }
     if (e.target.id === 'cancelMeal') {
       dispatch(setModalsOff());
@@ -153,8 +152,7 @@ const ModalAddMeal = ({ title }) => {
     }
 
     console.log('after empty check');
-    const title = document.getElementById('mealTitle').innerHTML;
-    console.log('title', title); // eslint-disable-line no-unused-vars
+    const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
     dispatch(setModalsOff());
     for (const record of data) {
       if (record.name !== '') {

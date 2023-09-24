@@ -136,32 +136,6 @@ const Login = () => {
                     onMouseLeave={togglePasswordVisibility}
                   />
                 )}
-                {/* {isBlurredPassword && !isValidPassword && (
-                  <img
-                    className={css.error}
-                    src={error}
-                    alt="Error"
-                    onClick={togglePasswordVisibility}
-                  />
-                )}
-                {isBlurredPassword && !isValidPassword && (
-                  <div className={css.notValid}>
-                    <Tooltip text="Password should be 6-16 characters long and include at least 1 uppercase letter, 1 lowercase letter and 1 number!">
-                      Enter a valid Password *
-                    </Tooltip>
-                  </div>
-                )}
-                {isBlurredPassword && isValidPassword && (
-                  <img
-                    className={css.correct}
-                    src={correct}
-                    alt="Correct"
-                    onClick={togglePasswordVisibility}
-                  />
-                )}
-                {isBlurredPassword && isValidPassword && (
-                  <p className={css.valid}>Password is secure</p>
-                )} */}
               </div>
 
               <button

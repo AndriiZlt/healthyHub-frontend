@@ -54,6 +54,9 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
+      .addCase(authOperations.register.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.register.rejected, (state, _) => {
         console.log('register rejected');
         state.regData = initialState.regData;
