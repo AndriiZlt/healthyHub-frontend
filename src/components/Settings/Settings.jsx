@@ -60,8 +60,7 @@ const Settings = () => {
   };
 
   const handleCancel = () => {
-    setFormData({ name, age, gender, height, weight, activity });
-    dispatch(authOperations.cancelSettings());
+    navigate('/main');
   };
 
   return (
@@ -111,7 +110,7 @@ const Settings = () => {
                   <img className={css.avatarImg} src={avatarURL} alt="avatar" />
                 )}
                 <div className={css.photoButton}>
-                  <label style={{ width: '100%' }}>
+                  <label className={css.downloadBlock}>
                     <input
                       type="file"
                       name="photo"
@@ -125,7 +124,9 @@ const Settings = () => {
                       src={download}
                       alt="download illustration"
                     />
-                    <p className={css.link}>Download new photo</p>
+                    <p className={css.link} style={{ marginRight: 0 }}>
+                      Download new photo
+                    </p>
                   </label>
                 </div>
               </div>
@@ -143,7 +144,7 @@ const Settings = () => {
                 className={css.input}
               />
             </div>
-            <div>
+            <div className={css.genderDiv}>
               <label htmlFor="gender" className={css.label}>
                 Gender
               </label>
