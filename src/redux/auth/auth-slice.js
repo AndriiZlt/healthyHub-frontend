@@ -54,6 +54,9 @@ export const authSlice = createSlice({
         state.regData = initialState.regData;
         state.isLoading = false;
       })
+      .addCase(authOperations.register.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.register.rejected, (state, _) => {
         console.log('register rejected');
         state.regData = initialState.regData;
@@ -103,6 +106,19 @@ export const authSlice = createSlice({
       .addCase(authOperations.checkEmail.rejected, (state, _) => {
         console.log('Email check rejected');
         state.isLoading = false;
+      })
+      .addCase(authOperations.saveSettings.fulfilled, (state, action) => {
+        console.log('Save settings fulfield', action.payload);
+        state.user.activity = action.payload.activity;
+        state.user.weight = action.payload.weight;
+      })
+      .addCase(authOperations.saveSettings2.fulfilled, (state, action) => {
+        console.log('Save settings2 fulfield', action.payload);
+        state.user.weight = action.payload.weight;
+      })
+      .addCase(authOperations.updateAvatar.fulfilled, (state, action) => {
+        console.log('UpdateAvatar fulfield', action.payload);
+        state.user.avatarURL = action.payload;
       });
   },
 });

@@ -19,8 +19,8 @@
   padding: 16px 12px;
 }
 /* .section {
-    padding: 16px 12px 40px 12px;
-  } */
+      padding: 16px 12px 40px 12px;
+    } */
 .diary_wrapper_title {
   display: flex;
   margin-top: 24px;
@@ -36,9 +36,9 @@
   width: 100%;
   margin-bottom: 24px;
   /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
   box-sizing: border-box;
   /* height: 37px; */
   padding: 2px;
@@ -51,7 +51,7 @@
   align-items: center;
   width: 100%;
   /* margin-left: 0;
-  padding-left: 0; */
+    padding-left: 0; */
   /* margin-bottom: 5px; */
 }
 
@@ -122,7 +122,7 @@
 
 @media (min-width: 834px) {
   .formDiv {
-    height: 192px;
+    height: 72px;
   }
 
   .btnActive {
@@ -138,7 +138,7 @@
 
   .modal {
     width: 676px;
-    height: 408px;
+    height: 290px;
     padding: 24px;
   }
   .formMeal {
@@ -219,7 +219,7 @@
 @media (min-width: 1440px) {
   .modal {
     width: 676px;
-    height: 408px;
+    height: 290px;
     padding: 24px;
   }
 

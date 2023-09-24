@@ -7,4 +7,53 @@
   -webkit-box-shadow: 0px 2px 10px 0px rgba(255,241,177,0.17); 
   box-shadow: 0px 2px 10px 0px rgba(255,241,177,0.17);
 } */
-    
+
+.title {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #fff;
+}
+.description {
+  font-family: Poppins;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: #b6b6b6;
+}
+.icon {
+  width: Hug (40px);
+  height: Hug (40px);
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #292928;
+  gap: 10px;
+}
+.button {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  background-color: #0f0f0f;
+  border: 0;
+}
+
+.buttonconfirm {
+  width: 166px;
+  height: 36px;
+  padding: 8px, 10px;
+  border-radius: 12px;
+  gap: 10px;
+  background-color: #e3ffa8;
+}
+.selected{
+  color:#B6C3FF;
+}
+.selectedImage{
+  border-color: #B6C3FF;
+}

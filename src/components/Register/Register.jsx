@@ -40,10 +40,6 @@ const Register = () => {
 
   const handleEmailValid = () => {
     const emailPattern = /^([a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3})$/;
-    // const emailPattern =
-    //   /^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/;
-
-    // const emailPattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3})$/;
     setIsValidEmail(emailPattern.test(email2));
 
     if (emailPattern.test(email2)) {
@@ -89,12 +85,20 @@ const Register = () => {
   const formSubmitHandler = async e => {
     e.preventDefault();
 
-    if (name2 === '' || email2 === '' || password2 === '') {
+    if (name2 === '') {
+      console.log(1);
       Notify.failure('Please fill in all fields!');
       return;
-    }
-
-    if (isValidEmail === false || isValidPassword === false) {
+    } else if (email2 === '') {
+      console.log(2);
+      Notify.failure('Please fill in all fields!');
+      return;
+    } else if (password2 === '') {
+      console.log(3);
+      Notify.failure('Please fill in all fields!');
+      return;
+    } else if (isValidEmail === false || isValidPassword === false) {
+      console.log(4);
       Notify.failure('Please enter valid data!');
       return;
     }
@@ -114,7 +118,7 @@ const Register = () => {
 
   const enterPressHandler = e => {
     if (e.key === 'Enter') {
-      formSubmitHandler();
+      formSubmitHandler(e);
     }
   };
 

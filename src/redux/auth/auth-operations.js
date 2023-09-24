@@ -92,6 +92,53 @@ const forgotPassword = createAsyncThunk('', async credentials => {
   }
 });
 
+const saveSettings = createAsyncThunk(
+  'user/change-settings',
+  async credentials => {
+    try {
+      const { data } = await axios.patch('/user/change-settings', credentials);
+      return data;
+    } catch (error) {
+      console.log('Error in Settings', error.response.data);
+      throw error();
+    }
+  }
+);
+
+const saveSettings2 = createAsyncThunk(
+  'user/change-settings2',
+  async userData => {
+    try {
+      const { data } = await axios.patch(
+        '/user/change-settings',
+        userData.setting
+      );
+      const token = userData.token;
+      const goal = userData.goal;
+      const avatarURL = userData.avatarURL;
+      return { ...data, token, goal, avatarURL };
+    } catch (error) {
+      console.log('Error in Settings', error.response.data);
+      throw error();
+    }
+  }
+);
+
+const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
+  try {
+    const { data } = await axios.post('/user/avatars', avatarData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log('data after avatar update', data);
+    return data.avatarURL;
+  } catch (error) {
+    console.log('Error in Settings', error.response.data);
+    throw error();
+  }
+});
+
 const authOperations = {
   register,
   logIn,
@@ -99,6 +146,9 @@ const authOperations = {
   fetchCurrentUser,
   checkEmail,
   forgotPassword,
+  saveSettings,
+  updateAvatar,
+  saveSettings2,
 };
 
 export default authOperations;

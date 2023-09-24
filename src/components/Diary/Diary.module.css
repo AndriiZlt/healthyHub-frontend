@@ -1,10 +1,9 @@
-.sectionDiary ul {
-  margin: 0;
+/* .sectionDiary ul {
   padding: 0;
   max-width: 100%;
   height: auto;
   border: 0;
-}
+} */
 
 .sectionDiary li,
 h2,
@@ -27,7 +26,7 @@ p {
   height: auto;
   border: 0;
   font-size: 18px;
-  line-height: 26px;
+  line-height: 30px;
   font-weight: 400;
   color: var(--primary-white-color);
 }
@@ -50,7 +49,16 @@ p {
   margin-bottom: 16px;
 }
 
+/* .diary_wrapper_title h3 {
+  margin-left: 12px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+} */
+
 .dairy_title h2 {
+  display: flex;
+  align-items: center;
   font-size: 24px;
   height: 30px;
   font-weight: 500;
@@ -100,6 +108,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   width: 77%;
+  padding-left: 0px;
 }
 .dairy_breakfast_item {
   font-size: 14px;
@@ -123,26 +132,61 @@ p {
 }
 
 .wrapper_dishes_block {
+  display: flex;
   padding: 16px 12px;
-  /* border: 1px solid white; */
   border-radius: 12px;
   background-color: var(--primary-black-second-color);
 }
+
+.dairy_add_dish_item {
+  display: flex;
+  margin-bottom: 6px;
+  height: 20px;
+  width: 100%;
+}
+
 .dairy_add_dish_item:not(:last-child):not(:first-child) {
   margin-bottom: 40px;
 }
-.dairy_add_dish_item {
-  margin-bottom: 6px;
+
+.record {
+  width: 100%;
+  height: 40px;
 }
-.dairy_add_dish_item {
-  display: flex;
-  flex-wrap: nowrap;
-  /* margin-bottom: 6px; */
+.record:not(:last-child) {
+  margin-bottom: 10px;
 }
 
-/* .dairy_add_dish_item_wrapper:nthlast-child(-n+3){
-  margin-bottom: 40px;
-} */
+.number {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 16px;
+}
+
+.number:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.recordMealText {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.recordMealText img {
+  width: 16px;
+  height: 16px;
+}
+
+.recordMealText p {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
 .dairy_add_dish_item_wrapper {
   display: flex;
   align-items: center;
@@ -153,28 +197,42 @@ p {
   text-align: start;
 }
 .dairy_dish_p {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
   width: 178px;
+  height: 20px;
   margin-right: 17px;
+}
+
+.dairy_dish_list {
+  overflow: hidden;
 }
 
 .edit_pen {
   margin-right: 6px;
+  width: 16px;
+  height: 16px;
 }
+
+.edit_text {
+  width: 27px;
+  height: 20px;
+}
+
 .dairy_elem_breakfast_list {
   width: 214px;
-  margin-left: 20px;
+  padding-left: 0;
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   color: var(--primary-grey-color);
+  margin-bottom: 0px;
 }
 .dairy_elem_breakfast_span {
   color: var(--primary-white-color);
 }
 
-.dairy_elem_breakfast {
-  margin-bottom: 16px;
-}
 .dairy_add_dish {
   color: var(--secondary-yellow-color);
   font-family: inherit;
@@ -186,16 +244,34 @@ p {
   color: var(--secondary-yellow-color);
   font-family: inherit;
 }
-.dairy_add_dish_item,
+
 .sectionDiary a {
   display: flex;
   align-items: center;
 }
 
 @media (min-width: 834px) {
+  .arrow_rigth {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+
+  .sectionDiary h2 {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 500;
+  }
+
   .sectionDiary {
     padding-top: 24px;
     padding-bottom: 40px;
+  }
+
+  .wrapper_dishes_block {
+    width: 100%;
+    height: 240px;
+    padding: 32px 14px;
   }
 
   .sectionDiary h3 {
@@ -222,16 +298,17 @@ p {
   .dairy_breakfast_list {
     display: flex;
     align-items: center;
-    /* flex-wrap: nowrap; */
+    margin-bottom: 0;
     width: 100%;
   }
   .dairy_breakfast_item:not(last-child) {
     margin-left: 0 !important;
     margin-right: 20px;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
   }
   .dairy_dish_list {
-    padding: 32px 14px;
+    width: 100%;
+    height: 100%;
   }
   .dairy_add_dish_item:not(:last-child) {
     margin-bottom: 32px;
@@ -247,10 +324,13 @@ p {
   .edit_text,
   .dairy_elem_span {
     visibility: hidden;
+    display: none;
+    width: 0;
   }
   .dairy_dish_p {
     font-weight: 400;
     font-size: 14px;
+    width: 260px;
   }
   .dairy_elem_breakfast,
   .dairy_elem_breakfast_list {
@@ -295,6 +375,10 @@ p {
 }
 
 @media (min-width: 1440px) {
+  .wrapper_dishes_block {
+    width: 676px;
+  }
+
   .sectionDiary {
     padding-top: 20px;
     padding-bottom: 52px;
@@ -312,14 +396,15 @@ p {
   }
   .dairy_dish_wrapper {
     margin-bottom: 20px;
+    margin-top: 0px;
   }
 
-  /* .wrapper_dishes:not(nth-child(1n)){
-    margin-right: 20px;
+  .dairy_elem_breakfast_span {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
   }
-  .wrapper_dishes:not(nth-child(-n+2)){
-    margin-bottom: 20px;
-  } */
+
   .dairy_wrapper_dishes {
     width: 679px;
     /* height: 240px; */
@@ -391,6 +476,7 @@ p {
   .dairy_dish_p {
     font-weight: 400;
     font-size: 14px;
+    line-height: 20px;
   }
   .dairy_elem_breakfast,
   .dairy_elem_breakfast_list {
@@ -405,10 +491,10 @@ p {
   .edit_icon {
     margin-right: 6px;
   }
-  .dairy_dish_list {
+  /* .dairy_dish_list {
     padding: 32px 14px;
     border: 0;
-  }
+  } */
 
   .dairy_elem_breakfast_list {
     margin: 0;
@@ -423,7 +509,4 @@ p {
     display: flex;
     /* align-items: center; */
   }
-  /* .wrapper_dishes_block{
-    height: 240px;
-  } */
 }

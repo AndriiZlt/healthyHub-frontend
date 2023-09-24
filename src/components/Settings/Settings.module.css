@@ -8,6 +8,12 @@
   margin-right: auto;
 }
 
+.form input {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
 .title {
   font-size: 24px;
   margin-top: 16px;
@@ -16,15 +22,21 @@
 
 .link {
   font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  width: 149px;
+  color: var(--primary-white-color);
 }
 
 .download {
   fill: var(--primary-green-lite-color);
   margin-right: 6px;
+  width: 16px;
+  height: 16px;
 }
 
 .label {
-  display: block; 
+  display: block;
   margin-bottom: 12px;
   font-size: 14px;
 }
@@ -44,8 +56,34 @@
 }
 
 .photo {
-   display: flex; 
-   margin-bottom: 40px; 
+  display: flex;
+  margin-bottom: 40px;
+  width: 219px;
+}
+
+.avatarImg {
+  height: 36px;
+  width: 36px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.photoButton {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: transparent;
+  border: none;
+  width: 172px;
+  height: 20px;
+}
+
+.downloadBlock {
+  display: flex;
+}
+
+.genderDiv {
+  margin-bottom: 40px;
 }
 
 .inputGender {
@@ -57,6 +95,12 @@
 .inputGender:not(checked) {
   position: absolute;
   left: -9999px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
 }
 
 .customCheked {
@@ -76,12 +120,14 @@
   background: url(../../assets/userRadioCheked.svg);
 }
 
-
 .labelGender {
   margin-right: 16px;
   font-size: 14px;
 }
 
+.photoInput {
+  display: none;
+}
 
 .activity {
   display: flex;
@@ -99,13 +145,11 @@
   left: -9999px;
 }
 
-
 .inputRadioActive:checked + .customCheked {
   border: 0;
   background-color: var(--primary-green-lite-color);
   background: url(../../assets/userRadioCheked.svg);
 }
-
 
 .btnActive {
   width: 300px;
@@ -136,7 +180,7 @@
   border-radius: 12px;
   cursor: pointer;
   font-size: 14px;
-}  
+}
 
 @media screen and (max-width: 833px) {
   .buttonsTablet {
@@ -148,20 +192,26 @@
   .conteiner {
     width: 100%;
   }
-  .wrapper{
+  .wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 20px;
   }
   .buttons {
     display: none;
   }
   .buttonsTablet {
-    margin-top: 24px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
   }
   .btnActive {
     width: 212px;
     height: 36px;
+    margin-top: 0;
   }
   .btn {
     width: 212px;
@@ -179,8 +229,10 @@
 
   .title {
     font-size: 30px;
-    margin-top: 24px;
-    margin-bottom: 20px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .form {
@@ -208,7 +260,7 @@
     padding-right: 10px;
     margin-bottom: 40px;
     color: var(--primary-white-color);
-  border: 1px solid var(--primary-grey-color);
+    border: 1px solid var(--primary-grey-color);
     border-radius: 12px;
     background-color: var(--primary-black-second-color);
   }
@@ -225,7 +277,7 @@
     margin-right: auto;
     margin-left: auto;
   }
-  }
+}
 
 @media screen and (min-width: 1440px) {
   .conteiner {
@@ -234,13 +286,10 @@
 
   .title {
     font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 24px;
-  }
-
-  .buttonsTablet {
-    margin-top: 20px;
-    margin-bottom: 16px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .btnActive {

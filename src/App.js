@@ -33,24 +33,22 @@ function App() {
   const isLoading = useSelector(authSelectors.getIsLoading);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const todayReady = useSelector(mealsSelectors.getTodayReady);
-
+  const { weight } = useSelector(authSelectors.getUser);
   useEffect(() => {
     (async () => {
       if (isLoggedIn) {
         // dispatch(setLoadingTrue());
         console.log('Fetching current user in App...');
         dispatch(authOperations.fetchCurrentUser()).then(() => {
-          dispatch(mealsOperations.fetchDay());
+          dispatch(mealsOperations.fetchDay(weight));
         });
       }
     })();
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch, isLoggedIn, weight]);
 
   return (
     <>
-      {((isLoggedIn && isLoading) || (isLoggedIn && !todayReady)) && (
-        <LoaderModal />
-      )}
+      {(isLoading || (isLoggedIn && !todayReady)) && <LoaderModal />}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route

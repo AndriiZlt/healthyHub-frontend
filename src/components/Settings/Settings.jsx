@@ -1,46 +1,68 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import settingsOperations from '../../redux/settings/settings-operations';
+import authOperations from 'redux/auth/auth-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
 import illustration from '../../assets/SettingsIllustration.svg';
 import download from '../../assets/direct-inbox.svg';
 import css from './Settings.module.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-
 const Settings = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { name, age, gender, height, weight, activity } = useSelector(authSelectors.getUser);
-    const [formData, setFormData] = useState({ name, age, gender, height, weight, activity });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { name, age, gender, height, weight, activity, avatarURL } =
+    useSelector(authSelectors.getUser);
 
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [formData, setFormData] = useState({
+    name,
+    age,
+    gender,
+    height,
+    weight,
+    activity,
+  });
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    };
-  
-    const handleSave = (e) => {
-      e.preventDefault();
-      if (formData.name === '' || formData.age === '' || formData.height === '' || formData.weight === '') {
-        Notify.failure('Please fill in all fields!');
-        return;
-      } else {
-         dispatch(settingsOperations.saveSettings(formData));
-         navigate('/main');
-      }
-  }
-  
-    const handleCancel = () => {
-    setFormData({ name, age, gender, height, weight, activity });
-    dispatch(settingsOperations.cancelSettings());
-  }
-    
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
+  const handleAvatarChange = e => {
+    const file = e.target.files[0];
+    setAvatarFile(file);
+  };
+
+  const handleSave = e => {
+    e.preventDefault();
+    if (
+      formData.name === '' ||
+      formData.age === '' ||
+      formData.height === '' ||
+      formData.weight === ''
+    ) {
+      Notify.failure('Please fill in all fields!');
+      return;
+    }
+    if (avatarFile) {
+      const avatarData = new FormData();
+      avatarData.append('avatar', avatarFile);
+      dispatch(authOperations.updateAvatar(avatarData));
+      dispatch(authOperations.saveSettings(formData));
+      navigate('/main');
+    } else {
+      dispatch(authOperations.saveSettings(formData));
+      navigate('/main');
+    }
+  };
+
+  const handleCancel = () => {
+    navigate('/main');
+  };
 
   return (
     <div className={css.conteiner}>
@@ -83,14 +105,31 @@ const Settings = () => {
                 Your photo
               </label>
               <div className={css.photo}>
-                <img
-                  className={css.download}
-                  src={download}
-                  alt="download illustration"
-                ></img>
-                <a href=" " className={css.link}>
-                  Download new photo
-                </a>
+                {avatarFile ? (
+                  <img className={css.avatarImg} src={avatarURL} alt="avatar" />
+                ) : (
+                  <img className={css.avatarImg} src={avatarURL} alt="avatar" />
+                )}
+                <div className={css.photoButton}>
+                  <label className={css.downloadBlock}>
+                    <input
+                      type="file"
+                      name="photo"
+                      onChange={handleAvatarChange}
+                      accept="image/*"
+                      className={css.photoInput}
+                      id="file-upload"
+                    />
+                    <img
+                      className={css.download}
+                      src={download}
+                      alt="download illustration"
+                    />
+                    <p className={css.link} style={{ marginRight: 0 }}>
+                      Download new photo
+                    </p>
+                  </label>
+                </div>
               </div>
             </div>
             <div>
@@ -106,31 +145,30 @@ const Settings = () => {
                 className={css.input}
               />
             </div>
-            <div>
+            <div className={css.genderDiv}>
               <label htmlFor="gender" className={css.label}>
                 Gender
               </label>
               <label className={css.labelGender}>
                 <input
-                className={css.inputGender}
-                onChange={handleChange}
+                  className={css.inputGender}
+                  onChange={handleChange}
                   type="radio"
                   name="gender"
                   value="male"
-                checked={formData.gender === 'male'}
-
+                  checked={formData.gender === 'Male'}
                 />
                 <span className={css.customCheked}></span>
                 Male
               </label>
               <label className={css.labelGender}>
                 <input
-                onChange={handleChange}
-                className={css.inputGender}
+                  onChange={handleChange}
+                  className={css.inputGender}
                   type="radio"
                   name="gender"
                   value="female"
-                  checked={formData.gender === 'female'}
+                  checked={formData.gender === 'Female'}
                 />
                 <span className={css.customCheked}></span>
                 Female
@@ -143,7 +181,7 @@ const Settings = () => {
               <input
                 type="text"
                 name="height"
-                pattern="^[0-9]+'[0-9]+$" 
+                pattern="^[0-9]+'[0-9]+$"
                 value={formData.height}
                 onChange={handleChange}
                 placeholder="Enter your height"
@@ -157,7 +195,7 @@ const Settings = () => {
               <input
                 type="text"
                 name="weight"
-                pattern="^[0-9]+'[0-9]+$" 
+                pattern="^[0-9]+'[0-9]+$"
                 value={formData.weight}
                 onChange={handleChange}
                 placeholder="Enter your weight"
@@ -170,39 +208,63 @@ const Settings = () => {
               Your activity
             </label>
             <label className={css.labelActivity}>
-              <input className={css.inputRadioActive} type="radio" name="activity" value="1.2" 
-             checked={formData.activity === '1.2'}
-              onChange={handleChange}/>
-               <span className={css.customCheked}></span>
+              <input
+                className={css.inputRadioActive}
+                type="radio"
+                name="activity"
+                value="1.2"
+                checked={formData.activity === '1.2'}
+                onChange={handleChange}
+              />
+              <span className={css.customCheked}></span>
               1.2 - if you do not have physical activity and sedentary work
             </label>
             <label className={css.labelActivity}>
-              <input className={css.inputRadioActive} type="radio" name="activity" value="1.375"
-              checked={formData.activity === '1.375'}
-              onChange={handleChange} />
-               <span className={css.customCheked}></span>
+              <input
+                className={css.inputRadioActive}
+                type="radio"
+                name="activity"
+                value="1.375"
+                checked={formData.activity === '1.375'}
+                onChange={handleChange}
+              />
+              <span className={css.customCheked}></span>
               1.375 - if you do short runs or light gymnastics 1-3 times a week
             </label>
             <label className={css.labelActivity}>
-              <input className={css.inputRadioActive} type="radio" name="activity" value="1.55"
-              checked={formData.activity === '1.55'}
-              onChange={handleChange} />
-               <span className={css.customCheked}></span>
+              <input
+                className={css.inputRadioActive}
+                type="radio"
+                name="activity"
+                value="1.55"
+                checked={formData.activity === '1.55'}
+                onChange={handleChange}
+              />
+              <span className={css.customCheked}></span>
               1.55 - if you play sports with average loads 3-5 times a week
             </label>
             <label className={css.labelActivity}>
-              <input className={css.inputRadioActive} type="radio" name="activity" value="1.725"
-              checked={formData.activity === '1.725'}
-              onChange={handleChange} />
-               <span className={css.customCheked}></span>
+              <input
+                className={css.inputRadioActive}
+                type="radio"
+                name="activity"
+                value="1.725"
+                checked={formData.activity === '1.725'}
+                onChange={handleChange}
+              />
+              <span className={css.customCheked}></span>
               1.725 ​​- if you train fully 6-7 times a week
             </label>
             <label className={css.labelActivity}>
-              <input className={css.inputRadioActive} type="radio" name="activity" value="1.9"
-              checked={formData.activity === '1.9'}
-              onChange={handleChange} />
-               <span className={css.customCheked}></span>
-
+              <input
+                className={css.inputRadioActive}
+                type="radio"
+                name="activity"
+                value="1.9"
+                checked={formData.activity === '1.9'}
+                onChange={handleChange}
+              />
+              <span className={css.customCheked}></span>
               1.9 - if your work is related to physical labor, you train 2 times
               a day and include strength exercises in your training program
             </label>
