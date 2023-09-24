@@ -5,7 +5,7 @@ import bubble from 'assets/bubble.svg';
 import milk from 'assets/milk.svg';
 // import waterChart from 'assets/water-chart.svg';
 import addWaterIntake from 'assets/add-water-intake.svg';
-import chartCalories from 'assets/chart-calories.svg';
+// import chartCalories from 'assets/chart-calories.svg';
 import recordYourMeal from 'assets/recordYourMeal.svg';
 import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
@@ -21,6 +21,8 @@ import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line n
 import mealsSelectors from 'redux/meals/meals-selectors';
 import CalcBMR from 'helpers/BMRcalculation';
 import useCalculatedData from 'helpers/useCalculatedData';
+import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import {
   setModalsOff,
@@ -88,6 +90,15 @@ const Home = () => {
     window.addEventListener('keydown', escHandler);
     window.addEventListener('click', escHandler);
   };
+
+  const dailyCalories = 2000;
+  const intakeCalories = 1000;
+  const percentageCalories = intakeCalories / dailyCalories * 100;
+  
+  const dailyFat = 56;
+  const intakeFat = 28;
+  const percentageFat = intakeFat / dailyFat * 100;
+
 
   return (
     <div className={css.mainSection}>
@@ -220,9 +231,28 @@ const Home = () => {
           <h2 className={css.title2}>Food</h2>
           <div className={css.greyBlockFood}>
             <div className={css.foodChart}>
-              <div className={css.icon3}>
-                {/* <Doughnut data={chartData} /> */}
+              <div className={css.progressbarBig}>
+                <CircularProgressbarWithChildren
+                  value={percentageCalories}
+                  styles={buildStyles({
+                    // textSize: '14px',
+                    pathColor: '#45FFBC',
+                    textColor: '#B6B6B6',
+                    trailColor: '#292928',
+                    backgroundColor: '#3e98c7',
+                    strokeWidth: 8,
+                  })}
+                >
+                  <div className={css.info} >
+                    <p className={css.numberCalories}>{intakeCalories}</p>
+                    <p className={css.textCalories}>calories</p>
+                  </div>
+                </CircularProgressbarWithChildren>
               </div>
+
+              {/* <div className={css.icon3}> */}
+                {/* <Doughnut data={chartData} /> */}
+              {/* </div> */}
 
               {/* <img
 
@@ -238,11 +268,25 @@ const Home = () => {
                   }}
                 >
                   <li>
-                    <img
+                    <div className={css.progressbar}>
+                      <CircularProgressbar
+                        value={percentageFat}
+                        text={` ${percentageFat}%`}
+                        styles={buildStyles({
+                          textSize: '28px',
+                          pathColor: '#FFC4F7',
+                          textColor: '#B6B6B6',
+                          trailColor: '#292928',
+                          // backgroundColor: '#3e98c7',
+                          // strokeWidth: 10,
+                        })}
+                      />
+                    </div>
+                    {/* <img
                       className={css.icon4}
                       src={chartCalories}
                       alt="calories-chart"
-                    />
+                    /> */}
                     <div
                       style={{
                         display: 'flex',
@@ -287,11 +331,25 @@ const Home = () => {
                     </div>
                   </li>
                   <li>
-                    <img
+                    <div className={css.progressbar}>
+                      <CircularProgressbar
+                        value={percentageFat}
+                        text={` ${percentageFat}%`}
+                        styles={buildStyles({
+                          textSize: '28px',
+                          pathColor: '#FFF3B7',
+                          textColor: '#B6B6B6',
+                          trailColor: '#292928',
+                          // backgroundColor: '#3e98c7',
+                          // strokeWidth: 10,
+                        })}
+                      />
+                    </div>
+                    {/* <img
                       className={css.icon4}
                       src={chartCalories}
                       alt="calories-chart"
-                    />
+                    /> */}
                     <div
                       style={{
                         display: 'flex',
@@ -336,11 +394,25 @@ const Home = () => {
                     </div>
                   </li>
                   <li>
-                    <img
+                    <div className={css.progressbar}>
+                      <CircularProgressbar
+                        value={percentageFat}
+                        text={` ${percentageFat}%`}
+                        styles={buildStyles({
+                          textSize: '28px',
+                          pathColor: '#B6B6B6',
+                          textColor: '#B6B6B6',
+                          trailColor: '#292928',
+                          // backgroundColor: '#3e98c7',
+                          // strokeWidth: 10,
+                        })}
+                      />
+                    </div>
+                    {/* <img
                       className={css.icon4}
                       src={chartCalories}
                       alt="calories-chart"
-                    />
+                    /> */}
                     <div
                       style={{
                         display: 'flex',
