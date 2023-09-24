@@ -108,9 +108,13 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.saveSettings.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = true;
-        state.isLoading = false;
+        console.log('Save settings fulfield', action.payload);
+        state.user.activity = action.payload.activity;
+        state.user.weight = action.payload.weight;
+      })
+      .addCase(authOperations.updateAvatar.fulfilled, (state, action) => {
+        console.log('UpdateAvatar fulfield', action.payload);
+        state.user.avatarURL = action.payload;
       });
   },
 });
