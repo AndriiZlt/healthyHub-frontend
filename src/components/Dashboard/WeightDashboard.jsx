@@ -1,15 +1,37 @@
 import React from 'react';
-
+import useDashboardMonth from "helpers/useDashboardMonth";
+// import useDashboardYear from "helpers/useDashboardYear";
 import css from "./Dashboard.module.css";
 
 const WeightDashboard = (props) => {
 
-	const days = [];
-	for (let i = 0; i < props.numberOfDaysInMonth; i++) {
-		days.push(<li key={i}>
-			<p className={css.weightDashboardKg}>{/* SERVER DATA, ЗАБРАТИ 70 */70}</p>
-			<p className={css.weightDashboardDate}>{i + 1}</p>
-		</li>);
+	const userMonthData = useDashboardMonth();
+	// const userYearData = useDashboardYear();
+
+	const days = []
+
+	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
+		let found = false;
+
+		for (const userDayObj of userMonthData) {
+			const userDayDate = new Date(userDayObj.date);
+			const dayOfMonth = userDayDate.getDate();
+			if (dayOfMonth === day) {
+				days.push(<li key={day}>
+					<p className={css.weightDashboardKg}>{userDayObj.weight}</p>
+					<p className={css.weightDashboardDate}>{day}</p>
+				</li>);
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			days.push(<li key={day}>
+				<p className={css.weightDashboardKg}>0</p>
+				<p className={css.weightDashboardDate}>{day}</p>
+			</li>);
+		}
 	}
 
 

@@ -1,42 +1,78 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
+import useDashboardMonth from "helpers/useDashboardMonth";
+// import useDashboardYear from "helpers/useDashboardYear";
 import css from "./Dashboard.module.css";
 
 const WaterDashboard = (props) => {
 
-	const data = [
-	];
+	const userMonthData = useDashboardMonth();
+	// const userYearData = useDashboardYear();
 
-	const monthNames = [
-		"Jan", "Feb", "Mar", "Apr", "May", "June",
-		"July", "Aug", "Sep", "Oct", "Nov", "Dec"
-	];
+	const dashboardMonthData = []
 
-	if (props.time === 'month') {
-		for (let i = 0; i < props.numberOfDaysInMonth; i++) {
-			data.push({
-				time: i + 1,
-				ml: 65,
-			},);
+	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
+		let found = false;
+
+		for (const userDayObj of userMonthData) {
+			const userDayDate = new Date(userDayObj.date);
+			const dayOfMonth = userDayDate.getDate();
+			if (dayOfMonth === day) {
+				dashboardMonthData.push({
+					date: day,
+					ml: parseFloat(userDayObj.calories),
+				});
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			dashboardMonthData.push({
+				date: day,
+				ml: 0,
+			});
 		}
 	}
 
-	if (props.time === 'year') {
-		for (let i = 0; i < monthNames.length; i++) {
-			data.push({
-				time: monthNames[i],
-				ml: 65,
-			},);
-		}
-	}
+	// console.log(dashboardMonthData);
+
+	// const dashboardYearData = []
+	// for (let month = 1; month <= props.numberOfDaysInMonth; month++) {
+	// 	let found = false;
+
+	// 	for (const userDayObj of userMonthData) {
+	// 		const userDataDate = new Date(userDayObj.date);
+	// 		const monthOfYear = userDataDate.getDate();
+	// 		if (monthOfYear === month) {
+	// 			dashboardYearData.push({
+	// 				date: month,
+	// 				kcal: parseFloat(userDayObj.calories),
+	// 				ml: parseFloat(userDayObj.water),
+	// 				kg: parseFloat(userDayObj.weight),
+	// 			});
+	// 			found = true;
+	// 			break;
+	// 		}
+	// 	}
+
+	// 	if (!found) {
+	// 		dashboardYearData.push({
+	// 			date: month, 
+	// 			ml: 0, 
+	// 		});
+	// 	}
+	// }
+
+	// console.log(dashboardMonthData);
 
 	const [chartData] = useState({
-		labels: data.map(item => item.time),
+		labels: dashboardMonthData.map(item => item.date - 1),
 		datasets: [
 			{
 				label: 'Water consumption',
-				data: data.map(item => item.ml),
+				data: dashboardMonthData.map(item => item.ml),
 				backgroundColor: '#006eff',
 				borderColor: '#E3FFA8',
 				borderWidth: 1,

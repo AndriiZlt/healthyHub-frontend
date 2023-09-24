@@ -1,43 +1,106 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
+import useDashboardMonth from "helpers/useDashboardMonth";
+// import useDashboardYear from "helpers/useDashboardYear";
 import css from "./Dashboard.module.css";
 
 const CaloriesDashboard = (props) => {
 
-	const data = [
-	];
+	const userMonthData = useDashboardMonth();
 
-	const monthNames = [
-		"Jan", "Feb", "Mar", "Apr", "May", "June",
-		"July", "Aug", "Sep", "Oct", "Nov", "Dec"
-	];
+	const dashboardMonthData = []
+	const MonthCaloriesArray = []
 
-	if (props.time === 'month') {
-		for (let i = 0; i < props.numberOfDaysInMonth; i++) {
-			data.push({
-				time: i + 1,
-				kcal: 65,
-			},);
-		}
-	}
-
-	if (props.time === 'year') {
-		for (let i = 0; i < monthNames.length; i++) {
-			data.push({
-				time: monthNames[i],
-				kcal: 65,
-			},);
-		}
+	function calculateMonthAverage(array) {
+		let sum = 0;
+		MonthCaloriesArray.forEach((element) => {
+			sum += element;
+		});
+		props.setAverageCalories(calculateMonthAverage(MonthCaloriesArray))
+		return sum / array.length;
 	}
 
 
+	// console.log(MonthCaloriesArray);
+	// console.log(calculateMonthAverage(MonthCaloriesArray));
+
+
+	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
+		let found = false;
+
+		for (const userDayObj of userMonthData) {
+			const userDayDate = new Date(userDayObj.date);
+			const dayOfMonth = userDayDate.getDate();
+			if (dayOfMonth === day) {
+				dashboardMonthData.push({
+					date: day,
+					kcal: parseFloat(userDayObj.calories),
+				});
+				MonthCaloriesArray.push(parseFloat(userDayObj.calories))
+				found = true;
+				break;
+			}
+		}
+
+		if (!found) {
+			dashboardMonthData.push({
+				date: day,
+				kcal: 0,
+			});
+		}
+	}
+	// console.log(dashboardMonthData);
+
+	// const userYearData = useDashboardYear();
+
+	// const dashboardYearData = []
+	// const YearCaloriesArray = []
+
+	// function calculateYearAverage(array) {
+	// 	let sum = 0;
+	// 	DailyCaloriesArray.forEach((element) => {
+	// 		sum += element;
+	// 	});
+	// 	return sum / array.length;
+	// }
+
+	// props.setAverageCalories(calculateYearAverage(DailyCaloriesArray))
+
+	// for (let month = 1; month <= numberOfDaysInMonth; month++) {
+	// 	let found = false;
+
+	// 	for (const userDayObj of userMonthData) {
+	// 		const userDataDate = new Date(userDayObj.date);
+	// 		const monthOfYear = userDataDate.getDate();
+	// 		if (monthOfYear === month) {
+	// 			dashboardYearData.push({
+	// 				date: month,
+	// 				kcal: parseFloat(userDayObj.calories), 
+	// 			});
+	// 		YearCaloriesArray.push(parseFloat(userDayObj.calories))
+	// 		found = true;
+	// 		break;
+	// 		}
+	// 	}
+
+	// 	if (!found) {
+	// 		dashboardYearData.push({
+	// 			date: month,
+	// 			kcal: 0,
+	// 			ml: 0,
+	// 			kg: 0,
+	// 		});
+	// 	}
+	// }
+
+	// console.log(dashboardMonthData);
 	const [chartData] = useState({
-		labels: data.map(item => item.time),
+		labels: dashboardMonthData.map(item => item.date),
 		datasets: [
 			{
 				label: 'Your Calories',
-				data: data.map(item => item.kcal),
+				data: dashboardMonthData.map(item => item.kcal),
 				backgroundColor: '#ff0d00',
 				borderColor: '#E3FFA8',
 				borderWidth: 1,
