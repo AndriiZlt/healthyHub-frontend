@@ -8,6 +8,12 @@
   margin-right: auto;
 }
 
+.form input {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
 .title {
   font-size: 24px;
   margin-top: 16px;
@@ -68,8 +74,16 @@
   margin-bottom: auto;
   background-color: transparent;
   border: none;
-  width: 171px;
+  width: 172px;
   height: 20px;
+}
+
+.downloadBlock {
+  display: flex;
+}
+
+.genderDiv {
+  margin-bottom: 40px;
 }
 
 .inputGender {
@@ -81,6 +95,12 @@
 .inputGender:not(checked) {
   position: absolute;
   left: -9999px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
 }
 
 .customCheked {
@@ -175,17 +195,23 @@
   .wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 20px;
   }
   .buttons {
     display: none;
   }
   .buttonsTablet {
-    margin-top: 24px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
   }
   .btnActive {
     width: 212px;
     height: 36px;
+    margin-top: 0;
   }
   .btn {
     width: 212px;
@@ -203,8 +229,10 @@
 
   .title {
     font-size: 30px;
-    margin-top: 24px;
-    margin-bottom: 20px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .form {
@@ -258,13 +286,10 @@
 
   .title {
     font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 24px;
-  }
-
-  .buttonsTablet {
-    margin-top: 20px;
-    margin-bottom: 16px;
+    line-height: 36px;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .btnActive {
