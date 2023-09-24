@@ -6,7 +6,7 @@ import close from '../../../assets/close-circle.svg';
 import css from './MobileAction.module.css';
 import authSelectors from 'redux/auth/auth-selectors';
 import WeightModal from '../WeightModal/WeightModal';
-import Target from 'components/Target/SelectTarget';
+import TargetSelectionModal from '../TargetSelectionModal/TargetSelectionModal';
 
 function MobileAction({ closeButton }) {
   const { goal, weight } = useSelector(authSelectors.getUser);
@@ -42,7 +42,7 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <Target closeGoalModal={closeGoalModal} />
+          <TargetSelectionModal closeGoalModal={closeGoalModal} />
         </Modal.Body>
       </Modal>
       <button className={css.button} onClick={handleWeightShow}>

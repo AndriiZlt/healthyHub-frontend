@@ -92,18 +92,50 @@ const forgotPassword = createAsyncThunk('', async credentials => {
   }
 });
 
+// const saveSettings = createAsyncThunk(
+//   'user/change-settings',
+//   async credentials => {
+//     try {
+//       const { data } = await axios.patch('/user/change-settings', credentials);
+//       return data;
+//     } catch (error) {
+//       console.log('Error in Settings', error.response.data);
+//       throw error();
+//     }
+//   }
+// );
+
 const saveSettings = createAsyncThunk(
   'user/change-settings',
-  async credentials => {
+  async userData => {
     try {
-      const { data } = await axios.patch('/user/change-settings', credentials);
-      return data;
+      console.log("qweqweqwewq",userData)
+      const { data } = await axios.patch(
+        '/user/change-settings',
+        userData.setting
+      );
+      const token = userData.token;
+      const goal = userData.goal;
+      const avatarURL = userData.avatarURL;
+      return { ...data, token, goal, avatarURL };
     } catch (error) {
       console.log('Error in Settings', error.response.data);
       throw error();
     }
   }
 );
+const changeGoal = createAsyncThunk(
+  'user/change-goal',
+  async credentials => {
+    try{
+      const { data } = await axios.patch('/user/change-goal', credentials);
+      console.log(data.goal)
+      return data.goal;
+    }catch(error){
+      throw error();
+    }
+  }
+)
 
 const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
   try {
@@ -129,6 +161,7 @@ const authOperations = {
   forgotPassword,
   saveSettings,
   updateAvatar,
+  changeGoal,
 };
 
 export default authOperations;

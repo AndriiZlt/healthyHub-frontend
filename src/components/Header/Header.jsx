@@ -11,7 +11,7 @@ import authSelectors from 'redux/auth/auth-selectors';
 import MobileAction from './MobileAction/MobileAction';
 import LogoutModal from './LogoutModal/LogoutModal';
 import WeightModal from './WeightModal/WeightModal';
-import Target from 'components/Target/SelectTarget';
+import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -35,7 +35,7 @@ const Header = () => {
   function closeWeightModal() {
     setWeight(false);
   }
-  function closeGoaltModal() {
+  function closeGoalModal() {
     setShowGoal(false);
   }
   return (
@@ -75,7 +75,7 @@ const Header = () => {
                     />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
-                    <Target closeGoaltModal={closeGoaltModal} />
+                    <TargetSelectionModal closeGoalModal={closeGoalModal}/>
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown show={showWeight} onToggle={e => setWeight(e)}>

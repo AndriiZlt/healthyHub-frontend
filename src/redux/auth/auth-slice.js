@@ -115,6 +115,9 @@ export const authSlice = createSlice({
       .addCase(authOperations.updateAvatar.fulfilled, (state, action) => {
         console.log('UpdateAvatar fulfield', action.payload);
         state.user.avatarURL = action.payload;
+      })
+      .addCase(authOperations.changeGoal.fulfilled, (state, action) => {
+        state.user.goal = action.payload;
       });
   },
 });
