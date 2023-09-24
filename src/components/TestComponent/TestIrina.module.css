@@ -1,0 +1,30 @@
+.progressbar {
+    width: 48px;
+    height: 48px;
+}
+
+.progressbarBig {
+    width: 168px;
+    height: 168px;
+}
+
+.info {
+    text-align: center;
+    width: 74px;
+    height: 60px;
+}
+
+.number {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.calories {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #B6B6B6;
+}
