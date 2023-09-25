@@ -1,12 +1,22 @@
 import React from 'react';
 import useDashboardMonth from "helpers/useDashboardMonth";
-// import useDashboardYear from "helpers/useDashboardYear";
+import useDashboardYear from "helpers/useDashboardYear";
 import css from "./Dashboard.module.css";
 
 const WeightDashboard = (props) => {
 
 	const userMonthData = useDashboardMonth();
-	// const userYearData = useDashboardYear();
+	const userYearData = useDashboardYear();
+	console.log(userYearData);
+
+	const MonthWeightsArray = []
+	function calculateMonthAverage(array) {
+		let sum = 0;
+		MonthWeightsArray.forEach((element) => {
+			sum += parseFloat(element);
+		});
+		props.setAverageWeight(sum / array.length)
+	}
 
 	const days = []
 
@@ -21,11 +31,16 @@ const WeightDashboard = (props) => {
 					<p className={css.weightDashboardKg}>{userDayObj.weight}</p>
 					<p className={css.weightDashboardDate}>{day}</p>
 				</li>);
+				if (userDayObj.weight !== 0 && userDayObj.weight !== '0') {
+					MonthWeightsArray.push(userDayObj.weight.toString())
+				}
 				found = true;
 				break;
 			}
 		}
-
+		setTimeout(() => {
+			calculateMonthAverage(MonthWeightsArray)
+		}, 0)
 		if (!found) {
 			days.push(<li key={day}>
 				<p className={css.weightDashboardKg}>0</p>

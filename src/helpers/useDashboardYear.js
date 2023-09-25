@@ -35,17 +35,17 @@ const calculateMonth = data => {
 	return result;
 };
 
-const useDashboardMonth = () => {
+const useDashboardYear = () => {
 	const chart = [];
 	const dispatch = useDispatch();
-	const month = useSelector(mealsSelectors.getMonth);
+	const year = useSelector(mealsSelectors.getYear);
 
 	useEffect(() => {
-		dispatch(mealsOperations.fetchMonth());
+		dispatch(mealsOperations.fetchYear());
 	}, [dispatch]);
 
-	for (const day in month) {
-		const result = calculateMonth(month[day]);
+	for (const month in year) {
+		const result = calculateMonth(year[month]);
 
 		chart.push({
 			date: result.date || "0",
@@ -54,7 +54,7 @@ const useDashboardMonth = () => {
 			weight: result.weight || "0",
 		});
 	}
-	return chart;
+	return year;
 };
 
-export default useDashboardMonth;
+export default useDashboardYear;

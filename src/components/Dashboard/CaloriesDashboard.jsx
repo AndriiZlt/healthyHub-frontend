@@ -15,15 +15,10 @@ const CaloriesDashboard = (props) => {
 	function calculateMonthAverage(array) {
 		let sum = 0;
 		MonthCaloriesArray.forEach((element) => {
-			sum += element;
+			sum += parseFloat(element);
 		});
-		props.setAverageCalories(calculateMonthAverage(MonthCaloriesArray))
-		return sum / array.length;
+		props.setAverageCalories(sum / array.length)
 	}
-
-
-	// console.log(MonthCaloriesArray);
-	// console.log(calculateMonthAverage(MonthCaloriesArray));
 
 
 	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
@@ -35,13 +30,18 @@ const CaloriesDashboard = (props) => {
 			if (dayOfMonth === day) {
 				dashboardMonthData.push({
 					date: day,
-					kcal: parseFloat(userDayObj.calories),
+					kcal: userDayObj.calories,
 				});
-				MonthCaloriesArray.push(parseFloat(userDayObj.calories))
+				if (userDayObj.calories !== 0 && userDayObj.calories !== '0') {
+					MonthCaloriesArray.push(userDayObj.calories.toString())
+				}
 				found = true;
 				break;
 			}
 		}
+		setTimeout(() => {
+			calculateMonthAverage(MonthCaloriesArray)
+		}, 0)
 
 		if (!found) {
 			dashboardMonthData.push({
@@ -50,6 +50,7 @@ const CaloriesDashboard = (props) => {
 			});
 		}
 	}
+
 	// console.log(dashboardMonthData);
 
 	// const userYearData = useDashboardYear();

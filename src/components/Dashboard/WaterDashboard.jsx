@@ -11,6 +11,15 @@ const WaterDashboard = (props) => {
 	// const userYearData = useDashboardYear();
 
 	const dashboardMonthData = []
+	const MonthWaterIntakeArray = []
+
+	function calculateMonthAverage(array) {
+		let sum = 0;
+		MonthWaterIntakeArray.forEach((element) => {
+			sum += parseFloat(element);
+		});
+		props.setAverageWater(sum / array.length)
+	}
 
 	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
 		let found = false;
@@ -21,13 +30,18 @@ const WaterDashboard = (props) => {
 			if (dayOfMonth === day) {
 				dashboardMonthData.push({
 					date: day,
-					ml: parseFloat(userDayObj.calories),
+					ml: userDayObj.water,
 				});
+				if (userDayObj.water !== 0 && userDayObj.water !== '0') {
+					MonthWaterIntakeArray.push(userDayObj.water.toString())
+				}
 				found = true;
 				break;
 			}
 		}
-
+		setTimeout(() => {
+			calculateMonthAverage(MonthWaterIntakeArray)
+		}, 0)
 		if (!found) {
 			dashboardMonthData.push({
 				date: day,
@@ -71,7 +85,7 @@ const WaterDashboard = (props) => {
 		labels: dashboardMonthData.map(item => item.date - 1),
 		datasets: [
 			{
-				label: 'Water consumption',
+				label: 'Your water consumption',
 				data: dashboardMonthData.map(item => item.ml),
 				backgroundColor: '#006eff',
 				borderColor: '#E3FFA8',

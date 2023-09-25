@@ -90,7 +90,7 @@ const Dashboard = () => {
 						<p className={css.blockAverageValue}>
 							Average value:{" "}
 							<span className={css.blockAverageValueSpan}>
-								{averageCalories} kcal
+								{averageCalories ? averageCalories : 0} kcal
 							</span>
 						</p>
 					</div>
@@ -110,7 +110,7 @@ const Dashboard = () => {
 						<p className={css.blockAverageValue}>
 							Average value:{" "}
 							<span className={css.blockAverageValueSpan}>
-								{averageWater} ml
+								{averageWater ? averageWater : 0} ml
 							</span>
 						</p>
 					</div>
@@ -131,7 +131,7 @@ const Dashboard = () => {
 					<p className={css.blockAverageValue}>
 						Average value:{" "}
 						<span className={css.blockAverageValueSpan}>
-							{averageWeight} kg
+							{averageWeight ? averageWeight : 0} kg
 						</span>
 					</p>
 				</div>
