@@ -104,6 +104,26 @@ const saveSettings = createAsyncThunk(
     }
   }
 );
+
+const saveSettings2 = createAsyncThunk(
+  'user/change-settings2',
+  async userData => {
+    try {
+      const { data } = await axios.patch(
+        '/user/change-settings',
+        userData.setting
+      );
+      const token = userData.token;
+      const goal = userData.goal;
+      const avatarURL = userData.avatarURL;
+      return { ...data, token, goal, avatarURL };
+    } catch (error) {
+      console.log('Error in Settings', error.response.data);
+      throw error();
+    }
+  }
+);
+
 const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
   try {
     const { data } = await axios.post('/user/avatars', avatarData, {
@@ -118,6 +138,15 @@ const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
     throw error();
   }
 });
+
+const changeGoal = createAsyncThunk('user/change-goal', async credentials => {
+  try{
+    const { data } = await axios.patch('/user/change-goal', credentials);
+    return data.goal;
+  } catch(error){
+    throw error()
+  }
+})
 
 const authOperations = {
   register,
