@@ -1,43 +1,92 @@
-
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
+import useDashboardMonth from "helpers/useDashboardMonth";
+// import useDashboardYear from "helpers/useDashboardYear";
 import css from "./Dashboard.module.css";
 
+const WaterDashboard = (props) => {
 
-const data = [
-	{
-		id: 1,
-		year: 2016,
-		userGain: 80000,
-		userLost: 823,
-	},
-	{
-		id: 2,
-		year: 2017,
-		userGain: 60000,
-		userLost: 700,
-	},
-	{
-		id: 3,
-		year: 2018,
-		userGain: 5000,
-		userLost: 900,
-	},
-	{
-		id: 4,
-		year: 2019,
-		userGain: 90000,
-		userLost: 823,
-	},
-];
-const WaterDashboard = () => {
+	const userMonthData = useDashboardMonth();
+	// const userYearData = useDashboardYear();
+
+	const dashboardMonthData = []
+	const MonthWaterIntakeArray = []
+
+	function calculateMonthAverage(array) {
+		let sum = 0;
+		MonthWaterIntakeArray.forEach((element) => {
+			sum += parseFloat(element);
+		});
+		props.setAverageWater(sum / array.length)
+	}
+
+	for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
+		let found = false;
+
+		for (const userDayObj of userMonthData) {
+			const userDayDate = new Date(userDayObj.date);
+			const dayOfMonth = userDayDate.getDate();
+			if (dayOfMonth === day) {
+				dashboardMonthData.push({
+					date: day,
+					ml: userDayObj.water,
+				});
+				if (userDayObj.water !== 0 && userDayObj.water !== '0') {
+					MonthWaterIntakeArray.push(userDayObj.water.toString())
+				}
+				found = true;
+				break;
+			}
+		}
+		setTimeout(() => {
+			calculateMonthAverage(MonthWaterIntakeArray)
+		}, 0)
+		if (!found) {
+			dashboardMonthData.push({
+				date: day,
+				ml: 0,
+			});
+		}
+	}
+
+	// console.log(dashboardMonthData);
+
+	// const dashboardYearData = []
+	// for (let month = 1; month <= props.numberOfDaysInMonth; month++) {
+	// 	let found = false;
+
+	// 	for (const userDayObj of userMonthData) {
+	// 		const userDataDate = new Date(userDayObj.date);
+	// 		const monthOfYear = userDataDate.getDate();
+	// 		if (monthOfYear === month) {
+	// 			dashboardYearData.push({
+	// 				date: month,
+	// 				kcal: parseFloat(userDayObj.calories),
+	// 				ml: parseFloat(userDayObj.water),
+	// 				kg: parseFloat(userDayObj.weight),
+	// 			});
+	// 			found = true;
+	// 			break;
+	// 		}
+	// 	}
+
+	// 	if (!found) {
+	// 		dashboardYearData.push({
+	// 			date: month, 
+	// 			ml: 0, 
+	// 		});
+	// 	}
+	// }
+
+	// console.log(dashboardMonthData);
+
 	const [chartData] = useState({
-		labels: data.map(item => item.year),
+		labels: dashboardMonthData.map(item => item.date - 1),
 		datasets: [
 			{
-				label: 'Water consumption',
-				data: data.map(item => item.userGain),
+				label: 'Your water consumption',
+				data: dashboardMonthData.map(item => item.ml),
 				backgroundColor: '#006eff',
 				borderColor: '#E3FFA8',
 				borderWidth: 1,
