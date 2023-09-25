@@ -52,8 +52,8 @@ const Home = () => {
   }, []);
 
   const { water = 0 } = today;
-  const waterPercetage = Math.min(Math.floor((water / 1500) * 100), 100);
-  const waterHeight = Math.min(Math.floor(176 * (waterPercetage / 100)), 1500);
+  const waterPercetage = Math.floor((water / 1500) * 100);
+  const waterHeight = Math.min(Math.floor(176 * (waterPercetage / 100)), 177);
   // eslint-disable--line
   const {
     breakfast,
@@ -100,10 +100,6 @@ const Home = () => {
   const percentageFat = Math.floor((fat / fatGoal) * 100);
   const percentageProtein = Math.floor((protein / proteinGoal) * 100);
   const percentageCarbs = Math.floor((carbonohidrates / carbsGoal) * 100);
-  // console.log(fatGoal);
-  // const percentageFat = 10;
-  // const percentageProtein = 10;
-  // const percentageCarbs = 10;
   return (
     <div className={css.mainSection}>
       <div className={css.titleDiv}>
