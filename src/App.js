@@ -35,7 +35,7 @@ function App() {
     (async () => {
       if (isLoggedIn) {
         // dispatch(setLoadingTrue());
-        console.log('Fetching current user in App...');
+        console.log('Fetching current user in App...Group#4');
         dispatch(authOperations.fetchCurrentUser()).then(() => {
           dispatch(mealsOperations.fetchDay(weight));
         });
