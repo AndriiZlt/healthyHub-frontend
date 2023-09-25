@@ -3,9 +3,7 @@ import css from './Main.module.css';
 import arrowRight from 'assets/arrow-right.svg';
 import bubble from 'assets/bubble.svg';
 import milk from 'assets/milk.svg';
-// import waterChart from 'assets/water-chart.svg';
 import addWaterIntake from 'assets/add-water-intake.svg';
-// import chartCalories from 'assets/chart-calories.svg';
 import recordYourMeal from 'assets/recordYourMeal.svg';
 import breakfastIcon from 'assets/breakfast.svg';
 import lunchIcon from 'assets/lunch.svg';
@@ -15,13 +13,16 @@ import ModalAddMeal from './ModalAddMeal';
 import ModalAddWater from './ModalAddWater';
 import { NavLink } from 'react-router-dom';
 import { products } from 'components/RecommendedFood/RecommendedFood';
-import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
-import { Doughnut } from 'react-chartjs-2'; // eslint-disable-line
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
 import mealsSelectors from 'redux/meals/meals-selectors';
-import CalcBMR from 'helpers/BMRcalculation';
+import useCalcBMR from 'helpers/useCalcBmr';
 import useCalculatedData from 'helpers/useCalculatedData';
-import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import useCalcNutrientsGoal from 'helpers/useCalcNutrientsGoal';
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 import {
@@ -65,6 +66,8 @@ const Home = () => {
     fat, // eslint-disable-line
   } = useCalculatedData();
 
+  const { carbsGoal, proteinGoal, fatGoal } = useCalcNutrientsGoal();
+
   const escHandler = e => {
     if (
       e.target.id === 'overlay' ||
@@ -91,15 +94,16 @@ const Home = () => {
     window.addEventListener('click', escHandler);
   };
 
-  const dailyCalories = 2000;
-  const intakeCalories = 1000;
-  const percentageCalories = intakeCalories / dailyCalories * 100;
-  
-  const dailyFat = 56;
-  const intakeFat = 28;
-  const percentageFat = intakeFat / dailyFat * 100;
+  const caloriesGoal = useCalcBMR();
+  const percentageCalories = (calories / caloriesGoal) * 100;
 
-
+  const percentageFat = Math.floor((fat / fatGoal) * 100);
+  const percentageProtein = Math.floor((protein / proteinGoal) * 100);
+  const percentageCarbs = Math.floor((carbonohidrates / carbsGoal) * 100);
+  // console.log(fatGoal);
+  // const percentageFat = 10;
+  // const percentageProtein = 10;
+  // const percentageCarbs = 10;
   return (
     <div className={css.mainSection}>
       <div className={css.titleDiv}>
@@ -125,9 +129,7 @@ const Home = () => {
               <img className={css.icon1} src={bubble} alt="bubble" />
               <div className={css.stats}>
                 <p className={css.statsTitle}>Calories</p>
-                <p className={css.statsNumber}>
-                  <CalcBMR />
-                </p>
+                <p className={css.statsNumber}>{caloriesGoal}</p>
               </div>
             </div>
             <div className={css.water}>
@@ -156,13 +158,6 @@ const Home = () => {
           <h2 className={css.title2}>Water</h2>
           <div className={css.greyBlockWater}>
             <div className={css.water}>
-              {/* <div className={css.chartWater}>
-                <img
-                  style={{ width: '100%', height: '100%' }}
-                  src={waterChart}
-                  alt="water-chart"
-                />
-              </div> */}
               <div className={css.waterGlass}>
                 <div className={css.waterWrapper}>
                   <p className={css.percent}>{waterPercetage}%</p>
@@ -243,15 +238,15 @@ const Home = () => {
                     strokeWidth: 8,
                   })}
                 >
-                  <div className={css.info} >
-                    <p className={css.numberCalories}>{intakeCalories}</p>
+                  <div className={css.info}>
+                    <p className={css.numberCalories}>{calories}</p>
                     <p className={css.textCalories}>calories</p>
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
 
               {/* <div className={css.icon3}> */}
-                {/* <Doughnut data={chartData} /> */}
+              {/* <Doughnut data={chartData} /> */}
               {/* </div> */}
 
               {/* <img
@@ -270,8 +265,8 @@ const Home = () => {
                   <li>
                     <div className={css.progressbar}>
                       <CircularProgressbar
-                        value={percentageFat}
-                        text={` ${percentageFat}%`}
+                        value={percentageCarbs}
+                        text={` ${percentageCarbs}%`}
                         styles={buildStyles({
                           textSize: '28px',
                           pathColor: '#FFC4F7',
@@ -309,7 +304,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            170
+                            {carbsGoal}
                           </span>
                         </p>
                         <p className={css.left2}>
@@ -324,7 +319,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            34
+                            {Math.max(carbsGoal - carbonohidrates)}
                           </span>
                         </p>
                       </div>
@@ -333,8 +328,8 @@ const Home = () => {
                   <li>
                     <div className={css.progressbar}>
                       <CircularProgressbar
-                        value={percentageFat}
-                        text={` ${percentageFat}%`}
+                        value={percentageProtein}
+                        text={` ${percentageProtein}%`}
                         styles={buildStyles({
                           textSize: '28px',
                           pathColor: '#FFF3B7',
@@ -372,7 +367,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            127.5
+                            {proteinGoal}
                           </span>
                         </p>
                         <p className={css.left2}>
@@ -387,7 +382,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            8
+                            {Math.max(proteinGoal - protein, 0)}
                           </span>
                         </p>
                       </div>
@@ -435,7 +430,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            56
+                            {fatGoal}
                           </span>
                         </p>
                         <p className={css.left2}>
@@ -450,7 +445,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            11,2
+                            {Math.max(fatGoal - fat, 0)}
                           </span>
                         </p>
                       </div>
