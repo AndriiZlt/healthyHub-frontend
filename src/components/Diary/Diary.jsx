@@ -15,13 +15,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
 import { NavLink } from 'react-router-dom';
 import ModalAddMeal from '../Main/ModalAddMeal';
-import { setModalsOff, setModalMealOn } from 'redux/meals/meals-slice';
-// import recordYourMeal from 'assets/recordYourMeal.svg';
+import {
+  setModalsOff,
+  setModalMealOn,
+  setModalEditOn,
+} from 'redux/meals/meals-slice';
+import EditModal from './EditMealModal';
 
 const Diary = () => {
   const modalMealOn = useSelector(mealsSelectors.getModalMealOn);
   const [mealTitle, setMealTitle] = useState(''); // eslint-disable-line
+  const [mealId, setMealId] = useState('');
+  const [meal, setMeal] = useState('');
   const dispatch = useDispatch();
+  const editModalOn = useSelector(mealsSelectors.detModalEditOn);
 
   // eslint-disable-next-line
   const { breakfast, lunch, dinner, snack } = useSelector(
@@ -53,9 +60,19 @@ const Diary = () => {
     }
   };
 
+  const editMealHandler = (mealTitle, meal) => {
+    setMealTitle(mealTitle);
+    setMeal(meal);
+    setMealId(meal._id);
+    dispatch(setModalEditOn());
+    window.addEventListener('keydown', escHandler);
+    window.addEventListener('click', escHandler);
+  };
+
   return (
     <section className={css.sectionDiary}>
       {modalMealOn && <ModalAddMeal title={mealTitle} />}
+      {editModalOn && <EditModal meal={meal} title={mealTitle} id={mealId} />}
       <div className={css.dairy_title}>
         <NavLink to="/main">
           <img
@@ -154,7 +171,16 @@ const Diary = () => {
                                 {record.fat}
                               </span>
                             </li>
-                            <div className={css.dairy_icons_edit}>
+
+                            {/* Edit meal Div */}
+                            <div
+                              className={css.dairy_icons_edit}
+                              id={record._id}
+                              style={{ cursor: 'pointer' }}
+                              onClick={() =>
+                                editMealHandler('Breakfast', record)
+                              }
+                            >
                               <img
                                 src={edit_pen}
                                 alt="edit_pen"
@@ -274,7 +300,12 @@ const Diary = () => {
                               {record.fat}
                             </span>
                           </li>
-                          <div className={css.dairy_icons_edit}>
+                          <div
+                            className={css.dairy_icons_edit}
+                            id={record._id}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => editMealHandler('Lunch', record)}
+                          >
                             <img
                               src={edit_pen}
                               alt="edit_pen"
@@ -399,7 +430,12 @@ const Diary = () => {
                                 {record.fat}
                               </span>
                             </li>
-                            <div className={css.dairy_icons_edit}>
+                            <div
+                              className={css.dairy_icons_edit}
+                              id={record._id}
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => editMealHandler('Dinner', record)}
+                            >
                               <img
                                 src={edit_pen}
                                 alt="edit_pen"
@@ -422,11 +458,7 @@ const Diary = () => {
                 })}
                 {/* end of records */}
                 {/* + Record meal text */}
-                <div
-                  className={css.recordMealText}
-                  // onClick={recordMealHeandler}
-                  // name="Dinner"
-                >
+                <div className={css.recordMealText}>
                   <img
                     src={plus}
                     alt="plus"
@@ -526,7 +558,12 @@ const Diary = () => {
                               {record.fat}
                             </span>
                           </li>
-                          <div className={css.dairy_icons_edit}>
+                          <div
+                            className={css.dairy_icons_edit}
+                            id={record._id}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => editMealHandler('Snack', record)}
+                          >
                             <img
                               src={edit_pen}
                               alt="edit_pen"

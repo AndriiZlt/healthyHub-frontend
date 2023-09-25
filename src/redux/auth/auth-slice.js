@@ -107,14 +107,25 @@ export const authSlice = createSlice({
         console.log('Email check rejected');
         state.isLoading = false;
       })
+      .addCase(authOperations.saveSettings.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.saveSettings.fulfilled, (state, action) => {
         console.log('Save settings fulfield', action.payload);
-        state.user.activity = action.payload.activity;
+        state.user = { ...state.user, ...action.payload };
+        state.isLoading = false;
+      })
+      .addCase(authOperations.saveSettings2.fulfilled, (state, action) => {
+        console.log('Save settings2 fulfield', action.payload);
         state.user.weight = action.payload.weight;
+      })
+      .addCase(authOperations.updateAvatar.pending, (state, action) => {
+        state.isLoading = true;
       })
       .addCase(authOperations.updateAvatar.fulfilled, (state, action) => {
         console.log('UpdateAvatar fulfield', action.payload);
         state.user.avatarURL = action.payload;
+        state.isLoading = false;
       })
       .addCase(authOperations.changeGoal.fulfilled, (state, action) => {
         state.user.goal = action.payload;

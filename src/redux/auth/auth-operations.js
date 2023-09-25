@@ -104,20 +104,6 @@ const saveSettings = createAsyncThunk(
     }
   }
 );
-
-const changeGoal = createAsyncThunk(
-  'user/change-goal',
-  async credentials => {
-    try{
-      const { data } = await axios.patch('/user/change-goal', credentials);
-      console.log(data.goal)
-      return data.goal;
-    }catch(error){
-      throw error();
-    }
-  }
-)
-
 const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
   try {
     const { data } = await axios.post('/user/avatars', avatarData, {
@@ -142,6 +128,7 @@ const authOperations = {
   forgotPassword,
   saveSettings,
   updateAvatar,
+  saveSettings2,
   changeGoal,
 };
 
