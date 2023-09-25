@@ -11,6 +11,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const Settings = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [settingsChanged, setSettingsChanged] = useState(false);
+  const [avatarChanged, setAvatarChanged] = useState(false);
   const { name, age, gender, height, weight, activity, avatarURL } =
     useSelector(authSelectors.getUser);
 
@@ -30,11 +32,15 @@ const Settings = () => {
       ...formData,
       [name]: value,
     });
+    setSettingsChanged(true);
+    console.log('set settings true');
   };
 
   const handleAvatarChange = e => {
     const file = e.target.files[0];
     setAvatarFile(file);
+    setAvatarChanged(true);
+    console.log('set avatar true');
   };
 
   const handleSave = e => {
@@ -48,14 +54,15 @@ const Settings = () => {
       Notify.failure('Please fill in all fields!');
       return;
     }
-    if (avatarFile) {
-      const avatarData = new FormData();
-      avatarData.append('avatar', avatarFile);
-      dispatch(authOperations.updateAvatar(avatarData));
-      dispatch(authOperations.saveSettings(formData));
-      navigate('/main');
-    } else {
-      dispatch(authOperations.saveSettings(formData));
+    if (avatarChanged || settingsChanged) {
+      if (avatarChanged) {
+        const avatarData = new FormData();
+        avatarData.append('avatar', avatarFile);
+        dispatch(authOperations.updateAvatar(avatarData));
+      }
+      if (settingsChanged) {
+        dispatch(authOperations.saveSettings(formData));
+      }
       navigate('/main');
     }
   };
