@@ -92,38 +92,19 @@ const forgotPassword = createAsyncThunk('', async credentials => {
   }
 });
 
-// const saveSettings = createAsyncThunk(
-//   'user/change-settings',
-//   async credentials => {
-//     try {
-//       const { data } = await axios.patch('/user/change-settings', credentials);
-//       return data;
-//     } catch (error) {
-//       console.log('Error in Settings', error.response.data);
-//       throw error();
-//     }
-//   }
-// );
-
 const saveSettings = createAsyncThunk(
   'user/change-settings',
-  async userData => {
+  async credentials => {
     try {
-      console.log("qweqweqwewq",userData)
-      const { data } = await axios.patch(
-        '/user/change-settings',
-        userData.setting
-      );
-      const token = userData.token;
-      const goal = userData.goal;
-      const avatarURL = userData.avatarURL;
-      return { ...data, token, goal, avatarURL };
+      const { data } = await axios.patch('/user/change-settings', credentials);
+      return data;
     } catch (error) {
       console.log('Error in Settings', error.response.data);
       throw error();
     }
   }
 );
+
 const changeGoal = createAsyncThunk(
   'user/change-goal',
   async credentials => {
