@@ -54,7 +54,7 @@ const Header = () => {
           {isMobile && (
             <Dropdown show={showDropdown} onToggle={e => setShowDropdown(e)}>
               <Dropdown.Toggle className={css.button} />
-              <Dropdown.Menu className={`${css.modal} ${css.mobile_modal}`}>
+              <Dropdown.Menu className={`${css.modal} ${css.mobile_modal} ${showDropdown ? css.show : ''}`}>
                 <MobileAction closeButton={closeButton} />
               </Dropdown.Menu>
             </Dropdown>
@@ -72,13 +72,13 @@ const Header = () => {
                 <Dropdown show={showGoal} onToggle={e => setShowGoal(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image={goal==="Lose fat" ? loseFat :  goal==="Maintain" ? maintain : gainMuscle}
+                      image={goal==="Lose fat" ? loseFat : goal==="Maintain" ? maintain : gainMuscle}
                       title="Goal"
                       text={goal}
                       showGoal={showGoal}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal} ${showGoal ? css.show : ''}`}>
                     <TargetSelectionModal closeGoalModal={closeGoalModal}/>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -92,7 +92,7 @@ const Header = () => {
                       editIcon={true}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal} ${showWeight ? css.show : ''}`}>
                     <WeightModal closeWeightModal={closeWeightModal} />
                   </Dropdown.Menu>
                 </Dropdown>
@@ -112,7 +112,7 @@ const Header = () => {
                   showSetting={showSetting}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu className={`${css.modal} ${css.logout}`}>
+              <Dropdown.Menu className={`${css.modal} ${css.logout} ${showSetting ? css.show : ''}`}>
                 <LogoutModal closeModal={closeModal} />
               </Dropdown.Menu>
             </Dropdown>
