@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/healthyHub-frontend/static/css/main.79f039a3.css",
-    "main.js": "/healthyHub-frontend/static/js/main.fe5559c4.js",
+    "main.css": "/healthyHub-frontend/static/css/main.ee773dcc.css",
+    "main.js": "/healthyHub-frontend/static/js/main.41d8dd1d.js",
     "static/js/787.545f56ba.chunk.js": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js",
     "static/media/breakfast.svg": "/healthyHub-frontend/static/media/breakfast.f1ff39ce6a18fb4d909722e48c944518.svg",
     "static/media/snack.svg": "/healthyHub-frontend/static/media/snack.ab1ecdcc3d6f3609639a77576cf8628d.svg",
@@ -14,7 +14,6 @@
     "static/media/userGoal.svg": "/healthyHub-frontend/static/media/userGoal.b12ada6fbed79f7f9eb048da3ec582eb.svg",
     "static/media/userGender.svg": "/healthyHub-frontend/static/media/userGender.57f578b9dbdaf1b0423a4d8e69d02e53.svg",
     "static/media/welcomeImage.png": "/healthyHub-frontend/static/media/welcomeImage.6a9306e0d0f3c1ea4e91.png",
-    "static/media/chart-calories.svg": "/healthyHub-frontend/static/media/chart-calories.4bbec15609cc963b60d7684e08f2fd52.svg",
     "static/media/recordYourMeal.svg": "/healthyHub-frontend/static/media/recordYourMeal.499c72cf73d3ae3c2f2dd4d7caa6b367.svg",
     "static/media/add-water-intake.svg": "/healthyHub-frontend/static/media/add-water-intake.93b42912e25a39b711518d65cbf92fad.svg",
     "static/media/HealthyHub.svg": "/healthyHub-frontend/static/media/HealthyHub.4756b7d994f43ee41e0d5d1e58b2aebd.svg",
@@ -42,12 +41,12 @@
     "static/media/plus.svg": "/healthyHub-frontend/static/media/plus.3549f83e53c7836e8602dd5b93eb076d.svg",
     "static/media/arrow-down.svg": "/healthyHub-frontend/static/media/arrow-down.3a308cfe3e9d8b460168c1d365733906.svg",
     "static/media/userRadioCheked.svg": "/healthyHub-frontend/static/media/userRadioCheked.c972043ff8b81b0a8bc9.svg",
-    "main.79f039a3.css.map": "/healthyHub-frontend/static/css/main.79f039a3.css.map",
-    "main.fe5559c4.js.map": "/healthyHub-frontend/static/js/main.fe5559c4.js.map",
+    "main.ee773dcc.css.map": "/healthyHub-frontend/static/css/main.ee773dcc.css.map",
+    "main.41d8dd1d.js.map": "/healthyHub-frontend/static/js/main.41d8dd1d.js.map",
     "787.545f56ba.chunk.js.map": "/healthyHub-frontend/static/js/787.545f56ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.79f039a3.css",
-    "static/js/main.fe5559c4.js"
+    "static/css/main.ee773dcc.css",
+    "static/js/main.41d8dd1d.js"
   ]
 }
