@@ -226,7 +226,7 @@ const Home = () => {
                 <CircularProgressbarWithChildren
                   value={percentageCalories}
                   styles={buildStyles({
-                    // textSize: '14px',
+                    textSize: '14px',
                     pathColor: '#45FFBC',
                     textColor: '#B6B6B6',
                     trailColor: '#292928',
