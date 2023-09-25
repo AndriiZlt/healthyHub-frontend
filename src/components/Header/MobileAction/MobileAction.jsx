@@ -8,6 +8,10 @@ import authSelectors from 'redux/auth/auth-selectors';
 import WeightModal from '../WeightModal/WeightModal';
 import TargetSelectionModal from '../TargetSelectionModal/TargetSelectionModal';
 
+import loseFat from '../../../assets/loseFat.png';
+import maintain from '../../../assets/Maintain.png';
+import gainMuscle from '../../../assets/gainMuscle.png';
+
 function MobileAction({ closeButton }) {
   const { goal, weight } = useSelector(authSelectors.getUser);
   const [showGoal, setShowGoal] = useState(false);
@@ -30,7 +34,7 @@ function MobileAction({ closeButton }) {
     <div className={css.mobile_action}>
       <button className={css.button} onClick={handleGoalShow}>
         <ButtonDropDown
-          image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
+          image={goal==="Lose fat" ? loseFat :  goal==="Maintain" ? maintain : gainMuscle}
           title="Goal"
           text={goal}
         />

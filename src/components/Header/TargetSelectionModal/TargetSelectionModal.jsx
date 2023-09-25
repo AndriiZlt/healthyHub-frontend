@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/auth-selectors';
+import { useState } from 'react';
+import { useDispatch} from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import useMediaQuery from 'helpers/useMediaQuery';
 
@@ -15,18 +14,6 @@ function TargetSelectionModal({closeGoalModal}) {
   const dispatch = useDispatch();
   const isMobile = useMediaQuery('(max-width:833px)');
   const [goals, setgoals] = useState("");
-
-  const {
-    name,
-    goal,
-    gender,
-    age,
-    height,
-    weight,
-    activity,
-    token,
-    avatarURL,
-  } = useSelector(authSelectors.getUser);
 
   function setLoseFat() {
     setgoals("Lose fat");

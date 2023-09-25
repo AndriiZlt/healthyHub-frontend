@@ -13,6 +13,10 @@ import LogoutModal from './LogoutModal/LogoutModal';
 import WeightModal from './WeightModal/WeightModal';
 import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
 
+import loseFat from '../../assets/loseFat.png';
+import maintain from '../../assets/Maintain.png';
+import gainMuscle from '../../assets/gainMuscle.png';
+
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isMobile = useMediaQuery('(max-width:833px)');
@@ -68,7 +72,7 @@ const Header = () => {
                 <Dropdown show={showGoal} onToggle={e => setShowGoal(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
+                      image={goal==="Lose fat" ? loseFat :  goal==="Maintain" ? maintain : gainMuscle}
                       title="Goal"
                       text={goal}
                       showGoal={showGoal}
@@ -81,7 +85,7 @@ const Header = () => {
                 <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image="https://i.ibb.co/y5LpgvL/Waight-image.png"
+                      image={"https://i.ibb.co/y5LpgvL/Waight-image.png"}
                       title="Weight"
                       text={weight}
                       subtext="kg"
@@ -108,7 +112,7 @@ const Header = () => {
                   showSetting={showSetting}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu className={css.modal}>
+              <Dropdown.Menu className={`${css.modal} ${css.logout}`}>
                 <LogoutModal closeModal={closeModal} />
               </Dropdown.Menu>
             </Dropdown>
