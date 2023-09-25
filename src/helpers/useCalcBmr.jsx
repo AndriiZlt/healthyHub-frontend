@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
 
-function CalcBMR() {
+function useCalcBMR() {
   const { gender, weight, height, age, activity } = useSelector(
     authSelectors.getUser
   );
@@ -18,10 +18,10 @@ function CalcBMR() {
           4.33 * Number(age)) *
         Number(activity);
 
-  return <>{Math.floor(BMR)}</>;
+  return Math.floor(BMR);
 }
 
-export default CalcBMR;
+export default useCalcBMR;
 
 // Формула для визначення денного рівня калорійного споживання, необхідного для підтримання поточної маси тіла.
 // Для чоловіків:

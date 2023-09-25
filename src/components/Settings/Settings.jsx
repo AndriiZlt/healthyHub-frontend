@@ -33,14 +33,12 @@ const Settings = () => {
       [name]: value,
     });
     setSettingsChanged(true);
-    console.log('set settings true');
   };
 
   const handleAvatarChange = e => {
     const file = e.target.files[0];
     setAvatarFile(file);
     setAvatarChanged(true);
-    console.log('set avatar true');
   };
 
   const handleSave = e => {

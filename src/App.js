@@ -17,14 +17,11 @@ import UserGender from 'components/UserData/UserGender';
 import UserBody from 'components/UserData/UserBody';
 import UserActivity from 'components/UserData/UserActivity';
 import { Navigate } from 'react-router-dom';
-import TestDoughnut from 'components/TestComponent/TestDoughnut';
 import LoaderModal from 'components/LoaderModal/LoaderModal';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
-// import { setLoadingTrue } from 'redux/auth/auth-slice';
 import mealsOperations from 'redux/meals/meals-operations';
-import TestIrina from 'components/TestComponent/TestIrina';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 function App() {
@@ -167,8 +164,6 @@ function App() {
           />
         </Route>
         <Route exact path="/*" element={<Navigate to="/" />} />
-        <Route exact path="/test" element={<TestDoughnut />} />
-        <Route exact path="/testIrina" element={<TestIrina />} />
       </Routes>
     </>
   );
