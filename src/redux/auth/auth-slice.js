@@ -127,9 +127,6 @@ export const authSlice = createSlice({
         state.user.avatarURL = action.payload;
         state.isLoading = false;
       })
-      .addCase(authOperations.changeGoal.rejected, (state, action) => {
-        // state.isLoading = true;
-      })
       .addCase(authOperations.changeGoal.fulfilled, (state, action) => {
         state.user.goal = action.payload;
         state.isLoading = false;
