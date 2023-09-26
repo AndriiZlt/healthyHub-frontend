@@ -11,6 +11,7 @@ import TargetSelectionModal from '../TargetSelectionModal/TargetSelectionModal';
 import loseFat from '../../../assets/loseFat.png';
 import maintain from '../../../assets/Maintain.png';
 import gainMuscle from '../../../assets/gainMuscle.png';
+import weightImage from '../../../assets/Weight.png';
 
 function MobileAction({ closeButton }) {
   const { goal, weight } = useSelector(authSelectors.getUser);
@@ -34,7 +35,13 @@ function MobileAction({ closeButton }) {
     <div className={css.mobile_action}>
       <button className={css.button} onClick={handleGoalShow}>
         <ButtonDropDown
-          image={goal==="Lose fat" ? loseFat :  goal==="Maintain" ? maintain : gainMuscle}
+          image={
+            goal === 'Lose fat'
+              ? loseFat
+              : goal === 'Maintain'
+              ? maintain
+              : gainMuscle
+          }
           title="Goal"
           text={goal}
         />
@@ -51,7 +58,7 @@ function MobileAction({ closeButton }) {
       </Modal>
       <button className={css.button} onClick={handleWeightShow}>
         <ButtonDropDown
-          image="https://i.ibb.co/y5LpgvL/Waight-image.png"
+          image={weightImage}
           title="Weight"
           text={weight}
           subtext="kg"

@@ -16,6 +16,7 @@ import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
 import loseFat from '../../assets/loseFat.png';
 import maintain from '../../assets/Maintain.png';
 import gainMuscle from '../../assets/gainMuscle.png';
+import weightImage from '../../assets/Weight.png'
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -85,7 +86,7 @@ const Header = () => {
                 <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image={"https://i.ibb.co/y5LpgvL/Waight-image.png"}
+                      image={weightImage}
                       title="Weight"
                       text={weight}
                       subtext="kg"
