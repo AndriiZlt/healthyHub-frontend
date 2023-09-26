@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/auth-selectors';
 import dayjs from 'dayjs'; // eslint-disable-line
 import useDashboardYear from 'helpers/useDashboardYear';
 import mealsSelectors from 'redux/meals/meals-selectors';

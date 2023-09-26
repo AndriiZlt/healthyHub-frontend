@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrowBackPath from '../../assets/Dashboard/arrow-left.svg';
 import arrowDownPath from '../../assets/Dashboard/arrow-down.svg';
@@ -10,7 +10,6 @@ import WeightMonthChart from './WeightMonthChart';
 import WeightYearChart from './WeightYearChart';
 import css from './Dashboard.module.css';
 import useDashboardMonth from 'helpers/useDashboardMonth';
-import useDashboardYear from 'helpers/useDashboardYear';
 
 const monthNames = [
   'January',
