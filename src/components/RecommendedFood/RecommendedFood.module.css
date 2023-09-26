@@ -3,6 +3,17 @@
   padding-bottom: 16px;
   font-size: 24px;
 }
+.recommended_title {
+  display: flex;
+  align-items: center;
+}
+.arrow_rigth {
+  margin-bottom: 8px;
+  margin-right: 4px;
+  height: 16px;
+  width: 16px;
+  color: var(--primary-grey-color);
+}
 .picture {
   display: block;
   margin-bottom: 24px;
@@ -47,6 +58,11 @@
     padding-top: 24px;
     padding-bottom: 20px;
     font-size: 30px;
+  }
+  .arrow_rigth {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
   }
   .picture {
     display: block;

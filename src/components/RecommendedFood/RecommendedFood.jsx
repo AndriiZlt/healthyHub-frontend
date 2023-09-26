@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import illustration from '../../assets/RecommendedFood.svg';
+import arrow_rigth from '../../assets/arrow-back.svg';
+import { NavLink } from 'react-router-dom';
 import css from './RecommendedFood.module.css';
 
 export const products = [
@@ -343,7 +345,16 @@ const RecommendedFood = () => {
 
   return (
     <div className={css.conteiner}>
+      <div className={css.recommended_title}>
+      <NavLink to="/main">
+          <img
+            src={arrow_rigth}
+            alt="arrow-rigth"
+            className={css.arrow_rigth}
+          />
+        </NavLink>
       <h1 className={css.title}>Recommended food</h1>
+      </div>
       <div className={css.wrapperDesktop}>
         <img
           src={illustration}
@@ -358,7 +369,6 @@ const RecommendedFood = () => {
                 alt="product"
                 className={css.icon}
                 width={46}
-                height={46}
               />
               <div>
                 <li className={css.name}> {product.name}</li>

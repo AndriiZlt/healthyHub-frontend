@@ -44,7 +44,7 @@ const Settings = () => {
   const handleSave = e => {
     e.preventDefault();
     if (
-      formData.name === '' ||
+      formData.name === '' || 
       formData.age === '' ||
       formData.height === '' ||
       formData.weight === ''
@@ -144,6 +144,9 @@ const Settings = () => {
               <input
                 type="text"
                 name="age"
+                min={0}
+                max={100}
+                pattern="^(0?[1-9]|[1-9][0-9]|[1][0-1][0-9]|120)$" 
                 value={formData.age}
                 onChange={handleChange}
                 placeholder="Enter your age"
@@ -186,7 +189,9 @@ const Settings = () => {
               <input
                 type="text"
                 name="height"
-                pattern="^[0-9]+'[0-9]+$"
+                min={0}
+                max={300}
+                pattern="^\d+(\.\d{1,2})?$" 
                 value={formData.height}
                 onChange={handleChange}
                 placeholder="Enter your height"
@@ -200,7 +205,9 @@ const Settings = () => {
               <input
                 type="text"
                 name="weight"
-                pattern="^[0-9]+'[0-9]+$"
+                min={0}
+                max={300}
+                pattern="^\d+(\.\d{1,2})?$" 
                 value={formData.weight}
                 onChange={handleChange}
                 placeholder="Enter your weight"
