@@ -126,6 +126,12 @@ export const authSlice = createSlice({
         console.log('UpdateAvatar fulfield', action.payload);
         state.user.avatarURL = action.payload;
         state.isLoading = false;
+      })
+      .addCase(authOperations.forgotPassword.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(authOperations.forgotPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
       });
   },
 });
