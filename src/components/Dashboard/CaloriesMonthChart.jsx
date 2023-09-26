@@ -9,8 +9,6 @@ import {
   Legend,
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
-import useDashboardMonth from 'helpers/useDashboardMonth';
-// import useDashboardYear from "helpers/useDashboardYear";
 import css from './Dashboard.module.css';
 
 ChartJS.register(
@@ -22,121 +20,37 @@ ChartJS.register(
   Tooltip
 );
 
-const CaloriesDashboard = props => {
-  const userMonthData = useDashboardMonth();
-  // const chart = [];
+const CaloriesMonthChart = props => {
+  const userMonthData = [...props.userMonthData];
 
-  // for (let i = 1; i < 32; i++) {
-  //   chart.forEach(day => {
-  //     if (day.date === i) {
-  //       chart.push(day);
-  //     }
-  //   });
-  //   if chart[i]
-  // }
+  // calculate Average
+  let sum = 0;
+  userMonthData.forEach(element => {
+    sum += element.calories;
+  });
+  const average = Math.floor(sum / userMonthData.length);
 
-  // console.log('userMonthData', userMonthData);
-  const dashboardMonthData = [];
-  const MonthCaloriesArray = [];
-  function calculateMonthAverage(array) {
-    let sum = 0;
-    MonthCaloriesArray.forEach(element => {
-      sum += parseFloat(element);
-    });
-    props.setAverageCalories(sum / array.length);
+  const labels = [];
+  for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
+    labels.push(i);
   }
-
-  for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
-    let found = false;
-
-    for (const userDayObj of userMonthData) {
-      const userDayDate = new Date(userDayObj.date);
-      const dayOfMonth = userDayDate.getDate();
-      if (dayOfMonth === day) {
-        dashboardMonthData.push({
-          date: day,
-          kcal: userDayObj.calories,
-        });
-        if (userDayObj.calories !== 0 && userDayObj.calories !== '0') {
-          MonthCaloriesArray.push(userDayObj.calories.toString());
-        }
-        found = true;
-        break;
-      }
-    }
-    setTimeout(() => {
-      calculateMonthAverage(MonthCaloriesArray);
-    }, 0);
-
-    if (!found) {
-      dashboardMonthData.push({
-        date: day,
-        kcal: 0,
-      });
-    }
-  }
-
-  // console.log(dashboardMonthData);
-
-  // const userYearData = useDashboardYear();
-
-  // const dashboardYearData = []
-  // const YearCaloriesArray = []
-
-  // function calculateYearAverage(array) {
-  // 	let sum = 0;
-  // 	DailyCaloriesArray.forEach((element) => {
-  // 		sum += element;
-  // 	});
-  // 	return sum / array.length;
-  // }
-
-  // props.setAverageCalories(calculateYearAverage(DailyCaloriesArray))
-
-  // for (let month = 1; month <= numberOfDaysInMonth; month++) {
-  // 	let found = false;
-
-  // 	for (const userDayObj of userMonthData) {
-  // 		const userDataDate = new Date(userDayObj.date);
-  // 		const monthOfYear = userDataDate.getDate();
-  // 		if (monthOfYear === month) {
-  // 			dashboardYearData.push({
-  // 				date: month,
-  // 				kcal: parseFloat(userDayObj.calories),
-  // 			});
-  // 		YearCaloriesArray.push(parseFloat(userDayObj.calories))
-  // 		found = true;
-  // 		break;
-  // 		}
-  // 	}
-
-  // 	if (!found) {
-  // 		dashboardYearData.push({
-  // 			date: month,
-  // 			kcal: 0,
-  // 			ml: 0,
-  // 			kg: 0,
-  // 		});
-  // 	}
-  // }
 
   const [chartData] = useState({
-    labels: userMonthData.map(item => item.date),
+    labels: labels,
     datasets: [
       {
         data: userMonthData.map(item => item.calories),
-        // backgroundColor: '#E3FFA8',
         borderColor: '#E3FFA8',
         borderWidth: 1,
-
+        hoverOffset: 4,
         tension: 0.4,
         pointBorderWidth: 0,
-        pointRadius: 0,
         pointHoverRadius: 6,
         pointHoverBackgroundColor: '#E3FFA8',
         pointBorderHoverColor: '#E3FFA8',
-        // legend: false,
+        pointHitRadius: 10,
         hoverBackgroundColor: '#E3FFA8',
+        fill: false,
       },
     ],
   });
@@ -241,10 +155,23 @@ const CaloriesDashboard = props => {
   };
 
   return (
-    <div className={css.dashboardContent}>
-      <Line data={chartData} options={options} />
+    <div className={css.caloriesBlock}>
+      <div className={css.blockHeading}>
+        <p className={css.blockHeadingText}>Calories</p>
+        <p className={css.blockAverageValue}>
+          Average value:{}
+          <span className={css.blockAverageValueSpan}>{average} kcal</span>
+        </p>
+      </div>
+      <div className={css.dashboardContainer}>
+        <div className={css.caloriesDashboard}>
+          <div className={css.dashboardContent}>
+            <Line data={chartData} options={options} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default CaloriesDashboard;
+export default CaloriesMonthChart;

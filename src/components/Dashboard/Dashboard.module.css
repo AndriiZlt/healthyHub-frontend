@@ -132,11 +132,17 @@
   line-height: 1.42;
   letter-spacing: 0em;
   color: var(--primary-white-color);
+  display: flex;
+  align-items: center;
 }
 
 .blockAverageValueSpan {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
   margin: 0;
   color: var(--primary-grey-color);
+  margin-left: 8px;
 }
 
 .dashboardContainer {
@@ -166,6 +172,7 @@
   align-items: center;
   margin-bottom: 8px;
   border-radius: 12px;
+
   padding: 25px 31px 24px 14px;
 }
 
@@ -187,11 +194,29 @@
   border-radius: 12px;
 }
 
+.weightDashboardListYear {
+  display: flex;
+  justify-content: space-between;
+
+  background-color: var(--primary-black-second-color);
+  padding: 24px 21px 36px 21px;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
 .weightDashboardKg {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
   letter-spacing: 0em;
+}
+
+.weightDashboardKgYear {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0em;
+  margin-bottom: 16px;
 }
 
 .weightDashboardDate {
@@ -202,7 +227,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0em;
+}
+
+.weightDashboardListYear li {
+  width: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.4;
@@ -242,9 +280,14 @@
     line-height: 1.33;
   }
 
+  .blockHeading {
+    justify-content: flex-start;
+  }
+
   .blockHeadingText {
     font-size: 22px;
     line-height: 1.45;
+    margin-right: 40px;
   }
 
   .caloriesBlock,
@@ -260,6 +303,7 @@
 
   .weightDashboardList {
     gap: 6px;
+    margin-bottom: 0;
   }
 
   .weightDashboard {
@@ -271,6 +315,9 @@
 /* DESKTOP */
 
 @media (min-width: 1440px) {
+  .weightDashboardListYear {
+    padding: 24px 24px 36px 24px;
+  }
   .dashboardSection {
     padding-top: 20px;
   }

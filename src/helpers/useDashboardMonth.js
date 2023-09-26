@@ -2,91 +2,53 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
 import mealsSelectors from 'redux/meals/meals-selectors';
-import dayjs from 'dayjs';
 
 const calculateDay = data => {
-  //   const result = {
-  //     breakfast: { calories: 0 },
-  //     lunch: { calories: 0 },
-  //     dinner: { calories: 0 },
-  //     snack: { calories: 0 },
-  //     date: '',
-  //     calories: 0,
-  //     water: 0,
-  //   };
-  //   const meals = ['breakfast', 'lunch', 'dinner', 'snack'];
-  //   for (const meal of meals) {
-  //     for (const record in data[meal]) {
-  //       for (const stat in data[meal][record]) {
-  //         if (stat !== '_id' && stat !== 'name') {
-  //           result[meal][stat] += data[meal][record][stat];
-  //         }
-  //       }
-  //     }
-  //   }
-  //   for (const meal of meals) {
-  //     for (const nutrient in result[meal]) {
-  //       result[nutrient] += result[meal][nutrient];
-  //     }
-  //   }
-  //   result.date = data.date;
-  //   result.calories = data.calories;
-  //   result.water = data.water;
-  //   result.weight = data.weight;
-  //   return result;
   const result = {
-    breakfast: { carbonohidrates: 0, protein: 0, fat: 0, calories: 0 },
-    lunch: { carbonohidrates: 0, protein: 0, fat: 0, calories: 0 },
-    dinner: { carbonohidrates: 0, protein: 0, fat: 0, calories: 0 },
-    snack: { carbonohidrates: 0, protein: 0, fat: 0, calories: 0 },
     carbonohidrates: 0,
     protein: 0,
     fat: 0,
     calories: 0,
     date: '',
+    weight: 0,
   };
   const meals = ['breakfast', 'lunch', 'dinner', 'snack'];
-  for (const item of meals) {
-    for (const record of data[item]) {
-      for (const stat in record) {
-        if (stat !== '_id' && stat !== 'name') {
-          result[item][stat] += record[stat];
-        }
-      }
-    }
-  }
+
   for (const meal of meals) {
-    for (const nutrient in result[meal]) {
-      result[nutrient] += result[meal][nutrient];
+    // Breakfast, lunch....
+    for (const intake of data[meal]) {
+      // data.breakfast.intake
+      result.calories += intake.calories;
     }
   }
-  result.date = dayjs(data.date).format('DD');
-  result.water = data.water || 0;
-  result.weight = data.weight;
+  result.date = data.date.slice(8, 10);
+  result.month = data.date.slice(5, 7);
+  result.water = data.water || null;
+  result.weight = data.weight || null;
+
   return result;
 };
 
 const useDashboardMonth = () => {
-  const chart = [];
+  const chartData = [];
   const dispatch = useDispatch();
   const month = useSelector(mealsSelectors.getMonth);
-  console.log('month', month);
   useEffect(() => {
     dispatch(mealsOperations.fetchMonth());
   }, [dispatch]);
 
   for (const day in month) {
-    // console.log('day', month[day]);
     const result = calculateDay(month[day]);
-    console.log('result', result);
-    chart.push({
+
+    chartData.push({
       date: result.date || '0',
       calories: result.calories || '0',
       water: result.water || '0',
       weight: result.weight || '0',
     });
   }
-  return chart;
+
+  return chartData;
 };
 
 export default useDashboardMonth;

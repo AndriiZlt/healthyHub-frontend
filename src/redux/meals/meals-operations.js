@@ -3,8 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const fetchMeals = createAsyncThunk('meals/getMeals', async userId => {
   try {
-    const { data } = await axios.get('/meals', userId);
-    console.log(data);
+    const { data } = await axios.get('/meals', userId); // eslint-disable-line
+    // console.log(data);
   } catch (error) {
     console.log('Error in Register', error.response.data);
     throw error();
@@ -19,7 +19,7 @@ const fetchDay = createAsyncThunk('meals/fetchDay', async weight => {
     if (data.message === 'Day not found!') {
       console.log('creating day...');
       const { data } = await axios.post('/user/day', { weight });
-      console.log('data after creating', data);
+      // console.log('data after creating', data);
 
       return data;
     } else {
@@ -35,7 +35,7 @@ const fetchMonth = createAsyncThunk('meals/fetchMonth', async () => {
   console.log('Fetching month...');
   try {
     const { data } = await axios.get('/user/day/month');
-    console.log('data in fetching month', data.newStatistic);
+    // console.log('data in fetching month', data.newStatistic);
     return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching month', error.response.data);
@@ -47,7 +47,7 @@ const fetchYear = createAsyncThunk('meals/fetchYear', async () => {
   console.log('Fetching Year...');
   try {
     const { data } = await axios.get('/user/day/year');
-    console.log('data in fetching year', data.newStatistic);
+    // console.log('data in fetching year', data.newStatistic);
     return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching year', error.response.data);
@@ -85,7 +85,7 @@ const editMeal = createAsyncThunk('meals/editMeal', async mealData => {
       `/user/food-intake/${mealData.id}`,
       mealData.data
     );
-    console.log('Meal data after edit', data);
+    // console.log('Meal data after edit', data);
     return data;
   } catch (error) {
     console.log('Error in meal record sending', error.response.data);
@@ -104,8 +104,8 @@ const getMonth = createAsyncThunk('meals/getMonth', async () => {
 
 const getYear = createAsyncThunk('meals/getYear', async () => {
   try {
-    const { data } = await axios.get('/user/day/year');
-    console.log(data.newStatistic);
+    const { data } = await axios.get('/user/day/year'); // eslint-disable-line
+    // console.log(data.newStatistic);
   } catch (error) {
     console.log('Error in water intake sending', error.response.data);
     throw error();
