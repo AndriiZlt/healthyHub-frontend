@@ -23,6 +23,7 @@ import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
 import mealsOperations from 'redux/meals/meals-operations';
 import mealsSelectors from 'redux/meals/meals-selectors';
+import GenerateYear from 'helpers/generateYear';
 
 function App() {
   const dispatch = useDispatch();
@@ -164,6 +165,7 @@ function App() {
           />
         </Route>
         <Route exact path="/*" element={<Navigate to="/" />} />
+        <Route exact path="/test" element={<GenerateYear />} />
       </Routes>
     </>
   );
