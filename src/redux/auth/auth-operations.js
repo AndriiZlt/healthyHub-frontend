@@ -139,6 +139,15 @@ const updateAvatar = createAsyncThunk('user/avatars', async avatarData => {
   }
 });
 
+const changeGoal = createAsyncThunk('user/change-goal', async credentials => {
+  try{
+    const { data } = await axios.patch('/user/change-goal', credentials);
+    return data.goal;
+  } catch(error){
+    throw error()
+  }
+})
+
 const authOperations = {
   register,
   logIn,
@@ -149,6 +158,7 @@ const authOperations = {
   saveSettings,
   updateAvatar,
   saveSettings2,
+  changeGoal,
 };
 
 export default authOperations;
