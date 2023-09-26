@@ -5,6 +5,7 @@ const getRegData = state => state.auth.regData;
 const getUser = state => state.auth.user;
 const getToken = state => state.auth.user.token;
 const getIsLoading = state => state.auth.isLoading;
+const getWeight = state => state.auth.user.weight;
 
 const authSelectors = {
   getIsLoggedIn,
@@ -14,6 +15,7 @@ const authSelectors = {
   getUser,
   getToken,
   getIsLoading,
+  getWeight,
 };
 
 export default authSelectors;

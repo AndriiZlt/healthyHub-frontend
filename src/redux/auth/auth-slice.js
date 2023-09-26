@@ -130,6 +130,7 @@ export const authSlice = createSlice({
         state.user.avatarURL = action.payload;
         state.isLoading = false;
       })
+
       .addCase(authOperations.changeGoal.pending, (state, action) => {
         state.isLoading = true;
       })
@@ -137,6 +138,14 @@ export const authSlice = createSlice({
         state.user.goal = action.payload;
         state.isLoading = false;
       })
+
+      .addCase(authOperations.forgotPassword.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(authOperations.forgotPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+      });
+
   },
 });
 

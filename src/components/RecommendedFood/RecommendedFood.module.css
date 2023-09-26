@@ -20,6 +20,8 @@
 }
 .icon {
   margin-right: 20px;
+  width: 46px;
+  height: 46px;
 }
 .description {
   display: flex;
