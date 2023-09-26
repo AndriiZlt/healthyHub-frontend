@@ -1,92 +1,27 @@
 import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
-import useDashboardMonth from 'helpers/useDashboardMonth';
-// import useDashboardYear from "helpers/useDashboardYear";
 import css from './Dashboard.module.css';
 
-const WaterDashboard = props => {
-  const userMonthData = useDashboardMonth();
-  // const userYearData = useDashboardYear();
+const WaterMonthChart = props => {
+  const userMonthData = [...props.userMonthData];
 
-  const dashboardMonthData = [];
-  const MonthWaterIntakeArray = [];
+  let sum = 0;
+  userMonthData.forEach(element => {
+    sum += element.water;
+  });
+  const average = Math.floor(sum / userMonthData.length);
 
-  function calculateMonthAverage(array) {
-    let sum = 0;
-    MonthWaterIntakeArray.forEach(element => {
-      sum += parseFloat(element);
-    });
-    props.setAverageWater(sum / array.length);
+  const labels = [];
+  for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
+    labels.push(i);
   }
-
-  for (let day = 1; day <= props.numberOfDaysInMonth; day++) {
-    let found = false;
-
-    for (const userDayObj of userMonthData) {
-      const userDayDate = new Date(userDayObj.date);
-      const dayOfMonth = userDayDate.getDate();
-      if (dayOfMonth === day) {
-        dashboardMonthData.push({
-          date: day,
-          ml: userDayObj.water,
-        });
-        if (userDayObj.water !== 0 && userDayObj.water !== '0') {
-          MonthWaterIntakeArray.push(userDayObj.water.toString());
-        }
-        found = true;
-        break;
-      }
-    }
-    setTimeout(() => {
-      calculateMonthAverage(MonthWaterIntakeArray);
-    }, 0);
-    if (!found) {
-      dashboardMonthData.push({
-        date: day,
-        ml: 0,
-      });
-    }
-  }
-
-  // console.log(dashboardMonthData);
-
-  // const dashboardYearData = []
-  // for (let month = 1; month <= props.numberOfDaysInMonth; month++) {
-  // 	let found = false;
-
-  // 	for (const userDayObj of userMonthData) {
-  // 		const userDataDate = new Date(userDayObj.date);
-  // 		const monthOfYear = userDataDate.getDate();
-  // 		if (monthOfYear === month) {
-  // 			dashboardYearData.push({
-  // 				date: month,
-  // 				kcal: parseFloat(userDayObj.calories),
-  // 				ml: parseFloat(userDayObj.water),
-  // 				kg: parseFloat(userDayObj.weight),
-  // 			});
-  // 			found = true;
-  // 			break;
-  // 		}
-  // 	}
-
-  // 	if (!found) {
-  // 		dashboardYearData.push({
-  // 			date: month,
-  // 			ml: 0,
-  // 		});
-  // 	}
-  // }
-
-  // console.log(dashboardMonthData);
 
   const [chartData] = useState({
-    labels: dashboardMonthData.map(item => item.date - 1),
+    labels: labels,
     datasets: [
       {
-        // label: 'Your water consumption',
-        data: dashboardMonthData.map(item => item.ml),
-        // backgroundColor: '#006eff',
+        data: userMonthData.map(item => item.water),
         borderColor: '#E3FFA8',
         borderWidth: 1,
         hoverOffset: 4,
@@ -104,6 +39,7 @@ const WaterDashboard = props => {
 
   const options = {
     maintainAspectRatio: false,
+    // aspectRatio: 1,
     margin: 0,
     plugins: {
       tooltip: {
@@ -202,10 +138,23 @@ const WaterDashboard = props => {
     },
   };
   return (
-    <div className={css.dashboardContent}>
-      <Line data={chartData} options={options} />
+    <div className={css.waterBlock}>
+      <div className={css.blockHeading}>
+        <p className={css.blockHeadingText}>Water</p>
+        <p className={css.blockAverageValue}>
+          Average value:{' '}
+          <span className={css.blockAverageValueSpan}>{average} ml</span>
+        </p>
+      </div>
+      <div className={css.dashboardContainer}>
+        <div className={css.waterDashboard}>
+          <div className={css.dashboardContent}>
+            <Line data={chartData} options={options} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default WaterDashboard;
+export default WaterMonthChart;

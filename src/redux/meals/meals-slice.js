@@ -16,7 +16,6 @@ export const mealsSlice = createSlice({
   initialState,
   reducers: {
     clearMealData(state, _) {
-      console.log('Clearing meals data');
       state.today = null;
       state.month = null;
       state.year = null;
@@ -40,7 +39,7 @@ export const mealsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(mealsOperations.fetchDay.fulfilled, (state, action) => {
-        console.log('Fetch day fulfield', action.payload);
+        // console.log('Fetch day fulfield', action.payload);
         state.today = action.payload;
         state.todayReady = true;
       })
@@ -49,24 +48,36 @@ export const mealsSlice = createSlice({
         // console.log('today ready false');
       })
       .addCase(mealsOperations.fetchMonth.fulfilled, (state, action) => {
-        console.log('Fetch month fulfield', action.payload);
+        // console.log('Fetch month fulfield', action.payload);
         state.month = action.payload;
       })
       .addCase(mealsOperations.fetchYear.fulfilled, (state, action) => {
-        console.log('Fetch year fulfield', action.payload);
+        // console.log('Fetch year fulfield', action.payload);
         state.year = action.payload;
       })
       .addCase(mealsOperations.waterIntake.fulfilled, (state, action) => {
-        console.log('Water intake fulfield', action.payload);
+        // console.log('Water intake fulfield', action.payload);
         state.today = action.payload;
+        if (state.month) {
+          state.month[state.month.length - 1].water = action.payload.water;
+        }
+        if (state.year) {
+          state.year[state.year.length - 1].water = action.payload.water;
+        }
       })
       .addCase(mealsOperations.recordMeal.fulfilled, (state, action) => {
-        console.log('Record meal fulfield', action.payload);
+        // console.log('Record meal fulfield', action.payload);
         state.today = action.payload;
+        if (state.month) {
+          state.month[state.month.length - 1] = action.payload;
+        }
+        if (state.year) {
+          state.year[state.year.length - 1] = action.payload;
+        }
         state.modalMealOn = false;
       })
       .addCase(mealsOperations.editMeal.fulfilled, (state, action) => {
-        console.log('Edit meal fulfield', action.payload);
+        // console.log('Edit meal fulfield', action.payload);
         state.today = action.payload;
       });
   },
