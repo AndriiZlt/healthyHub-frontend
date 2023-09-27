@@ -10,8 +10,7 @@ import {
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from './Dashboard.module.css';
-// import { useSelector } from 'react-redux';
-// import mealsSelectors from 'redux/meals/meals-selectors';
+import dayjs from 'dayjs';
 
 ChartJS.register(
   LineElement,
@@ -23,17 +22,28 @@ ChartJS.register(
 );
 
 const CaloriesMonthChart = props => {
-  // const [month, setMonth] = useState(useSelector(mealsSelectors.getMonth))
-
   const userMonthData = [...props.userMonthData];
-  // console.log('userMonthData in CALORIES month chart', userMonthData);
+
+  const firstDay = Number(userMonthData[0].date);
+
+  const fullMonth = [];
+
+  // Pushing empty weight if there is no record
+  for (let i = 1; i < firstDay; i++) {
+    fullMonth.push(0);
+  }
+
+  // pushing records and counting active days
+  for (let i = 0; i < userMonthData.length; i++) {
+    fullMonth.push(userMonthData[i].calories.toString());
+  }
 
   // calculate Average
   let sum = 0;
   userMonthData.forEach(element => {
     sum += element.calories;
   });
-  const average = Math.floor(sum / userMonthData.length);
+  const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 
   const labels = [];
   for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
@@ -44,12 +54,12 @@ const CaloriesMonthChart = props => {
     labels: labels,
     datasets: [
       {
-        data: userMonthData.map(item => item.calories),
+        data: fullMonth,
         borderColor: '#E3FFA8',
         borderWidth: 1,
         hoverOffset: 4,
         tension: 0.4,
-        pointBorderWidth: 0,
+        pointRadius: 0,
         pointHoverRadius: 6,
         pointHoverBackgroundColor: '#E3FFA8',
         pointBorderHoverColor: '#E3FFA8',
