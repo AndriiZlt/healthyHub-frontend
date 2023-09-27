@@ -33,6 +33,7 @@ const UserBody = () => {
       setWeight2(value);
     }
     // dispatch(setRegData({ weight: evt.target.value }));
+
   };
 
   const formSubmit = e => {
