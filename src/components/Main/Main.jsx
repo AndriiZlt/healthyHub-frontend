@@ -51,6 +51,12 @@ const Home = () => {
     setRundomProducts(getRandomProducts(products, 4));
   }, []);
 
+  if (modalMealOn || modalWaterOn) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+
   const { water = 0 } = today;
   const waterPercetage = Math.floor((water / 1500) * 100);
   const waterHeight = Math.min(Math.floor(176 * (waterPercetage / 100)), 177);

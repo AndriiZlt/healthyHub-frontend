@@ -48,6 +48,12 @@ const Diary = () => {
     window.addEventListener('click', escHandler);
   };
 
+  if (modalMealOn || editModalOn) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+
   const escHandler = e => {
     if (
       e.target.id === 'overlay' ||
