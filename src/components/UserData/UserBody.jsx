@@ -15,12 +15,14 @@ const UserBody = () => {
   const dispatch = useDispatch();
 
   const handleChangeHeight = evt => {
-    setHeight2(evt.target.value);
+    const value = Math.max(100, Math.min(280, Number(evt.target.value)));
+    setHeight2(value.toString());
     dispatch(setRegData({ height: evt.target.value }));
   };
 
   const handleChangeWeight = evt => {
-    setWeight2(evt.target.value);
+    const value = Math.max(30, Math.min(300, Number(evt.target.value)));
+    setWeight2(value.toString());
     dispatch(setRegData({ weight: evt.target.value }));
   };
 
