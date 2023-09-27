@@ -154,7 +154,7 @@ const ModalAddMeal = ({ title }) => {
       if (record.name !== '') {
         record.mealType = title.toLowerCase();
         dispatch(mealsOperations.recordMeal(record)).then(() => {
-          Notify.success('Your meal was recorded!');
+          Notify.success('Your meal was recorded!!!');
         });
       }
     }
@@ -266,7 +266,15 @@ const ModalAddMeal = ({ title }) => {
                   id="carbonohidrates"
                   value={div1carb}
                   onChange={e => {
-                    setDiv1carb(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1carb('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1carb(value);
+                    }
                   }}
                 />
 
@@ -279,7 +287,15 @@ const ModalAddMeal = ({ title }) => {
                   id="protein"
                   value={div1protein}
                   onChange={e => {
-                    setDiv1protein(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1protein('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1protein(value);
+                    }
                   }}
                 />
 
@@ -292,7 +308,15 @@ const ModalAddMeal = ({ title }) => {
                   id="fat"
                   value={div1fat}
                   onChange={e => {
-                    setDiv1fat(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1fat('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1fat(value);
+                    }
                   }}
                 />
 
@@ -305,7 +329,15 @@ const ModalAddMeal = ({ title }) => {
                   id="calories"
                   value={div1calories}
                   onChange={e => {
-                    setDiv1calories(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1calories('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(3000, Number(e.target.value))
+                      );
+                      setDiv1calories(value);
+                    }
                   }}
                 />
               </div>
@@ -338,7 +370,15 @@ const ModalAddMeal = ({ title }) => {
                   id="carbonohidrates"
                   value={div2carb}
                   onChange={e => {
-                    setDiv2carb(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv2carb('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv2carb(value);
+                    }
                   }}
                 />
 
@@ -351,7 +391,15 @@ const ModalAddMeal = ({ title }) => {
                   id="protein"
                   value={div2protein}
                   onChange={e => {
-                    setDiv2protein(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv2protein('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv2protein(value);
+                    }
                   }}
                 />
 
@@ -364,7 +412,15 @@ const ModalAddMeal = ({ title }) => {
                   id="fat"
                   value={div2fat}
                   onChange={e => {
-                    setDiv2fat(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv2fat('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv2fat(value);
+                    }
                   }}
                 />
 
@@ -377,7 +433,15 @@ const ModalAddMeal = ({ title }) => {
                   id="calories"
                   value={div2calories}
                   onChange={e => {
-                    setDiv2calories(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv2calories('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(3000, Number(e.target.value))
+                      );
+                      setDiv2calories(value);
+                    }
                   }}
                 />
               </div>
@@ -410,7 +474,15 @@ const ModalAddMeal = ({ title }) => {
                   id="carbonohidrates"
                   value={div3carb}
                   onChange={e => {
-                    setDiv3carb(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv3carb('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv3carb(value);
+                    }
                   }}
                 />
 
@@ -423,7 +495,15 @@ const ModalAddMeal = ({ title }) => {
                   id="protein"
                   value={div3protein}
                   onChange={e => {
-                    setDiv3protein(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv3protein('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv3protein(value);
+                    }
                   }}
                 />
 
@@ -436,7 +516,15 @@ const ModalAddMeal = ({ title }) => {
                   id="fat"
                   value={div3fat}
                   onChange={e => {
-                    setDiv3fat(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv3fat('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv3fat(value);
+                    }
                   }}
                 />
 
@@ -449,7 +537,15 @@ const ModalAddMeal = ({ title }) => {
                   id="calories"
                   value={div3calories}
                   onChange={e => {
-                    setDiv3calories(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv3calories('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(3000, Number(e.target.value))
+                      );
+                      setDiv3calories(value);
+                    }
                   }}
                 />
               </div>
@@ -482,7 +578,15 @@ const ModalAddMeal = ({ title }) => {
                   id="carbonohidrates"
                   value={div4carb}
                   onChange={e => {
-                    setDiv4carb(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv4carb('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv4carb(value);
+                    }
                   }}
                 />
 
@@ -495,7 +599,15 @@ const ModalAddMeal = ({ title }) => {
                   id="protein"
                   value={div4protein}
                   onChange={e => {
-                    setDiv4protein(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv4protein('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv4protein(value);
+                    }
                   }}
                 />
 
@@ -508,7 +620,15 @@ const ModalAddMeal = ({ title }) => {
                   id="fat"
                   value={div4fat}
                   onChange={e => {
-                    setDiv4fat(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv4fat('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv4fat(value);
+                    }
                   }}
                 />
 
@@ -521,7 +641,15 @@ const ModalAddMeal = ({ title }) => {
                   id="calories"
                   value={div4calories}
                   onChange={e => {
-                    setDiv4calories(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv4calories('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(3000, Number(e.target.value))
+                      );
+                      setDiv4calories(value);
+                    }
                   }}
                 />
               </div>
