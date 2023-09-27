@@ -13,6 +13,7 @@ import dashboardMonthHelper from 'helpers/dashboardMonthHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
 import mealsSelectors from 'redux/meals/meals-selectors';
+import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const monthNames = [
   'January',
@@ -51,7 +52,6 @@ const Dashboard = () => {
   }, [dispatch]);
 
   const month = useSelector(mealsSelectors.getMonth); // eslint-disable-line
-  const year = useSelector(mealsSelectors.getYear); // eslint-disable-line
 
   let userMonthData = null;
 
@@ -132,7 +132,7 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <CaloriesYearChart
@@ -142,7 +142,7 @@ const Dashboard = () => {
             currentMonth={currentMonth}
           />
         ) : (
-          <>Loading...</>
+          <LoaderModal />
         )}
 
         {time === 'month' ? (
@@ -154,7 +154,7 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <WaterYearChart
@@ -163,7 +163,7 @@ const Dashboard = () => {
             numberOfDaysInMonth={daysInMonth}
           />
         ) : (
-          <div>Loading...</div>
+          <LoaderModal />
         )}
       </div>
       <div className={css.weightBlock}>
@@ -176,7 +176,7 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <div>Loading...</div>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <WeightYearChart
@@ -185,7 +185,7 @@ const Dashboard = () => {
             numberOfDaysInMonth={daysInMonth}
           />
         ) : (
-          <div>Loading...</div>
+          <LoaderModal />
         )}
       </div>
     </section>
