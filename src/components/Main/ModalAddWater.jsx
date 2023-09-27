@@ -42,6 +42,8 @@ const ModalAddWater = () => {
         <div className={css.media}>
           <h3 className={css.titleH3}>How much water</h3>
           <input
+            min="0"
+            max="1500"
             className={css.input}
             type="number"
             id="water"
@@ -49,8 +51,6 @@ const ModalAddWater = () => {
             placeholder="Enter milliliters"
             value={water}
             onChange={e => setWater(e.target.value)}
-            max="9999"
-            min="1"
             onKeyDown={enterPressHandler}
           />
           <button

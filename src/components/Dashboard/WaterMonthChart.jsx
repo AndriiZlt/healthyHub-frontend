@@ -5,7 +5,7 @@ import css from './Dashboard.module.css';
 
 const WaterMonthChart = props => {
   const userMonthData = [...props.userMonthData];
-
+  // console.log('userMonthData in WATER month chart', userMonthData);
   let sum = 0;
   userMonthData.forEach(element => {
     sum += element.water;

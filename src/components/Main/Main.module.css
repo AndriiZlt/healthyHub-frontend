@@ -347,14 +347,14 @@
   background-color: var(--primary-black-second-color);
   padding: 20px 24px;
   border-radius: 12px;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
 }
 
-.greyBlock2:nth-child(2n) {
+.recommendedFoodUl li:nth-child(2n-1) {
   margin-right: 20px;
 }
 
-.greyBlock2:nth-child(-n + 3) {
+.greyBlock2:nth-child(-n + 2) {
   margin-bottom: 20px;
 }
 
@@ -537,6 +537,12 @@
 
   .recommendedBlock {
     display: flex;
+  }
+  .recommendedFoodUl {
+    padding: 0;
+    width: 780px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 

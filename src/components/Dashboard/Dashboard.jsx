@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrowBackPath from '../../assets/Dashboard/arrow-left.svg';
 import arrowDownPath from '../../assets/Dashboard/arrow-down.svg';
@@ -9,7 +9,11 @@ import WaterYearChart from './WaterYearChart';
 import WeightMonthChart from './WeightMonthChart';
 import WeightYearChart from './WeightYearChart';
 import css from './Dashboard.module.css';
-import useDashboardMonth from 'helpers/useDashboardMonth';
+import dashboardMonthHelper from 'helpers/dashboardMonthHelper';
+import { useDispatch, useSelector } from 'react-redux';
+import mealsOperations from 'redux/meals/meals-operations';
+import dashboardYearHelper from 'helpers/dashboardYearHelper';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
   'January',
@@ -27,9 +31,39 @@ const monthNames = [
 ];
 
 const Dashboard = () => {
-  const userMonthData = useDashboardMonth();
   const [time, setTime] = useState('month');
   const [timeToggleHidden, setTimeToggleHidden] = useState(true);
+  const [isMonthLoading, setIsMonthLoading] = useState(false);
+  const [isYearLoading, setIsYearLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setIsMonthLoading(true);
+    setIsYearLoading(true);
+    (async () => {
+      dispatch(mealsOperations.fetchMonth()).then(() => {
+        setIsMonthLoading(false);
+        dispatch(mealsOperations.fetchYear()).then(() => {
+          setIsYearLoading(false);
+        });
+      });
+    })();
+  }, [dispatch]);
+
+  const month = useSelector(mealsSelectors.getMonth); // eslint-disable-line
+  const year = useSelector(mealsSelectors.getYear); // eslint-disable-line
+
+  let userMonthData = null;
+  let userYearData = null;
+
+  if (month) {
+    userMonthData = dashboardMonthHelper(month);
+  }
+
+  if (year) {
+    userYearData = dashboardYearHelper(year);
+  }
 
   const date = new Date();
 
@@ -96,47 +130,71 @@ const Dashboard = () => {
       </div>
       <div className={css.dashboardBlockContent}>
         {time === 'month' ? (
-          <CaloriesMonthChart
-            time={time}
-            numberOfDaysInMonth={daysInMonth}
-            userMonthData={userMonthData}
-          />
-        ) : (
+          month ? (
+            <CaloriesMonthChart
+              isMonthLoading={isMonthLoading}
+              time={time}
+              numberOfDaysInMonth={daysInMonth}
+              userMonthData={userMonthData}
+            />
+          ) : (
+            <>Loading...</>
+          )
+        ) : !isYearLoading ? (
           <CaloriesYearChart
+            isYearLoading={isYearLoading}
             time={time}
             daysInMonth={daysInMonth}
             currentMonth={currentMonth}
-            // userYearData={userYearData}
+            userYearData={userYearData}
           />
+        ) : (
+          <>Loading...</>
         )}
 
         {time === 'month' ? (
-          <WaterMonthChart
+          month ? (
+            <WaterMonthChart
+              isMonthLoading={isMonthLoading}
+              time={time}
+              numberOfDaysInMonth={daysInMonth}
+              userMonthData={userMonthData}
+            />
+          ) : (
+            <>Loading...</>
+          )
+        ) : !isYearLoading ? (
+          <WaterYearChart
+            isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userMonthData={userMonthData}
+            userYearData={userYearData}
           />
         ) : (
-          <WaterYearChart
-            time={time}
-            numberOfDaysInMonth={daysInMonth}
-            userMonthData={userMonthData}
-          />
+          <>Loading...</>
         )}
       </div>
       <div className={css.weightBlock}>
         {time === 'month' ? (
-          <WeightMonthChart
+          month ? (
+            <WeightMonthChart
+              isMonthLoading={isMonthLoading}
+              time={time}
+              numberOfDaysInMonth={daysInMonth}
+              userMonthData={userMonthData}
+            />
+          ) : (
+            <>Loading...</>
+          )
+        ) : !isYearLoading ? (
+          <WeightYearChart
+            isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userMonthData={userMonthData}
+            userYearData={userYearData}
           />
         ) : (
-          <WeightYearChart
-            time={time}
-            numberOfDaysInMonth={daysInMonth}
-            userMonthData={userMonthData}
-          />
+          <>Loading...</>
         )}
       </div>
     </section>

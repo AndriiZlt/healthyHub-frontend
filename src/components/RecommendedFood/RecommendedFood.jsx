@@ -361,9 +361,9 @@ const RecommendedFood = () => {
           alt="recommended food illustration"
           className={css.picture}
         ></img>
-        <div className={css.wrapperTablet}>
+        <ul className={css.wrapperTablet}>
           {randomProducts.map(product => (
-            <div className={css.thumb} key={product.name}>
+            <li className={css.thumb} key={product.name}>
               <img
                 src={product.img}
                 alt="product"
@@ -377,9 +377,9 @@ const RecommendedFood = () => {
                   <li className={css.calories}> {product.calories} calories</li>
                 </div>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

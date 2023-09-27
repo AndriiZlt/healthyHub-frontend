@@ -29,6 +29,11 @@
   border-radius: 12px;
   margin-bottom: 20px;
 }
+
+.thumb:nth-last-child(-n + 2) {
+  margin-bottom: 0px;
+}
+
 .icon {
   margin-right: 20px;
   width: 46px;
@@ -82,6 +87,8 @@
     column-gap: 20px;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -98,6 +105,10 @@
   }
   .thumb {
     width: 328px;
+  }
+
+  .wrapperTablet {
+    width: 676px;
   }
   .wrapperDesktop {
     display: grid;

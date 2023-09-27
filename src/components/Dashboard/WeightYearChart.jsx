@@ -2,7 +2,7 @@ import React from 'react';
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
 import dayjs from 'dayjs'; // eslint-disable-line
-import useDashboardYear from 'helpers/useDashboardYear';
+import useDashboardYear from 'helpers/dashboardYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [

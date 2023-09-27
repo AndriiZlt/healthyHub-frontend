@@ -12,7 +12,7 @@ import {
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
-import useDashboardYear from 'helpers/useDashboardYear';
+import useDashboardYear from 'helpers/dashboardYearHelper';
 
 ChartJS.register(
   LineElement,
