@@ -10,9 +10,6 @@ import {
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from './Dashboard.module.css';
-import { useSelector } from 'react-redux';
-import mealsSelectors from 'redux/meals/meals-selectors';
-// import useDashboardYear from 'helpers/useYearHelper';
 import useYearHelper from 'helpers/useYearHelper';
 
 ChartJS.register(

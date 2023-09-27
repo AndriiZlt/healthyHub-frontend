@@ -10,7 +10,6 @@ import {
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from './Dashboard.module.css';
-import dayjs from 'dayjs';
 
 ChartJS.register(
   LineElement,

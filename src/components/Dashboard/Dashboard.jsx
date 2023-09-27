@@ -12,7 +12,6 @@ import css from './Dashboard.module.css';
 import dashboardMonthHelper from 'helpers/dashboardMonthHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
-import dashboardYearHelper from 'helpers/useYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
