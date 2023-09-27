@@ -1,8 +1,3 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import mealsOperations from 'redux/meals/meals-operations';
-import mealsSelectors from 'redux/meals/meals-selectors';
-
 const calculateDay = data => {
   const result = {
     carbonohidrates: 0,
@@ -28,13 +23,11 @@ const calculateDay = data => {
   return result;
 };
 
-const useDashboardYear = (data, daysInMonth, currentMonth) => {
-  const dispatch = useDispatch();
-  const year = useSelector(mealsSelectors.getYear);
+const dashboardYearHelper = year => {
+  const date = new Date();
+  const currentMonth = date.getMonth() + 1;
 
-  useEffect(() => {
-    dispatch(mealsOperations.fetchYear());
-  }, [dispatch]);
+  // console.log('Year data in useYearDashboard', year);
 
   //   Calculating days to simple statustics
   const calculatedDays = [];
@@ -94,4 +87,4 @@ const useDashboardYear = (data, daysInMonth, currentMonth) => {
   return yearChartData;
 };
 
-export default useDashboardYear;
+export default dashboardYearHelper;

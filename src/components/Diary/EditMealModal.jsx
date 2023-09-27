@@ -109,6 +109,7 @@ const EditModal = ({ meal, title, id }) => {
                 <input
                   className={css.diary_breakfast_item}
                   min="0"
+                  max="500"
                   type="number"
                   placeholder="Carbonoh"
                   id="carbonohidrates"
@@ -120,6 +121,7 @@ const EditModal = ({ meal, title, id }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Protein"
@@ -132,6 +134,7 @@ const EditModal = ({ meal, title, id }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Fat"
@@ -144,6 +147,7 @@ const EditModal = ({ meal, title, id }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Calories"

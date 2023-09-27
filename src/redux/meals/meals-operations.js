@@ -39,7 +39,7 @@ const fetchMonth = createAsyncThunk('meals/fetchMonth', async () => {
     return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching month', error.response.data);
-    throw error();
+    // throw error();
   }
 });
 
@@ -51,7 +51,7 @@ const fetchYear = createAsyncThunk('meals/fetchYear', async () => {
     return data.newStatistic;
   } catch (error) {
     console.log('Error in fetching year', error.response.data);
-    throw error();
+    // throw error();
   }
 });
 

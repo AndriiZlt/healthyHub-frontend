@@ -1,8 +1,3 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import mealsOperations from 'redux/meals/meals-operations';
-import mealsSelectors from 'redux/meals/meals-selectors';
-
 const calculateDay = data => {
   const result = {
     carbonohidrates: 0,
@@ -25,17 +20,13 @@ const calculateDay = data => {
   result.month = data.date.slice(5, 7);
   result.water = data.water || null;
   result.weight = data.weight || null;
-
   return result;
 };
 
-const useDashboardMonth = () => {
+const dashboardMonthHelper = month => {
   const chartData = [];
-  const dispatch = useDispatch();
-  const month = useSelector(mealsSelectors.getMonth);
-  useEffect(() => {
-    dispatch(mealsOperations.fetchMonth());
-  }, [dispatch]);
+
+  // const month = useSelector(mealsSelectors.getMonth);
 
   for (const day in month) {
     const result = calculateDay(month[day]);
@@ -48,7 +39,9 @@ const useDashboardMonth = () => {
     });
   }
 
+  // console.log('chartData', chartData);
+
   return chartData;
 };
 
-export default useDashboardMonth;
+export default dashboardMonthHelper;

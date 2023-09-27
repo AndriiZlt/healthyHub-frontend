@@ -48,11 +48,14 @@ export const mealsSlice = createSlice({
         // console.log('today ready false');
       })
       .addCase(mealsOperations.fetchMonth.fulfilled, (state, action) => {
-        // console.log('Fetch month fulfield', action.payload);
+        console.log('Fetch month fulfield');
         state.month = action.payload;
       })
+      .addCase(mealsOperations.fetchYear.pending, (state, action) => {
+        console.log('Fetch year pending');
+      })
       .addCase(mealsOperations.fetchYear.fulfilled, (state, action) => {
-        // console.log('Fetch year fulfield', action.payload);
+        console.log('Fetch year fulfield');
         state.year = action.payload;
       })
       .addCase(mealsOperations.waterIntake.fulfilled, (state, action) => {

@@ -10,6 +10,8 @@ import {
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from './Dashboard.module.css';
+// import { useSelector } from 'react-redux';
+// import mealsSelectors from 'redux/meals/meals-selectors';
 
 ChartJS.register(
   LineElement,
@@ -21,7 +23,10 @@ ChartJS.register(
 );
 
 const CaloriesMonthChart = props => {
+  // const [month, setMonth] = useState(useSelector(mealsSelectors.getMonth))
+
   const userMonthData = [...props.userMonthData];
+  // console.log('userMonthData in CALORIES month chart', userMonthData);
 
   // calculate Average
   let sum = 0;

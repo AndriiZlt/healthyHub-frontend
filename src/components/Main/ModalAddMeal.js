@@ -260,6 +260,7 @@ const ModalAddMeal = ({ title }) => {
                 <input
                   className={css.diary_breakfast_item}
                   min="0"
+                  max="500"
                   type="number"
                   placeholder="Carbonoh"
                   id="carbonohidrates"
@@ -271,6 +272,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Protein"
@@ -283,6 +285,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Fat"
@@ -295,6 +298,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="1500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Calories"
@@ -327,6 +331,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Carbonoh"
@@ -339,6 +344,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Protein"
@@ -351,6 +357,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Fat"
@@ -363,6 +370,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="1500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Calories"
@@ -395,6 +403,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Carbonoh"
@@ -407,6 +416,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Protein"
@@ -419,6 +429,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Fat"
@@ -431,6 +442,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="1500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Calories"
@@ -463,6 +475,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Carbonoh"
@@ -475,6 +488,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Protein"
@@ -487,6 +501,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Fat"
@@ -499,6 +514,7 @@ const ModalAddMeal = ({ title }) => {
 
                 <input
                   min="0"
+                  max="1500"
                   className={css.diary_breakfast_item}
                   type="number"
                   placeholder="Calories"

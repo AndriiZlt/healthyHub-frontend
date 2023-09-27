@@ -28,6 +28,7 @@ const initialState = {
     activity: null,
   },
   isLoading: false,
+  tempEmail: null,
 };
 
 export const authSlice = createSlice({
@@ -75,10 +76,12 @@ export const authSlice = createSlice({
         console.log('Login rejected');
         state.isLoading = false;
       })
-      .addCase(authOperations.logOut.fulfilled, (state, _) => {
+      .addCase(authOperations.logOut.fulfilled, (state, action) => {
+        console.log('Logout fulfield', action.payload);
+        // state.tempEmail = state.user.email;
         state.isLoggedIn = false;
         state.user = initialState.user;
-        state.regData = initialState.regData;
+        state.regData = null;
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.rejected, (state, _) => {

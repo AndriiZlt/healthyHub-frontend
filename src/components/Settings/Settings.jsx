@@ -16,7 +16,9 @@ const Settings = () => {
   const { name, age, gender, height, weight, activity, avatarURL } =
     useSelector(authSelectors.getUser);
 
-  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarFile, setAvatarFile] = useState();
+  const [avatar, setAvatar] = useState(avatarURL);
+
   const [formData, setFormData] = useState({
     name,
     age,
@@ -36,9 +38,9 @@ const Settings = () => {
   };
 
   const handleAvatarChange = e => {
-    const file = e.target.files[0];
-    setAvatarFile(file);
+    setAvatarFile(e.target.files[0]);
     setAvatarChanged(true);
+    setAvatar(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleSave = e => {
@@ -110,8 +112,8 @@ const Settings = () => {
                 Your photo
               </label>
               <div className={css.photo}>
-                {avatarFile ? (
-                  <img className={css.avatarImg} src={avatarURL} alt="avatar" />
+                {avatar ? (
+                  <img className={css.avatarImg} src={avatar} alt="avatar" />
                 ) : (
                   <img className={css.avatarImg} src={avatarURL} alt="avatar" />
                 )}
@@ -161,7 +163,7 @@ const Settings = () => {
                   type="radio"
                   name="gender"
                   value="male"
-                  checked={formData.gender === 'Male'}
+                  checked={formData.gender === 'male'}
                 />
                 <span className={css.customCheked}></span>
                 Male
@@ -173,7 +175,7 @@ const Settings = () => {
                   type="radio"
                   name="gender"
                   value="female"
-                  checked={formData.gender === 'Female'}
+                  checked={formData.gender === 'female'}
                 />
                 <span className={css.customCheked}></span>
                 Female

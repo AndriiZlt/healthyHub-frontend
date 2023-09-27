@@ -4,7 +4,7 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 // import useDashboardYear from "helpers/useDashboardYear";
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
-import useDashboardYear from 'helpers/useDashboardYear';
+import useDashboardYear from 'helpers/dashboardYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
