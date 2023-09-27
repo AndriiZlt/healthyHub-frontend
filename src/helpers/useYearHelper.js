@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import mealsSelectors from 'redux/meals/meals-selectors';
+
 const calculateDay = data => {
   const result = {
     carbonohidrates: 0,
@@ -23,11 +26,10 @@ const calculateDay = data => {
   return result;
 };
 
-const dashboardYearHelper = year => {
+const useYearHelper = () => {
+  const year = useSelector(mealsSelectors.getYear);
   const date = new Date();
   const currentMonth = date.getMonth() + 1;
-
-  // console.log('Year data in useYearDashboard', year);
 
   //   Calculating days to simple statustics
   const calculatedDays = [];
@@ -69,13 +71,11 @@ const dashboardYearHelper = year => {
       }
     });
 
-    if (sumCal !== 0) {
-      if (Number(month) === Number(currentMonth)) {
-        const date = new Date();
-        const days = date.toString().slice(7, 10);
-        yearChartData.calories.push(Math.floor(sumCal / Number(days)));
-        yearChartData.water.push(Math.floor(sumWater / Number(days)));
-        yearChartData.weight.push(Math.floor(sumWeight / Number(days)));
+    if (Number(month) <= Number(currentMonth)) {
+      if (dayCount === 0) {
+        yearChartData.calories.push(0);
+        yearChartData.water.push(0);
+        yearChartData.weight.push(0);
       } else {
         yearChartData.calories.push(Math.floor(sumCal / dayCount));
         yearChartData.water.push(Math.floor(sumWater / dayCount));
@@ -87,4 +87,4 @@ const dashboardYearHelper = year => {
   return yearChartData;
 };
 
-export default dashboardYearHelper;
+export default useYearHelper;

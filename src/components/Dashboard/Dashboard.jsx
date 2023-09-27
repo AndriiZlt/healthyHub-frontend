@@ -12,8 +12,8 @@ import css from './Dashboard.module.css';
 import dashboardMonthHelper from 'helpers/dashboardMonthHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
-import dashboardYearHelper from 'helpers/dashboardYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
+import LoaderModal from 'components/LoaderModal/LoaderModal';
 
 const monthNames = [
   'January',
@@ -52,17 +52,11 @@ const Dashboard = () => {
   }, [dispatch]);
 
   const month = useSelector(mealsSelectors.getMonth); // eslint-disable-line
-  const year = useSelector(mealsSelectors.getYear); // eslint-disable-line
 
   let userMonthData = null;
-  let userYearData = null;
 
   if (month) {
     userMonthData = dashboardMonthHelper(month);
-  }
-
-  if (year) {
-    userYearData = dashboardYearHelper(year);
   }
 
   const date = new Date();
@@ -138,7 +132,7 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <CaloriesYearChart
@@ -146,10 +140,9 @@ const Dashboard = () => {
             time={time}
             daysInMonth={daysInMonth}
             currentMonth={currentMonth}
-            userYearData={userYearData}
           />
         ) : (
-          <>Loading...</>
+          <LoaderModal />
         )}
 
         {time === 'month' ? (
@@ -161,17 +154,16 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <WaterYearChart
             isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userYearData={userYearData}
           />
         ) : (
-          <>Loading...</>
+          <LoaderModal />
         )}
       </div>
       <div className={css.weightBlock}>
@@ -184,17 +176,16 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <LoaderModal />
           )
         ) : !isYearLoading ? (
           <WeightYearChart
             isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userYearData={userYearData}
           />
         ) : (
-          <>Loading...</>
+          <LoaderModal />
         )}
       </div>
     </section>

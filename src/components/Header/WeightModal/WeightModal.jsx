@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import useMediaQuery from 'helpers/useMediaQuery';
 import authSelectors from 'redux/auth/auth-selectors';
+import mealsSelectors from 'redux/meals/meals-selectors';
 import authOperations from 'redux/auth/auth-operations';
 import close from '../../../assets/close-circle.svg';
 import css from './WeightModal.module.css';
@@ -10,6 +11,7 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
   const dispatch = useDispatch();
   const weightRef = useRef();
   const isMobile = useMediaQuery('(max-width:833px)');
+
   const {
     name,
     goal,
@@ -21,6 +23,8 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
     token,
     avatarURL,
   } = useSelector(authSelectors.getUser);
+
+  const { isChanged } = useSelector(mealsSelectors.getCurrentDay);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -41,11 +45,13 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
     const form = evt.target;
     form.reset();
   }
+
   let today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0');
   var yyyy = today.getFullYear();
   today = dd + '.' + mm + '.' + yyyy;
+
   return (
     <div className={css.modal}>
       <div className={css.titles}>
@@ -55,17 +61,23 @@ function WeightModal({ closeWeightModal, closeWeightMobileModal }) {
       <p className={css.today}>
         Today <span className={css.date}>{today}</span>
       </p>
-      <form type="submit" onSubmit={handleSubmit} className={css.form}>
-        <input
-          className={css.input}
-          placeholder="Enter your weight"
-          type="number"
-          ref={weightRef}
-          max={500}
-          min={0}
-        />
-        <button className={css.button}>Confirm</button>
-      </form>
+      
+      {!isChanged ? (
+        <form type="submit" onSubmit={handleSubmit} className={css.form}>
+          <input
+            className={css.input}
+            placeholder="Enter your weight"
+            type="number"
+            ref={weightRef}
+            max={500}
+            min={0}
+          />
+          <button className={css.button}>Confirm</button>
+        </form>
+      ) : (
+        <p>You have already recorded your weight today. Please try again tomorrow.</p>
+      )}
+
       {isMobile ? (
         <button onClick={closeWeightMobileModal} className={css.close_mobile}>
           Cancel

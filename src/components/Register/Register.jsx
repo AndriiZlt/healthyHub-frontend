@@ -13,13 +13,13 @@ import eye from '../../assets/eye.svg';
 import eyeOff from '../../assets/eye-off.svg';
 import Tooltip from 'components/Tooltip/Tooltip';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
-import capitalize from '../../helpers/useCapitalize';
+import capitalize from 'helpers/useCapitalize';
 
 const Register = () => {
-  const { name, email, password } = useSelector(authSelectors.getRegData);
+  const { name, email } = useSelector(authSelectors.getRegData);
   const [name2, setName2] = useState(name || '');
   const [email2, setEmail2] = useState(email || '');
-  const [password2, setPassword2] = useState(password || '');
+  const [password2, setPassword2] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isBlurredEmail, setIsBlurredEmail] = useState(false);
   const [emailBorder, setEmailBorder] = useState('#e3ffa8');
@@ -32,51 +32,60 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleNameChange = e => {
-    setName2(capitalize(e.target.value));
+    setName2(capitalize(e.target.value).toString());
   };
 
   const handleEmailChange = e => {
     setEmail2(e.target.value);
+    handleEmailValid(e.target.value);
   };
 
-  const handleEmailValid = () => {
+  const handleEmailValid = value => {
     const emailPattern = /^([a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3})$/;
-    setIsValidEmail(emailPattern.test(email2));
-
-    if (emailPattern.test(email2)) {
+    setIsValidEmail(emailPattern.test(value));
+    if (emailPattern.test(value)) {
+      setIsValidEmail(true);
       setEmailBorder('#3CBC81');
+      setIsBlurredEmail(true);
     } else {
+      setIsValidEmail(false);
       setEmailBorder('#E74A3B');
     }
   };
 
-  const handleEmailBlur = () => {
+  const handleEmailBlur = e => {
     setIsBlurredEmail(true);
-    handleEmailValid();
+    if (e) {
+      handleEmailValid(e.target.value);
+    }
   };
 
   const handlePasswordChange = e => {
     setPassword2(e.target.value);
-
+    handlePasswordValid(e.target.value);
     if (password2.length >= 0) {
       setIsShowPasswordBtn(true);
     }
   };
 
-  const handlePasswordValid = () => {
+  const handlePasswordValid = value => {
     const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}$/;
-    setIsValidPassword(passwordPattern.test(password2));
 
-    if (passwordPattern.test(password2)) {
+    if (passwordPattern.test(value)) {
+      setIsValidPassword(true);
       setPaswordBorder('#3CBC81');
+      setIsBlurredPassword(true);
     } else {
+      setIsValidPassword(false);
       setPaswordBorder('#E74A3B');
     }
   };
 
-  const handlePasswordBlur = () => {
+  const handlePasswordBlur = e => {
     setIsBlurredPassword(true);
-    handlePasswordValid();
+    if (e) {
+      handlePasswordValid(e.target.value);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -85,21 +94,19 @@ const Register = () => {
 
   const formSubmitHandler = async e => {
     e.preventDefault();
-
     if (name2 === '') {
-      console.log(1);
       Notify.failure('Please fill in all fields!');
       return;
     } else if (email2 === '') {
-      console.log(2);
       Notify.failure('Please fill in all fields!');
       return;
     } else if (password2 === '') {
-      console.log(3);
       Notify.failure('Please fill in all fields!');
       return;
-    } else if (isValidEmail === false || isValidPassword === false) {
-      console.log(4);
+    } else if (!isValidEmail) {
+      Notify.failure('Please enter valid data!');
+      return;
+    } else if (!isValidPassword) {
       Notify.failure('Please enter valid data!');
       return;
     }
@@ -117,9 +124,16 @@ const Register = () => {
     }
   };
 
-  const enterPressHandler = e => {
+  const enterPressPassword = e => {
     if (e.key === 'Enter') {
+      handlePasswordBlur();
       formSubmitHandler(e);
+    }
+  };
+
+  const emailEnterHandler = e => {
+    if (e.key === 'Enter') {
+      handleEmailBlur();
     }
   };
 
@@ -155,6 +169,7 @@ const Register = () => {
                 onBlur={handleEmailBlur}
                 className={css.input}
                 style={{ borderColor: emailBorder }}
+                onKeyDown={emailEnterHandler}
               ></input>
               {isBlurredEmail && !isValidEmail && (
                 <img className={css.error} src={error} alt="Error" />
@@ -180,7 +195,7 @@ const Register = () => {
                 onBlur={handlePasswordBlur}
                 className={css.input}
                 style={{ borderColor: passwordBorder }}
-                onKeyDown={enterPressHandler}
+                onKeyDown={enterPressPassword}
               ></input>
               {!isBlurredPassword && isShowPasswordBtn && (
                 <img
