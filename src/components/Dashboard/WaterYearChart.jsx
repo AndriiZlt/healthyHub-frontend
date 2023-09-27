@@ -4,7 +4,7 @@ import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unus
 // import useDashboardYear from "helpers/useDashboardYear";
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
-import useDashboardYear from 'helpers/dashboardYearHelper';
+import useYearHelper from 'helpers/useYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
@@ -23,12 +23,8 @@ const monthNames = [
 ];
 
 const WaterYearChart = props => {
-  const userYearData = useSelector(mealsSelectors.getYear);
-  const { water } = useDashboardYear(
-    userYearData,
-    props.daysInMonth,
-    props.currentMonth
-  );
+  // const userYearData = useSelector(mealsSelectors.getYear);
+  const { water } = useYearHelper();
 
   // calculate Average
   let sum = 0;
@@ -36,7 +32,15 @@ const WaterYearChart = props => {
     sum += element;
   });
 
-  const average = Math.floor(sum / water.length);
+  // Counting active months
+  let count = 0;
+  water.forEach(month => {
+    if (month > 0) {
+      count += 1;
+    }
+  });
+
+  const average = Math.floor(sum / Math.max(count, 1));
 
   const [chartData] = useState({
     labels: monthNames,

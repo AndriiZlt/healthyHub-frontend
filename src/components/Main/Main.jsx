@@ -815,7 +815,7 @@ const Home = () => {
                           marginLeft: 6,
                         }}
                       >
-                        {product.calories}
+                        {product.calories} calories
                       </span>
                     </p>
                   </div>

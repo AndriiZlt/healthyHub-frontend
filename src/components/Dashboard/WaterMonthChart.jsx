@@ -5,12 +5,26 @@ import css from './Dashboard.module.css';
 
 const WaterMonthChart = props => {
   const userMonthData = [...props.userMonthData];
-  // console.log('userMonthData in WATER month chart', userMonthData);
+
+  const firstDay = Number(userMonthData[0].date);
+
+  const fullMonth = [];
+
+  // Pushing empty weight if there is no record
+  for (let i = 1; i < firstDay; i++) {
+    fullMonth.push(0);
+  }
+
+  // pushing records and counting active days
+  for (let i = 0; i < userMonthData.length; i++) {
+    fullMonth.push(Number(userMonthData[i].water));
+  }
+
   let sum = 0;
   userMonthData.forEach(element => {
     sum += element.water;
   });
-  const average = Math.floor(sum / userMonthData.length);
+  const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 
   const labels = [];
   for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
@@ -21,7 +35,7 @@ const WaterMonthChart = props => {
     labels: labels,
     datasets: [
       {
-        data: userMonthData.map(item => item.water),
+        data: fullMonth,
         borderColor: '#E3FFA8',
         borderWidth: 1,
         hoverOffset: 4,
@@ -39,7 +53,6 @@ const WaterMonthChart = props => {
 
   const options = {
     maintainAspectRatio: false,
-    // aspectRatio: 1,
     margin: 0,
     plugins: {
       tooltip: {

@@ -12,7 +12,7 @@ import css from './Dashboard.module.css';
 import dashboardMonthHelper from 'helpers/dashboardMonthHelper';
 import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
-import dashboardYearHelper from 'helpers/dashboardYearHelper';
+import dashboardYearHelper from 'helpers/useYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
@@ -55,14 +55,9 @@ const Dashboard = () => {
   const year = useSelector(mealsSelectors.getYear); // eslint-disable-line
 
   let userMonthData = null;
-  let userYearData = null;
 
   if (month) {
     userMonthData = dashboardMonthHelper(month);
-  }
-
-  if (year) {
-    userYearData = dashboardYearHelper(year);
   }
 
   const date = new Date();
@@ -146,7 +141,6 @@ const Dashboard = () => {
             time={time}
             daysInMonth={daysInMonth}
             currentMonth={currentMonth}
-            userYearData={userYearData}
           />
         ) : (
           <>Loading...</>
@@ -168,10 +162,9 @@ const Dashboard = () => {
             isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userYearData={userYearData}
           />
         ) : (
-          <>Loading...</>
+          <div>Loading...</div>
         )}
       </div>
       <div className={css.weightBlock}>
@@ -184,17 +177,16 @@ const Dashboard = () => {
               userMonthData={userMonthData}
             />
           ) : (
-            <>Loading...</>
+            <div>Loading...</div>
           )
         ) : !isYearLoading ? (
           <WeightYearChart
             isYearLoading={isYearLoading}
             time={time}
             numberOfDaysInMonth={daysInMonth}
-            userYearData={userYearData}
           />
         ) : (
-          <>Loading...</>
+          <div>Loading...</div>
         )}
       </div>
     </section>

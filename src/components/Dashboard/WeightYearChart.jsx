@@ -1,8 +1,8 @@
 import React from 'react';
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
-import dayjs from 'dayjs'; // eslint-disable-line
-import useDashboardYear from 'helpers/dashboardYearHelper';
+// import dashboardYearHelper from 'helpers/dashboardYearHelper';
+import useYearHelper from 'helpers/useYearHelper';
 import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
@@ -22,14 +22,11 @@ const monthNames = [
 
 const WeightYearChart = props => {
   const userYearData = useSelector(mealsSelectors.getYear);
-  const { weight } = useDashboardYear(
-    userYearData,
-    props.daysInMonth,
-    props.currentMonth
-  );
+
+  // const { weight } = dashboardYearHelper(userYearData);
+  const { weight } = useYearHelper(userYearData);
 
   // Getting current month
-  const today = Number(dayjs(new Date()).format('MM'));
   const chartData = [];
 
   monthNames.forEach(month => {
@@ -40,8 +37,16 @@ const WeightYearChart = props => {
     }
   });
 
+  // Counting active months
+  let count = 0;
+  weight.forEach(month => {
+    if (month > 0) {
+      count += 1;
+    }
+  });
+
   const average = Math.floor(
-    weight.reduce((acc, value) => (acc += value), 0) / Number(today)
+    weight.reduce((acc, value) => (acc += value), 0) / count
   );
 
   return (

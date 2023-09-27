@@ -12,7 +12,8 @@ import {
 import css from './Dashboard.module.css';
 import { useSelector } from 'react-redux';
 import mealsSelectors from 'redux/meals/meals-selectors';
-import useDashboardYear from 'helpers/dashboardYearHelper';
+// import useDashboardYear from 'helpers/useYearHelper';
+import useYearHelper from 'helpers/useYearHelper';
 
 ChartJS.register(
   LineElement,
@@ -39,13 +40,9 @@ const monthNames = [
 ];
 
 const CaloriesYearChart = props => {
-  const userYearData = useSelector(mealsSelectors.getYear);
+  // const userYearData = useSelector(mealsSelectors.getYear);
   //   console.log('y', userYearData);
-  const { calories } = useDashboardYear(
-    userYearData,
-    props.daysInMonth,
-    props.currentMonth
-  );
+  const { calories } = useYearHelper();
 
   // calculate Average
   let sum = 0;
@@ -53,7 +50,15 @@ const CaloriesYearChart = props => {
     sum += element;
   });
 
-  const average = Math.floor(sum / calories.length);
+  // Counting active months
+  let count = 0;
+  calories.forEach(month => {
+    if (month > 0) {
+      count += 1;
+    }
+  });
+
+  const average = Math.floor(sum / Math.max(count, 1));
 
   const [chartData] = useState({
     labels: monthNames,
