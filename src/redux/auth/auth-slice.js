@@ -118,6 +118,9 @@ export const authSlice = createSlice({
         state.user = { ...state.user, ...action.payload };
         state.isLoading = false;
       })
+      .addCase(authOperations.saveSettings2.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(authOperations.saveSettings2.fulfilled, (state, action) => {
         console.log('Save settings2 fulfield', action.payload);
         state.user.weight = action.payload.weight;
@@ -130,12 +133,22 @@ export const authSlice = createSlice({
         state.user.avatarURL = action.payload;
         state.isLoading = false;
       })
+
+      .addCase(authOperations.changeGoal.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(authOperations.changeGoal.fulfilled, (state, action) => {
+        state.user.goal = action.payload;
+        state.isLoading = false;
+      })
+
       .addCase(authOperations.forgotPassword.pending, (state, action) => {
         state.isLoading = true;
       })
       .addCase(authOperations.forgotPassword.fulfilled, (state, action) => {
         state.isLoading = false;
       });
+
   },
 });
 

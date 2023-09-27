@@ -56,7 +56,7 @@ function Target() {
 
   return (
     <div className={style.targetContainer}>
-      <ul style={{ listStyle: 'none', display: 'flex', padding: 0, gap: 174 }}>
+      <ul className={style.list} style={{ listStyle: 'none', display: 'flex', padding: 0, gap: 174 }}>
         <li>
           <h1 className={style.title}>Target selection</h1>
         </li>

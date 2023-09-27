@@ -11,7 +11,12 @@ import authSelectors from 'redux/auth/auth-selectors';
 import MobileAction from './MobileAction/MobileAction';
 import LogoutModal from './LogoutModal/LogoutModal';
 import WeightModal from './WeightModal/WeightModal';
-import Target from 'components/Target/SelectTarget';
+import TargetSelectionModal from './TargetSelectionModal/TargetSelectionModal';
+
+import loseFat from '../../assets/loseFat.png';
+import maintain from '../../assets/Maintain.png';
+import gainMuscle from '../../assets/gainMuscle.png';
+import weightImage from '../../assets/Weight.png'
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -35,7 +40,7 @@ const Header = () => {
   function closeWeightModal() {
     setWeight(false);
   }
-  function closeGoaltModal() {
+  function closeGoalModal() {
     setShowGoal(false);
   }
   return (
@@ -50,7 +55,7 @@ const Header = () => {
           {isMobile && (
             <Dropdown show={showDropdown} onToggle={e => setShowDropdown(e)}>
               <Dropdown.Toggle className={css.button} />
-              <Dropdown.Menu className={`${css.modal} ${css.mobile_modal}`}>
+              <Dropdown.Menu className={`${css.modal} ${css.mobile_modal} ${showDropdown ? css.show : ''}`}>
                 <MobileAction closeButton={closeButton} />
               </Dropdown.Menu>
             </Dropdown>
@@ -68,27 +73,27 @@ const Header = () => {
                 <Dropdown show={showGoal} onToggle={e => setShowGoal(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
+                      image={goal==="Lose fat" ? loseFat : goal==="Maintain" ? maintain : gainMuscle}
                       title="Goal"
                       text={goal}
                       showGoal={showGoal}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
-                    <Target closeGoaltModal={closeGoaltModal} />
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal} ${showGoal ? css.show : ''}`}>
+                    <TargetSelectionModal closeGoalModal={closeGoalModal}/>
                   </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown show={showWeight} onToggle={e => setWeight(e)}>
                   <Dropdown.Toggle className={css.button}>
                     <ButtonDropDown
-                      image="https://i.ibb.co/y5LpgvL/Waight-image.png"
+                      image={weightImage}
                       title="Weight"
                       text={weight}
                       subtext="kg"
                       editIcon={true}
                     />
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className={`${css.modal} ${css.width_modal}`}>
+                  <Dropdown.Menu className={`${css.modal} ${css.width_modal} ${showWeight ? css.show : ''}`}>
                     <WeightModal closeWeightModal={closeWeightModal} />
                   </Dropdown.Menu>
                 </Dropdown>
@@ -108,7 +113,7 @@ const Header = () => {
                   showSetting={showSetting}
                 />
               </Dropdown.Toggle>
-              <Dropdown.Menu className={css.modal}>
+              <Dropdown.Menu className={`${css.modal} ${css.logout} ${showSetting ? css.show : ''}`}>
                 <LogoutModal closeModal={closeModal} />
               </Dropdown.Menu>
             </Dropdown>

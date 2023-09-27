@@ -6,7 +6,12 @@ import close from '../../../assets/close-circle.svg';
 import css from './MobileAction.module.css';
 import authSelectors from 'redux/auth/auth-selectors';
 import WeightModal from '../WeightModal/WeightModal';
-import Target from 'components/Target/SelectTarget';
+import TargetSelectionModal from '../TargetSelectionModal/TargetSelectionModal';
+
+import loseFat from '../../../assets/loseFat.png';
+import maintain from '../../../assets/Maintain.png';
+import gainMuscle from '../../../assets/gainMuscle.png';
+import weightImage from '../../../assets/Weight.png';
 
 function MobileAction({ closeButton }) {
   const { goal, weight } = useSelector(authSelectors.getUser);
@@ -30,7 +35,13 @@ function MobileAction({ closeButton }) {
     <div className={css.mobile_action}>
       <button className={css.button} onClick={handleGoalShow}>
         <ButtonDropDown
-          image="https://i.ibb.co/T8wdLSc/Lose-fat.png"
+          image={
+            goal === 'Lose fat'
+              ? loseFat
+              : goal === 'Maintain'
+              ? maintain
+              : gainMuscle
+          }
           title="Goal"
           text={goal}
         />
@@ -42,12 +53,12 @@ function MobileAction({ closeButton }) {
         contentClassName={css.modal_action_content}
       >
         <Modal.Body className={css.modal}>
-          <Target closeGoalModal={closeGoalModal} />
+          <TargetSelectionModal closeGoalModal={closeGoalModal} />
         </Modal.Body>
       </Modal>
       <button className={css.button} onClick={handleWeightShow}>
         <ButtonDropDown
-          image="https://i.ibb.co/y5LpgvL/Waight-image.png"
+          image={weightImage}
           title="Weight"
           text={weight}
           subtext="kg"
