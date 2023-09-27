@@ -30,7 +30,7 @@
   margin-bottom: 20px;
 }
 
-.thumb:nth-last-child(-n + 2) {
+.thumb:nth-last-child(-n + 1) {
   margin-bottom: 0px;
 }
 
@@ -89,6 +89,10 @@
     margin-right: auto;
     padding-left: 0;
     margin-bottom: 0;
+  }
+
+  .thumb:nth-last-child(-n + 2) {
+    margin-bottom: 0px;
   }
 }
 
