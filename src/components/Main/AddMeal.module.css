@@ -93,6 +93,15 @@
   flex-direction: column-reverse;
 }
 
+.remove_meal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-top: 13px;
+  height: 36px;
+}
+
 .diary_breakfast_item {
   width: 100%;
   height: 36px;
@@ -118,6 +127,11 @@
   height: 288px;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.diary_add_meal_wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (min-width: 834px) {
@@ -204,7 +218,7 @@
   }
 
   .diary_breakfast_item[id='calories'] {
-    width: 78px;
+    width: 70px;
     font-size: 14px;
   }
 

@@ -10,6 +10,8 @@ import Notiflix from 'notiflix';
 import capitalize from 'helpers/useCapitalize';
 import mealsOperations from 'redux/meals/meals-operations';
 import { setModalsOff } from 'redux/meals/meals-slice';
+import closeCircle from 'assets/close-circle.svg';
+
 const data = [
   {
     mealType: '',
@@ -217,6 +219,46 @@ const ModalAddMeal = ({ title }) => {
     data[e.currentTarget.id][e.target.id] = e.target.value;
   };
 
+  const closeHandler = () => {
+    console.log('display', display);
+
+    switch (display) {
+      case 1:
+        dispatch(setModalsOff());
+        break;
+      case 2:
+        setDiv2('none');
+        setDisplay(1);
+        setDiv2calories('');
+        setDiv2fat('');
+        setDiv2protein('');
+        setDiv2carb('');
+        setDiv2name('');
+
+        break;
+      case 3:
+        setDiv3('none');
+        setDisplay(2);
+        setDiv3calories('');
+        setDiv3fat('');
+        setDiv3protein('');
+        setDiv3carb('');
+        setDiv3name('');
+        break;
+      case 4:
+        setDiv4('none');
+        setDisplay(3);
+        setDiv4calories('');
+        setDiv4fat('');
+        setDiv4protein('');
+        setDiv4carb('');
+        setDiv4name('');
+        break;
+      default:
+        console.log('no more meals');
+        break;
+    }
+  };
   return (
     <div className={css.overlay} id="overlay">
       <div className={css.modal}>
@@ -669,6 +711,14 @@ const ModalAddMeal = ({ title }) => {
           </div>
 
           <div className={css.buttons}>
+            <div className={css.remove_meal} onClick={closeHandler}>
+              <img
+                src={closeCircle}
+                alt="close-circle"
+                style={{ width: 20, height: 20, marginRight: 10 }}
+              />
+              Remove last meal
+            </div>
             <button
               type="button"
               id="cancelMeal"
