@@ -15,13 +15,13 @@ const UserGender = () => {
   const navigate = useNavigate();
 
   const handleChangeGender = evt => {
-    console.log(evt.target.value);
     setGender2(evt.target.value);
     dispatch(setRegData({ gender: evt.target.value }));
   };
 
   const handleChangeAge = evt => {
-    setAge2(evt.target.value);
+    const value = Math.max(8, Math.min(130, Number(evt.target.value)));
+    setAge2(value.toString());
     dispatch(setRegData({ age: evt.target.value }));
   };
 
