@@ -115,7 +115,15 @@ const EditModal = ({ meal, title, id }) => {
                   id="carbonohidrates"
                   value={div1carb}
                   onChange={e => {
-                    setDiv1carb(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1carb('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1carb(value);
+                    }
                   }}
                 />
 
@@ -128,7 +136,15 @@ const EditModal = ({ meal, title, id }) => {
                   id="protein"
                   value={div1protein}
                   onChange={e => {
-                    setDiv1protein(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1protein('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1protein(value);
+                    }
                   }}
                 />
 
@@ -141,7 +157,15 @@ const EditModal = ({ meal, title, id }) => {
                   id="fat"
                   value={div1fat}
                   onChange={e => {
-                    setDiv1fat(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1fat('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(1000, Number(e.target.value))
+                      );
+                      setDiv1fat(value);
+                    }
                   }}
                 />
 
@@ -154,7 +178,15 @@ const EditModal = ({ meal, title, id }) => {
                   id="calories"
                   value={div1calories}
                   onChange={e => {
-                    setDiv1calories(e.target.value);
+                    if (e.target.value === '0' || e.target.value === '') {
+                      setDiv1calories('');
+                    } else {
+                      const value = Math.max(
+                        0,
+                        Math.min(3000, Number(e.target.value))
+                      );
+                      setDiv1calories(value);
+                    }
                   }}
                 />
               </div>

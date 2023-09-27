@@ -50,7 +50,17 @@ const ModalAddWater = () => {
             name="water"
             placeholder="Enter milliliters"
             value={water}
-            onChange={e => setWater(e.target.value)}
+            onChange={e => {
+              if (e.target.value === '0' || e.target.value === '') {
+                setWater('');
+              } else {
+                const value = Math.max(
+                  0,
+                  Math.min(5000, Number(e.target.value))
+                );
+                setWater(value);
+              }
+            }}
             onKeyDown={enterPressHandler}
           />
           <button

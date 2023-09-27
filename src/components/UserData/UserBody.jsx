@@ -5,6 +5,7 @@ import css from './UserBody.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 import authSelectors from 'redux/auth/auth-selectors';
+import { Notify } from 'notiflix';
 
 const UserBody = () => {
   const { height, weight } = useSelector(authSelectors.getRegData);
@@ -15,20 +16,41 @@ const UserBody = () => {
   const dispatch = useDispatch();
 
   const handleChangeHeight = evt => {
-    const value = Math.max(100, Math.min(280, Number(evt.target.value)));
-    setHeight2(value.toString());
-    dispatch(setRegData({ height: evt.target.value }));
+    if (evt.target.value === '0' || evt.target.value === '') {
+      setHeight2('');
+    } else {
+      const value = Math.max(0, Math.min(251, Number(evt.target.value)));
+      setHeight2(value);
+    }
+    // dispatch(setRegData({ height: evt.target.value }));
   };
 
   const handleChangeWeight = evt => {
-    const value = Math.max(30, Math.min(300, Number(evt.target.value)));
-    setWeight2(value.toString());
-    dispatch(setRegData({ weight: evt.target.value }));
+    if (evt.target.value === '0' || evt.target.value === '') {
+      setWeight2('');
+    } else {
+      const value = Math.max(0, Math.min(500, Number(evt.target.value)));
+      setWeight2(value);
+    }
+    // dispatch(setRegData({ weight: evt.target.value }));
+
   };
 
   const formSubmit = e => {
     e.preventDefault();
-    dispatch(setRegData({ height: height2, weight: weight2 }));
+    if (Number(height2) < 60) {
+      setHeight2('');
+      Notify.failure('Minimum height is 60cm');
+      return;
+    } else if (Number(weight2) < 30) {
+      setWeight2('');
+      Notify.failure('Minimum weight is 30kg');
+      return;
+    }
+
+    dispatch(
+      setRegData({ height: height2.toString(), weight: weight2.toString() })
+    );
 
     navigate('/useractivity');
   };

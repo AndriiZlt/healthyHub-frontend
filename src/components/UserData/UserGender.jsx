@@ -5,11 +5,12 @@ import css from './UserGender.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRegData } from 'redux/auth/auth-slice';
 import authSelectors from 'redux/auth/auth-selectors';
+import { Notify } from 'notiflix';
 
 const UserGender = () => {
   const { gender, age } = useSelector(authSelectors.getRegData);
   const [gender2, setGender2] = useState(gender || 'Male');
-  const [age2, setAge2] = useState(age || '');
+  const [age2, setAge2] = useState(Number(age) || '');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,14 +21,26 @@ const UserGender = () => {
   };
 
   const handleChangeAge = evt => {
-    const value = Math.max(8, Math.min(130, Number(evt.target.value)));
-    setAge2(value.toString());
-    dispatch(setRegData({ age: evt.target.value }));
+
+    if (evt.target.value === '0' || evt.target.value === '') {
+      setAge2('');
+    } else {
+      const value = Math.max(0, Math.min(130, Number(evt.target.value)));
+      setAge2(value);
+    }
+    // dispatch(setRegData({ age: evt.target.value }));
+
   };
 
   const formSubmit = e => {
     e.preventDefault();
-    dispatch(setRegData({ age: age2, gender: gender2 }));
+    if (Number(age2) < 12) {
+      setAge2('');
+      Notify.failure('Minimum age is 12y.o.');
+      return;
+    }
+
+    dispatch(setRegData({ age: age2.toString(), gender: gender2 }));
     navigate('/userbody');
   };
 
@@ -35,7 +48,7 @@ const UserGender = () => {
     MALE: 'Male',
     FEMALE: 'Female',
   };
-
+  console.log(age2);
   return (
     <div className={css.genderContainer}>
       <img
