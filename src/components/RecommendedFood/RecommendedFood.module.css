@@ -1,3 +1,7 @@
+.wrapperDesktop ul {
+  padding-left: 0;
+}
+
 .title {
   padding-top: 16px;
   padding-bottom: 16px;
@@ -68,6 +72,7 @@
     width: 24px;
     height: 24px;
     margin-right: 8px;
+    margin-bottom: 3px;
   }
   .picture {
     display: block;
@@ -97,6 +102,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .arrow_rigth {
+    margin-bottom: 12px;
+  }
   .title {
     padding-top: 20px;
     padding-bottom: 24px;

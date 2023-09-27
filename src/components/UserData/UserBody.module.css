@@ -142,6 +142,7 @@
 @media screen and (min-width: 1440px) {
   .bodyContainer {
     display: flex;
+    justify-content: center;
     column-gap: 104px;
     margin: 0 auto;
     padding: 40px 0 60px;
