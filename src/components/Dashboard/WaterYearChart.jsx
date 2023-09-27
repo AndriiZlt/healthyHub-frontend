@@ -3,9 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 // import useDashboardYear from "helpers/useDashboardYear";
 import css from './Dashboard.module.css';
-import { useSelector } from 'react-redux';
 import useYearHelper from 'helpers/useYearHelper';
-import mealsSelectors from 'redux/meals/meals-selectors';
 
 const monthNames = [
   'January',
