@@ -152,6 +152,7 @@ const ModalAddMeal = ({ title }) => {
 
     const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
     dispatch(setModalsOff());
+    console.log('data', data);
     for (const record of data) {
       if (record.name !== '') {
         record.mealType = title.toLowerCase();
@@ -216,14 +217,26 @@ const ModalAddMeal = ({ title }) => {
   };
 
   const onChangeHandler = e => {
+    // console.log(e.currentTarget.id, e.target.id, e.target.value);
     data[e.currentTarget.id][e.target.id] = e.target.value;
   };
 
   const closeHandler = () => {
-    console.log('display', display);
-
     switch (display) {
       case 1:
+        setDiv1calories('');
+        setDiv1fat('');
+        setDiv1protein('');
+        setDiv1carb('');
+        setDiv1name('');
+        data[0] = {
+          mealType: '',
+          name: '',
+          carbonohidrates: '',
+          protein: '',
+          fat: '',
+          calories: '',
+        };
         dispatch(setModalsOff());
         break;
       case 2:
@@ -234,7 +247,14 @@ const ModalAddMeal = ({ title }) => {
         setDiv2protein('');
         setDiv2carb('');
         setDiv2name('');
-
+        data[1] = {
+          mealType: '',
+          name: '',
+          carbonohidrates: '',
+          protein: '',
+          fat: '',
+          calories: '',
+        };
         break;
       case 3:
         setDiv3('none');
@@ -244,6 +264,14 @@ const ModalAddMeal = ({ title }) => {
         setDiv3protein('');
         setDiv3carb('');
         setDiv3name('');
+        data[2] = {
+          mealType: '',
+          name: '',
+          carbonohidrates: '',
+          protein: '',
+          fat: '',
+          calories: '',
+        };
         break;
       case 4:
         setDiv4('none');
@@ -253,6 +281,14 @@ const ModalAddMeal = ({ title }) => {
         setDiv4protein('');
         setDiv4carb('');
         setDiv4name('');
+        data[3] = {
+          mealType: '',
+          name: '',
+          carbonohidrates: '',
+          protein: '',
+          fat: '',
+          calories: '',
+        };
         break;
       default:
         console.log('no more meals');
@@ -388,7 +424,7 @@ const ModalAddMeal = ({ title }) => {
               <div
                 className={css.diary_breakfast_list}
                 name="meal"
-                id="2"
+                id="1"
                 onChange={onChangeHandler}
                 style={{ display: div2 }}
               >
@@ -492,7 +528,7 @@ const ModalAddMeal = ({ title }) => {
               <div
                 className={css.diary_breakfast_list}
                 name="meal"
-                id="3"
+                id="2"
                 onChange={onChangeHandler}
                 style={{ display: div3 }}
               >
@@ -596,7 +632,7 @@ const ModalAddMeal = ({ title }) => {
               <div
                 className={css.diary_breakfast_list}
                 name="meal"
-                id="4"
+                id="3"
                 onChange={onChangeHandler}
                 style={{ display: div4 }}
               >
