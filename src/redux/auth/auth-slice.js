@@ -81,7 +81,7 @@ export const authSlice = createSlice({
         // state.tempEmail = state.user.email;
         state.isLoggedIn = false;
         state.user = initialState.user;
-        state.regData = null;
+        state.regData = initialState.regData;
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.rejected, (state, _) => {
