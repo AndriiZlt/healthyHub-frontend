@@ -790,38 +790,40 @@ const Home = () => {
           <div className={css.titleDiv2}>
             <h2 className={css.title3}>Recommended food</h2>
           </div>
-
-          {randomProducts.map(product => (
-            <div className={css.greyBlock2} key={product.name}>
-              <img src={product.img} alt="fruit" />
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                }}
-              >
-                <p className={css.statsTitle3}>{product.name}</p>
-                <div style={{ display: 'flex' }}>
-                  <p className={css.fruitStats}>
-                    {product.amount}
-                    <span
-                      style={{
-                        fontSize: '14px',
-                        lineHeight: '20px',
-                        fontWeight: 500,
-                        color: '#B6B6B6',
-                        marginLeft: 6,
-                      }}
-                    >
-                      {product.calories}
-                    </span>
-                  </p>
+          <ul className={css.recommendedFoodUl}>
+            {randomProducts.map(product => (
+              <li className={css.greyBlock2} key={product.name}>
+                <img src={product.img} alt="fruit" style={{ weight: 46 }} />
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <p className={css.statsTitle3}>{product.name}</p>
+                  <div style={{ display: 'flex' }}>
+                    <p className={css.fruitStats}>
+                      {product.amount}
+                      <span
+                        style={{
+                          fontSize: '14px',
+                          lineHeight: '20px',
+                          fontWeight: 500,
+                          color: '#B6B6B6',
+                          marginLeft: 6,
+                        }}
+                      >
+                        {product.calories}
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
+
           <div className={css.seeMore2}>
             <NavLink to="/recommended">See more</NavLink>
             <img src={arrowRight} alt="arrow-right" />

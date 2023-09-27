@@ -1,59 +1,87 @@
 import React from 'react';
 import css from './Dashboard.module.css';
+import dayjs from 'dayjs'; // eslint-disable-line
 import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/auth-selectors';
-import dayjs from 'dayjs'; // eslint-disable-line
 
 const WeightMonthChart = props => {
   const userMonthData = [...props.userMonthData];
-  const { weight } = useSelector(authSelectors.getUser);
-  let previousDayWeight = weight || null;
+  const currentWeight = useSelector(authSelectors.getWeight);
+  // console.log('userMonthData in weight month chart', userMonthData);
 
-  // Getting current day
-  const today = Number(dayjs(new Date()).format('DD'));
+  const firstDay = Number(userMonthData[0].date);
 
   const fullMonth = [];
-  for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
-    // Making sure the day exist
-    let found = false;
-    let index = 0;
-    if (i <= userMonthData.length) {
-      for (let j = 0; j < i; j++) {
-        if (!found) {
-          if (Number(userMonthData[j].date) === i) {
-            index = j;
-            found = true;
-          }
-        }
-      }
-    }
 
-    if (!found) {
-      if (i > today) {
-        fullMonth.push({
-          date: i,
-          weight: '',
-        });
-      } else {
-        fullMonth.push({
-          date: i,
-          weight: previousDayWeight,
-        });
-      }
+  let previousDayWeight = userMonthData[0].weight;
+  const today = Number(dayjs(new Date()).format('DD'));
+
+  // Pushing empty weight if there is no record
+  for (let i = 1; i < firstDay; i++) {
+    fullMonth.push({
+      date: i,
+      weight: '',
+    });
+  }
+
+  // pushing records and counting active days
+  let activeDays = 0;
+  let j = firstDay;
+  for (let i = 0; i < userMonthData.length - 1; i++) {
+    activeDays += 1;
+    if (userMonthData[i].weight === '0') {
+      fullMonth.push({
+        date: j,
+        weight: previousDayWeight,
+      });
+      j += 1;
     } else {
       fullMonth.push({
-        date: i,
-        weight: userMonthData[index].weight.toString(),
+        date: j,
+        weight: userMonthData[i].weight.toString(),
       });
-      previousDayWeight = userMonthData[index].weight;
+      j += 1;
+      previousDayWeight = userMonthData[i].weight.toString();
     }
   }
 
+  // Pushing current day from selector to make it refresh on change
+  fullMonth.push({
+    date: today,
+    weight: currentWeight,
+  });
+
+  // userMonthData.forEach(day => {
+  //   activeDays += 1;
+  //   if (day.weight === '0') {
+  //     fullMonth.push({
+  //       date: j,
+  //       weight: previousDayWeight,
+  //     });
+  //     j += 1;
+  //   } else {
+  //     fullMonth.push({
+  //       date: j,
+  //       weight: day.weight.toString(),
+  //     });
+  //     j += 1;
+  //     previousDayWeight = day.weight.toString();
+  //   }
+  // });
+
+  // Again pushing empty record till the end of month
+  for (let i = today + 1; i <= props.numberOfDaysInMonth; i++) {
+    fullMonth.push({
+      date: i,
+      weight: '',
+    });
+  }
+
   const average = Math.floor(
-    fullMonth.reduce((acc, day) => (acc += Number(day.weight)), 0) /
-      Number(today)
+    fullMonth.reduce((acc, day) => (acc += Number(day.weight)), 0) / activeDays
   );
 
+  // console.log('full month', fullMonth);
   return (
     <>
       <div className={css.blockHeading}>

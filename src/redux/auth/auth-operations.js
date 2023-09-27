@@ -44,8 +44,9 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logOut = createAsyncThunk('/user/logout', async (_, thunkAPI) => {
   console.log('Login out');
   try {
-    await axios.post('/user/logout');
+    const { data } = await axios.post('/user/logout');
     token.unset();
+    return data;
   } catch (error) {
     console.log('error in loging out', error.message);
   }

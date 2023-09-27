@@ -12,6 +12,7 @@ import eyeOff from '../../assets/eye-off.svg';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
 
 const Login = () => {
+  // const lastEmail = useSelector()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
