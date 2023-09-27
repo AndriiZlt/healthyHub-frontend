@@ -21,6 +21,7 @@ const UserGender = () => {
   };
 
   const handleChangeAge = evt => {
+
     if (evt.target.value === '0' || evt.target.value === '') {
       setAge2('');
     } else {
@@ -28,6 +29,7 @@ const UserGender = () => {
       setAge2(value);
     }
     // dispatch(setRegData({ age: evt.target.value }));
+
   };
 
   const formSubmit = e => {
