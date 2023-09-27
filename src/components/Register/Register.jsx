@@ -13,6 +13,7 @@ import eye from '../../assets/eye.svg';
 import eyeOff from '../../assets/eye-off.svg';
 import Tooltip from 'components/Tooltip/Tooltip';
 import { setLoadingTrue } from 'redux/auth/auth-slice';
+import capitalize from '../../helpers/useCapitalize';
 
 const Register = () => {
   const { name, email, password } = useSelector(authSelectors.getRegData);
@@ -31,7 +32,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleNameChange = e => {
-    setName2(e.target.value);
+    setName2(capitalize(e.target.value));
   };
 
   const handleEmailChange = e => {
