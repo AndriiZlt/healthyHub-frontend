@@ -10,10 +10,10 @@ function Navigation() {
     return {
       color:
         isActive ||
-        pathname == '/usergoal' ||
-        pathname == '/usergender' ||
-        pathname == '/userbody' ||
-        pathname == '/useractivity'
+        pathname === '/usergoal' ||
+        pathname === '/usergender' ||
+        pathname === '/userbody' ||
+        pathname === '/useractivity'
           ? '#E3FFA8'
           : '#FFFFFF',
     };
