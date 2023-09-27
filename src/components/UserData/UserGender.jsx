@@ -46,7 +46,7 @@ const UserGender = () => {
     MALE: 'Male',
     FEMALE: 'Female',
   };
-  console.log(age2);
+
   return (
     <div className={css.genderContainer}>
       <img
