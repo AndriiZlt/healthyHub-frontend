@@ -17,21 +17,19 @@ const Wellcome = () => {
       </div>
       <div className={css.benefits}>
         <ul className={css.benefitsList}>
-        <li className={css.benefitsItem}>
-          <p className={css.benefitsName}>Set goals</p>
-        </li>
-        <li className={css.benefitsItem}>
-          <p className={css.benefitsName}>Watch your calories</p>
-        </li>
-      </ul>
-      <ul className={css.benefitsList}>
-        <li className={css.benefitsItem}>
-          <p className={css.benefitsName}>Keep track of your water intake</p>
-        </li>
-        <li className={css.benefitsItem}>
-          <p className={css.benefitsName}>Control your weight</p>
-        </li>
-      </ul>
+          <li className={css.benefitsItem}>
+            <p className={css.benefitsName}>Set goals</p>
+          </li>
+          <li className={css.benefitsItem}>
+            <p className={css.benefitsName}>Watch your calories</p>
+          </li>
+          <li className={css.benefitsItem}>
+            <p className={css.benefitsName}>Keep track of your water intake</p>
+          </li>
+          <li className={css.benefitsItem}>
+            <p className={css.benefitsName}>Control your weight</p>
+          </li>
+        </ul>
       </div>
       
     </div>

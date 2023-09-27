@@ -109,6 +109,11 @@
     .btnActive {
         width: 212px;
     }
+    .benefitsList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
     .benefits {
         margin-top: 80px;
         width: 436px;
@@ -136,6 +141,9 @@
     }
     .subTitle {
         text-align: start;
+    }
+    .benefitsList {
+        flex-direction: column;
     }
     .benefits {
         display: flex;
