@@ -6,12 +6,13 @@ const useCalcNutrientsGoal = () => {
   const { goal } = useSelector(authSelectors.getUser); // Початкова ціль (схуднути)
   const calories = useCalcBMR(); // Загальна кількість калорій
   let proteinPercentage, fatPercentage, carbPercentage;
+  console.log(goal);
   switch (goal) {
     case 'Lose fat':
       proteinPercentage = 0.25;
       fatPercentage = 0.2;
       break;
-    case 'Gain musle':
+    case 'Gain Muscle':
       proteinPercentage = 0.3;
       fatPercentage = 0.2;
       break;
@@ -30,6 +31,6 @@ const useCalcNutrientsGoal = () => {
   const fatGoal = Math.round((fatPercentage * calories) / 9);
   const carbsGoal = Math.round((carbPercentage * calories) / 4);
 
-  return { proteinGoal, fatGoal, carbsGoal };
+  return { proteinGoal, carbsGoal, fatGoal };
 };
 export default useCalcNutrientsGoal;
