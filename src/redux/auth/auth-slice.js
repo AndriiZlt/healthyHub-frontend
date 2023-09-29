@@ -100,6 +100,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        state.user = initialState.user;
         state.isLoading = false;
       })
       .addCase(authOperations.checkEmail.fulfilled, (state, action) => {
@@ -148,7 +149,6 @@ export const authSlice = createSlice({
       .addCase(authOperations.forgotPassword.fulfilled, (state, action) => {
         state.isLoading = false;
       });
-
   },
 });
 

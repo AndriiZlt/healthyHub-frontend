@@ -306,6 +306,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  width: 160px;
 }
 
 .mealRecord {
@@ -518,12 +519,12 @@
   }
 
   .diaryBlock {
-    width: 518px;
+    width: 556px;
     margin-bottom: 20px;
   }
 
   .mealTitle {
-    width: 148px;
+    width: 160px;
     margin-bottom: 0;
   }
 
@@ -617,7 +618,8 @@
   }
 
   .diaryBlock {
-    margin-right: 178px;
+    width: 556px;
+    margin-right: 140px;
   }
 
   .recommendedBlock {

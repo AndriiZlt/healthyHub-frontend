@@ -103,9 +103,15 @@ const Home = () => {
   const caloriesGoal = useCalcBMR();
   const percentageCalories = (calories / caloriesGoal) * 100;
 
-  const percentageFat = Math.floor((fat / fatGoal) * 100);
-  const percentageProtein = Math.floor((protein / proteinGoal) * 100);
-  const percentageCarbs = Math.floor((carbonohidrates / carbsGoal) * 100);
+  const percentageFat = Math.min(Math.floor((fat / fatGoal) * 100), 100);
+  const percentageProtein = Math.min(
+    Math.floor((protein / proteinGoal) * 100),
+    100
+  );
+  const percentageCarbs = Math.min(
+    Math.floor((carbonohidrates / carbsGoal) * 100),
+    100
+  );
   return (
     <div className={css.mainSection}>
       <div className={css.titleDiv}>
