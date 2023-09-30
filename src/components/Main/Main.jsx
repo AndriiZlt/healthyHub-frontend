@@ -256,15 +256,6 @@ const Home = () => {
                 </CircularProgressbarWithChildren>
               </div>
 
-              {/* <div className={css.icon3}> */}
-              {/* <Doughnut data={chartData} /> */}
-              {/* </div> */}
-
-              {/* <img
-
-                src={chartCalories}
-                alt="calories-chart"
-              /> */}
               <div className={css.stats}>
                 <ul
                   style={{
@@ -284,16 +275,10 @@ const Home = () => {
                             percentageCarbs < 100 ? '#FFC4F7' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
-                          // backgroundColor: '#3e98c7',
-                          // strokeWidth: 10,
                         })}
                       />
                     </div>
-                    {/* <img
-                      className={css.icon4}
-                      src={chartCalories}
-                      alt="calories-chart"
-                    /> */}
+
                     <div
                       style={{
                         display: 'flex',
@@ -348,16 +333,9 @@ const Home = () => {
                             percentageProtein < 100 ? '#FFF3B7' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
-                          // backgroundColor: '#3e98c7',
-                          // strokeWidth: 10,
                         })}
                       />
                     </div>
-                    {/* <img
-                      className={css.icon4}
-                      src={chartCalories}
-                      alt="calories-chart"
-                    /> */}
                     <div
                       style={{
                         display: 'flex',
@@ -411,16 +389,10 @@ const Home = () => {
                           pathColor: percentageFat < 100 ? '#B6B6B6' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
-                          // backgroundColor: '#3e98c7',
-                          // strokeWidth: 10,
                         })}
                       />
                     </div>
-                    {/* <img
-                      className={css.icon4}
-                      src={chartCalories}
-                      alt="calories-chart"
-                    /> */}
+
                     <div
                       style={{
                         display: 'flex',
