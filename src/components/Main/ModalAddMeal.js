@@ -68,7 +68,7 @@ const ModalAddMeal = ({ title }) => {
           await dispatch(mealsOperations.recordMeal(record));
         }
       }
-      Notify.success('Your meal were recorded!!!');
+      Notify.success('Your meal was recorded!!!');
       dispatch(setModalsOff());
       data = [
         {

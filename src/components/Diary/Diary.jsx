@@ -119,7 +119,7 @@ const Diary = () => {
 
         <div className={css.blockWrapper}>
           <MealBlock
-            title="Snake"
+            title="Snack"
             meal={snack}
             calculatedData={snack2}
             image={snackImage}
