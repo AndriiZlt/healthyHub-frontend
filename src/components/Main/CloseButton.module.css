@@ -35,16 +35,6 @@
   transition: all 0.3s ease-in;
 }
 
-label {
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease-in;
-  opacity: 0;
-}
-
 .close {
   margin: 30px 0 0 5px;
   position: absolute;
