@@ -6,7 +6,6 @@ const CloseButton = () => {
     <div className={css.closeContainer}>
       <div className={css.leftright}></div>
       <div className={css.rightleft}></div>
-      {/* <label className={css.close}>close</label> */}
     </div>
   );
 };
