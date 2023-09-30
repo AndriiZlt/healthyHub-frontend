@@ -13,10 +13,10 @@
 
 .modal {
   width: 300px;
-  height: 558px;
+  /* height: 558px; */
   border-radius: 12px;
   background-color: var(--primary-black-second-color);
-  padding: 16px 12px;
+  padding: 40px 12px 20px;
 }
 .section {
   position: relative;
@@ -91,9 +91,9 @@ section h2 {
   flex-direction: column;
 }
 
-.remove_meal {
+.closeBtn {
   position: absolute;
-  top: 0;
+  top: -42px;
   right: 0;
   display: flex;
   align-items: center;
@@ -104,14 +104,14 @@ section h2 {
   border-radius: 10px;
 }
 
-.remove_meal:active {
+.closeBtn:active {
   background-color: #485136;
 }
 
-.remove_meal_bottom {
+.add_meal_bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   cursor: pointer;
   height: 36px;
 }
@@ -154,6 +154,14 @@ section h2 {
 }
 
 @media (min-width: 834px) {
+  .add_meal_bottom {
+    margin-right: 70px;
+  }
+
+  .closeBtn {
+    top: -15px;
+  }
+
   .formDiv {
     height: 180px;
     margin-bottom: 20px;
@@ -205,7 +213,7 @@ section h2 {
   .buttons {
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
   }
 
   .diary_breakfast_list {
@@ -222,11 +230,11 @@ section h2 {
   }
 
   .diary_breakfast_item[id='name'] {
-    width: 250px;
+    width: 245px;
   }
 
   .diary_breakfast_item[id='carbonohidrates'] {
-    width: 85px;
+    width: 78px;
   }
 
   .diary_breakfast_item[id='protein'] {
@@ -234,22 +242,21 @@ section h2 {
   }
 
   .diary_breakfast_item[id='fat'] {
-    width: 82px;
+    width: 78px;
     font-size: 14px;
   }
 
   .diary_breakfast_item[id='calories'] {
-    width: 80px;
+    width: 82px;
     font-size: 14px;
   }
 
-  .diary_add_meal_wrapper {
-  }
   .buttons_wrapper {
     margin-right: 0 auto;
     align-items: center;
   }
 }
+
 @media (min-width: 1440px) {
   .modal {
     width: 676px;
