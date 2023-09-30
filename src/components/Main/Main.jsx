@@ -102,7 +102,6 @@ const Home = () => {
 
   const caloriesGoal = useCalcBMR();
   const percentageCalories = (calories / caloriesGoal) * 100;
-
   const percentageFat = Math.min(Math.floor((fat / fatGoal) * 100), 100);
   const percentageProtein = Math.min(
     Math.floor((protein / proteinGoal) * 100),
@@ -168,7 +167,9 @@ const Home = () => {
             <div className={css.water}>
               <div className={css.waterGlass}>
                 <div className={css.waterWrapper}>
-                  <p className={css.percent}>{waterPercetage}%</p>
+                  <p className={css.percent}>
+                    {Math.min(waterPercetage, 100)}%
+                  </p>
                   <div
                     className={css.waterLevel}
                     style={{ height: waterHeight }}
@@ -239,7 +240,7 @@ const Home = () => {
                   value={percentageCalories}
                   styles={buildStyles({
                     textSize: '14px',
-                    pathColor: '#45FFBC',
+                    pathColor: calories < caloriesGoal ? '#45FFBC' : 'tomato',
                     textColor: '#B6B6B6',
                     trailColor: '#292928',
                     backgroundColor: '#3e98c7',
@@ -247,7 +248,9 @@ const Home = () => {
                   })}
                 >
                   <div className={css.info}>
-                    <p className={css.numberCalories}>{calories}</p>
+                    <p className={css.numberCalories}>
+                      {Math.min(calories, 9999)}
+                    </p>
                     <p className={css.textCalories}>calories</p>
                   </div>
                 </CircularProgressbarWithChildren>
@@ -277,7 +280,8 @@ const Home = () => {
                         text={` ${percentageCarbs}%`}
                         styles={buildStyles({
                           textSize: '28px',
-                          pathColor: '#FFC4F7',
+                          pathColor:
+                            percentageCarbs < 100 ? '#FFC4F7' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
                           // backgroundColor: '#3e98c7',
@@ -327,7 +331,7 @@ const Home = () => {
                               marginLeft: 4,
                             }}
                           >
-                            {Math.max(carbsGoal - carbonohidrates)}
+                            {Math.max(carbsGoal - carbonohidrates, 0)}
                           </span>
                         </p>
                       </div>
@@ -340,7 +344,8 @@ const Home = () => {
                         text={` ${percentageProtein}%`}
                         styles={buildStyles({
                           textSize: '28px',
-                          pathColor: '#FFF3B7',
+                          pathColor:
+                            percentageProtein < 100 ? '#FFF3B7' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
                           // backgroundColor: '#3e98c7',
@@ -403,7 +408,7 @@ const Home = () => {
                         text={` ${percentageFat}%`}
                         styles={buildStyles({
                           textSize: '28px',
-                          pathColor: '#B6B6B6',
+                          pathColor: percentageFat < 100 ? '#B6B6B6' : 'tomato',
                           textColor: '#B6B6B6',
                           trailColor: '#292928',
                           // backgroundColor: '#3e98c7',
