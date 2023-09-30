@@ -275,6 +275,10 @@ p {
   margin-left: 26px;
 }
 
+.blockWrapper:not(:last-child) {
+  margin-bottom: 24px;
+}
+
 @media (min-width: 834px) {
   .dairy_elem_breakfast_list li {
     width: 127px;
@@ -326,6 +330,7 @@ p {
     justify-content: space-between;
     flex-wrap: nowrap;
   }
+
   .dairy_wrapper_title {
     display: flex;
     align-items: center;
@@ -404,6 +409,19 @@ p {
 }
 
 @media (min-width: 1440px) {
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .blockWrapper {
+    width: 676px;
+  }
+
+  .blockWrapper:nth-child(odd) {
+    margin-right: 20px;
+  }
+
   .dairy_elem_breakfast_list li {
     width: 127px;
   }
@@ -415,12 +433,7 @@ p {
     padding-top: 20px;
     padding-bottom: 52px;
   }
-  .wrapper {
-    display: flex;
-    /* flex-wrap: wrap; */
-    /* width: 100%; */
-    gap: 20px;
-  }
+
   .wrapper_dishes {
     display: block;
     width: 100%;
