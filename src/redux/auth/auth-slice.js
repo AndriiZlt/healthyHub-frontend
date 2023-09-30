@@ -74,6 +74,7 @@ export const authSlice = createSlice({
       })
       .addCase(authOperations.logIn.rejected, (state, _) => {
         console.log('Login rejected');
+        state.user = initialState.user;
         state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state, action) => {
