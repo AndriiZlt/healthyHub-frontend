@@ -22,13 +22,17 @@
   display: block;
   margin-bottom: 24px;
 }
+.wrapperTablet {
+  padding: 0;
+}
 .thumb {
   display: flex;
   width: 300px;
   height: 86px;
-  padding-left: 24px;
+  padding: 20px 24px;
+  /* padding-left: 24px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 20px; */
   background-color: var(--primary-black-second-color);
   border-radius: 12px;
   margin-bottom: 20px;
@@ -115,6 +119,7 @@
     width: 536px;
     height: 560px;
     margin-left: 116px;
+    margin-right: 44px;
   }
   .thumb {
     width: 328px;
@@ -122,11 +127,13 @@
 
   .wrapperTablet {
     width: 676px;
+    height: 510px;
   }
   .wrapperDesktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
+    /* display: grid; */
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    /* width: 100%; */
     /* column-gap: 44px; */
     margin-left: auto;
     margin-right: auto;
