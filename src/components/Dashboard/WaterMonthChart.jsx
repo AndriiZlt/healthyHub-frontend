@@ -25,7 +25,7 @@ const WaterMonthChart = props => {
 
   let sum = 0;
   userMonthData.forEach(element => {
-    sum += element.water;
+    sum += Number(element.water);
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 
