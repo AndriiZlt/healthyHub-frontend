@@ -21,6 +21,10 @@
   border-radius: 12px;
   background-color: var(--primary-black-second-color);
   padding: 16px 12px;
+  animation-name: hide;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .titleH2 {
@@ -124,5 +128,43 @@
   .modal {
     width: 338px;
     height: 280px;
+  }
+}
+
+
+.show {
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate(0px, -75px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(1);
+    display: block;
+
+  }
+  99% {
+    opacity: 0;
+    transform: translate(0px, -75px) scale(0.7);
+    display: block;
+  } 
+  100% {
+    opacity: 0;
+    transform: translate(0px, -75px) scale(0.7);
+    display: none;
   }
 }
