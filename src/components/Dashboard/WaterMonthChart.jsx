@@ -15,10 +15,13 @@ const WaterMonthChart = props => {
     fullMonth.push(0);
   }
 
-  // pushing records and counting active days
+  // pushing records
   for (let i = 0; i < userMonthData.length; i++) {
     fullMonth.push(Number(userMonthData[i].water));
   }
+
+  // Adding element to the array's beggining for the nicer chart performance
+  fullMonth.unshift(fullMonth[0]);
 
   let sum = 0;
   userMonthData.forEach(element => {
@@ -26,7 +29,7 @@ const WaterMonthChart = props => {
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 
-  const labels = [];
+  const labels = [''];
   for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
     labels.push(i);
   }
@@ -64,7 +67,7 @@ const WaterMonthChart = props => {
         },
         displayTitle: false,
         displayColors: false,
-        backgroundColor: '#0F0F0F',
+        backgroundColor: 'rgba(227, 255, 168, 0.1)',
         titleAlign: 'center',
         titleMarginBottom: 2,
         bodyColor: '#B6B6B6',
