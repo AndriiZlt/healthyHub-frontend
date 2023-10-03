@@ -3,7 +3,7 @@ import { useState } from 'react';
 import css from './AddMeal.module.css';
 import breakfast from '../../assets/breakfast.svg';
 import plus from '../../assets/plus.svg';
-import { useDispatch } from 'react-redux'; // eslint-disable-line no-unused-vars
+import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-line no-unused-vars
 import { Notify } from 'notiflix';
 import Notiflix from 'notiflix';
 import mealsOperations from 'redux/meals/meals-operations';
@@ -11,6 +11,7 @@ import { setModalsOff, setModalMealOn } from 'redux/meals/meals-slice';
 import InputModalElement from './InputModalElement';
 import CloseButton from './CloseButton';
 import useMediaQuery from 'helpers/useMediaQuery';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 let data = [
   {
@@ -24,6 +25,7 @@ let data = [
 ];
 
 const ModalAddMeal = ({ title }) => {
+  const isOpen = useSelector(mealsSelectors.getModalMealOn);
   const [display, setDisplay] = useState(1);
   const isMobile = useMediaQuery('(max-width:833px');
   const dispatch = useDispatch();
@@ -165,7 +167,7 @@ const ModalAddMeal = ({ title }) => {
 
   return (
     <div className={css.overlay} id="overlay">
-      <div className={css.modal}>
+      <div className={`${css.modal} ${isOpen && css.show}`}>
         <div className={css.section}>
           <h2>Record your meal</h2>
           <div className={css.diary_wrapper_title}>

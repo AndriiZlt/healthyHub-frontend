@@ -24,7 +24,7 @@ function TargetSelectionModal({closeGoalModal}) {
   function setGainMuscle() {
     setgoals("Gain Muscle");
   }
-  function qwe() {
+  function changeGoal() {
     dispatch(
       authOperations.changeGoal({goal: goals})
     );
@@ -57,7 +57,7 @@ function TargetSelectionModal({closeGoalModal}) {
           </div>
           <p>Gain Muscle</p>
         </button>
-        <button onClick={qwe} className={css.button}>Confirm</button>
+        <button onClick={changeGoal} className={css.button}>Confirm</button>
       </div>
       {isMobile ? (
         <button onClick={closeGoalModal} className={css.close_mobile}>
