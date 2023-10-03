@@ -44,7 +44,7 @@ const CaloriesMonthChart = props => {
   // calculate Average
   let sum = 0;
   userMonthData.forEach(element => {
-    sum += element.calories;
+    sum += Number(element.calories);
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 

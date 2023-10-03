@@ -56,6 +56,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.register.pending, (state, _) => {
+        console.log('Register pending');
         state.isLoading = true;
       })
       .addCase(authOperations.register.rejected, (state, _) => {
@@ -64,7 +65,11 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(authOperations.logIn.pending, (state, _) => {
+        console.log('Login pending');
         state.isLoading = true;
+        setTimeout(() => {
+          state.isLoading = false;
+        }, 10000);
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         console.log('Login fulfield', action.payload.token);
@@ -101,7 +106,11 @@ export const authSlice = createSlice({
         }
         state.isLoading = false;
       })
+      .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
+        console.log('fetch user pending');
+      })
       .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        console.log('fetch user rejected');
         state.isLoggedIn = false;
         state.user = initialState.user;
         state.regData = initialState.regData;
