@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from 'chart.js/auto'; // eslint-disable-line no-unused-vars
 import css from './Dashboard.module.css';
+import 'chartjs-plugin-style';
 
 ChartJS.register(
   LineElement,
@@ -32,10 +33,13 @@ const CaloriesMonthChart = props => {
     fullMonth.push(0);
   }
 
-  // pushing records and counting active days
+  // pushing records
   for (let i = 0; i < userMonthData.length; i++) {
     fullMonth.push(userMonthData[i].calories.toString());
   }
+
+  // Adding element to the array's beggining for the nicer chart performance
+  fullMonth.unshift(fullMonth[0]);
 
   // calculate Average
   let sum = 0;
@@ -44,7 +48,7 @@ const CaloriesMonthChart = props => {
   });
   const average = Math.floor(sum / Math.max(userMonthData.length, 1));
 
-  const labels = [];
+  const labels = [''];
   for (let i = 1; i <= props.numberOfDaysInMonth; i++) {
     labels.push(i);
   }
@@ -70,10 +74,23 @@ const CaloriesMonthChart = props => {
   });
 
   const options = {
+    tooplips: {
+      shadowOffsetX: 3,
+
+      shadowOffsetY: 3,
+
+      shadowBlur: 10,
+
+      shadowColor: 'rgba(0, 0, 0, 0.5)',
+    },
     maintainAspectRatio: false,
     margin: 0,
     plugins: {
       tooltip: {
+        // shadowOffsetX: 5,
+        // shadowOffsetY: 5,
+        // shadowBlur: 14,
+        // shadowColor: 'rgba(227, 255, 168, 0.2)',
         padding: {
           top: 8,
           bottom: 8,
@@ -82,7 +99,7 @@ const CaloriesMonthChart = props => {
         },
         displayTitle: false,
         displayColors: false,
-        backgroundColor: '#0F0F0F',
+        backgroundColor: 'rgba(227, 255, 168, 0.1)',
         titleAlign: 'center',
         titleMarginBottom: 2,
         bodyColor: '#B6B6B6',

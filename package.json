@@ -1,5 +1,6 @@
 {
   "name": "healthyhub-frontend",
+  "main": "dist/index.js",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://AndriiZlt.github.io/healthyHub-frontend/",
@@ -12,6 +13,7 @@
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
     "chart.js": "^4.4.0",
+    "chartjs-plugin-style": "^0.5.0",
     "dayjs": "^1.11.10",
     "notiflix": "^3.2.6",
     "react": "^18.1.0",

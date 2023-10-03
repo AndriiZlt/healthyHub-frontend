@@ -58,6 +58,18 @@ const ModalAddMeal = ({ title }) => {
   });
 
   const formSubmitHandler = async () => {
+    if (
+      data[display - 1].name === '' ||
+      data[display - 1].carbonohidrates === '' ||
+      data[display - 1].protein === '' ||
+      data[display - 1].fat === '' ||
+      data[display - 1].calories === ''
+    ) {
+      Notify.warning('Fill in all fields!');
+      return;
+    }
+
+    dispatch(setModalsOff());
     const title = document.getElementById('mealTitle').innerHTML; // eslint-disable-line no-unused-vars
 
     (async () => {
@@ -68,8 +80,8 @@ const ModalAddMeal = ({ title }) => {
           await dispatch(mealsOperations.recordMeal(record));
         }
       }
-      Notify.success('Your meal was recorded!!!');
-      dispatch(setModalsOff());
+      Notify.success('Your meal was recorded!');
+
       data = [
         {
           mealType: '',

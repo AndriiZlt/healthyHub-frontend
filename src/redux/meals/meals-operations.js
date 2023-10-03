@@ -70,7 +70,6 @@ const recordMeal = createAsyncThunk('meals/sendMeal', async meal => {
   console.log('Recording meal...', meal);
   try {
     const { data } = await axios.post('/user/food-intake', meal);
-    console.log('Meal data after record', data);
     return data;
   } catch (error) {
     console.log('Error in meal record sending', error.response.data);

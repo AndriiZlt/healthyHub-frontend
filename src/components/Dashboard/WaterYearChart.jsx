@@ -73,7 +73,7 @@ const WaterYearChart = props => {
         },
         displayTitle: false,
         displayColors: false,
-        backgroundColor: '#0F0F0F',
+        backgroundColor: 'rgba(227, 255, 168, 0.1)',
         titleAlign: 'center',
         titleMarginBottom: 2,
         bodyColor: '#B6B6B6',
