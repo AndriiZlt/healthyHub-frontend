@@ -126,3 +126,21 @@
     height: 280px;
   }
 }
+
+.show {
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate(0px, -75px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px) scale(1);
+  }
+}

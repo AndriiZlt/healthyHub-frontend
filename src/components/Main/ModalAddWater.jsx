@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import css from './AddWater.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import mealsOperations from 'redux/meals/meals-operations';
 import { setModalsOff } from 'redux/meals/meals-slice';
 import { Notify } from 'notiflix';
 import Notiflix from 'notiflix';
+import mealsSelectors from 'redux/meals/meals-selectors';
 
 const ModalAddWater = () => {
+  const isOpen = useSelector(mealsSelectors.getModalWaterOn);
   const [water, setWater] = useState('');
   const dispatch = useDispatch();
 
@@ -37,7 +39,7 @@ const ModalAddWater = () => {
 
   return (
     <div className={css.overlay} id="overlay">
-      <div className={css.modal}>
+      <div className={`${css.modal} ${isOpen && css.show}`}>
         <h2 className={css.titleH2}>Add water intake</h2>
         <div className={css.media}>
           <h3 className={css.titleH3}>How much water</h3>
