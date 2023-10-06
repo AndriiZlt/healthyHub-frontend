@@ -71,6 +71,7 @@ const fetchCurrentUser = createAsyncThunk(
       return response;
     } catch (error) {
       console.log('error in fetching current user', error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
